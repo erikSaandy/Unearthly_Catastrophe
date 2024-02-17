@@ -1,0 +1,18 @@
+{
+  "Title": "Lethal Helmet",
+  "Subtitle": "",
+  "Category": "Hat",
+  "ConditionalModels": {},
+  "Tags": null,
+  "SubCategory": "",
+  "Parent": null,
+  "Model": "models/clothes/helmet_lethal/helmet_lethal.vmdl",
+  "SkinMaterial": "debug/debugempty.vmat",
+  "EyesMaterial": "debug/debugempty.vmat",
+  "MaterialGroup": "",
+  "SlotsUnder": 0,
+  "SlotsOver": 0,
+  "HideBody": 0,
+  "Icon": {},
+  "__references": []
+}
