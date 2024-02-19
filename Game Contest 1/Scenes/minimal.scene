@@ -68,18 +68,82 @@
       ]
     },
     {
-      "Id": "db180ba2-fd50-4545-86fb-80dab302f938",
-      "Name": "Player",
-      "Position": "0,0,10.54262",
-      "Enabled": true,
-      "__Prefab": "prefabs/player.prefab"
-    },
-    {
       "Id": "6f5d9d5c-57d7-45f8-8eee-704022b2e95d",
       "Name": "scrap_test",
       "Position": "223.1863,-2.648773,0.6708921",
       "Enabled": true,
       "__Prefab": "prefabs/scrap_test.prefab"
+    },
+    {
+      "Id": "5a340ce0-135e-4fa9-abf0-91f75961ace3",
+      "Name": "Network Helper",
+      "Position": "0,0,171.1578",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NetworkHelper",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "879472dc-c757-49a9-9739-ea0b93cfd5a7"
+            },
+            {
+              "_type": "gameobject",
+              "go": "3bac436e-e82c-43b9-8d01-ac11e80b5e91"
+            }
+          ],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "Id": "879472dc-c757-49a9-9739-ea0b93cfd5a7",
+      "Name": "Spawnpoint",
+      "Position": "163.5549,-28.33843,1.006369",
+      "Rotation": "0,0,-0.9951569,-0.09829969",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpawnPoint",
+          "Color": "0.8902,0.31765,0.05098,1"
+        }
+      ]
+    },
+    {
+      "Id": "3bac436e-e82c-43b9-8d01-ac11e80b5e91",
+      "Name": "Spawnpoint (1)",
+      "Position": "144.1852,90.63436,1.006349",
+      "Rotation": "0,0,-0.7731905,0.6341738",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpawnPoint",
+          "Color": "0.8902,0.31765,0.05098,1"
+        }
+      ]
+    },
+    {
+      "Id": "700b488a-cefc-4469-a542-30271eef2235",
+      "Name": "Game",
+      "Position": "59.83146,37.34929,21.25274",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LethalGame",
+          "AliveHudPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/hud/alivehud.prefab"
+          },
+          "CameraPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/main_camera.prefab"
+          }
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -105,6 +169,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-17T02:13:26.6690767\u002B01:00",
+  "LastSaved": "2024-02-18T23:45:14.0249938\u002B01:00",
   "__references": []
 }

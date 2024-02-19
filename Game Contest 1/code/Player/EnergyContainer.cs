@@ -12,16 +12,27 @@ public sealed class EnergyContainer : Component
 
 	//[Property] public Curve DecayCurve;
 
-	public float CurrentEnergy { get; private set; }
+	public float CurrentEnergy { get; set; }
 
 	public bool IsExhausted { get; private set; } = false;
 
 
 
-	public EnergyContainer() { CurrentEnergy = MaxEnergy; }
+	public EnergyContainer() { 
+		CurrentEnergy = MaxEnergy;
+	}
 
-	public void Update()
+	protected override void OnStart()
 	{
+		base.OnStart();
+
+		Owner.OnJumped += OnJumped;
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
 		if(IsExhausted)
 		{
 			CurrentEnergy += Time.Delta * Decay * 0.5f;
@@ -31,12 +42,16 @@ public sealed class EnergyContainer : Component
 				IsExhausted = false;
 			}
 		}
+		else if(!Owner.InputData.IsGrounded)
+		{
+			
+		}
 		// Running and moving
-		else if (Owner.InputData.WantsToRun && Owner.InputData.HasInput && Owner.InputData.IsMoving)
+		else if (Owner.InputData.WantsToRun && Owner.InputData.HasInput && Owner.InputData.IsMoving )
 		{
 			CurrentEnergy -= Time.Delta * Decay;
 
-			if(CurrentEnergy < 0) { 
+			if(CurrentEnergy < -15) { 
 				CurrentEnergy = -ExhaustionPenalty; 
 				IsExhausted = true;
 			}
@@ -44,8 +59,16 @@ public sealed class EnergyContainer : Component
 		}
 		else if(CurrentEnergy < MaxEnergy)
 		{
-			CurrentEnergy += Time.Delta * Decay;
+			CurrentEnergy += Time.Delta * Decay * 0.4f;
 			if(CurrentEnergy > MaxEnergy) { CurrentEnergy = MaxEnergy; }
+		}
+	}
+
+	void OnJumped()
+	{
+		if(!IsExhausted)
+		{
+			CurrentEnergy -= 20;
 		}
 	}
 

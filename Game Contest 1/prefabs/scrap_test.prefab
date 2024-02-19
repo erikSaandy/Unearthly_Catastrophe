@@ -2,12 +2,13 @@
   "RootObject": {
     "Id": "47ae45ca-2970-4434-b0c6-36916fde9934",
     "Name": "scrap_test",
-    "Position": "0,0,14.36191",
     "Scale": "0.5,0.5,0.5",
     "Enabled": true,
     "Components": [
       {
         "__type": "Scrap",
+        "MaxValue": 30,
+        "MinValue": 20,
         "Collider": {
           "_type": "component",
           "go": "47ae45ca-2970-4434-b0c6-36916fde9934",
@@ -17,11 +18,7 @@
           "_type": "gameobject",
           "go": "5a18ea78-d911-4525-adb2-1eb58d1281d5"
         },
-        "Outline": {
-          "_type": "component",
-          "go": "47ae45ca-2970-4434-b0c6-36916fde9934",
-          "component_type": "HighlightOutline"
-        }
+        "Icon": null
       },
       {
         "__type": "ModelRenderer",

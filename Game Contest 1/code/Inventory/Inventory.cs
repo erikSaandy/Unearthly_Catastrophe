@@ -1,25 +1,31 @@
 ﻿
 using Sandbox;
+using Sandbox.UI;
 using System.Diagnostics;
 
-public sealed class Inventory : Component
+public partial class Inventory : Panel
 {
 	[Property] public Player Owner { get; private set; }
 
-	protected override void OnAwake()
+	public int ActiveSlot { get; set; } = 0;
+	public Slot[] Slots { get; private set; }
+
+	public Inventory() { }
+
+	public Inventory( Player owner, int size = 4 )
 	{
-		base.OnAwake();
+		this.Owner = owner;
+		Slots = new Slot[size];
 	}
 
-	protected override void OnUpdate()
+	public void OnUpdate()
 	{
-		base.OnUpdate();
 
 		if ( !Input.Pressed( "use" ) ) { return; }
 
 		var from = Owner.Camera.Transform.Position;
 		var to = from + Owner.Camera.Transform.Rotation.Forward * 80;
-		SceneTraceResult trace = Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy(GameObject).UseHitboxes().Size(5f).Run();
+		SceneTraceResult trace = Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy(Owner.GameObject).UseHitboxes().Size(5f).Run();
 
 		if(trace.Hit)
 		{
@@ -37,6 +43,11 @@ public sealed class Inventory : Component
 
 
 
+	}
+
+	public struct Slot
+	{
+		public ICarriable Item { get; set; }
 	}
 
 }

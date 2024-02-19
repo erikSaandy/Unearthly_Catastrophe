@@ -1,0 +1,25 @@
+{
+  "RootObject": {
+    "Id": "f4426520-4eda-4950-bf55-4f8bab84b2d7",
+    "Name": "Alive Hud",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ScreenPanel",
+        "AutoScreenScale": true,
+        "Opacity": 1,
+        "Scale": 1,
+        "ZIndex": 100
+      },
+      {
+        "__type": "AliveHud",
+        "Owner": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

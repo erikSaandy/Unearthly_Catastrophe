@@ -1,0 +1,69 @@
+{
+  "RootObject": {
+    "Id": "51b0189e-6e32-4819-bd02-545d506ad2c5",
+    "Name": "Main Camera",
+    "Position": "-13.71491,55.30304,124",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "CameraComponent",
+        "BackgroundColor": "0.33333,0.46275,0.52157,1",
+        "ClearFlags": "All",
+        "FieldOfView": 60,
+        "IsMainCamera": true,
+        "Orthographic": false,
+        "OrthographicHeight": 1204,
+        "Priority": 1,
+        "RenderExcludeTags": "",
+        "RenderTags": "",
+        "TargetEye": "None",
+        "Viewport": "0,0,1,1",
+        "ZFar": 10000,
+        "ZNear": 15
+      },
+      {
+        "__type": "Bloom",
+        "BloomColor": {
+          "color": [
+            {
+              "c": "1,1,1,1"
+            },
+            {
+              "t": 1,
+              "c": "1,1,1,1"
+            }
+          ],
+          "alpha": []
+        },
+        "BloomCurve": [
+          {
+            "y": 0.5
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ],
+        "Mode": "Additive",
+        "Strength": 0.5,
+        "Threshold": 0.5,
+        "ThresholdWidth": 0.5
+      },
+      {
+        "__type": "Tonemapping",
+        "ExposureCompensation": 0,
+        "MaximumExposure": 2,
+        "MinimumExposure": 1,
+        "Rate": 1
+      },
+      {
+        "__type": "Sharpen",
+        "Scale": 0.2
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

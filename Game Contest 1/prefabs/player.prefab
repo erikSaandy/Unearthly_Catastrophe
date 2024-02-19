@@ -1,7 +1,8 @@
 {
   "RootObject": {
-    "Id": "db180ba2-fd50-4545-86fb-80dab302f938",
+    "Id": "c5a6a4fa-640c-48e3-91bc-79471616ce41",
     "Name": "player",
+    "Networked": true,
     "Enabled": true,
     "Components": [
       {
@@ -41,31 +42,36 @@
         "LookAtEnabled": false,
         "Target": {
           "_type": "component",
-          "go": "db180ba2-fd50-4545-86fb-80dab302f938",
+          "go": "c5a6a4fa-640c-48e3-91bc-79471616ce41",
           "component_type": "SkinnedModelRenderer"
         }
       },
       {
         "__type": "Player",
-        "EnergyContainer": {
-          "_type": "component",
-          "go": "db180ba2-fd50-4545-86fb-80dab302f938",
-          "component_type": "EnergyContainer"
+        "AliveHudPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/hud/alivehud.prefab"
+        },
+        "CameraPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/main_camera.prefab"
         },
         "Animator": {
           "_type": "component",
-          "go": "db180ba2-fd50-4545-86fb-80dab302f938",
+          "go": "c5a6a4fa-640c-48e3-91bc-79471616ce41",
           "component_type": "CitizenAnimationHelper"
-        },
-        "Camera": {
-          "_type": "gameobject",
-          "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a"
         },
         "Controller": {
           "_type": "component",
-          "go": "db180ba2-fd50-4545-86fb-80dab302f938",
+          "go": "c5a6a4fa-640c-48e3-91bc-79471616ce41",
           "component_type": "CharacterController"
         },
+        "EnergyContainer": {
+          "_type": "component",
+          "go": "c5a6a4fa-640c-48e3-91bc-79471616ce41",
+          "component_type": "EnergyContainer"
+        },
+        "EyeOffset": "10,0,63",
         "JumpStrength": 400,
         "MaxPitch": 60,
         "MinPitch": -45,
@@ -78,84 +84,12 @@
         "ExhaustionPenalty": 50,
         "Owner": {
           "_type": "component",
-          "go": "db180ba2-fd50-4545-86fb-80dab302f938",
-          "component_type": "Player"
-        }
-      },
-      {
-        "__type": "Inventory",
-        "Owner": {
-          "_type": "component",
-          "go": "db180ba2-fd50-4545-86fb-80dab302f938",
+          "go": "c5a6a4fa-640c-48e3-91bc-79471616ce41",
           "component_type": "Player"
         }
       }
     ],
-    "Children": [
-      {
-        "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-        "Name": "Camera",
-        "Position": "10.19186,0,60",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "CameraComponent",
-            "BackgroundColor": "0.33333,0.46275,0.52157,1",
-            "ClearFlags": "All",
-            "FieldOfView": 60,
-            "IsMainCamera": true,
-            "Orthographic": false,
-            "OrthographicHeight": 1204,
-            "Priority": 1,
-            "RenderExcludeTags": "",
-            "RenderTags": "",
-            "TargetEye": "None",
-            "Viewport": "0,0,1,1",
-            "ZFar": 10000,
-            "ZNear": 15
-          },
-          {
-            "__type": "Bloom",
-            "BloomColor": {
-              "color": [
-                {
-                  "c": "1,1,1,1"
-                },
-                {
-                  "t": 1,
-                  "c": "1,1,1,1"
-                }
-              ],
-              "alpha": []
-            },
-            "BloomCurve": [
-              {
-                "y": 0.5
-              },
-              {
-                "x": 1,
-                "y": 1
-              }
-            ],
-            "Mode": "Additive",
-            "Strength": 0.5,
-            "Threshold": 0.5,
-            "ThresholdWidth": 0.5
-          },
-          {
-            "__type": "Tonemapping",
-            "ExposureCompensation": 0,
-            "MaximumExposure": 2,
-            "MinimumExposure": 1,
-            "Rate": 1
-          },
-          {
-            "__type": "Sharpen",
-            "Scale": 0.2
-          }
-        ]
-      }
-    ]
+    "Children": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
