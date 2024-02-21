@@ -10,15 +10,17 @@
     > .slot {
         width: 160px;
         height: 160px;
-        background-color: #313131;
-        border-radius: 16px;
-        transition: all 0.2s ease;
+        //background-color: #313131;
+        border: 8px dashed;
+        border-color: #274A73;
+        border-radius: 52px;
+        transition: all 0.1s linear;
         align-items: center;
 
         &.active {
             width: 180px;
             height: 180px;
-            background-color: #4F4F4F;
+            //background-color: #4F4F4F;
         }
 
         > .icon {

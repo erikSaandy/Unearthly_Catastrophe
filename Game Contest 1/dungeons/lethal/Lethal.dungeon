@@ -1,0 +1,32 @@
+{
+  "Title": "Lethal Dungeon",
+  "Biomes": [
+    {
+      "Title": "Concrete",
+      "Entrances": [
+        {
+          "Prefab": "dungeons/lethal/rooms/entrance_01/entrance_01.prefab"
+        }
+      ],
+      "Rooms": [
+        {
+          "Weight": 90,
+          "Prefab": "dungeons/lethal/rooms/corridor_01/corridor_01.prefab"
+        },
+        {
+          "Weight": 75,
+          "Prefab": "dungeons/lethal/rooms/corridor_02/corridor_02.prefab"
+        },
+        {
+          "Weight": 20,
+          "Prefab": "dungeons/lethal/rooms/corridor_03/corridor_03.prefab"
+        },
+        {
+          "Weight": 10,
+          "Prefab": "dungeons/lethal/rooms/corridor_04/corridor_04.prefab"
+        }
+      ]
+    }
+  ],
+  "__references": []
+}

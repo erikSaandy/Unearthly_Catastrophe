@@ -20,7 +20,6 @@ public abstract class Carriable : Component, ICarriable
 	public Rigidbody Rigidbody { get; set; }
 
 	[Property] public Angles HeldAngleOffset { get; set; }
-	[Property] public Vector3 HeldPositionOffset { get; set; }
 
 
 	protected override void OnAwake()
@@ -39,12 +38,12 @@ public abstract class Carriable : Component, ICarriable
 	/// <param name="player">Player who picked up this carriable.</param>
 	public virtual void OnPickup( Player player )
 	{
-		if ( GameObject.IsProxy ) { return; }
-
+		if ( player.IsProxy ) { return; }
+		
 		GameObject.Network.TakeOwnership();
 
 		Tags.Add( "owned" );
-		SetOwner( player ); //TOOD...
+		Owner = player;
 
 		Collider.Enabled = false;
 		Rigidbody.Enabled = false;
@@ -59,7 +58,10 @@ public abstract class Carriable : Component, ICarriable
 	/// </summary>
 	public virtual void OnDrop()
 	{
+
 		if ( GameObject.IsProxy ) { return; }
+
+		Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
 
 		Collider.Enabled = true;
 		GameObject.Enabled = true;
@@ -69,13 +71,19 @@ public abstract class Carriable : Component, ICarriable
 
 		// apply force
 		Rigidbody.Velocity = Owner.EyeAngles.Forward * 250 + Owner.Controller.Velocity;
-		Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
 
 		Tags.Remove( "owned" );
-		SetOwner( null );
+		Owner = null;
 
 		GameObject.Network.DropOwnership();
 
+	}
+
+	public virtual void UpdateHeldPosition()
+	{
+		Vector3 hands = (Owner.HandRBone.Transform.Position + Owner.HandLBone.Transform.Position) * 0.5f;
+		Transform.Position = hands;
+		Transform.Rotation = Owner.HandRBone.Transform.Rotation * HeldAngleOffset;
 	}
 
 	/// <summary>
@@ -84,12 +92,11 @@ public abstract class Carriable : Component, ICarriable
 	[Broadcast]
 	public virtual void Undeploy()
 	{
-		Collider.Static = true;
 		GameObject.Enabled = false;
-
-		if(GameObject.IsProxy) { return; }
-
 		Transform.LocalPosition = Vector3.Zero;
+		GameObject.SetParent( Owner.GameObject );
+
+		if (GameObject.IsProxy) { return; }
 
 		Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
 
@@ -101,21 +108,14 @@ public abstract class Carriable : Component, ICarriable
 	[Broadcast]
 	public virtual void Deploy()
 	{
-
-		Collider.Static = true;
 		GameObject.Enabled = true;
 
 		if ( GameObject.IsProxy ) { return; }
 
+		GameObject.SetParent( Owner.HandRBone );
+
 		Owner.CurrentHoldType = HoldType;
-
 		Owner.Animator.TriggerDeploy();
-	}
-
-	[Broadcast]
-	private void SetOwner(Player owner)
-	{
-		this.Owner = owner;
 	}
 
 	[Broadcast] public abstract void OnUsePrimary();

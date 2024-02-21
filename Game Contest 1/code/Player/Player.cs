@@ -28,7 +28,7 @@ public sealed class Player : Component
 	[Category( "Bones" )][Property] public GameObject HandLBone { get; set; }
 	[Category( "Bones" )][Property] public GameObject HandRBone { get; set; }
 	[Category( "Bones" )][Property] public GameObject Spine1Bone { get; set; }
-
+	[Category( "Bones" )][Property] public GameObject FlashlightRBone { get; set; }
 	public Action OnJumped { get; set; }
 
 	[Category( "Hud" )][Property] public GameObject HudObject;
@@ -74,6 +74,7 @@ public sealed class Player : Component
 	private void OnFootstep(SceneModel.FootstepEvent footstep)
 	{
 	}
+
 
 	protected override void OnDestroy()
 	{

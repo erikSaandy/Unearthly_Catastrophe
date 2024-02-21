@@ -1,4 +1,6 @@
 using Sandbox;
+using Sandbox.Citizen;
+using System.Numerics;
 
 public sealed class Flashlight : Carriable
 {
@@ -6,6 +8,8 @@ public sealed class Flashlight : Carriable
 	[Property] public SpotLight LightSource { get; set; }
 	bool IsOn = false;
 
+	[Property] public Vector3 ShoulderedOffset { get; set; }
+	[Property] public Angles ShoulderedAngleOffset { get; set; }
 	protected override void OnAwake()
 	{
 		base.OnAwake();
@@ -31,6 +35,24 @@ public sealed class Flashlight : Carriable
 	{
 	}
 
+
+	public override void Undeploy()
+	{
+		base.Deploy();
+
+		GameObject.Enabled = true;
+
+		if ( GameObject.IsProxy ) { return; }
+
+		Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
+
+		GameObject.SetParent( Owner.FlashlightRBone );
+		GameObject.Transform.LocalPosition = 0;
+		GameObject.Transform.LocalRotation = Quaternion.Identity;
+
+		//Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
+
+	}
 
 	/// <summary>
 	/// Toggle flashlight on or off.

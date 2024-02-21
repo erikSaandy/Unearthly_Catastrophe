@@ -1,0 +1,81 @@
+{
+  "RootObject": {
+    "Id": "43bba1cd-55d7-41c2-b996-03d235920f2a",
+    "Name": "corridor_02",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "RoomData",
+        "Doors": [
+          {
+            "_type": "component",
+            "go": "9b94ed6a-ec6d-4bf9-869c-40cc0a90c0fd",
+            "component_type": "DoorSpawner"
+          },
+          {
+            "_type": "component",
+            "go": "9159310c-843a-47e6-bab5-15d560e3c9ee",
+            "component_type": "DoorSpawner"
+          }
+        ]
+      }
+    ],
+    "Children": [
+      {
+        "Id": "1630ed5d-b4f0-4103-ae40-97963a8c46a3",
+        "Name": "Map",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Model": "dungeons/lethal/rooms/corridor_02/corridor_02.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "IsTrigger": false,
+            "Model": "dungeons/lethal/rooms/corridor_02/corridor_02.vmdl",
+            "Static": false,
+            "Surface": null
+          }
+        ],
+        "Children": [
+          {
+            "Id": "9b94ed6a-ec6d-4bf9-869c-40cc0a90c0fd",
+            "Name": "Door",
+            "Position": "0,132,0",
+            "Rotation": "0,0,1,0.0000001649049",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "DoorSpawner",
+                "Type": "Default"
+              }
+            ]
+          },
+          {
+            "Id": "9159310c-843a-47e6-bab5-15d560e3c9ee",
+            "Name": "Door (1)",
+            "Position": "132,0,0",
+            "Rotation": "0,0,0.7071068,0.7071068",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "DoorSpawner",
+                "Type": "Default"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

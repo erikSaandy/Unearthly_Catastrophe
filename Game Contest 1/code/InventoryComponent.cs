@@ -18,7 +18,7 @@ public sealed class InventoryComponent : Component
 
 	public int Weight { get; private set; }
 
-	protected override void OnAwake()
+	protected override void OnAwake()	
 	{
 		if ( GameObject.IsProxy ) { return; }
 
@@ -32,7 +32,7 @@ public sealed class InventoryComponent : Component
 
 		if ( GameObject.IsProxy ) { return; }
 
-		UpdateHeldPosition();
+		ActiveItem?.UpdateHeldPosition();
 
 		if ( Input.Pressed( "use" ) )
 		{
@@ -80,21 +80,6 @@ public sealed class InventoryComponent : Component
 			DropActive();
 		}
 
-	}
-
-	public void UpdateHeldPosition()
-	{
-		if ( ActiveItem == null ) {
-			return; 
-		}
-
-		//Transform hands = Owner.Animator.Target.GetAttachment( "middle_of_both_hands" ) ?? default;
-		//ActiveItem.Transform.Position = hands.Position;
-		//ActiveItem.Transform.Rotation = hands.Rotation * ActiveItem.HeldAngleOffset;
-
-		Vector3 hands = (Owner.HandRBone.Transform.Position + Owner.HandLBone.Transform.Position) * 0.5f;
-		ActiveItem.Transform.Position = hands;
-		ActiveItem.Transform.Rotation = Owner.HandRBone.Transform.Rotation * ActiveItem.HeldAngleOffset;
 	}
 
 	public void Pickup(Carriable carriable)
