@@ -1,0 +1,31 @@
+.hotbar {
+    position: absolute;
+    bottom: 32px;
+    width: 100%;
+    z-index: 1;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-end;
+
+    > .slot {
+        width: 160px;
+        height: 160px;
+        background-color: #313131;
+        border-radius: 16px;
+        transition: all 0.2s ease;
+        align-items: center;
+
+        &.active {
+            width: 180px;
+            height: 180px;
+            background-color: #4F4F4F;
+        }
+
+        > .icon {
+            left: 5px;
+            right: 5px;
+            width: 90%;
+            height: 90%;
+        }
+    }
+}

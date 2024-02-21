@@ -46,6 +46,7 @@
       "Id": "b92c241c-614a-4e3b-b19c-dddca585dd31",
       "Name": "Plane (1)",
       "Scale": "5,5,5",
+      "Networked": true,
       "Enabled": true,
       "Components": [
         {
@@ -134,14 +135,83 @@
       "Components": [
         {
           "__type": "LethalGame",
-          "AliveHudPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/hud/alivehud.prefab"
-          },
+          "AliveHudPrefab": null,
           "CameraPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/main_camera.prefab"
           }
+        }
+      ]
+    },
+    {
+      "Id": "5ae3afa1-c0ec-4478-86f4-ca7faa4ca8cb",
+      "Name": "Flashlight",
+      "Position": "-26.18473,0,22.48681",
+      "Networked": true,
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/flashlight/flashlight.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Flashlight",
+          "HeldAngleOffset": "7,0,225",
+          "HeldPositionOffset": "0,0,0",
+          "HoldType": "HoldItem",
+          "Icon": "models/flashlight/flashlight.vmdl.vtex",
+          "LightSource": {
+            "_type": "component",
+            "go": "47c4f7df-871a-4720-a406-8b469829c36f",
+            "component_type": "SpotLight"
+          },
+          "Weight": 5
+        },
+        {
+          "__type": "Rigidbody",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/flashlight/flashlight.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "47c4f7df-871a-4720-a406-8b469829c36f",
+          "Name": "Spot Light",
+          "Position": "7.535444,0,0",
+          "Tags": "light_spot,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpotLight",
+              "__enabled": false,
+              "Attenuation": 8.15,
+              "ConeInner": 59.17,
+              "ConeOuter": 56.34,
+              "Cookie": "materials/effects/lightcookie.vtex",
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "1,0.98131,0.91373,1",
+              "Radius": 250,
+              "Shadows": true
+            }
+          ]
         }
       ]
     }
@@ -169,6 +239,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-18T23:45:14.0249938\u002B01:00",
+  "LastSaved": "2024-02-21T03:01:36.3747095\u002B01:00",
   "__references": []
 }

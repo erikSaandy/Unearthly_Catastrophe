@@ -1,0 +1,38 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+@if (Owner.EnergyBar != null)
+{
+	<root class="energybar">
+		<div class="fill @((Owner.EnergyBar.IsExhausted) ? "exhausted" : "")" @ref="EnergyFill"> </div>
+	</root>
+}
+
+@code
+{
+	public Player Owner { get; set; }
+	Panel EnergyFill { get; set; }
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		if (Owner == null) { return; }
+
+		if (Owner.EnergyBar != null)
+		{
+			EnergyFill.Style.Width = Length.Percent(Owner.EnergyBar.CurrentEnergy / EnergyBarComponent.MaxEnergy * 100f);
+		}
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			Owner.EnergyBar?.CurrentEnergy
+		);
+	}
+}

@@ -1,0 +1,41 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root class="hotbar">
+	@for (int i = 0; i < Owner.Inventory?.Items?.Length; i++)
+	{
+		<div class="slot @((Owner.Inventory?.ActiveSlot == i) ? "active" : "")">
+
+			@if (@Owner.Inventory?.Items[i] != null)
+			{
+				<img class="icon" src="@Owner.Inventory?.Items[i].Icon" />
+			}
+
+		</div>
+	}
+</root>
+
+@code
+{
+	public Player Owner { get; set; }
+
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		if (Owner == null) { return; }
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			Owner.Inventory?.ActiveSlot,
+			Owner.Inventory?.Weight
+		);
+	}
+}

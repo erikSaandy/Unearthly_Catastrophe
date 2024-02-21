@@ -1,0 +1,17 @@
+.energybar {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    width: 500px;
+    height: 32px;
+    background-color: darkslategrey;
+
+    > .fill {
+        background-color: dodgerblue;
+
+        &.exhausted {
+            background-color: dimgrey;
+        }
+    }
+
+}

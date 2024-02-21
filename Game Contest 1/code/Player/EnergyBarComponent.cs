@@ -1,4 +1,4 @@
-public sealed class EnergyContainer : Component
+public sealed class EnergyBarComponent : Component
 {
 	[Property] public Player Owner { get; private set; }
 
@@ -18,13 +18,15 @@ public sealed class EnergyContainer : Component
 
 
 
-	public EnergyContainer() { 
+	public EnergyBarComponent() { 
 		CurrentEnergy = MaxEnergy;
 	}
 
 	protected override void OnStart()
 	{
 		base.OnStart();
+
+		if ( GameObject.IsProxy ) { return; }
 
 		Owner.OnJumped += OnJumped;
 	}
@@ -33,7 +35,9 @@ public sealed class EnergyContainer : Component
 	{
 		base.OnUpdate();
 
-		if(IsExhausted)
+		if ( GameObject.IsProxy ) { return; }
+
+		if (IsExhausted)
 		{
 			CurrentEnergy += Time.Delta * Decay * 0.5f;
 			if(CurrentEnergy >= MaxEnergy)

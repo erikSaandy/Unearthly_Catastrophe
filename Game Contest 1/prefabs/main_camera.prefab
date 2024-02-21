@@ -1,8 +1,7 @@
 {
   "RootObject": {
-    "Id": "51b0189e-6e32-4819-bd02-545d506ad2c5",
-    "Name": "Main Camera",
-    "Position": "-13.71491,55.30304,124",
+    "Id": "fbf23983-dcae-4876-aa5f-891643fbfeae",
+    "Name": "main_camera",
     "Enabled": true,
     "Components": [
       {
@@ -60,7 +59,8 @@
         "__type": "Sharpen",
         "Scale": 0.2
       }
-    ]
+    ],
+    "Children": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

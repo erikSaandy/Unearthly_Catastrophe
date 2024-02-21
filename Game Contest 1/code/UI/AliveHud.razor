@@ -3,24 +3,14 @@
 @inherits Hud
 
 <root>
-	<div class="energybar">
-		<div class="fill @((Owner.EnergyContainer.IsExhausted) ? "exhausted" : "")" @ref="EnergyFill"> </div>
-	</div>
 
-	<div class="hotbar">
-		@for(int i = 0; i < Owner.Inventory.Slots.Length; i++)
-		{
-			<div class="slot @((Owner.Inventory.ActiveSlot == i) ? "active" : "")">
-
-			</div>
-		}
-	</div>
+	<EnergyBar Owner="@Owner"/>
+	<Inventory Owner="@Owner"/>
 
 </root>
 
 @code
 {
-	Panel EnergyFill { get; set; }
 
 	protected override void OnUpdate()
 	{
@@ -28,15 +18,11 @@
 
 		if(Owner == null) { return; }
 
-		EnergyFill.Style.Width = Length.Percent(Owner.EnergyContainer.CurrentEnergy / EnergyContainer.MaxEnergy * 100f);
-
 	}
 
 	protected override int BuildHash() 
 	{
-		return System.HashCode.Combine(
-			Owner.EnergyContainer.CurrentEnergy,
-			Owner.Inventory?.ActiveSlot
+		return System.HashCode.Combine(1
 		);
 	}
 }

@@ -1,4 +1,4 @@
-public sealed class Scrap : Pickup
+public sealed class Scrap : Carriable
 {
 
 	public int Value { get; private set; }
@@ -15,4 +15,15 @@ public sealed class Scrap : Pickup
 		Log.Warning( "PICKUP" );
 	}
 
+	public override void OnDrop()
+	{
+	}
+
+	public override void OnUsePrimary()
+	{
+	}
+
+	public override void OnUseSecondary()
+	{
+	}
 }

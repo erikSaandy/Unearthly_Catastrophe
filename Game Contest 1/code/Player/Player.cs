@@ -5,80 +5,74 @@ using Sandbox.Citizen;
 public sealed class Player : Component
 {
 
-	[Property] public CharacterController Controller { get; set; }
-	[Property] public CitizenAnimationHelper Animator { get; set; }
+	public CharacterController Controller { get; set; }
+	public CitizenAnimationHelper Animator { get; set; }
 
 	[Property][Range( 0, 400, 1 )] public float WalkSpeed { get; set; } = 120f;
 	[Property][Range( 0, 400, 1 )] public float RunSpeed { get; set; } = 250f;
 	[Property][Range( 0, 800, 1 )] public float JumpStrength { get; set; } = 400f;
 
-
-	[Property] public GameObject AliveHudPrefab;
-	[Category( "Camera" )] [Property] public GameObject CameraPrefab;
-	public CameraComponent Camera;
-	[Category( "Camera" )][Property] public Vector3 EyeOffset { get; set; }
-	[Category( "Camera" )][Property][Range( 0, 90, 1 )] public float MaxPitch { get; set; } = 45;
-	[Category( "Camera" )][Property][Range( -90, 0, 1 )] public float MinPitch { get; set; } = -45;
-
+	[Category( "Camera" )] [Property] public CameraController CameraController;
+	public CameraComponent Camera => CameraController?.Camera;
 	[Sync] public Angles EyeAngles { get; set; }
 
-	[Property] public EnergyContainer EnergyContainer { get; set; }
+	public EnergyBarComponent EnergyBar { get; private set; }
+	public InventoryComponent Inventory { get; private set; }
 
 	public ValueBuffer<PlayerInputData> InputDataBuffer { get; private set; } = new(5);
 	public PlayerInputData InputData => InputDataBuffer.Current;
 
-	public Inventory Inventory { get; private set; }
+	[Sync] public CitizenAnimationHelper.HoldTypes CurrentHoldType { get; set; }
+
+	[Category( "Bones" )][Property] public GameObject HeadBone { get; set; }
+	[Category( "Bones" )][Property] public GameObject HandLBone { get; set; }
+	[Category( "Bones" )][Property] public GameObject HandRBone { get; set; }
+	[Category( "Bones" )][Property] public GameObject Spine1Bone { get; set; }
 
 	public Action OnJumped { get; set; }
 
-	public Hud CurrentHud;
-
-	protected override void DrawGizmos()
-	{
-		Gizmo.Draw.LineSphere( EyeOffset, 5f );
-	}
+	[Category( "Hud" )][Property] public GameObject HudObject;
+	public Hud CurrentHud { get; set; }
 
 	protected override void OnStart()
 	{
 		base.OnStart();
 
+		Animator = Components.Get<CitizenAnimationHelper>();
+		Controller = Components.Get<CharacterController>();
+		Inventory = Components.Get<InventoryComponent>();
+		EnergyBar = Components.Get<EnergyBarComponent>();
+
+		if ( GameObject.IsProxy ) {
+			CameraController.Camera.Destroy();
+			return; 
+		}
+
+		Animator.Target.OnFootstepEvent += OnFootstep;
+
 		InputDataBuffer.Current = new PlayerInputData();
-		Inventory = new Inventory( this, 4 );
 
-		if ( GameObject.IsProxy ) { return; }
-
-		CameraPrefab.Clone( GameObject, Vector3.Zero, Rotation.Identity, Vector3.Zero ).Components.TryGet( out Camera );
-		var hud = AliveHudPrefab.Clone();
-		hud.Components.TryGet( out CurrentHud );
-		CurrentHud.Owner = this;
+		CurrentHud = HudObject.Components.Get<AliveHud>(true);
+		CurrentHud.Enabled = true;
 
 	}
 
 	protected override void OnUpdate()
 	{
+		Animator.HoldType = CurrentHoldType;
 
-		if ( !GameObject.IsProxy ) {
+		if ( GameObject.IsProxy ) { return; }
 
-			InputDataBuffer.Push();
-			InputDataBuffer.Current.Update( this );
+		InputDataBuffer.Push();
+		InputDataBuffer.Current.Update( this );
 
-			// Update eye angles
-			EyeAngles += Input.AnalogLook;
-			EyeAngles = EyeAngles.WithPitch( Math.Clamp( EyeAngles.pitch, MinPitch, MaxPitch ) );
+		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
 
-			Camera.Transform.LocalPosition = EyeOffset;
-			Camera.Transform.Rotation = EyeAngles.ToRotation();
-			Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+	}
 
-			// Inventory scroll
-			if ( Input.MouseWheel.y != 0 )
-			{
-				Inventory.ActiveSlot = (Inventory.ActiveSlot - Math.Sign( Input.MouseWheel.y )) % Inventory.Slots.Length;
-				if ( Inventory.ActiveSlot < 0 ) { Inventory.ActiveSlot += Inventory.Slots.Length; }
-			}
-
-		}
-
+	[Broadcast]
+	private void OnFootstep(SceneModel.FootstepEvent footstep)
+	{
 	}
 
 	protected override void OnDestroy()
@@ -89,6 +83,7 @@ public sealed class Player : Component
 
 		CurrentHud?.Destroy();
 	}
+
 
 	protected override void OnFixedUpdate()
 	{
@@ -108,7 +103,7 @@ public sealed class Player : Component
 		Vector3 wantedMove = 0;
 		if (InputData.WantsToRun)
 		{
-			if(!EnergyContainer.IsExhausted)
+			if(!EnergyBar.IsExhausted)
 			{
 				wantedSpeed = RunSpeed;
 			}
@@ -159,6 +154,8 @@ public sealed class Player : Component
 
 		public bool HasInput => Owner.InputDataBuffer.Current.AnalogMove.Length > 0f;
 		public bool IsMoving => Owner.Controller.Velocity.WithY( 0 ).Length > 5f;
+
+		public bool IsRunning => WantsToRun && HasInput && IsMoving;
 
 		public void Update(Player player)
 		{
