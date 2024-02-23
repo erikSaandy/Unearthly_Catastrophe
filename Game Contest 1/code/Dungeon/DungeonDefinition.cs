@@ -1,53 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-
-namespace Dungeon;
+﻿using System.Text.Json.Serialization;
 
 [GameResource( "Dungeon Definition", "dungeon", "This asset defines a procedural dungeon with unique rooms.")]
 public partial class DungeonDefinition : GameResource
 {
-	public string Title { get; set; }
+	[JsonInclude] public string Title { get; set; }
 
-	public DungeonBiome[] Biomes { get; set; }
+	[JsonInclude] public List<Biome> Biomes { get; set; }
 
-	public struct DungeonBiome
+	[JsonIgnore][Hide] public Biome RandomBiome => Biomes[LethalGame.Random.Next( 0, Biomes.Count() )];
+
+	public class Biome
 	{
-		public string Title { get; set; }
+		[JsonInclude] public string Title { get; set; }
+		[JsonInclude] public List<Room> Entrances { get; set; }
+		[JsonInclude] public List<Room> Rooms { get; set; }
 
-		[ResourceType( "prefab" )]
-		public Room[] Entrances { get; set; }
+		[JsonIgnore][Hide] public Room RandomEntrance => Entrances[GetRandomRoomIndex( Entrances )];
+		[JsonIgnore][Hide] public Room RandomRoom => Rooms[GetRandomRoomIndex( Rooms )];
 
-		public Room[] Rooms { get; set; }
-
-		[JsonIgnore][Hide] public Room GetRandomEntrance => Entrances[GetRandomRoomIndex( Entrances )];
-		[JsonIgnore][Hide] public Room GetRandomRoom => Entrances[GetRandomRoomIndex( Rooms )];
-
-		private int GetRandomRoomIndex( Room[] rooms )
+		private int GetRandomRoomIndex( List<Room> pool )
 		{
 			// Get the total sum of all the weights.
 			int weightSum = 0;
-			for ( int i = 0; i < Rooms.Count(); ++i )
+			for ( int i = 0; i < pool.Count(); ++i )
 			{
-				weightSum += Rooms[i].Weight;
+				weightSum += pool[i].Weight;
 			}
 
 			// Step through all the possibilities, one by one, checking to see if each one is selected.
 			int index = 0;
-			int lastIndex = Rooms.Count() - 1;
+			int lastIndex = pool.Count() - 1;
 			while ( index < lastIndex )
 			{
 				// Do a probability check with a likelihood of weights[index] / weightSum.
-				if ( Game.Random.Next( 0, weightSum ) < Rooms[index].Weight )
+				if ( LethalGame.Random.Next( 0, weightSum ) < pool[index].Weight )
 				{
 					return index;
 				}
 
 				// Remove the last item from the sum of total untested weights and try again.
-				weightSum -= Rooms[index++].Weight;
+				weightSum -= pool[index++].Weight;
 			}
 
 			// No other item was selected, so return very last index.
@@ -56,10 +48,10 @@ public partial class DungeonDefinition : GameResource
 
 	}
 
-	public struct Room
+	public class Room
 	{
-		[Range(0, 100)] public int Weight { get; set; }
-		[ResourceType( "prefab" )] public string Prefab { get; set; }
+		[JsonInclude][Range(0, 100)] public int Weight { get; set; }
+		[JsonInclude][ResourceType( "prefab" )] public string Prefab { get; set; }
 	}
 
 }

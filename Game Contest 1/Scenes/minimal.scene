@@ -109,11 +109,7 @@
       "Components": [
         {
           "__type": "LethalGame",
-          "AliveHudPrefab": null,
-          "CameraPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/main_camera.prefab"
-          }
+          "DungeonDefinition": "dungeons/lethal/lethal.dungeon"
         }
       ]
     },
@@ -189,12 +185,6 @@
           ]
         }
       ]
-    },
-    {
-      "Id": "b0f3ce17-6b95-44b2-8c3a-a6df9e8a99dd",
-      "Name": "entrance_01",
-      "Enabled": true,
-      "__Prefab": "dungeons/lethal/rooms/entrance_01/entrance_01.prefab"
     }
   ],
   "SceneProperties": {
@@ -220,6 +210,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-21T17:14:17.7399305\u002B01:00",
+  "LastSaved": "2024-02-23T00:12:12.5196945\u002B01:00",
   "__references": []
 }

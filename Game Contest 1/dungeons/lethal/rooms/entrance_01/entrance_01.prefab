@@ -1,120 +1,109 @@
 {
   "RootObject": {
-    "Id": "3c032659-92a4-49bf-82ad-805745d1e18c",
+    "Id": "20c8d93a-881a-48e1-adcd-07f11234c6e8",
     "Name": "entrance_01",
     "Enabled": true,
     "Components": [
       {
         "__type": "RoomData",
-        "Doors": [
+        "Bounds": {
+          "Mins": "-128,-128,-216",
+          "Maxs": "128,128,216"
+        },
+        "Portals": [
           {
             "_type": "component",
-            "go": "3f73d8ef-c565-4bfe-b52a-6d4224b1d667",
-            "component_type": "DoorSpawner"
+            "go": "cedbe6fd-5c65-4f98-a8f6-acab29ee6f2a",
+            "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "dc50e09d-7c70-4e80-931b-6cd2216dd6bf",
-            "component_type": "DoorSpawner"
+            "go": "d67e8599-a534-4a39-9d14-85826695fa52",
+            "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "0c61f7e6-69bb-4f7f-a032-f8371ad273db",
-            "component_type": "DoorSpawner"
+            "go": "f77897e5-6313-484a-8fd1-64b2d3ecabf0",
+            "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "c0f981d4-ce79-40af-bef7-0435b313a75a",
-            "component_type": "DoorSpawner"
+            "go": "e67778d1-f336-47a0-9fa7-92005a238cb4",
+            "component_type": "RoomPortal"
           }
-        ]
+        ],
+        "Renderer": {
+          "_type": "component",
+          "go": "20c8d93a-881a-48e1-adcd-07f11234c6e8",
+          "component_type": "ModelRenderer"
+        }
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "dungeons/lethal/rooms/entrance_01/entrance_01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/rooms/entrance_01/entrance_01.vmdl",
+        "Static": false,
+        "Surface": null
       }
     ],
     "Children": [
       {
-        "Id": "ac200f25-9fd0-4103-8ce6-83764af5c89a",
-        "Name": "Map",
-        "Components": [
-          {
-            "__type": "MapInstance",
-            "MapName": "maps\\dungeons\\lethal\\entrance_a",
-            "OnMapLoaded": null,
-            "OnMapUnloaded": null,
-            "UseMapFromLaunch": false
-          }
-        ]
-      },
-      {
-        "Id": "3f73d8ef-c565-4bfe-b52a-6d4224b1d667",
+        "Id": "cedbe6fd-5c65-4f98-a8f6-acab29ee6f2a",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
         "Components": [
           {
-            "__type": "DoorSpawner",
+            "__type": "RoomPortal",
             "Type": "Default"
           }
         ]
       },
       {
-        "Id": "dc50e09d-7c70-4e80-931b-6cd2216dd6bf",
+        "Id": "d67e8599-a534-4a39-9d14-85826695fa52",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Enabled": true,
         "Components": [
           {
-            "__type": "DoorSpawner",
+            "__type": "RoomPortal",
             "Type": "Default"
           }
         ]
       },
       {
-        "Id": "0c61f7e6-69bb-4f7f-a032-f8371ad273db",
+        "Id": "f77897e5-6313-484a-8fd1-64b2d3ecabf0",
         "Name": "Door (2)",
         "Position": "-132,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
         "Enabled": true,
         "Components": [
           {
-            "__type": "DoorSpawner",
+            "__type": "RoomPortal",
             "Type": "Default"
           }
         ]
       },
       {
-        "Id": "c0f981d4-ce79-40af-bef7-0435b313a75a",
+        "Id": "e67778d1-f336-47a0-9fa7-92005a238cb4",
         "Name": "Door (3)",
         "Position": "0,-132,0",
         "Enabled": true,
         "Components": [
           {
-            "__type": "DoorSpawner",
+            "__type": "RoomPortal",
             "Type": "MainDoor"
-          }
-        ]
-      },
-      {
-        "Id": "07aa397e-2db4-4906-bfa8-60772b72e74a",
-        "Name": "Object",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "ModelRenderer",
-            "BodyGroups": 18446744073709551615,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
-            "Model": "dungeons/lethal/rooms/entrance_01/entrance_01.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "IsTrigger": false,
-            "Model": "dungeons/lethal/models/rooms/entrance_01.vmdl",
-            "Static": false,
-            "Surface": null
           }
         ]
       }

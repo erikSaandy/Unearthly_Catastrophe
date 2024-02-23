@@ -2,7 +2,7 @@
 
 namespace Dungeon;
 
-public sealed class DoorSpawner : Component
+public sealed class RoomPortal : Component
 {
 	public enum DoorType
 	{

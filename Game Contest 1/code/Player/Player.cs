@@ -1,4 +1,5 @@
 
+using Dungeon;
 using Saandy;
 using Sandbox.Citizen;
 
@@ -67,7 +68,6 @@ public sealed class Player : Component
 		InputDataBuffer.Current.Update( this );
 
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
-
 	}
 
 	[Broadcast]
