@@ -13,27 +13,35 @@
       "Rooms": [
         {
           "Weight": 80,
-          "Prefab": "dungeons/lethal/rooms/corridor_01/corridor_01.prefab"
+          "Prefab": "dungeons/lethal/rooms/corridor/corridor_01.prefab"
         },
         {
           "Weight": 60,
-          "Prefab": "dungeons/lethal/rooms/corridor_02/corridor_02.prefab"
+          "Prefab": "dungeons/lethal/rooms/corridor/corridor_02.prefab"
         },
         {
           "Weight": 30,
-          "Prefab": "dungeons/lethal/rooms/corridor_03/corridor_03.prefab"
+          "Prefab": "dungeons/lethal/rooms/corridor/corridor_03.prefab"
         },
         {
           "Weight": 15,
-          "Prefab": "dungeons/lethal/rooms/corridor_04/corridor_04.prefab"
-        },
-        {
-          "Weight": 7,
-          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_03.prefab"
+          "Prefab": "dungeons/lethal/rooms/corridor/corridor_04.prefab"
         },
         {
           "Weight": 19,
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_02.prefab"
+        },
+        {
+          "Weight": 65,
+          "Prefab": "dungeons/lethal/rooms/corridor/corridor_05.prefab"
+        },
+        {
+          "Weight": 40,
+          "Prefab": "dungeons/lethal/rooms/corridor/stairwell_01.prefab"
+        },
+        {
+          "Weight": 30,
+          "Prefab": "dungeons/lethal/rooms/corridor/corridor_06.prefab"
         }
       ]
     },
@@ -49,7 +57,7 @@
       ],
       "Rooms": [
         {
-          "Weight": 70,
+          "Weight": 30,
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_01.prefab"
         },
         {
@@ -57,15 +65,15 @@
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_02.prefab"
         },
         {
-          "Weight": 15,
+          "Weight": 8,
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_03.prefab"
         },
         {
-          "Weight": 35,
+          "Weight": 55,
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_04.prefab"
         },
         {
-          "Weight": 45,
+          "Weight": 70,
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_05.prefab"
         },
         {
@@ -89,8 +97,12 @@
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_10.prefab"
         },
         {
-          "Weight": 45,
+          "Weight": 65,
           "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_11.prefab"
+        },
+        {
+          "Weight": 45,
+          "Prefab": "dungeons/lethal/rooms/corridor/stairwell_01.prefab"
         }
       ]
     }

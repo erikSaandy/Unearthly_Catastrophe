@@ -3,10 +3,10 @@
     "Allowed": true,
     "Enabled": false,
     "ProjectConfig": {
-      "Title": "tunnel_03",
+      "Title": "lethal_room_collection",
       "Type": "map",
       "Org": "local",
-      "Ident": "tunnel_03",
+      "Ident": "lethal_room_collection",
       "Tags": null,
       "Schema": 0,
       "HasAssets": false,
@@ -17,13 +17,16 @@
       "CodePath": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "facepunch.concrete_c_hs#28941",
         "tridge.plaster_black#31730",
+        "facepunch.concrete_c_hs#28941",
+        "facepunch.concrete_trim_02#43472",
+        "sundayservice.plaster_generic_01#27364",
         "facepunch.plaster_hs_01#33578",
-        "facepunch.concrete_trim_02#43472"
+        "facepunch.floor_tile_02#47190",
+        "facepunch.trim_concrete_a#18735"
       ],
       "Metadata": {
-        "SingleAssetSource": "dungeons/lethal/rooms/tunnel/tunnel_03.vmap"
+        "SingleAssetSource": "maps/lethal_room_collection.vmap"
       }
     }
   }

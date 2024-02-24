@@ -1,0 +1,98 @@
+{
+  "RootObject": {
+    "Id": "07ebbc79-77c7-47b6-b295-dc6b2c179496",
+    "Name": "corridor_06",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "RoomData",
+        "Bounds": {
+          "Mins": "-64,-64,0",
+          "Maxs": "64,64,128"
+        },
+        "Portals": [
+          {
+            "_type": "component",
+            "go": "3d515be5-50d6-4957-b61c-833a46cd209e",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "fb6b61e1-ef34-434c-b440-0c16cad4dfcc",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "8a324c65-bd89-4d38-80e6-028a1c214f1e",
+            "component_type": "RoomPortal"
+          }
+        ],
+        "Renderer": {
+          "_type": "component",
+          "go": "07ebbc79-77c7-47b6-b295-dc6b2c179496",
+          "component_type": "ModelRenderer"
+        }
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/rooms/corridor/corridor_06.vmdl",
+        "Static": true,
+        "Surface": null
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "dungeons/lethal/rooms/corridor/corridor_06.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "Id": "fb6b61e1-ef34-434c-b440-0c16cad4dfcc",
+        "Name": "Door",
+        "Position": "0,68,0",
+        "Rotation": "0,0,1,0.0000001649049",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "3d515be5-50d6-4957-b61c-833a46cd209e",
+        "Name": "Door (1)",
+        "Position": "68,0.000006164182,0",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "8a324c65-bd89-4d38-80e6-028a1c214f1e",
+        "Name": "Door (2)",
+        "Position": "-0.00004353491,-68,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

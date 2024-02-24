@@ -3,10 +3,10 @@
     "Allowed": true,
     "Enabled": false,
     "ProjectConfig": {
-      "Title": "corridoor_02",
+      "Title": "stairwell_01",
       "Type": "map",
       "Org": "local",
-      "Ident": "corridoor_02",
+      "Ident": "stairwell_01",
       "Tags": null,
       "Schema": 0,
       "HasAssets": false,
@@ -18,7 +18,7 @@
       "PackageReferences": [],
       "EditorReferences": [],
       "Metadata": {
-        "SingleAssetSource": "dungeons/lethal/rooms/corridor_02/corridor_02.vmap"
+        "SingleAssetSource": "dungeons/lethal/rooms/corridor/stairwell_01.vmap"
       }
     }
   }

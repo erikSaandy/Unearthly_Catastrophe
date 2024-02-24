@@ -3,10 +3,10 @@
     "Allowed": true,
     "Enabled": false,
     "ProjectConfig": {
-      "Title": "tunnel_03",
+      "Title": "corridor_06",
       "Type": "map",
       "Org": "local",
-      "Ident": "tunnel_03",
+      "Ident": "corridor_06",
       "Tags": null,
       "Schema": 0,
       "HasAssets": false,
@@ -16,14 +16,9 @@
       "HasCode": false,
       "CodePath": null,
       "PackageReferences": [],
-      "EditorReferences": [
-        "facepunch.concrete_c_hs#28941",
-        "tridge.plaster_black#31730",
-        "facepunch.plaster_hs_01#33578",
-        "facepunch.concrete_trim_02#43472"
-      ],
+      "EditorReferences": [],
       "Metadata": {
-        "SingleAssetSource": "dungeons/lethal/rooms/tunnel/tunnel_03.vmap"
+        "SingleAssetSource": "dungeons/lethal/rooms/corridor/corridor_06.vmap"
       }
     }
   }

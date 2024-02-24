@@ -1,30 +1,30 @@
 {
   "RootObject": {
-    "Id": "19edb3cf-60fa-4ac7-bd45-314ea9983429",
+    "Id": "db6d69f2-01c9-4834-aed9-6d615854ffbe",
     "Name": "corridor_01",
     "Enabled": true,
     "Components": [
       {
         "__type": "RoomData",
         "Bounds": {
-          "Mins": "-64,-128,0",
-          "Maxs": "64,128,128"
+          "Mins": "-74,-128,0",
+          "Maxs": "74,128,128"
         },
         "Portals": [
           {
             "_type": "component",
-            "go": "bb717d53-c786-4216-ae58-7013c003b6ab",
+            "go": "5e463ffd-9915-4e71-a3de-844d4d74f54f",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "3ef4d533-4113-40a8-93b6-7281fbda5da5",
+            "go": "43dae2a7-6a8e-48ef-92f0-f14ccb57e2e2",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "19edb3cf-60fa-4ac7-bd45-314ea9983429",
+          "go": "db6d69f2-01c9-4834-aed9-6d615854ffbe",
           "component_type": "ModelRenderer"
         }
       },
@@ -33,21 +33,21 @@
         "BodyGroups": 18446744073709551615,
         "MaterialGroup": null,
         "MaterialOverride": null,
-        "Model": "dungeons/lethal/rooms/corridor_01/corridor_01.vmdl",
+        "Model": "dungeons/lethal/rooms/corridor/corridor_01.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelCollider",
         "IsTrigger": false,
-        "Model": "dungeons/lethal/rooms/corridor_01/corridor_01.vmdl",
+        "Model": "dungeons/lethal/rooms/corridor/corridor_01.vmdl",
         "Static": false,
         "Surface": null
       }
     ],
     "Children": [
       {
-        "Id": "bb717d53-c786-4216-ae58-7013c003b6ab",
+        "Id": "5e463ffd-9915-4e71-a3de-844d4d74f54f",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -60,7 +60,7 @@
         ]
       },
       {
-        "Id": "3ef4d533-4113-40a8-93b6-7281fbda5da5",
+        "Id": "43dae2a7-6a8e-48ef-92f0-f14ccb57e2e2",
         "Name": "Door (3)",
         "Position": "0,-132,0",
         "Enabled": true,

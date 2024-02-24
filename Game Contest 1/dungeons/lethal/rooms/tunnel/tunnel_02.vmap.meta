@@ -16,7 +16,12 @@
       "HasCode": false,
       "CodePath": null,
       "PackageReferences": [],
-      "EditorReferences": [],
+      "EditorReferences": [
+        "facepunch.concrete_c_hs#28941",
+        "tridge.plaster_black#31730",
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.concrete_trim_02#43472"
+      ],
       "Metadata": {
         "SingleAssetSource": "dungeons/lethal/rooms/tunnel/tunnel_02.vmap"
       }

@@ -3,7 +3,6 @@ using Sandbox;
 using System.Numerics;
 using System.Threading.Tasks;
 using static DungeonDefinition;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dungeon;
 
@@ -12,11 +11,10 @@ public static class DungeonGenerator
 	private static readonly Vector3 DungeonOrigin = new Vector3( 0, 0, 0 );
 
 	private static DungeonDefinition DungeonResource { get; set; }
-	private static int BiomeDepth { get; set; } = 0;
 
 	private static List<RoomSetup> SpawnedRooms;
 
-	private const int Iterations = 20;
+	private const int Iterations = 100;
 	private const int BranchDepth = 7;
 
 	public static void GenerateDungeon(DungeonDefinition def)
@@ -28,57 +26,62 @@ public static class DungeonGenerator
 		Biome biome = DungeonResource.RandomBiome;
 
 		RoomSetup entrance = new RoomSetup( biome.RandomEntrance );
+		if(entrance.Data == null) { Log.Error( "Could not load prefab " + entrance.Prefab ); }
+
 		entrance.GameObject.Transform.Position = DungeonOrigin;
 		entrance.InitiateBounds();
 		entrance.SpawnEntranceDoor();
+		entrance.GameObject.Name = "1 (entrance)";
 
 		SpawnedRooms.Add( entrance );
 
 		//CreateRoomConnection( ref entrance, InitialDepth );
-		SearchRooms( ref entrance, ref biome, Iterations );
+		SearchRooms( ref entrance, ref biome, Iterations, 0 );	
 
 		Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms!]" );
 
 	}
 
-	private static void SearchRooms(ref RoomSetup currentRoom, ref Biome currentBiome, int iteration)
+	private static void SearchRooms( ref RoomSetup currentRoom, ref Biome currentBiome, int iteration, int biomeDepth )
 	{
 
-		if ( BiomeDepth >= currentBiome.Continuance )
+		if ( biomeDepth >= currentBiome.Continuance )
 		{
-			//Log.Info( "> new biome" );
+			Log.Info( "> new biome" );
 			currentBiome = DungeonResource.RandomBiome;
-			BiomeDepth = 0;
+			biomeDepth = 0;
 		}
-
-		BiomeDepth++;
 
 		while ( currentRoom.HasUnexploredPortals )
 		{
 
-			if ( currentRoom == SpawnedRooms[0] ) { Log.Info( "[entrance has " + currentRoom.Data.Portals.Count + " portals left.]" ); }
-
-			// spawn new room if possible 
-			RoomSetup nextRoom = TrySpawnRoomThatFits( ref currentRoom, ref currentBiome );
-
-			// used these active portals, remove from candidates.
+			if ( currentRoom == SpawnedRooms[0] ) { 
+				Log.Info( "[entrance has " + currentRoom.Data.Portals.Count + " portals left.]" );
+				Log.Info( iteration );
+			}
 			
-			if(nextRoom != null)
+			RoomSetup nextRoom = null;
+
+			if ( iteration > 0 )
 			{
-				nextRoom.GameObject.Name = (Iterations - iteration).ToString();
+				// spawn new room if possible 
+				nextRoom = TrySpawnRoomThatFits( ref currentRoom, ref currentBiome );
+			}
+
+			// was able to spawn room!
+			if (nextRoom != null)
+			{
+				nextRoom.GameObject.Name = nextRoom.GameObject.Name + " (" + SpawnedRooms.Count.ToString() + ")";
 				nextRoom.MoveToNextPortal();
 
-				if(iteration > 0 )
+				if( iteration > 0 )
 				{
-					SearchRooms( ref nextRoom, ref currentBiome, --iteration );
+					SearchRooms( ref nextRoom, ref currentBiome, ++biomeDepth, --iteration );
 				}
 			}
-			else
+			else if ( currentRoom.HasUnexploredPortals )
 			{
-				if ( currentRoom.HasUnexploredPortals )
-				{
-					currentRoom.SpawnBranchCap();
-				}
+				currentRoom.SpawnBranchCap();
 			}
 
 			currentRoom.MoveToNextPortal();
@@ -97,6 +100,7 @@ public static class DungeonGenerator
 		for ( int i = 0; i < retries; i++ )
 		{
 			nextRoom = new RoomSetup( currentBiome.RandomRoom );
+			if ( nextRoom.Data == null ) { Log.Error( "Could not load prefab " + nextRoom.Prefab ); }
 
 			// If next room doesn't have a matching portal type, this room can't fit.
 			if (!nextRoom.GetMatchingPortal( currentRoom.ActivePortal.PortalType )) {
@@ -149,16 +153,22 @@ public static class DungeonGenerator
 
 	private class RoomSetup
 	{
+		public string Prefab { get; private set; }
 		public GameObject GameObject;
-		public RoomData Data;
+		public RoomData Data = null;
 		public int ActivePortalId = -1;
 		public RoomPortal ActivePortal => Data.Portals[ActivePortalId];
 		public bool HasUnexploredPortals => Data?.Portals == null ? false : Data?.Portals?.Count > 0;
 
 		public RoomSetup(Room room)
 		{
-			GameObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( room.Prefab ) ).Clone();
-			GameObject.BreakFromPrefab();	
+			Prefab = room.Prefab;
+			PrefabFile pf = null;
+			if(!ResourceLibrary.TryGet<PrefabFile>( room.Prefab, out pf )) { return; }
+			GameObject = SceneUtility.GetPrefabScene( pf ).Clone();
+			GameObject.BreakFromPrefab();
+			GameObject.Name = room.Prefab;
+
 			Data = GameObject.Components.Get<RoomData>();
 
 			// Get new portal (doesn't delete in this case.)

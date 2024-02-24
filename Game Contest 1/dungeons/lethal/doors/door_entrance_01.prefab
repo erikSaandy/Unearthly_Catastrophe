@@ -1,14 +1,14 @@
 {
   "RootObject": {
-    "Id": "f0ba46a3-0d03-49ad-bf83-f6a268298e83",
+    "Id": "812b6e69-e003-4047-ab66-98ba889668d9",
     "Name": "door_entrance_01",
     "Enabled": true,
     "Children": [
       {
-        "Id": "204e961a-29b9-4c3e-bc27-79add60a8807",
+        "Id": "6cdca447-f6af-45ec-b622-3888cdbfea97",
         "Name": "Cube",
-        "Position": "0,-1.639005,64",
-        "Scale": "2,0.01,1",
+        "Position": "0,-6.700449,49.45694",
+        "Scale": "2,0.09999969,2",
         "Enabled": true,
         "Components": [
           {
@@ -23,7 +23,7 @@
         ]
       },
       {
-        "Id": "d5dae2cc-9453-4e06-9326-f97354da996f",
+        "Id": "9780bbc4-65a8-4514-b5cb-c6143668b1b1",
         "Name": "door_frame_01",
         "Enabled": true,
         "Components": [
@@ -39,7 +39,7 @@
         ]
       },
       {
-        "Id": "69387266-057b-4f6b-aada-b05291416ec6",
+        "Id": "5205b922-ad09-4a15-9272-84cb7c92e9c9",
         "Name": "door_entrance_01",
         "Enabled": true,
         "Components": [
@@ -55,7 +55,7 @@
         ]
       },
       {
-        "Id": "f353076e-ffc7-48be-97a5-c04202c6ac35",
+        "Id": "58ecd1c8-c3b3-4c9f-873c-f46626a012ee",
         "Name": "door_handle_01",
         "Position": "-8.035648,1.031753,46.32399",
         "Rotation": "-0.7070491,0.009025782,-0.009025713,0.7070491",
@@ -73,7 +73,7 @@
         ]
       },
       {
-        "Id": "6aa7e8b4-a98a-402d-be7c-b11b4110cf10",
+        "Id": "b66ba969-4b6a-49e5-b1b9-d80218b3dfb5",
         "Name": "door_handle_01",
         "Position": "6.457716,2.052843,46.32399",
         "Rotation": "0.0004498959,0.7071066,0.7071066,0.0004499853",

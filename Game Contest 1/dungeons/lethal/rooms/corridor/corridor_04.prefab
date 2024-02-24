@@ -1,0 +1,116 @@
+{
+  "RootObject": {
+    "Id": "9fedbf29-831d-48b1-8f86-8948740b0302",
+    "Name": "corridor_04",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "RoomData",
+        "Bounds": {
+          "Mins": "-128,-128,0",
+          "Maxs": "128,128,128"
+        },
+        "Portals": [
+          {
+            "_type": "component",
+            "go": "1bb17ed5-ae3f-4ece-96dc-c0aaf0c203d2",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "5186e3f0-73c6-445c-a83d-88de9ff7d4e6",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "2c1d229c-3ab4-420b-84e3-f53a22d18987",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "47e9568c-dd4d-4922-bfdb-9f28be73164a",
+            "component_type": "RoomPortal"
+          }
+        ],
+        "Renderer": {
+          "_type": "component",
+          "go": "9fedbf29-831d-48b1-8f86-8948740b0302",
+          "component_type": "ModelRenderer"
+        }
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/rooms/corridor/corridor_04.vmdl",
+        "Static": true,
+        "Surface": null
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "dungeons/lethal/rooms/corridor/corridor_04.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "Id": "1bb17ed5-ae3f-4ece-96dc-c0aaf0c203d2",
+        "Name": "Door (1)",
+        "Position": "132,0,0",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "5186e3f0-73c6-445c-a83d-88de9ff7d4e6",
+        "Name": "Door (2)",
+        "Position": "-132,0,0",
+        "Rotation": "0,0,-0.7071067,0.7071069",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "2c1d229c-3ab4-420b-84e3-f53a22d18987",
+        "Name": "Door (3)",
+        "Position": "0,-132,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "47e9568c-dd4d-4922-bfdb-9f28be73164a",
+        "Name": "Door",
+        "Position": "0,132,0",
+        "Rotation": "0,0,1,0.0000001649049",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}
