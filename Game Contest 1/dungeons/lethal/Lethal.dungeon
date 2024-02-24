@@ -1,8 +1,47 @@
 {
-  "Title": "ass",
+  "Title": "Lethal",
   "Biomes": [
     {
-      "Entrances": [
+      "Title": "Connector",
+      "Weight": 45,
+      "Continuance": 1,
+      "EntranceRooms": [
+        {
+          "Prefab": "dungeons/lethal/rooms/entrance_01/entrance_01.prefab"
+        }
+      ],
+      "Rooms": [
+        {
+          "Weight": 80,
+          "Prefab": "dungeons/lethal/rooms/corridor_01/corridor_01.prefab"
+        },
+        {
+          "Weight": 60,
+          "Prefab": "dungeons/lethal/rooms/corridor_02/corridor_02.prefab"
+        },
+        {
+          "Weight": 30,
+          "Prefab": "dungeons/lethal/rooms/corridor_03/corridor_03.prefab"
+        },
+        {
+          "Weight": 15,
+          "Prefab": "dungeons/lethal/rooms/corridor_04/corridor_04.prefab"
+        },
+        {
+          "Weight": 7,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_03.prefab"
+        },
+        {
+          "Weight": 19,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_02.prefab"
+        }
+      ]
+    },
+    {
+      "Title": "Tunnels",
+      "Weight": 90,
+      "Continuance": 10,
+      "EntranceRooms": [
         {
           "Weight": 100,
           "Prefab": "dungeons/lethal/rooms/entrance_01/entrance_01.prefab"
@@ -10,23 +49,65 @@
       ],
       "Rooms": [
         {
-          "Weight": 100,
-          "Prefab": "dungeons/lethal/rooms/corridor_01/corridor_01.prefab"
+          "Weight": 70,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_01.prefab"
         },
         {
-          "Weight": 100,
-          "Prefab": "dungeons/lethal/rooms/corridor_02/corridor_02.prefab"
+          "Weight": 75,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_02.prefab"
         },
         {
-          "Weight": 100,
-          "Prefab": "dungeons/lethal/rooms/corridor_03/corridor_03.prefab"
+          "Weight": 15,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_03.prefab"
         },
         {
-          "Weight": 100,
-          "Prefab": "dungeons/lethal/rooms/corridor_04/corridor_04.prefab"
+          "Weight": 35,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_04.prefab"
+        },
+        {
+          "Weight": 45,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_05.prefab"
+        },
+        {
+          "Weight": 25,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_06.prefab"
+        },
+        {
+          "Weight": 20,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_07.prefab"
+        },
+        {
+          "Weight": 35,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_08.prefab"
+        },
+        {
+          "Weight": 30,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_09.prefab"
+        },
+        {
+          "Weight": 5,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_10.prefab"
+        },
+        {
+          "Weight": 45,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_11.prefab"
         }
       ]
     }
   ],
+  "EntranceDoors": [
+    {
+      "Weight": 100,
+      "Prefab": "dungeons/lethal/doors/door_entrance_01.prefab"
+    }
+  ],
+  "Doors": [
+    {
+      "Weight": 100,
+      "Prefab": "dungeons/lethal/doors/door_01.prefab"
+    }
+  ],
+  "CorridorCap": "dungeons/lethal/caps/cap_corridor.prefab",
+  "DoorCap": "dungeons/lethal/caps/cap_door.prefab",
   "__references": []
 }

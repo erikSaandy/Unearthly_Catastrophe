@@ -1,19 +1,29 @@
 ﻿using Sandbox;
+using System.Text.Json.Serialization;
 
 namespace Dungeon;
 
 public sealed class RoomPortal : Component
 {
-	public enum DoorType
+	public enum RoomPortalType
 	{
-		Default,
-		MainDoor
+		Door,
+		Corridor,
+		Entrance
 	}
 
-	readonly Vector3 DefaultDoorSize = new Vector3( 56, 8, 96 );
-	readonly Vector3 MainDoorSize = new Vector3( 96, 8, 96 );
 
-	[Property] DoorType Type { get; set; }
+	[JsonIgnore]
+	private static Vector3[] portalSizes = new Vector3[]
+	{
+		new Vector3( 56, 8, 96 ),
+		new Vector3( 128, 8, 128 ),
+		new Vector3( 96, 8, 96 )
+	};
+
+	[JsonIgnore] public Vector3 Size => portalSizes[(int)PortalType];
+
+	[Property] public RoomPortalType PortalType { get; set; }
 
 	protected override void DrawGizmos()
 	{
@@ -26,16 +36,11 @@ public sealed class RoomPortal : Component
 
 	private BBox GetBBox()
 	{
-		switch(Type)
-		{
-			case DoorType.MainDoor: return new BBox(
-				new Vector3( -MainDoorSize.x * 0.5f, -MainDoorSize.y * 0.5f, 0 ),
-				new Vector3( MainDoorSize.x * 0.5f, MainDoorSize.y * 0.5f, MainDoorSize.z ) );
-			default:
-				return new BBox(
-				new Vector3( -DefaultDoorSize.x * 0.5f, -DefaultDoorSize.y * 0.5f, 0 ),
-				new Vector3( DefaultDoorSize.x * 0.5f, DefaultDoorSize.y * 0.5f, DefaultDoorSize.z ) );
-		}
+		return new BBox(
+				new Vector3( -Size.x * 0.5f, -Size.y * 0.5f, 0 ),
+				new Vector3( Size.x * 0.5f, Size.y * 0.5f, Size.z ) );
+
+
 	}
 
 }

@@ -1,0 +1,79 @@
+{
+  "RootObject": {
+    "Id": "5ae3afa1-c0ec-4478-86f4-ca7faa4ca8cb",
+    "Name": "flashlight",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/flashlight/flashlight.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Flashlight",
+        "HeldAngleOffset": "7,0,225",
+        "HoldType": "HoldItem",
+        "Icon": "models/flashlight/flashlight.vmdl.vtex",
+        "LightSource": {
+          "_type": "component",
+          "go": "47c4f7df-871a-4720-a406-8b469829c36f",
+          "component_type": "SpotLight"
+        },
+        "ShoulderedAngleOffset": "10,100,0",
+        "ShoulderedOffset": "-4,0,1",
+        "Weight": 5
+      },
+      {
+        "__type": "Rigidbody",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassOverride": 0,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/flashlight/flashlight.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": [
+      {
+        "Id": "47c4f7df-871a-4720-a406-8b469829c36f",
+        "Name": "Spot Light",
+        "Position": "7.535444,0,0",
+        "Tags": "light_spot,light",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpotLight",
+            "__enabled": false,
+            "Attenuation": 7,
+            "ConeInner": 42,
+            "ConeOuter": 35,
+            "Cookie": "materials/effects/lightcookie.vtex",
+            "FogMode": "Enabled",
+            "FogStrength": 1,
+            "LightColor": "120.51,118.2574,110.1136,1",
+            "Radius": 280,
+            "Shadows": true
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

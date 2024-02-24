@@ -1,0 +1,33 @@
+{
+  "RootObject": {
+    "Id": "7593020d-1933-41c8-b2c5-f2208beb2495",
+    "Name": "cap_door",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "SkinnedModelRenderer",
+        "AnimationGraph": null,
+        "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
+        "CreateBoneObjects": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "dungeons/lethal/caps/cap_door.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/caps/cap_door.vmdl",
+        "Static": true,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

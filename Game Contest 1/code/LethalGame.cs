@@ -11,12 +11,14 @@ public sealed class LethalGame : Component
 
 	protected override void OnStart()
 	{
+		if(GameObject.IsProxy) { return; }
+
 		if(Instance == null) { Instance = this; }
 		else if(Instance != this) { this.Destroy(); }
 
-		DungeonGenerator.GenerateDungeon( DungeonDefinition );
 
-		Random = new Random( 51213112 );
+		Random = new Random( );
+		DungeonGenerator.GenerateDungeon( DungeonDefinition );
 	}
 
 	protected override void OnUpdate()

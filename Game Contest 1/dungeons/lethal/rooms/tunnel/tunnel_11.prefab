@@ -1,0 +1,81 @@
+{
+  "RootObject": {
+    "Id": "7d5f4ed8-69dd-4164-a819-82c7620c7494",
+    "Name": "tunnel_11",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "RoomData",
+        "Bounds": {
+          "Mins": "-64,-128,-108",
+          "Maxs": "64,128,128"
+        },
+        "Portals": [
+          {
+            "_type": "component",
+            "go": "244438aa-1ac5-47b3-895d-36a3576e3b6e",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "452b52a7-612a-412f-8798-bea6b98be1b2",
+            "component_type": "RoomPortal"
+          }
+        ],
+        "Renderer": {
+          "_type": "component",
+          "go": "7d5f4ed8-69dd-4164-a819-82c7620c7494",
+          "component_type": "ModelRenderer"
+        }
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "dungeons/lethal/rooms/tunnel/tunnel_11.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/rooms/tunnel/tunnel_11.vmdl",
+        "Static": true,
+        "Surface": null
+      }
+    ],
+    "Children": [
+      {
+        "Id": "244438aa-1ac5-47b3-895d-36a3576e3b6e",
+        "Name": "Door",
+        "Position": "0.00002110785,128,0",
+        "Rotation": "0,0,1,0.0000001649049",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Corridor"
+          }
+        ]
+      },
+      {
+        "Id": "452b52a7-612a-412f-8798-bea6b98be1b2",
+        "Name": "Door (2)",
+        "Position": "-0.00006332347,-128,-104",
+        "Rotation": "0,0,0.0000003596121,-1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Corridor"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

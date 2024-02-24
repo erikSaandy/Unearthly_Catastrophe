@@ -1,0 +1,62 @@
+{
+  "RootObject": {
+    "Id": "7c01214e-2766-41fb-afc0-78bf57c784ce",
+    "Name": "tunnel_03",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "RoomData",
+        "Bounds": {
+          "Mins": "-64,-128,0",
+          "Maxs": "64,0,128"
+        },
+        "Portals": [
+          {
+            "_type": "component",
+            "go": "246dfd1d-8994-481a-8b27-666d5ba297ad",
+            "component_type": "RoomPortal"
+          }
+        ],
+        "Renderer": {
+          "_type": "component",
+          "go": "7c01214e-2766-41fb-afc0-78bf57c784ce",
+          "component_type": "ModelRenderer"
+        }
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
+        "Static": true,
+        "Surface": null
+      }
+    ],
+    "Children": [
+      {
+        "Id": "246dfd1d-8994-481a-8b27-666d5ba297ad",
+        "Name": "Door",
+        "Position": "-0.00006464271,-132,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

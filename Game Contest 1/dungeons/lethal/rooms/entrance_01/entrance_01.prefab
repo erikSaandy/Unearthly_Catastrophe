@@ -1,40 +1,40 @@
 {
   "RootObject": {
-    "Id": "20c8d93a-881a-48e1-adcd-07f11234c6e8",
+    "Id": "4ad73800-5f88-43eb-b01f-a6672e919ac6",
     "Name": "entrance_01",
     "Enabled": true,
     "Components": [
       {
         "__type": "RoomData",
         "Bounds": {
-          "Mins": "-128,-128,-216",
+          "Mins": "-128,-400,-256",
           "Maxs": "128,128,216"
         },
         "Portals": [
           {
             "_type": "component",
-            "go": "cedbe6fd-5c65-4f98-a8f6-acab29ee6f2a",
+            "go": "fd5cb45f-3aa5-4804-975e-d075b0389e8f",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "d67e8599-a534-4a39-9d14-85826695fa52",
+            "go": "8aa0d3dd-7bf9-4a51-916c-6fa2bb1c0bda",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "f77897e5-6313-484a-8fd1-64b2d3ecabf0",
+            "go": "5bc66be6-ab23-4bf1-90c9-b0b630b173a2",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "e67778d1-f336-47a0-9fa7-92005a238cb4",
+            "go": "c5d7dc88-68c6-4ce7-b87f-7356bcd8afa1",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "20c8d93a-881a-48e1-adcd-07f11234c6e8",
+          "go": "4ad73800-5f88-43eb-b01f-a6672e919ac6",
           "component_type": "ModelRenderer"
         }
       },
@@ -51,13 +51,13 @@
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/entrance_01/entrance_01.vmdl",
-        "Static": false,
+        "Static": true,
         "Surface": null
       }
     ],
     "Children": [
       {
-        "Id": "cedbe6fd-5c65-4f98-a8f6-acab29ee6f2a",
+        "Id": "fd5cb45f-3aa5-4804-975e-d075b0389e8f",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -65,12 +65,12 @@
         "Components": [
           {
             "__type": "RoomPortal",
-            "Type": "Default"
+            "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "d67e8599-a534-4a39-9d14-85826695fa52",
+        "Id": "8aa0d3dd-7bf9-4a51-916c-6fa2bb1c0bda",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -78,12 +78,12 @@
         "Components": [
           {
             "__type": "RoomPortal",
-            "Type": "Default"
+            "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "f77897e5-6313-484a-8fd1-64b2d3ecabf0",
+        "Id": "5bc66be6-ab23-4bf1-90c9-b0b630b173a2",
         "Name": "Door (2)",
         "Position": "-132,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
@@ -91,19 +91,19 @@
         "Components": [
           {
             "__type": "RoomPortal",
-            "Type": "Default"
+            "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "e67778d1-f336-47a0-9fa7-92005a238cb4",
+        "Id": "c5d7dc88-68c6-4ce7-b87f-7356bcd8afa1",
         "Name": "Door (3)",
         "Position": "0,-132,0",
         "Enabled": true,
         "Components": [
           {
             "__type": "RoomPortal",
-            "Type": "MainDoor"
+            "PortalType": "Entrance"
           }
         ]
       }

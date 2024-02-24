@@ -13,6 +13,7 @@ public sealed class Flashlight : Carriable
 	protected override void OnAwake()
 	{
 		base.OnAwake();
+		GameObject.BreakFromPrefab();
 		ToggleOn( false );
 	}
 

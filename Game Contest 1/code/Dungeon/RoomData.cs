@@ -1,4 +1,6 @@
 using Sandbox;
+using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace Dungeon;
 
@@ -11,8 +13,11 @@ public sealed class RoomData : Component
 
 	protected override void DrawGizmos()
 	{
-		Gizmo.Draw.Color = Color.Red;
-		Gizmo.Draw.LineBBox( Bounds );
+		BBox AdjustedBounds = Bounds.Translate(-Transform.Position );
+		AdjustedBounds = AdjustedBounds.Rotate( Rotation.Identity.Angles() - Transform.Rotation.Angles() );
+
+		Gizmo.Draw.Color = Color.Orange;
+		Gizmo.Draw.LineBBox( AdjustedBounds );
 
 		base.DrawGizmos();
 	}

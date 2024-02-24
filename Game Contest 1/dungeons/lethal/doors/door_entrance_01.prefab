@@ -1,0 +1,99 @@
+{
+  "RootObject": {
+    "Id": "f0ba46a3-0d03-49ad-bf83-f6a268298e83",
+    "Name": "door_entrance_01",
+    "Enabled": true,
+    "Children": [
+      {
+        "Id": "204e961a-29b9-4c3e-bc27-79add60a8807",
+        "Name": "Cube",
+        "Position": "0,-1.639005,64",
+        "Scale": "2,0.01,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": null,
+            "MaterialOverride": "materials/dev/primary_white_emissive.vmat",
+            "Model": "models/dev/box.vmdl",
+            "RenderType": "On",
+            "Tint": "0.3046,0.31697,0.37209,1"
+          }
+        ]
+      },
+      {
+        "Id": "d5dae2cc-9453-4e06-9326-f97354da996f",
+        "Name": "door_frame_01",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/doors_01/door_entrance_frame_01.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "69387266-057b-4f6b-aada-b05291416ec6",
+        "Name": "door_entrance_01",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/doors_01/door_entrance_01.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "f353076e-ffc7-48be-97a5-c04202c6ac35",
+        "Name": "door_handle_01",
+        "Position": "-8.035648,1.031753,46.32399",
+        "Rotation": "-0.7070491,0.009025782,-0.009025713,0.7070491",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/doors_01/door_handle_01.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "6aa7e8b4-a98a-402d-be7c-b11b4110cf10",
+        "Name": "door_handle_01",
+        "Position": "6.457716,2.052843,46.32399",
+        "Rotation": "0.0004498959,0.7071066,0.7071066,0.0004499853",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/doors_01/door_handle_01.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}
