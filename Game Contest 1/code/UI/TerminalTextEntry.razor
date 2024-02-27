@@ -1,0 +1,81 @@
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+@code
+{
+
+	public TerminalComponent Owner { get; set; }
+
+	public string InputText { get; set; }
+
+	public Action<string> OnKeyPressed { get; set; }
+
+	protected override int BuildHash() => System.HashCode.Combine(Owner?.TextLines, Owner?.TextLines.Count, Owner?.ShowCursor);
+
+
+	public TerminalTextEntry()
+	{
+		AcceptsFocus = true;
+	}
+
+	public void SendInput()
+	{
+		Log.Info(InputText);
+	}
+
+	public override void OnButtonTyped(ButtonEvent e)
+	{
+
+		var button = e.Button;
+
+		// Delete text	
+		if (button == "backspace")
+		{
+			if(InputText == string.Empty) { return; }
+
+			InputText = InputText.Remove(InputText.Length-1);
+			OnKeyPressed?.Invoke(button);
+			return;
+		}
+
+		else if(button == "space") 
+		{
+			KeyPressed(' ');
+			OnKeyPressed?.Invoke(button);
+			return;
+		}
+
+		else if (button == "enter")
+		{
+			OnKeyPressed?.Invoke(button);
+			return;
+		}
+
+		else if (button == "escape")
+		{
+			OnKeyPressed?.Invoke(button);
+			InputText = "";
+			return;
+		}
+
+		if (button.Length > 1) { return; }
+
+		if (e.HasShift)
+		{
+			button = button.ToUpper();
+		}
+
+		OnKeyPressed?.Invoke(button);
+		KeyPressed(button.ToCharArray()[0]);
+
+	}
+
+
+	private void KeyPressed(char k) {
+		InputText += k;
+	}
+
+
+}

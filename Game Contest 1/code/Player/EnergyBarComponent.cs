@@ -35,6 +35,7 @@ public sealed class EnergyBarComponent : Component
 	{
 		base.OnUpdate();
 
+
 		if ( GameObject.IsProxy ) { return; }
 
 		if (IsExhausted)
@@ -46,12 +47,12 @@ public sealed class EnergyBarComponent : Component
 				IsExhausted = false;
 			}
 		}
-		else if(!Owner.InputData.IsGrounded)
+		else if( !Owner.Controller.IsOnGround)
 		{
 			
 		}
 		// Running and moving
-		else if (Owner.InputData.WantsToRun && Owner.InputData.HasInput && Owner.InputData.IsMoving )
+		else if ( Owner.PlayerInput != null && Owner.PlayerInput.WantsToRun && Owner.PlayerInput.HasInput && Owner.PlayerInput.IsMoving )
 		{
 			CurrentEnergy -= Time.Delta * Decay;
 

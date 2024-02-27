@@ -20,8 +20,8 @@ public sealed class Player : Component
 	public EnergyBarComponent EnergyBar { get; private set; }
 	public InventoryComponent Inventory { get; private set; }
 
-	public ValueBuffer<PlayerInputData> InputDataBuffer { get; private set; } = new(5);
-	public PlayerInputData InputData => InputDataBuffer.Current;
+	public PlayerInput PlayerInput { get; set; }
+
 
 	[Sync] public CitizenAnimationHelper.HoldTypes CurrentHoldType { get; set; }
 
@@ -39,6 +39,8 @@ public sealed class Player : Component
 	{
 		base.OnStart();
 
+		PlayerInput = new PlayerInput( this );
+
 		Animator = Components.Get<CitizenAnimationHelper>();
 		Controller = Components.Get<CharacterController>();
 		Inventory = Components.Get<InventoryComponent>();
@@ -51,8 +53,6 @@ public sealed class Player : Component
 
 		Animator.Target.OnFootstepEvent += OnFootstep;
 
-		InputDataBuffer.Current = new PlayerInputData();
-
 		CurrentHud = HudObject.Components.Get<AliveHud>(true);
 		CurrentHud.Enabled = true;
 
@@ -60,50 +60,16 @@ public sealed class Player : Component
 
 	protected override void OnUpdate()
 	{
+
 		Animator.HoldType = CurrentHoldType;
 
 		if ( GameObject.IsProxy ) { return; }
-
-		InputDataBuffer.Push();
-		InputDataBuffer.Current.Update( this );
 
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
 
 		//
 
-		if ( Input.Pressed( "use" ) )
-		{
-			var from = CameraController.Camera.Transform.Position;
-			var to = from + Camera.Transform.Rotation.Forward * 70;
-			IEnumerable<SceneTraceResult> trace = Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy( GameObject ).WithoutTags( "owned" ).UseRenderMeshes().Size( 12f ).RunAll();
-
-			IInteractable interactable = null;
-			foreach ( SceneTraceResult item in trace )
-			{
-				item.GameObject.Components.TryGet( out interactable );
-				if ( interactable != null )
-				{
-					interactable.OnInteract(this);
-					break;
-				}
-			}
-
-		}
-
-		if ( Input.Pressed( "attack1" ) )
-		{
-			Inventory?.ActiveItem?.OnUsePrimary();
-		}
-
-		if ( Input.Pressed( "attack2" ) )
-		{
-			Inventory?.ActiveItem?.OnUseSecondary();
-		}
-
-		if ( Input.Pressed( "drop" ) )
-		{
-			Inventory?.DropActive();
-		}
+		PlayerInput?.UpdateInput();
 
 	}
 
@@ -134,29 +100,31 @@ public sealed class Player : Component
 
 		if ( GameObject.IsProxy ) { return; }
 
-		if ( Controller == null ) { return; }
-		if( Animator == null) { return; }
+		if ( Controller == null )	{ return; }
+		if ( Animator == null )		{ return; }
 
 		float wantedSpeed = WalkSpeed;
-		Vector3 wantedMove = 0;
-		if (InputData.WantsToRun)
+
+		if ( PlayerInput != null && PlayerInput.WantsToRun )
 		{
-			if(!EnergyBar.IsExhausted)
+			if ( !EnergyBar.IsExhausted )
 			{
 				wantedSpeed = RunSpeed;
 			}
 		}
-			
-		wantedMove = InputDataBuffer.Current.AnalogMove * wantedSpeed * Transform.Rotation;
+
+		Vector3 wantedMove = 0;
+		wantedMove = (PlayerInput == null) ? 0 : PlayerInput.AnalogMove * wantedSpeed * Transform.Rotation;
+
 		Controller.Accelerate( wantedMove );
 
-		if( InputDataBuffer.Current.IsGrounded)
+		if ( Controller.IsOnGround )
 		{
 			Controller.Acceleration = 10;
 
-			if(Input.Pressed("Jump"))
+			if ( Input.Pressed( "Jump" ) )
 			{
-				OnJump();
+				PlayerInput?.OnJump();
 			}
 			else
 			{
@@ -169,40 +137,8 @@ public sealed class Player : Component
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}
 
+
 		Controller.Move();
-
-	}
-
-	void OnJump()
-	{
-		Controller.Punch( Vector3.Up * JumpStrength );
-		Animator.TriggerJump();
-		OnJumped?.Invoke();
-	}
-
-
-
-	public class PlayerInputData
-	{
-		public Player Owner { get; private set; }
-
-		public Vector3 AnalogMove { get; set; } = Vector3.Zero;
-		public bool WantsToRun = false;
-		public bool IsGrounded = false;
-
-		public bool HasInput => Owner.InputDataBuffer.Current.AnalogMove.Length > 0f;
-		public bool IsMoving => Owner.Controller.Velocity.WithY( 0 ).Length > 5f;
-
-		public bool IsRunning => WantsToRun && HasInput && IsMoving;
-
-		public void Update(Player player)
-		{
-			Owner = player;
-			AnalogMove = Input.AnalogMove.Normal;
-			WantsToRun = Input.Down( "Run" );
-			IsGrounded = player.Controller.IsOnGround;
-
-		}
 
 	}
 

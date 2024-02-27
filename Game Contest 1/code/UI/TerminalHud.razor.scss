@@ -10,11 +10,14 @@ TerminalHud {
 	gap: 2px;
 	flex-direction: column;
 	letter-spacing: 1.5px;
+	pointer-events: all;
 
 	.textLine {
 		height: 9px;
 		font-size: 8px;
-		font: Poppins;
+		font-family: VT323;
 		color: #00FF00;
+		letter-spacing: 2px;
 	}
+
 }

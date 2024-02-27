@@ -3,6 +3,7 @@
 @inherits PanelComponent
 
 <root>
+
 	<div class="textline">@Owner.PageInfo</div>
 	<div class="textline"></div>
 
@@ -14,7 +15,7 @@
 	}
 
 	<div class="textline"></div>
-	<div class="textline">@Owner.TextInput@(Owner.ShowCursor ? "|" : "")</div>
+	<div class="textline">>@TextEntry.InputText@(Owner.ShowCursor ? "|" : "")</div>
 
 </root>
 
@@ -23,9 +24,22 @@
 
 	public TerminalComponent Owner { get; set; }
 
+	public TerminalTextEntry TextEntry { get; private set; } = new TerminalTextEntry();
+
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine(Owner?.TextLines, Owner?.TextLines.Count, Owner?.ShowCursor);
+	protected override int BuildHash() => System.HashCode.Combine(Owner?.TextLines, Owner?.TextLines.Count, Owner?.ShowCursor, TextEntry.InputText);
+
+
+	public void Focus(bool focus) {
+		if(focus) {
+			TextEntry.Focus();
+		}
+		else {
+			InputFocus.Clear(TextEntry);
+		}
+
+	}
 
 }

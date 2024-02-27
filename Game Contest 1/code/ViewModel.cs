@@ -81,7 +81,7 @@ public sealed class ViewModel : Component
 		var moveLen = moveVel.Length;
 		if ( Owner.Tags.Has( "slide" ) ) moveLen = 0;
 
-		var wishLook = Owner.InputData.AnalogMove;
+		var wishLook = Owner.PlayerInput.AnalogMove;
 
 		LerpedWishLook = LerpedWishLook.LerpTo( wishLook, Time.Delta * 5.0f );
 
@@ -104,7 +104,7 @@ public sealed class ViewModel : Component
 
 	private void ApplyAnimationParameters()
 	{
-		ModelRenderer.Set( "b_sprint", UseSprintAnimation && Owner.InputData.IsRunning );
+		ModelRenderer.Set( "b_sprint", UseSprintAnimation && Owner.PlayerInput.IsRunning );
 		ModelRenderer.Set( "b_grounded", Owner.Controller.IsOnGround );
 	}
 }

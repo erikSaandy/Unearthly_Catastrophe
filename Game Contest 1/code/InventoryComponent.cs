@@ -34,16 +34,7 @@ public sealed class InventoryComponent : Component
 
 		ActiveItem?.UpdateHeldPosition();
 
-		// Inventory scroll
-		if ( Input.MouseWheel.y != 0 )
-		{
-			int slot = ActiveSlot;
-			slot = (ActiveSlot - Math.Sign( Input.MouseWheel.y )) % Items.Length;
-			if ( slot < 0 ) { slot += Items.Length; }
-			ActiveItem?.Undeploy();
-			ActiveSlot = slot;
-			ActiveItem?.Deploy();
-		}
+		Owner.PlayerInput?.InventoryInput();
 
 	}
 
