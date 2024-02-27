@@ -34,26 +34,6 @@ public sealed class InventoryComponent : Component
 
 		ActiveItem?.UpdateHeldPosition();
 
-		if ( Input.Pressed( "use" ) )
-		{
-
-			var from = Owner.CameraController.Camera.Transform.Position;
-			var to = from + Owner.Camera.Transform.Rotation.Forward * 70;
-			IEnumerable<SceneTraceResult> trace = Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy( Owner.GameObject ).WithoutTags("owned").UseRenderMeshes().Size( 12f ).RunAll();
-
-			Carriable carriable = null;
-			foreach ( SceneTraceResult item in trace )
-			{
-				item.GameObject.Components.TryGet( out carriable );
-				if ( carriable != null )
-				{
-					Pickup( carriable );
-					break;
-				}
-			}
-
-		}
-
 		// Inventory scroll
 		if ( Input.MouseWheel.y != 0 )
 		{
@@ -65,43 +45,26 @@ public sealed class InventoryComponent : Component
 			ActiveItem?.Deploy();
 		}
 
-		if (Input.Pressed("attack1"))
-		{
-			ActiveItem?.OnUsePrimary();
-		}
-
-		if ( Input.Pressed( "attack2" ) )
-		{
-			ActiveItem?.OnUseSecondary();
-		}
-
-		if(Input.Pressed("drop"))
-		{
-			DropActive();
-		}
-
 	}
 
-	public void Pickup(Carriable carriable)
+	public bool TryPickup(Carriable carriable)
 	{
 		for(int i = 0; i < Items.Length; i++ )
 		{
 			if ( Items[i] == null )
 			{
-				Pickup( carriable, i );
-				return;
+				return TryPickup( carriable, i );
 			}
 		}
+
+		return false;
 	}
 
-	public void Pickup(Carriable carriable, int slotId)
+	private bool TryPickup(Carriable carriable, int slotId)
 	{
+		if ( carriable == null ) { return false; }
+		if ( Items[slotId] != null ) { Log.Info( $"can't add item to slot {slotId}, as slot is already used." ); return false; }
 
-		if ( Items[slotId] != null ) { Log.Info( $"can't add item to slot {slotId}, as slot is already used." ); return; }
-		if( carriable == null ) { return; }
-		if ( carriable.Owner != null ) { Log.Info( $"Can't pick up owned item!" ); return; }
-
-		carriable.OnPickup( Owner );
 		Weight += carriable.Weight;
 		Items[slotId] = carriable;
 
@@ -110,6 +73,7 @@ public sealed class InventoryComponent : Component
 			Items[slotId].Deploy();
 		}
 
+		return true;
 
 	}
 

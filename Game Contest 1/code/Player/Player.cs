@@ -68,6 +68,43 @@ public sealed class Player : Component
 		InputDataBuffer.Current.Update( this );
 
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
+
+		//
+
+		if ( Input.Pressed( "use" ) )
+		{
+			var from = CameraController.Camera.Transform.Position;
+			var to = from + Camera.Transform.Rotation.Forward * 70;
+			IEnumerable<SceneTraceResult> trace = Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy( GameObject ).WithoutTags( "owned" ).UseRenderMeshes().Size( 12f ).RunAll();
+
+			IInteractable interactable = null;
+			foreach ( SceneTraceResult item in trace )
+			{
+				item.GameObject.Components.TryGet( out interactable );
+				if ( interactable != null )
+				{
+					interactable.OnInteract(this);
+					break;
+				}
+			}
+
+		}
+
+		if ( Input.Pressed( "attack1" ) )
+		{
+			Inventory?.ActiveItem?.OnUsePrimary();
+		}
+
+		if ( Input.Pressed( "attack2" ) )
+		{
+			Inventory?.ActiveItem?.OnUseSecondary();
+		}
+
+		if ( Input.Pressed( "drop" ) )
+		{
+			Inventory?.DropActive();
+		}
+
 	}
 
 	[Broadcast]
@@ -98,7 +135,7 @@ public sealed class Player : Component
 		if ( GameObject.IsProxy ) { return; }
 
 		if ( Controller == null ) { return; }
-		if(Animator == null) { return; }
+		if( Animator == null) { return; }
 
 		float wantedSpeed = WalkSpeed;
 		Vector3 wantedMove = 0;

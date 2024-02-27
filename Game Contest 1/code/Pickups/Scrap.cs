@@ -10,20 +10,27 @@ public sealed class Scrap : Carriable
 		Value = Game.Random.Next( MinValue, MaxValue );
 	}
 
-	public override void OnPickup( Player player )
-	{
-		Log.Warning( "PICKUP" );
-	}
-
 	public override void OnDrop()
 	{
+		base.OnDrop();
+
+
+
 	}
 
 	public override void OnUsePrimary()
 	{
+		base.OnDrop();
+	
+		
+
 	}
 
 	public override void OnUseSecondary()
 	{
+		base.OnDrop();
+
+
+
 	}
 }

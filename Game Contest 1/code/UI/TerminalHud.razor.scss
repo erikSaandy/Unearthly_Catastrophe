@@ -1,0 +1,20 @@
+TerminalHud {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	border: 7px black;
+	align-items: flex-start;
+	gap: 2px;
+	flex-direction: column;
+	letter-spacing: 1.5px;
+
+	.textLine {
+		height: 9px;
+		font-size: 8px;
+		font: Poppins;
+		color: #00FF00;
+	}
+}

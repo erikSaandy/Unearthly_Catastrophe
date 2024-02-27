@@ -1,7 +1,3 @@
-using Saandy;
-using Sandbox;
-using System.Numerics;
-using System.Threading.Tasks;
 using static DungeonDefinition;
 
 namespace Dungeon;
@@ -14,8 +10,7 @@ public static class DungeonGenerator
 
 	private static List<RoomSetup> SpawnedRooms;
 
-	private const int Iterations = 100;
-	private const int BranchDepth = 7;
+	private const int MainIterations = 15;
 
 	public static void GenerateDungeon(DungeonDefinition def)
 	{
@@ -36,9 +31,9 @@ public static class DungeonGenerator
 		SpawnedRooms.Add( entrance );
 
 		//CreateRoomConnection( ref entrance, InitialDepth );
-		SearchRooms( ref entrance, ref biome, Iterations, 0 );	
+		SearchRooms( ref entrance, ref biome, MainIterations, 0 );
 
-		Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms!]" );
+		Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms." );
 
 	}
 
@@ -62,11 +57,8 @@ public static class DungeonGenerator
 			
 			RoomSetup nextRoom = null;
 
-			if ( iteration > 0 )
-			{
-				// spawn new room if possible 
-				nextRoom = TrySpawnRoomThatFits( ref currentRoom, ref currentBiome );
-			}
+			// spawn new room if possible 
+			if ( iteration > 0 ) { nextRoom = TrySpawnRoomThatFits( ref currentRoom, ref currentBiome, iteration ); }
 
 			// was able to spawn room!
 			if (nextRoom != null)
@@ -74,10 +66,9 @@ public static class DungeonGenerator
 				nextRoom.GameObject.Name = nextRoom.GameObject.Name + " (" + SpawnedRooms.Count.ToString() + ")";
 				nextRoom.MoveToNextPortal();
 
-				if( iteration > 0 )
-				{
-					SearchRooms( ref nextRoom, ref currentBiome, ++biomeDepth, --iteration );
-				}
+				SearchRooms( ref nextRoom, ref currentBiome, --iteration, ++biomeDepth );
+				//iteration = BranchIterations;
+
 			}
 			else if ( currentRoom.HasUnexploredPortals )
 			{
@@ -90,14 +81,13 @@ public static class DungeonGenerator
 
 	}
 
-	private static RoomSetup TrySpawnRoomThatFits(ref RoomSetup currentRoom, ref Biome currentBiome)
+	private static RoomSetup TrySpawnRoomThatFits(ref RoomSetup currentRoom, ref Biome currentBiome, int iteration)
 	{
 		RoomSetup nextRoom = null;
 
 		if(!currentRoom.HasUnexploredPortals) { return null; }
 
-		int retries = 10;
-		for ( int i = 0; i < retries; i++ )
+		for ( int i = 0; i < 4; i++ )
 		{
 			nextRoom = new RoomSetup( currentBiome.RandomRoom );
 			if ( nextRoom.Data == null ) { Log.Error( "Could not load prefab " + nextRoom.Prefab ); }
@@ -132,7 +122,7 @@ public static class DungeonGenerator
 
 		if( nextRoom != null ) {
 			SpawnedRooms.Add( nextRoom );
-			Log.Info( "> Spawned room #" + SpawnedRooms.Count );
+			Log.Info( $"> Spawned room #{ SpawnedRooms.Count } (Iteration: {iteration})" );
 		}
 	
 		return nextRoom;
@@ -192,7 +182,7 @@ public static class DungeonGenerator
 		{
 			//move bounding box
 			Transform transform = new Transform( GameObject.Transform.Position, GameObject.Transform.Rotation, GameObject.Transform.Scale );
-			Data.Bounds = Data.Bounds.Transform( transform );
+			Data.Bounds = Data.Bounds.Transform( transform ).Grow(-1);
 		}
 
 		public bool GetMatchingPortal(RoomPortal.RoomPortalType otherType)

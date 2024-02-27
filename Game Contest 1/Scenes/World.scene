@@ -91,7 +91,7 @@
     {
       "Id": "3bac436e-e82c-43b9-8d01-ac11e80b5e91",
       "Name": "Spawnpoint (1)",
-      "Position": "-81.51225,70.5768,1.006225",
+      "Position": "0,160,1.006209",
       "Rotation": "0,0,-0.7731905,0.6341738",
       "Enabled": true,
       "Components": [
@@ -116,11 +116,52 @@
     {
       "Id": "e6f8d0ee-f550-4620-85cf-2e763ce9ce68",
       "Name": "GameObject",
-      "Position": "0,0,6.995488",
+      "Position": "0,0,15.77576",
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/items/flashlight.prefab"
+    },
+    {
+      "Id": "73016fe7-31d3-40ca-ad0e-630dad167d30",
+      "Name": "key_02",
+      "Position": "0,0,32",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/key_02/key_02.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "e0ef9753-3069-4c86-a883-ef8cd20625ae",
+      "Name": "spaceship (1)",
+      "Position": "0,0,800",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/spaceship/spaceship.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "IsTrigger": false,
+          "Model": "models/spaceship/spaceship.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -146,6 +187,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-25T00:27:34.8142995\u002B01:00",
+  "LastSaved": "2024-02-26T13:27:56.496933\u002B01:00",
   "__references": []
 }

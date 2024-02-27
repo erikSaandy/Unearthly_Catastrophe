@@ -1,4 +1,6 @@
+using Saandy;
 using Sandbox;
+using System.Numerics;
 
 public sealed class CameraController : Component
 {

@@ -17,9 +17,12 @@ public sealed class Flashlight : Carriable
 		ToggleOn( false );
 	}
 
-	public override void OnPickup( Player player )
+	public override void OnInteract( Player player )
 	{
-		base.OnPickup( player );
+		base.OnInteract( player );
+
+		GameObject.Enabled = true;
+
 	}
 
 	public override void OnDrop()

@@ -1,0 +1,86 @@
+{
+  "RootObject": {
+    "Id": "a4dead37-6c28-4992-ad9c-4e5c7dd507db",
+    "Name": "terminal",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/terminal/terminal.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelPhysics",
+        "Locking": {},
+        "Model": "models/terminal/terminal.vmdl",
+        "Renderer": null,
+        "RigidbodyFlags": 0
+      },
+      {
+        "__type": "TerminalComponent",
+        "Keyboard": {
+          "_type": "gameobject",
+          "go": "3587ee36-69d9-4f39-8599-fd30254eab3d"
+        },
+        "Panel": {
+          "_type": "component",
+          "go": "6c6c7579-b671-4513-949f-93405aba75bf",
+          "component_type": "WorldPanel"
+        },
+        "TextInput": "",
+        "TextLines": []
+      }
+    ],
+    "Children": [
+      {
+        "Id": "6c6c7579-b671-4513-949f-93405aba75bf",
+        "Name": "World Panel",
+        "Position": "0.5840354,8.3,66.97971",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "WorldPanel",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": false,
+            "PanelSize": "480,380",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "TerminalHud"
+          }
+        ]
+      },
+      {
+        "Id": "3587ee36-69d9-4f39-8599-fd30254eab3d",
+        "Name": "Keyboard",
+        "Position": "28.62382,12.73223,44.20619",
+        "Rotation": "0,0.3026859,0,0.9530904",
+        "Scale": "0.2159424,0.5873123,0.09102613",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "BoxCollider",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "50,50,50",
+            "Static": false,
+            "Surface": null
+          },
+          {
+            "__type": "InteractionProxy"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

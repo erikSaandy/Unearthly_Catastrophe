@@ -31,27 +31,27 @@ public abstract class Carriable : Component, ICarriable
 		Rigidbody = Components.Get<Rigidbody>();
 	}
 
-
-	/// <summary>
-	/// This carriable was added to player inventory.
-	/// </summary>
-	/// <param name="player">Player who picked up this carriable.</param>
-	public virtual void OnPickup( Player player )
+	public virtual void OnInteract( Player player )
 	{
 		if ( player.IsProxy ) { return; }
-		
+
+		if ( Tags.Has("owned")) { Log.Info( $"Can't pick up owned item!" ); return; }
+		if ( Owner != null ) { Log.Info( $"Can't pick up owned item!" ); return; }
+		Owner = player;
+
+		if (!player.Inventory.TryPickup(this)) { return; }
+
 		GameObject.Network.TakeOwnership();
 
 		Tags.Add( "owned" );
-		Owner = player;
 
 		Collider.Enabled = false;
 		Rigidbody.Enabled = false;
 		GameObject.Enabled = false;
 		GameObject.SetParent( Owner.HandRBone );
 		Transform.LocalPosition = Vector3.Zero;
-
 	}
+
 
 	/// <summary>
 	/// This carriable was removed from player inventory.
