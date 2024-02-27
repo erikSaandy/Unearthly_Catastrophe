@@ -1,0 +1,274 @@
+{
+  "RootObject": {
+    "Id": "4b29bbd5-c7a6-43f2-9b5b-d31e9be80c40",
+    "Name": "spaceship",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Prop",
+        "Health": 0,
+        "IsStatic": true,
+        "Model": "models/spaceship/spaceship.vmdl",
+        "OnPropBreak": null,
+        "OnPropTakeDamage": null,
+        "ShowCreatedComponents": false
+      }
+    ],
+    "Children": [
+      {
+        "Id": "ab67d36b-b69a-46a3-b517-45facef45e6a",
+        "Name": "fluorescent_ceiling_light01",
+        "Position": "0,-288,155.996",
+        "Rotation": "-0.000003279054,0.9999999,0.000001093018,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/fluorescent_ceiling_light01/fluorescent_ceiling_light01.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ],
+        "Children": [
+          {
+            "Id": "87efe5e0-b8a4-41f7-a398-538595549b7f",
+            "Name": "Point Light",
+            "Position": "0.0000000001433341,-0.00004371203,19.99603",
+            "Rotation": "0.0000000000004547474,0.8728825,-0.0000000000002273737,0.4879304",
+            "Tags": "light_point,light",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "PointLight",
+                "Attenuation": 1.29,
+                "FogMode": "Enabled",
+                "FogStrength": 1,
+                "LightColor": "1.76,1.6278,1.34251,1",
+                "Radius": 400,
+                "Shadows": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "b218bf35-3187-489e-a1da-9a2e46e9fb85",
+        "Name": "industrial_light02b",
+        "Position": "-85.89304,24,120",
+        "Rotation": "0.4997322,0.4997323,0.5002676,0.5002677",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/industrial_lights01/industrial_light02b.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ],
+        "Children": [
+          {
+            "Id": "37601c90-8e84-41a2-9201-2b1e23a9585d",
+            "Name": "Point Light",
+            "Position": "-0.00001957582,-8.023436,21.88446",
+            "Tags": "light_point,light",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "PointLight",
+                "Attenuation": 1.45,
+                "FogMode": "Enabled",
+                "FogStrength": 1,
+                "LightColor": "2.15274,1.97402,1.52194,1",
+                "Radius": 151.79968,
+                "Shadows": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "8b1c48b1-52d6-4a1c-a706-e175a38e8683",
+        "Name": "industrial_light02b (1)",
+        "Position": "85.91022,23.99999,119.9081",
+        "Rotation": "-0.4997323,0.4997323,0.5002676,-0.5002676",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/industrial_lights01/industrial_light02b.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ],
+        "Children": [
+          {
+            "Id": "f5e5f2b6-0d63-43e2-87fd-be77c686242a",
+            "Name": "Point Light",
+            "Position": "0.00000259761,-7.999965,21.78178",
+            "Tags": "light_point,light",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "PointLight",
+                "Attenuation": 1.45,
+                "FogMode": "Enabled",
+                "FogStrength": 1,
+                "LightColor": "2.15274,1.97402,1.52194,1",
+                "Radius": 151.79968,
+                "Shadows": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "2ebb0ad2-aa9d-473a-8b5d-49c245449922",
+        "Name": "Spawnpoint (5)",
+        "Position": "-56,24,1.006469",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "049268c2-8c42-49bd-8390-d4c1b710ba44",
+        "Name": "Spawnpoint (4)",
+        "Position": "-56,72,1.006469",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "6a3b233a-5557-46cc-b64f-e773f9ce3437",
+        "Name": "Spawnpoint (3)",
+        "Position": "54.79461,24,1.006469",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "9798f4e7-52a7-4c37-bdbe-ea52445c639e",
+        "Name": "Spawnpoint (2)",
+        "Position": "54.79461,72,1.006469",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "e377fbba-d849-4579-ae41-967c530e6714",
+        "Name": "Spawnpoint (1)",
+        "Position": "-56,-24,1.006469",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "f1ea31b0-685c-459c-9306-6a42dca73cd4",
+        "Name": "Spawnpoint",
+        "Position": "54.79461,-24,1.006469",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "b2421bd9-fd82-4644-a3ac-b411639aab05",
+        "Name": "GameObject (1)",
+        "Position": "87.6813,-195.1613,0",
+        "Rotation": "0,0,-0.9238794,0.3826834",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/terminal.prefab"
+      },
+      {
+        "Id": "4a5736c4-7d77-4c6a-ba88-17680310ffee",
+        "Name": "GameObject (2)",
+        "Position": "18.74464,-276.499,10.24886",
+        "Tags": "item",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "Id": "0d2df318-7032-4efe-ad9b-936ae6bc918c",
+        "Name": "probe",
+        "Position": "0,0,60",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "EnvmapProbe",
+            "Bounds": {
+              "Mins": "-195,-140,-190",
+              "Maxs": "195,280,300"
+            },
+            "Feathering": 0.02,
+            "Projection": "Box",
+            "Texture": "textures/cubemaps/default2.vtex",
+            "TintColor": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "Id": "0feebd30-0188-4c0e-b2ca-bd9363ca730c",
+        "Name": "probe (1)",
+        "Position": "0,-312,60",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "EnvmapProbe",
+            "Bounds": {
+              "Mins": "-195,-250,-190",
+              "Maxs": "195,221.3001,185"
+            },
+            "Feathering": 0.02,
+            "Projection": "Sphere",
+            "Texture": "textures/cubemaps/default2.vtex",
+            "TintColor": "1,1,1,1"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": [
+    "saandy.fluorescent_ceiling_light01",
+    "saandy.industrial_light02b"
+  ]
+}

@@ -14,6 +14,7 @@
 
 	protected override int BuildHash() => System.HashCode.Combine(Owner?.TextLines, Owner?.TextLines.Count, Owner?.ShowCursor);
 
+	public override bool AcceptsImeInput => true;
 
 	public TerminalTextEntry()
 	{
@@ -27,8 +28,17 @@
 
 	public override void OnButtonTyped(ButtonEvent e)
 	{
+		e.StopPropagation = true;
 
 		var button = e.Button;
+
+		// TODO: Doesn't work for some fucking reason
+		if (e.Button == "escape")
+		{
+			OnKeyPressed?.Invoke(button);
+			Owner.Exit();
+			return;
+		}
 
 		// Delete text	
 		if (button == "backspace")
@@ -40,23 +50,16 @@
 			return;
 		}
 
-		else if(button == "space") 
+		if(button == "space") 
 		{
 			KeyPressed(' ');
 			OnKeyPressed?.Invoke(button);
 			return;
 		}
 
-		else if (button == "enter")
+		if (button == "enter")
 		{
 			OnKeyPressed?.Invoke(button);
-			return;
-		}
-
-		else if (button == "escape")
-		{
-			OnKeyPressed?.Invoke(button);
-			InputText = "";
 			return;
 		}
 
@@ -70,6 +73,12 @@
 		OnKeyPressed?.Invoke(button);
 		KeyPressed(button.ToCharArray()[0]);
 
+	}
+
+	public override void OnButtonEvent(ButtonEvent e)
+	{
+		// dont' send to parent
+		e.StopPropagation = true;
 	}
 
 

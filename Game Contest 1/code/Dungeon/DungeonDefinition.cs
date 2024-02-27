@@ -47,7 +47,7 @@ public partial class DungeonDefinition : GameResource
 			if ( pool[index].Disabled ) { continue; }
 
 			// Do a probability check with a likelihood of weights[index] / weightSum.
-			if ( LethalGame.Random.Next( 0, weightSum ) < pool[index].Weight )
+			if ( LethalGameManager.Random.Next( 0, weightSum ) < pool[index].Weight )
 			{
 				return index;
 			}

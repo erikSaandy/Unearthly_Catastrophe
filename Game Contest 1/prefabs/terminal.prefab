@@ -25,7 +25,7 @@
         "__type": "TerminalComponent",
         "CameraAngles": "0,180,0",
         "CameraPosition": "30,8.5,68",
-        "Keyboard": {
+        "KeyboardCollider": {
           "_type": "gameobject",
           "go": "3587ee36-69d9-4f39-8599-fd30254eab3d"
         },
@@ -33,6 +33,10 @@
           "_type": "component",
           "go": "6c6c7579-b671-4513-949f-93405aba75bf",
           "component_type": "WorldPanel"
+        },
+        "ScreenCollider": {
+          "_type": "gameobject",
+          "go": "a36c86b3-0326-4728-970c-918cd13e2354"
         },
         "TextLines": []
       }
@@ -49,7 +53,7 @@
             "__type": "WorldPanel",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
-            "PanelSize": "480,380",
+            "PanelSize": "440,440",
             "RenderScale": 1,
             "VerticalAlign": "Center"
           },
@@ -62,8 +66,30 @@
         "Id": "3587ee36-69d9-4f39-8599-fd30254eab3d",
         "Name": "Keyboard",
         "Position": "28.62382,12.73223,44.20619",
-        "Rotation": "0,0.3026859,0,0.9530904",
+        "Rotation": "0,0.3215908,0,0.9468789",
         "Scale": "0.2159424,0.5873123,0.09102613",
+        "Networked": true,
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "BoxCollider",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "50,50,50",
+            "Static": false,
+            "Surface": null
+          },
+          {
+            "__type": "InteractionProxy"
+          }
+        ]
+      },
+      {
+        "Id": "a36c86b3-0326-4728-970c-918cd13e2354",
+        "Name": "Screen",
+        "Position": "9.063806,8.650198,67.97015",
+        "Rotation": "0,0.7933534,0,0.6087615",
+        "Scale": "0.6086251,0.6152759,0.09102613",
         "Networked": true,
         "Enabled": true,
         "Components": [

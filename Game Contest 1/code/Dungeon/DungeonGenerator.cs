@@ -4,7 +4,7 @@ namespace Dungeon;
 
 public static class DungeonGenerator
 {
-	private static readonly Vector3 DungeonOrigin = new Vector3( 0, 0, 0 );
+	private static readonly Vector3 DungeonOrigin = new Vector3( 0, 0, -3000 );
 
 	private static DungeonDefinition DungeonResource { get; set; }
 
@@ -106,11 +106,11 @@ public static class DungeonGenerator
 			{
 				if ( room.Data.Bounds.Overlaps( nextRoom.Data.Bounds ) )
 				{
-					Log.Info( "overlaps! can't spawn." );
+					//Log.Info( "overlaps! can't spawn." );
 					DeleteNextRoom();
 					break;
 				}
-			}
+			}	
 
 			// Room doesn't overlap any room!
 			if ( nextRoom != null ) 
@@ -122,7 +122,7 @@ public static class DungeonGenerator
 
 		if( nextRoom != null ) {
 			SpawnedRooms.Add( nextRoom );
-			Log.Info( $"> Spawned room #{ SpawnedRooms.Count } (Iteration: {iteration})" );
+			//Log.Info( $"> Spawned room #{ SpawnedRooms.Count } (Iteration: {iteration})" );
 		}
 	
 		return nextRoom;
@@ -216,7 +216,7 @@ public static class DungeonGenerator
 				Data.Portals.RemoveAt( id );
 			}
 			// Get new portal from remaining pool
-			ActivePortalId = LethalGame.Random.Next( 0, Data.Portals.Count );
+			ActivePortalId = LethalGameManager.Random.Next( 0, Data.Portals.Count );
 		}
 
 		public void SpawnEntranceDoor()

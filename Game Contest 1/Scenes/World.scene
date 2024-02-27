@@ -2,6 +2,68 @@
   "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
+      "Id": "700b488a-cefc-4469-a542-30271eef2235",
+      "Name": "GameManager",
+      "Position": "59.83146,37.34929,21.25274",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LethalGameManager",
+          "DungeonDefinitions": [
+            "dungeons/lethal/lethal.dungeon"
+          ],
+          "MapInstance": null,
+          "MoonDefinitions": [
+            "moons/kronos.moon"
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "5a340ce0-135e-4fa9-abf0-91f75961ace3",
+      "Name": "Network Helper",
+      "Position": "0,0,171.1578",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NetworkHelper",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "879472dc-c757-49a9-9739-ea0b93cfd5a7"
+            }
+          ],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "Id": "879472dc-c757-49a9-9739-ea0b93cfd5a7",
+      "Name": "Spawnpoint",
+      "Position": "3000,0,3000",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpawnPoint",
+          "Color": "0.8902,0.31765,0.05098,1"
+        }
+      ]
+    },
+    {
+      "Id": "ba5fdc1e-db83-492a-8d44-337b267540eb",
+      "Name": "spaceship",
+      "Position": "3000,0,3000",
+      "Rotation": "0,0,-1,0.0000001947072",
+      "Networked": true,
+      "Enabled": true,
+      "__Prefab": "prefabs/spaceship.prefab"
+    },
+    {
       "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
@@ -50,70 +112,6 @@
       "__Prefab": "prefabs/scrap_test.prefab"
     },
     {
-      "Id": "5a340ce0-135e-4fa9-abf0-91f75961ace3",
-      "Name": "Network Helper",
-      "Position": "0,0,171.1578",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "NetworkHelper",
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/player.prefab"
-          },
-          "SpawnPoints": [
-            {
-              "_type": "gameobject",
-              "go": "879472dc-c757-49a9-9739-ea0b93cfd5a7"
-            },
-            {
-              "_type": "gameobject",
-              "go": "3bac436e-e82c-43b9-8d01-ac11e80b5e91"
-            }
-          ],
-          "StartServer": true
-        }
-      ]
-    },
-    {
-      "Id": "879472dc-c757-49a9-9739-ea0b93cfd5a7",
-      "Name": "Spawnpoint",
-      "Position": "54.79461,-52.46356,1.006469",
-      "Rotation": "0,0,-0.9951569,-0.09829969",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "SpawnPoint",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
-      "Id": "3bac436e-e82c-43b9-8d01-ac11e80b5e91",
-      "Name": "Spawnpoint (1)",
-      "Position": "0,160,1.006209",
-      "Rotation": "0,0,-0.7731905,0.6341738",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "SpawnPoint",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
-      "Id": "700b488a-cefc-4469-a542-30271eef2235",
-      "Name": "Game",
-      "Position": "59.83146,37.34929,21.25274",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "LethalGame",
-          "DungeonDefinition": "dungeons/lethal/lethal.dungeon"
-        }
-      ]
-    },
-    {
       "Id": "e6f8d0ee-f550-4620-85cf-2e763ce9ce68",
       "Name": "GameObject",
       "Position": "0,0,15.77576",
@@ -136,30 +134,6 @@
           "Model": "models/key_02/key_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "Id": "e0ef9753-3069-4c86-a883-ef8cd20625ae",
-      "Name": "spaceship (1)",
-      "Position": "0,0,800",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/spaceship/spaceship.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "ModelCollider",
-          "IsTrigger": false,
-          "Model": "models/spaceship/spaceship.vmdl",
-          "Static": false,
-          "Surface": null
         }
       ]
     }
@@ -187,6 +161,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-27T16:58:40.5948869\u002B01:00",
+  "LastSaved": "2024-02-27T23:07:01.1512526\u002B01:00",
   "__references": []
 }

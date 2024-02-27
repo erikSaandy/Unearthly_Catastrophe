@@ -2,37 +2,24 @@
   "Id": "2c0248d8-58aa-4df3-9ec5-790063a37159",
   "GameObjects": [
     {
-      "Id": "b797f93f-4060-492d-b0f7-5f43891491bd",
-      "Name": "Sun",
-      "Position": "-756.9304,-30.22823,448",
-      "Rotation": "0.0499502,0.3794095,-0.1205905,0.9159757",
-      "Tags": "light_directional,light",
+      "Id": "f9522c0b-1fd0-4d9b-a34e-cc434b07d046",
+      "Name": "GameManager",
+      "Position": "59.83146,37.34929,21.25274",
       "Enabled": true,
       "Components": [
         {
-          "__type": "DirectionalLight",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
-          "Shadows": true,
-          "SkyColor": "0.05882,0.07451,0.08235,1"
-        }
-      ]
-    },
-    {
-      "Id": "4b29bbd5-c7a6-43f2-9b5b-d31e9be80c40",
-      "Name": "spaceship",
-      "Networked": true,
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/spaceship/spaceship.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
+          "__type": "LethalGameManager",
+          "DungeonDefinitions": [
+            "dungeons/lethal/lethal.dungeon"
+          ],
+          "MapInstance": {
+            "_type": "component",
+            "go": "c19c2b62-571a-4fce-b0fb-029699fb0a4c",
+            "component_type": "MapInstance"
+          },
+          "MoonDefinitions": [
+            "moons/kronos.moon"
+          ]
         }
       ]
     },
@@ -51,27 +38,7 @@
           "SpawnPoints": [
             {
               "_type": "gameobject",
-              "go": "7bcdc83f-4843-4d05-a9de-e9b1b3f10292"
-            },
-            {
-              "_type": "gameobject",
-              "go": "8c958207-1396-47e2-b12a-6c8b9bec3df4"
-            },
-            {
-              "_type": "gameobject",
-              "go": "2166a7ac-6f30-4532-a6c1-97a665804bbd"
-            },
-            {
-              "_type": "gameobject",
-              "go": "a1456d3c-5754-40cf-8cf5-2a9fc5efaa7b"
-            },
-            {
-              "_type": "gameobject",
-              "go": "4922803a-453f-4db2-8df1-68c83a92e415"
-            },
-            {
-              "_type": "gameobject",
-              "go": "e8c78532-968d-445e-9045-0176164bcf89"
+              "go": "862c3591-bdf3-45a8-89e2-f1010da3f1fe"
             }
           ],
           "StartServer": true
@@ -79,10 +46,27 @@
       ]
     },
     {
-      "Id": "7bcdc83f-4843-4d05-a9de-e9b1b3f10292",
-      "Name": "Spawnpoint",
-      "Position": "54.79461,-24,1.006469",
-      "Rotation": "0,0,1,-0.00000004371139",
+      "Id": "b797f93f-4060-492d-b0f7-5f43891491bd",
+      "Name": "Sun",
+      "Position": "-756.9304,-30.22823,448",
+      "Rotation": "0.0499502,0.3794095,-0.1205905,0.9159757",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "Id": "862c3591-bdf3-45a8-89e2-f1010da3f1fe",
+      "Name": "SpawnPoint",
+      "Position": "5000,0,5000",
       "Enabled": true,
       "Components": [
         {
@@ -92,198 +76,28 @@
       ]
     },
     {
-      "Id": "8c958207-1396-47e2-b12a-6c8b9bec3df4",
-      "Name": "Spawnpoint (1)",
-      "Position": "-56,-24,1.006469",
+      "Id": "c19c2b62-571a-4fce-b0fb-029699fb0a4c",
+      "Name": "Map Instance",
       "Enabled": true,
       "Components": [
         {
-          "__type": "SpawnPoint",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
-      "Id": "2166a7ac-6f30-4532-a6c1-97a665804bbd",
-      "Name": "Spawnpoint (2)",
-      "Position": "54.79461,72,1.006469",
-      "Rotation": "0,0,1,-0.00000004371139",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "SpawnPoint",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
-      "Id": "a1456d3c-5754-40cf-8cf5-2a9fc5efaa7b",
-      "Name": "Spawnpoint (3)",
-      "Position": "54.79461,24,1.006469",
-      "Rotation": "0,0,1,-0.00000004371139",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "SpawnPoint",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
-      "Id": "4922803a-453f-4db2-8df1-68c83a92e415",
-      "Name": "Spawnpoint (4)",
-      "Position": "-56,72,1.006469",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "SpawnPoint",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
-      "Id": "e8c78532-968d-445e-9045-0176164bcf89",
-      "Name": "Spawnpoint (5)",
-      "Position": "-56,24,1.006469",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "SpawnPoint",
-          "Color": "0.8902,0.31765,0.05098,1"
-        }
-      ]
-    },
-    {
-      "Id": "19961dfb-8087-41d2-a9d8-2586914d1d52",
-      "Name": "industrial_light02b",
-      "Position": "85.91022,23.99999,119.9081",
-      "Rotation": "-0.4997323,0.4997323,0.5002676,-0.5002676",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/industrial_lights01/industrial_light02b.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
+          "__type": "MapInstance",
+          "MapName": "maps/moon_krypton,vmap",
+          "OnMapLoaded": null,
+          "OnMapUnloaded": null,
+          "UseMapFromLaunch": false
         }
       ],
-      "Children": [
-        {
-          "Id": "b2989393-f6d0-4b4b-a87e-3c1456e19d39",
-          "Name": "Point Light",
-          "Position": "0.00000259761,-7.999965,21.78178",
-          "Tags": "light_point,light",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "PointLight",
-              "Attenuation": 1.45,
-              "FogMode": "Enabled",
-              "FogStrength": 1,
-              "LightColor": "2.15274,1.97402,1.52194,1",
-              "Radius": 151.79968,
-              "Shadows": true
-            }
-          ]
-        }
-      ]
+      "Children": []
     },
     {
-      "Id": "0c4995d1-3322-483f-b1df-f14e3ad163ba",
-      "Name": "industrial_light02b",
-      "Position": "-85.89304,24,120",
-      "Rotation": "0.4997322,0.4997323,0.5002676,0.5002677",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/industrial_lights01/industrial_light02b.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ],
-      "Children": [
-        {
-          "Id": "71ef2a89-a088-4c7b-82ff-b5fbcd94c4c3",
-          "Name": "Point Light",
-          "Position": "-0.00001957582,-8.023436,21.88446",
-          "Tags": "light_point,light",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "PointLight",
-              "Attenuation": 1.45,
-              "FogMode": "Enabled",
-              "FogStrength": 1,
-              "LightColor": "2.15274,1.97402,1.52194,1",
-              "Radius": 151.79968,
-              "Shadows": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Id": "74b815a0-d7b7-4c65-a4f4-108fa21bbc03",
-      "Name": "fluorescent_ceiling_light01",
-      "Position": "0,-288,155.996",
-      "Rotation": "-0.000003279054,0.9999999,0.000001093018,0",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Prop",
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/fluorescent_ceiling_light01/fluorescent_ceiling_light01.vmdl",
-          "OnPropBreak": null,
-          "OnPropTakeDamage": null,
-          "ShowCreatedComponents": false
-        }
-      ],
-      "Children": [
-        {
-          "Id": "2b63abc7-0f77-40f0-bdac-e5ffcebc0e6f",
-          "Name": "Point Light",
-          "Position": "-32.00002,-0.0002535715,19.99603",
-          "Tags": "light_point,light",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "PointLight",
-              "Attenuation": 1.29,
-              "FogMode": "Enabled",
-              "FogStrength": 1,
-              "LightColor": "1.75619,1.43803,0.75148,1",
-              "Radius": 400,
-              "Shadows": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Id": "b00c53a7-e154-474b-af61-09342cba7f16",
-      "Name": "GameObject",
-      "Position": "18.74464,-276.499,10.24886",
-      "Tags": "item",
+      "Id": "7738aa68-b35c-41d2-a64b-4537081c837c",
+      "Name": "spaceship (1)",
+      "Position": "5000,0,5000",
+      "Rotation": "0,0,0.7071066,0.7071067",
       "Networked": true,
       "Enabled": true,
-      "__Prefab": "prefabs/items/flashlight.prefab"
-    },
-    {
-      "Id": "a4dead37-6c28-4992-ad9c-4e5c7dd507db",
-      "Name": "GameObject (1)",
-      "Position": "87.6813,-195.1613,0",
-      "Rotation": "0,0,-0.9238794,0.3826834",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/terminal.prefab"
+      "__Prefab": "prefabs/spaceship.prefab"
     }
   ],
   "SceneProperties": {
@@ -309,9 +123,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-02-27T16:53:02.4769805\u002B01:00",
-  "__references": [
-    "saandy.fluorescent_ceiling_light01",
-    "saandy.industrial_light02b"
-  ]
+  "LastSaved": "2024-02-27T22:45:40.1742965\u002B01:00",
+  "__references": []
 }

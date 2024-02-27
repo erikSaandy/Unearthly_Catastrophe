@@ -7,6 +7,10 @@ public sealed class TerminalComponent : Component
 	readonly TerminalCommand[] Commands = new TerminalCommand[]
 	{
 		new TerminalCommandExit("exit", "quit", "stop", "leave"),
+		new TerminalCommandHome("home", "back", "main"),
+		new TerminalCommandMoonList("moons"),
+		new TerminalCommandTravel("moon"),
+		new TerminalCommandNextPage("next")
 	};
 
 	public Player Owner { get; private set; } = default;
@@ -14,7 +18,7 @@ public sealed class TerminalComponent : Component
 	/// <summary>
 	/// MAX PAGE LENGTH
 	/// </summary>
-	public const int PageLineCount = 15;
+	public const int PageLineCount = 14;
 
 	[Property] public Vector3 CameraPosition { get; private set; }
 	[Property] public Angles CameraAngles { get; private set; }
@@ -22,7 +26,8 @@ public sealed class TerminalComponent : Component
 	[Property] public Sandbox.WorldPanel Panel { get; set; }
 	public TerminalHud Hud { get; private set; }
 
-	[Property] public GameObject Keyboard { get; set; }
+	[Property] public GameObject KeyboardCollider { get; set; }
+	[Property] public GameObject ScreenCollider { get; set; }
 
 	public string PageInfo => "[PAGE " + (PageNumber + 1) + "/" + PageCount + "]";
 
@@ -56,8 +61,12 @@ public sealed class TerminalComponent : Component
 
 		Hud = Panel.Components.Get<TerminalHud>();
 		Hud.Owner = this;
-		Keyboard.Components.Get<InteractionProxy>().OnInteracted += OnInteract;
+		KeyboardCollider.Components.Get<InteractionProxy>().OnInteracted += OnInteract;
+		ScreenCollider.Components.Get<InteractionProxy>().OnInteracted += OnInteract;
+
 		Hud.TextEntry.OnKeyPressed += OnKeyPressed;
+
+		OpenPage( new TerminalPageMain() );
 	}
 
 	void OnInteract(Player player)
@@ -81,18 +90,9 @@ public sealed class TerminalComponent : Component
 	{
 		if(GameObject.IsProxy ) { return; }
 
+		// Not using terminal...
+		if ( Owner == null ) { return; }
 
-		if ( Input.EscapePressed )
-		{
-			Exit( );
-		}
-	}
-
-	public void ClearLines()
-	{
-
-		PageNumber = 0;
-		TextLines.Clear();
 	}
 
 	public void OnKeyPressed(string button)
@@ -101,11 +101,37 @@ public sealed class TerminalComponent : Component
 		{
 			OnSubmit();
 		}
+
 	}
+
+	public void OpenPage( ITerminalPage page )
+	{
+
+		PageNumber = 0;
+		TextLines.Clear();
+
+		AddLinesAsync( page.GetLines() );
+	}
+
+	public void GoToNextPage()
+	{
+		PageNumber++;
+		PageNumber = PageNumber % PageCount;
+	}
+
+	private async void AddLinesAsync( string[] lines )
+	{
+		for(int i = 0; i < lines.Length; i++ )
+		{
+			TextLines.Add( lines[i] );
+			await Task.Delay( 15 );
+		}
+	}
+
 
 	public void OnSubmit()
 	{
-		string input = Hud.TextEntry.InputText.Trim();
+		string input = Hud.TextEntry.InputText.Trim().ToLower();
 
 		float bestMatch = 0;
 		TerminalCommand bestMatchCommand = null;
@@ -130,7 +156,7 @@ public sealed class TerminalComponent : Component
 		Hud.TextEntry.InputText = "";
 
 		// Don't accept command if match is very weak.
-		if (bestMatch < 0.7f) { Log.Warning( "could not find command matching " + input ); return; }
+		if (bestMatch < 0.7f) { Log.Info( "could not find command matching " + input ); return; }
 
 		string[] parts = input.Contains( ' ' ) ? input.Substring( input.IndexOf( " " ) + 1 ).Split( ' ' ) : null;
 		bestMatchCommand?.Run( this, parts );

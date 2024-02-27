@@ -1,13 +1,13 @@
 {
   "publish": {
     "Allowed": true,
-    "Enabled": true,
+    "Enabled": false,
     "ProjectConfig": {
-      "Title": "key_02",
-      "Type": "model",
-      "Org": "saandy",
-      "Ident": "key_02",
-      "Tags": "key brass",
+      "Title": "moon_krypton",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "moon_krypton",
+      "Tags": null,
       "Schema": 0,
       "HasAssets": false,
       "AssetsPath": null,
@@ -15,10 +15,10 @@
       "MenuResources": "*",
       "HasCode": false,
       "CodePath": null,
-      "PackageReferences": null,
-      "EditorReferences": null,
+      "PackageReferences": [],
+      "EditorReferences": [],
       "Metadata": {
-        "SingleAssetSource": "models/key_02/key_02.vmdl"
+        "SingleAssetSource": "maps/moon_krypton.vmap"
       }
     }
   }
