@@ -7,7 +7,7 @@ public sealed class EnergyBarComponent : Component
 	/// <summary>
 	/// Minimum energy decay while running (per second)
 	/// </summary>
-	[Property][Range(0, MaxEnergy)] public float Decay { get; set; } = 10;
+	[Property][Range(0, MaxEnergy)] public float Decay { get; set; } = 30;
 	[Property][Range( 0, MaxEnergy * 2 )] public float ExhaustionPenalty { get; set; } = 50;
 
 	//[Property] public Curve DecayCurve;

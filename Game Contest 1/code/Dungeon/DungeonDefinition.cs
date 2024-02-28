@@ -23,12 +23,12 @@ public partial class DungeonDefinition : GameResource
 	[Description( "Door cap for this dungeon " )]
 	[JsonInclude][ResourceType( "prefab" )] public string DoorCap { get; set; }
 
-	[JsonIgnore][Hide] public Biome RandomBiome => Biomes[GetRandomRoomIndex( Biomes )];
+	[JsonIgnore][Hide] public Biome RandomBiome => Biomes[GetRandomIndex( Biomes )];
 
-	[JsonIgnore][Hide] public Door RandomDoor => Doors[GetRandomRoomIndex( Doors )];
-	[JsonIgnore][Hide] public Door RandomEntranceDoor => EntranceDoors[GetRandomRoomIndex( EntranceDoors )];
+	[JsonIgnore][Hide] public Door RandomDoor => Doors[GetRandomIndex( Doors )];
+	[JsonIgnore][Hide] public Door RandomEntranceDoor => EntranceDoors[GetRandomIndex( EntranceDoors )];
 
-	private static int GetRandomRoomIndex<T>( List<T> pool ) where T : IWeighted
+	private static int GetRandomIndex<T>( List<T> pool ) where T : IWeighted
 	{
 		if(pool.Count == 1) { return 0; }
 
@@ -80,8 +80,8 @@ public partial class DungeonDefinition : GameResource
 		[Description( "All spawnable rooms in this dungeon." )]
 		[JsonInclude] public List<Room> Rooms { get; set; }
 
-		[JsonIgnore][Hide] public Room RandomEntrance => EntranceRooms[GetRandomRoomIndex( EntranceRooms )];
-		[JsonIgnore][Hide] public Room RandomRoom => Rooms[GetRandomRoomIndex( Rooms )];
+		[JsonIgnore][Hide] public Room RandomEntrance => EntranceRooms[GetRandomIndex( EntranceRooms )];
+		[JsonIgnore][Hide] public Room RandomRoom => Rooms[GetRandomIndex( Rooms )];
 
 	}
 

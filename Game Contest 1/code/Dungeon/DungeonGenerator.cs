@@ -4,7 +4,9 @@ namespace Dungeon;
 
 public static class DungeonGenerator
 {
-	private static readonly Vector3 DungeonOrigin = new Vector3( 0, 0, -3000 );
+	private static readonly Vector3 DUNGEON_ORIGIN = new Vector3( 0, 0, 0 );
+
+	public const int LOCKED_DOOR_CHANCE = 10;
 
 	private static DungeonDefinition DungeonResource { get; set; }
 
@@ -23,7 +25,7 @@ public static class DungeonGenerator
 		RoomSetup entrance = new RoomSetup( biome.RandomEntrance );
 		if(entrance.Data == null) { Log.Error( "Could not load prefab " + entrance.Prefab ); }
 
-		entrance.GameObject.Transform.Position = DungeonOrigin;
+		entrance.GameObject.Transform.Position = DUNGEON_ORIGIN;
 		entrance.InitiateBounds();
 		entrance.SpawnEntranceDoor();
 		entrance.GameObject.Name = "1 (entrance)";
@@ -252,6 +254,18 @@ public static class DungeonGenerator
 			}
 
 			door.BreakFromPrefab();
+
+			DoorComponent dc = door.Components.GetInDescendantsOrSelf<DoorComponent>();
+
+			// LOCK DOORS
+			if(dc != null)
+			{
+				int r = Game.Random.Next( 0, 100 );
+				if(r <= LOCKED_DOOR_CHANCE)
+				{
+					dc.IsLocked = true;
+				}
+			}
 
 			door.Transform.Position = portal.Transform.Position;
 			door.Transform.Rotation = portal.Transform.Rotation;

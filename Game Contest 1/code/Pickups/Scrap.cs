@@ -1,9 +1,10 @@
-public sealed class Scrap : Carriable
+public sealed class Scrap : Carriable, ISellable
 {
+	public int MinValue { get; set; }
+	public int MaxValue { get; set; }
+	public int Value { get; set; }
 
-	public int Value { get; private set; }
-	[Property] private int MinValue { get; set; } = 20;
-	[Property] private int MaxValue { get; set; } = 30;
+	public override string ToolTip { get; set; }
 
 	protected override void OnStart()
 	{

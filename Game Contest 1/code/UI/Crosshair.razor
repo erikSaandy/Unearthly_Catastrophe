@@ -1,0 +1,31 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root class="container">
+
+	<div class="crosshair @((Owner.PlayerInput.LookingAt == null) ? "" : "hover")">
+		<dif class="fill @((Owner.PlayerInput.LookingAt == null) ? "" : "hover")"></dif>
+	</div>
+
+</root>
+
+@code
+{
+	public Player Owner { get; set; }
+
+	public override void Tick()
+	{
+		base.Tick();
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			Owner.PlayerInput.LookingAt
+		);
+	}
+}

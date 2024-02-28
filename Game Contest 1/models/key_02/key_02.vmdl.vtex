@@ -1,0 +1,10 @@
+{
+  "Sequences": [
+    {
+      "Source": "models/key_02/key_02.vmdl.png",
+      "IsLooping": true,
+      "Frames": 64
+    }
+  ],
+  "OutputTypeString": "2D"
+}

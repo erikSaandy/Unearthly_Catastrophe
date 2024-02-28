@@ -65,9 +65,9 @@
       {
         "Id": "3587ee36-69d9-4f39-8599-fd30254eab3d",
         "Name": "Keyboard",
-        "Position": "28.62382,12.73223,44.20619",
+        "Position": "28.79753,12.73223,44.07281",
         "Rotation": "0,0.3215908,0,0.9468789",
-        "Scale": "0.2159424,0.5873123,0.09102613",
+        "Scale": "0.1654353,0.5088326,0.09102613",
         "Networked": true,
         "Enabled": true,
         "Components": [
@@ -80,16 +80,18 @@
             "Surface": null
           },
           {
-            "__type": "InteractionProxy"
+            "__type": "InteractionProxy",
+            "InteractionTime": 0,
+            "ToolTip": "Open Terminal"
           }
         ]
       },
       {
         "Id": "a36c86b3-0326-4728-970c-918cd13e2354",
         "Name": "Screen",
-        "Position": "9.063806,8.650198,67.97015",
+        "Position": "8.649749,8,66.42448",
         "Rotation": "0,0.7933534,0,0.6087615",
-        "Scale": "0.6086251,0.6152759,0.09102613",
+        "Scale": "0.3574039,0.5384045,0.09102613",
         "Networked": true,
         "Enabled": true,
         "Components": [
@@ -102,7 +104,27 @@
             "Surface": null
           },
           {
-            "__type": "InteractionProxy"
+            "__type": "InteractionProxy",
+            "InteractionTime": 0,
+            "ToolTip": "Open Terminal"
+          }
+        ]
+      },
+      {
+        "Id": "b7ba655b-bdd5-407b-aaff-e265ec2daec5",
+        "Name": "Point Light",
+        "Position": "36,-4,76.00001",
+        "Tags": "light_point,light",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "PointLight",
+            "Attenuation": 1,
+            "FogMode": "Enabled",
+            "FogStrength": 1,
+            "LightColor": "0.91373,0.98039,1,1",
+            "Radius": 400,
+            "Shadows": true
           }
         ]
       }

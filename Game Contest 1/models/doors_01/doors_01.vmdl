@@ -36,9 +36,9 @@
 						parent_bone = ""
 						surface_prop = "wood"
 						collision_tags = "solid"
-						origin = [ 0.000399, 0.009982, 47.050262 ]
+						origin = [ -28.117773, -4.252993, 47.050262 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 51.995697, 3.878901, 93.924072 ]
+						dimensions = [ 51.995697, 4.225203, 93.924072 ]
 					},
 				]
 			},
@@ -65,9 +65,35 @@
 					},
 				]
 			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_box"
+						game_keys = 
+						{
+							bonename = ""
+							dimensions = [ 52.1177, 4.2766, 94.8202 ]
+							offset_origin = [ -28.0384, -4.40829, 47.353 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "prop_data"
+						game_keys = 
+						{
+							bakelighting = true
+							health = 0.0
+						}
+					},
+				]
+			},
 		]
-		model_archetype = "default"
-		primary_associated_entity = ""
+		model_archetype = "physics_prop_model"
+		primary_associated_entity = "prop_physics"
 		anim_graph_name = ""
 		base_model_name = ""
 	}

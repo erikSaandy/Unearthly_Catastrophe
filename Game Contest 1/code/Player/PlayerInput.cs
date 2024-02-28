@@ -15,6 +15,11 @@ public class PlayerInput
 	public bool IsMoving => Owner.Controller.Velocity.WithY( 0 ).Length > 5f;
 	public bool IsRunning => WantsToRun && HasInput && IsMoving;
 
+
+	private IInteractable InteractedWith = null;
+	public IInteractable LookingAt { get; private set; } = null;
+	public float InteractionTimer { get; private set; } = 0;
+
 	public PlayerInput(Player owner)
 	{
 		this.Owner = owner;
@@ -26,23 +31,7 @@ public class PlayerInput
 		AnalogMove = Sandbox.Input.AnalogMove.Normal;
 		WantsToRun = Sandbox.Input.Down( "Run" );
 
-		if ( Sandbox.Input.Pressed( "use" ) )
-		{
-			var from = Owner.CameraController.Camera.Transform.Position;
-			var to = from + Owner.Camera.Transform.Rotation.Forward * 70;
-			IEnumerable<SceneTraceResult> trace = Owner.Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy( Owner.GameObject ).WithoutTags( "owned" ).UseRenderMeshes().Size( 12f ).RunAll();
-			IInteractable interactable = null;
-			foreach ( SceneTraceResult item in trace )
-			{
-				item.GameObject.Components.TryGet( out interactable );
-				if ( interactable != null )
-				{
-					interactable.OnInteract( Owner );
-					break;
-				}
-			}
-
-		}
+		DoInteractionTrace();
 
 		if ( Sandbox.Input.Pressed( "attack1" ) )
 		{
@@ -57,6 +46,54 @@ public class PlayerInput
 		if ( Sandbox.Input.Pressed( "drop" ) )
 		{
 			Owner.Inventory?.DropActive();
+		}
+
+	}
+
+	private void DoInteractionTrace()
+	{
+
+		var from = Owner.CameraController.Camera.Transform.Position;
+		var to = from + Owner.Camera.Transform.Rotation.Forward * 70;
+		IEnumerable<SceneTraceResult> trace = Owner.Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy( Owner.GameObject ).WithoutTags( "owned" ).UseRenderMeshes().Size( 12f ).RunAll();
+
+		IInteractable hit = null;
+		LookingAt = null;
+
+		foreach ( SceneTraceResult item in trace )
+		{
+			item.GameObject.Components.TryGet( out hit );
+			if ( hit != null )
+			{
+				LookingAt = hit;
+
+				if ( Input.Pressed( "use" ) )
+				{
+					InteractedWith = hit;
+				}
+
+				if(InteractedWith == null) { return; }
+
+				if (Input.Down("use"))
+				{
+					InteractionTimer += Time.Delta;
+
+					if(InteractionTimer >= InteractedWith.InteractionTime)
+					{
+						LookingAt.OnInteract( Owner );
+						InteractedWith = null;
+						InteractionTimer = 0;
+					}
+				}
+
+				break;
+			}
+		}
+
+		if(Input.Released("use") || LookingAt == null)
+		{
+			InteractedWith = null;
+			InteractionTimer = 0;
 		}
 
 	}

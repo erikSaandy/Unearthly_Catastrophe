@@ -105,13 +105,6 @@
       ]
     },
     {
-      "Id": "6f5d9d5c-57d7-45f8-8eee-704022b2e95d",
-      "Name": "scrap_test",
-      "Position": "223.1863,-2.648773,0.6708921",
-      "Enabled": true,
-      "__Prefab": "prefabs/scrap_test.prefab"
-    },
-    {
       "Id": "e6f8d0ee-f550-4620-85cf-2e763ce9ce68",
       "Name": "GameObject",
       "Position": "0,0,15.77576",
@@ -122,18 +115,363 @@
     },
     {
       "Id": "73016fe7-31d3-40ca-ad0e-630dad167d30",
-      "Name": "key_02",
-      "Position": "0,0,32",
+      "Name": "Key",
+      "Position": "3000,0,3000",
+      "Enabled": true,
+      "__Prefab": "prefabs/items/key.prefab"
+    },
+    {
+      "Id": "2ca79297-1123-4999-8f1f-30fd975a9c32",
+      "Name": "burger_box",
+      "Position": "3018.875,235.6712,3000.176",
       "Enabled": true,
       "Components": [
         {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/key_02/key_02.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/burger_box/burger_box.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "cdce6a8b-13e6-4b67-8da4-4ec28b565547",
+      "Name": "cola_can",
+      "Position": "3008.448,237.4306,3000.034",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/sbox_props/cola_can/cola_can.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "e28ad350-e61f-405d-bc27-b9c269fc2138",
+      "Name": "petrol_can",
+      "Position": "2996.689,237.3833,3000.043",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/sbox_props/petrol_can/petrol_can.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "7aee17b4-22d7-41d9-8f83-307a86748eaa",
+      "Name": "corrugated_wall_a_sheet_128",
+      "Position": "3032,240,3000.5",
+      "Scale": "0.1539723,0.1539723,0.1539723",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/walls/corrugated_wall_a_sheet_128.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "4f234ef0-9dca-4a1d-9ca4-f8ff41194a3a",
+      "Name": "electrical_tape",
+      "Position": "3012,248,3000.45",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "402b84c0-4ea4-4ab9-ae91-4f7076906128",
+      "Name": "tyre_with_rim",
+      "Position": "2978.253,241.4129,3013.292",
+      "Rotation": "-0.0000001202314,-0.00000004835604,0.7071067,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 100,
+          "IsStatic": false,
+          "Model": "models/props/tyre/tyre_with_rim.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "c4825ff8-9a7c-4d2b-8c96-e1315a7c64a5",
+      "Name": "brick_broken_single_05",
+      "Position": "3024,256,3000.019",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/brick_single/brick_broken_single_05.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "af960c8d-4dbf-4d2a-aba2-341ffaf1b3a1",
+      "Name": "sign_octagon",
+      "Position": "3006.136,284,3005.897",
+      "Rotation": "0,0.7059437,0,0.708268",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/road_signs/sign_octagon.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "ce6a81ae-19b4-4d6d-b4e9-3f88a6f320bf",
+      "Name": "cardboard_box",
+      "Position": "3039.999,271.9994,3000.119",
+      "Rotation": "-0.0000001192093,0.00000005082351,1,0.0000001524705",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 15,
+          "IsStatic": false,
+          "Model": "models/sbox_props/cardboard_box/cardboard_box.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "d368527a-79f2-479e-8814-d80da2e8c22a",
+      "Name": "pizza_box",
+      "Position": "2973.73,288.9153,3000.503",
+      "Rotation": "-0.0000001192093,0.00000005082351,1,0.0000001524705",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 5,
+          "IsStatic": false,
+          "Model": "models/sbox_props/pizza_box/pizza_box.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "92800337-525b-43a7-a8d7-6183e73e3b36",
+      "Name": "storage_box_02",
+      "Position": "3035.999,299.9994,3000",
+      "Rotation": "-0.0000001192093,0.00000005082351,1,0.0000001524705",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 5,
+          "IsStatic": false,
+          "Model": "models/props/trim_sheets/storage/storage_box_02.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "8254958c-7bfc-469e-9386-1a8105141561",
+      "Name": "rubbish_cup",
+      "Position": "3014.89,310.7063,3000.033",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/sbox_props/bin/rubbish_cup.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "55b63c00-684b-428c-b84c-9518fc419828",
+      "Name": "tv",
+      "Position": "2995.954,318.4885,3000.019",
+      "Rotation": "-0.0000001192093,0.00000005082351,1,0.0000001524705",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 20,
+          "IsStatic": false,
+          "Model": "models/sbox_props/tv/tv.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "c0be08bb-2eb7-4649-96e4-2e176a9092d2",
+      "Name": "beer_bottle",
+      "Position": "2965.159,316.5995,3000.034",
+      "Rotation": "-0.0000001192093,0.00000005082351,1,0.0000001524705",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 1,
+          "IsStatic": false,
+          "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "f1690968-eac4-4ad0-a592-fe88e33f887e",
+      "Name": "paintbody",
+      "Position": "2959.998,315.9992,3000",
+      "Rotation": "-0.00000008940697,0.00000005082348,0.9999999,0.0000001524704",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/spraycans/paintbody.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "8bd0e9da-b9ab-41df-be61-ea141e7b9f49",
+      "Name": "wateringcanmetallarge",
+      "Position": "2941.234,303.1226,3000",
+      "Rotation": "-0.00000008940697,0.00000005082348,0.9999999,0.0000001524704",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/wateringcans/wateringcanmetallarge.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "d0d7a0e3-c774-4072-9493-ae6d3a40d938",
+      "Name": "present_box",
+      "Position": "3009.089,344.2871,3000.037",
+      "Rotation": "-0.0000001192093,0.00000005082351,1,0.0000001524705",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/presents/present_box.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "2a7a05cd-fe56-4553-b4e0-451eb23b4333",
+      "Name": "watermelon",
+      "Position": "2976.575,344.1295,3000.011",
+      "Rotation": "-0.0000001192093,0.00000005082351,1,0.0000001524705",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 2,
+          "IsStatic": false,
+          "Model": "models/sbox_props/watermelon/watermelon.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "ba22006c-d250-4926-9135-0a330f51084f",
+      "Name": "tyre",
+      "Position": "2963.999,241.1102,3013.292",
+      "Rotation": "-0.0000000991579,-0.00000002728263,0.7071066,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/tyre/tyre.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
+        }
+      ]
+    },
+    {
+      "Id": "9c1652fa-9514-4769-b4cc-7356e3c813f1",
+      "Name": "road_sign_triangle_complete_flipped",
+      "Position": "2950.002,317.288,3000.277",
+      "Rotation": "0.00000003871872,0.00000009527588,0.1305265,-0.9914447",
+      "Scale": "0.4577961,0.4577961,0.4577961",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Prop",
+          "Health": 10,
+          "IsStatic": false,
+          "Model": "models/sbox_props/road_signs/road_sign_triangle_complete_flipped.vmdl",
+          "OnPropBreak": null,
+          "OnPropTakeDamage": null,
+          "ShowCreatedComponents": false
         }
       ]
     }
@@ -161,6 +499,27 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-27T23:07:01.1512526\u002B01:00",
-  "__references": []
+  "LastSaved": "2024-02-28T22:33:09.4383794\u002B01:00",
+  "__references": [
+    "facepunch.beer_bottle",
+    "facepunch.brick_broken_single_05",
+    "facepunch.burger_box",
+    "facepunch.cardboard_box",
+    "facepunch.corrugated_wall_a_sheet_128",
+    "facepunch.electrical_tape",
+    "facepunch.paintspraycan",
+    "facepunch.petrol_can",
+    "facepunch.pizza_box",
+    "facepunch.present_box",
+    "facepunch.road_sign_triangle_complete_flip",
+    "facepunch.rubbish_cup",
+    "facepunch.sign_octagon",
+    "facepunch.soda_can",
+    "facepunch.storage_box_02",
+    "facepunch.tv",
+    "facepunch.tyre",
+    "facepunch.tyre_with_rim",
+    "facepunch.watering_can_03",
+    "facepunch.watermelon"
+  ]
 }

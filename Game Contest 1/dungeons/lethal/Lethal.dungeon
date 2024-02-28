@@ -117,6 +117,10 @@
     {
       "Weight": 100,
       "Prefab": "dungeons/lethal/doors/door_01.prefab"
+    },
+    {
+      "Weight": 75,
+      "Prefab": "dungeons/lethal/doors/door_02.prefab"
     }
   ],
   "CorridorCap": "dungeons/lethal/caps/cap_corridor.prefab",

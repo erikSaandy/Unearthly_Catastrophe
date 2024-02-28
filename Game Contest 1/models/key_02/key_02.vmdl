@@ -18,17 +18,6 @@
 							health = 0.0
 						}
 					},
-					{
-						_class = "GenericGameData"
-						game_class = "ao_proxy_box"
-						game_keys = 
-						{
-							bonename = ""
-							dimensions = [ 7.98496, 15.4722, 0.55187 ]
-							offset_origin = [ -0.133342, 1.09516, 0.25111 ]
-							offset_angles = [ 0.0, 0.0, 0.0 ]
-						}
-					},
 				]
 			},
 			{
@@ -56,7 +45,7 @@
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "metal.weapon"
+						surface_prop = "metal.sheet"
 						collision_tags = "solid"
 						origin = [ -0.103203, 3.849359, 0.258896 ]
 						angles = [ 0.0, 0.0, 0.0 ]
@@ -65,7 +54,7 @@
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "metal.weapon"
+						surface_prop = "metal.sheet"
 						collision_tags = "solid"
 						origin = [ -0.132641, -2.460659, 0.258896 ]
 						angles = [ 0.0, -45.0, 0.0 ]

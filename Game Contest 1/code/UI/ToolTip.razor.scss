@@ -1,0 +1,23 @@
+.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    > .text {
+        left: 500px;
+        justify-content: center;
+        width: 600px;
+        height: 60px;
+        align-items: center;
+        border-radius: 50%;
+        font-family: Poppins;
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: white;
+    }
+}

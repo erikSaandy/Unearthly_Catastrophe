@@ -1,0 +1,30 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root class="fillbar">
+	<div class="Fill" @ref="FillPanel"> </div>
+</root>
+
+@code
+{
+	Panel FillPanel { get; set; }
+	public float Fill { get; set; } = 1f;
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		FillPanel.Style.Width = Length.Percent(Fill * 100f);
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			Fill
+		);
+	}
+}

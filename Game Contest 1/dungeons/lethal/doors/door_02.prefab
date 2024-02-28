@@ -1,0 +1,121 @@
+{
+  "RootObject": {
+    "Id": "b2b57488-33a1-4883-90ea-3dbeea5330bc",
+    "Name": "door_02",
+    "Enabled": true,
+    "Children": [
+      {
+        "Id": "f69610be-9c3a-444e-bb3f-d5aee0e7809a",
+        "Name": "door_frame_01",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Model": "models/doors_01/door_frame_01.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelPhysics",
+            "Locking": {},
+            "Model": "models/doors_01/door_frame_01.vmdl",
+            "Renderer": null,
+            "RigidbodyFlags": 0
+          }
+        ],
+        "Children": [
+          {
+            "Id": "985187bd-aab5-488c-928b-495d115ca7ff",
+            "Name": "doors_01",
+            "Position": "28,4,0",
+            "Networked": true,
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "DoorComponent",
+                "OpenAngle": -135,
+                "RotationalAxis": "0,1,0"
+              },
+              {
+                "__type": "Prop",
+                "Health": 0,
+                "IsStatic": true,
+                "Model": "models/doors_01/doors_01.vmdl",
+                "OnPropBreak": null,
+                "OnPropTakeDamage": null,
+                "ShowCreatedComponents": false
+              },
+              {
+                "__type": "ModelPhysics",
+                "__enabled": false,
+                "Locking": {},
+                "Model": "models/doors_01/doors_01.vmdl",
+                "Renderer": null,
+                "RigidbodyFlags": 0
+              }
+            ],
+            "Children": [
+              {
+                "Id": "4d0143e1-10dc-47e3-8b12-a8835e71335a",
+                "Name": "door_handle_01",
+                "Position": "-43.99998,-2.437618,39.99998",
+                "Rotation": "-0.0000001376788,-0.7071067,-0.7071068,0.0000001376788",
+                "Enabled": true,
+                "Components": [
+                  {
+                    "__type": "ModelRenderer",
+                    "BodyGroups": 18446744073709551615,
+                    "MaterialGroup": null,
+                    "MaterialOverride": null,
+                    "Model": "models/doors_01/door_handle_01.vmdl",
+                    "RenderType": "On",
+                    "Tint": "1,1,1,1"
+                  },
+                  {
+                    "__type": "ModelPhysics",
+                    "Locking": {},
+                    "Model": "models/doors_01/door_handle_01.vmdl",
+                    "Renderer": null,
+                    "RigidbodyFlags": 0
+                  }
+                ]
+              },
+              {
+                "Id": "2cbc3f8a-f0f4-4a4e-8d62-27f69321ee97",
+                "Name": "door_handle_01",
+                "Position": "-43.99998,-6.225243,40",
+                "Rotation": "0.0000002753576,0.7071068,-0.7071068,0.0000002753576",
+                "Enabled": true,
+                "Components": [
+                  {
+                    "__type": "ModelRenderer",
+                    "BodyGroups": 18446744073709551615,
+                    "MaterialGroup": null,
+                    "MaterialOverride": null,
+                    "Model": "models/doors_01/door_handle_01.vmdl",
+                    "RenderType": "On",
+                    "Tint": "1,1,1,1"
+                  },
+                  {
+                    "__type": "ModelPhysics",
+                    "Locking": {},
+                    "Model": "models/doors_01/door_handle_01.vmdl",
+                    "Renderer": null,
+                    "RigidbodyFlags": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

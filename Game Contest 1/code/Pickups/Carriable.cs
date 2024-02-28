@@ -7,6 +7,10 @@ using System.Numerics;
 
 public abstract class Carriable : Component, ICarriable
 {
+	public float InteractionTime { get; set; } = 0f;
+	public abstract string ToolTip { get; set; }
+	public virtual string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - " + ToolTip; }
+
 	public Player Owner { get; set; }
 
 	[Property] public Texture Icon { get; set; }
@@ -21,7 +25,6 @@ public abstract class Carriable : Component, ICarriable
 
 	[Property] public Angles HeldAngleOffset { get; set; }
 
-
 	protected override void OnAwake()
 	{
 		GameObject.Network.SetOwnerTransfer( OwnerTransfer.Takeover );
@@ -29,6 +32,8 @@ public abstract class Carriable : Component, ICarriable
 		Renderer = Components.Get<ModelRenderer>();
 		Collider = Components.Get<ModelCollider>();
 		Rigidbody = Components.Get<Rigidbody>();
+
+		GameObject.BreakFromPrefab();
 	}
 
 	public virtual void OnInteract( Player player )

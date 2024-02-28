@@ -4,6 +4,7 @@ using System.Numerics;
 
 public sealed class Flashlight : Carriable
 {
+	public override string ToolTip { get; set; } = "Pickup Flashlight";
 
 	[Property] public SpotLight LightSource { get; set; }
 	bool IsOn = false;
@@ -42,7 +43,7 @@ public sealed class Flashlight : Carriable
 
 	public override void Undeploy()
 	{
-		base.Deploy();
+		base.Undeploy();
 
 		GameObject.Enabled = true;
 

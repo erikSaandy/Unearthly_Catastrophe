@@ -20,7 +20,7 @@ public class TerminalPageMoonList : ITerminalPage
 			Log.Info( moon.ResourceName );
 
 			l.Add( " " );
-			l.Add( $"{moon.ResourceName} ('{moon.TravelCost} Credit)" );
+			l.Add( $"> {moon.ResourceName.ToUpper()} ( '{moon.TravelCost} Credit )" );
 		}
 
 		return l.ToArray();

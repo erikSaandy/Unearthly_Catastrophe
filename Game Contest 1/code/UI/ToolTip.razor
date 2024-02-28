@@ -1,0 +1,38 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root class="container">
+
+	@if(Owner.PlayerInput?.LookingAt != null) {
+
+		<div class="text">@text</div>
+		<FillBar fill="@fill" style="width: 300px; left:500px;"/>
+	}
+
+</root>
+
+@code
+{
+	public Player Owner { get; set; }
+
+	string text => Owner.PlayerInput?.LookingAt == null ? "" : Owner.PlayerInput.LookingAt.GetToolTip( Owner );
+	float fill => (Owner.PlayerInput?.LookingAt == null) ? 0 : (Owner.PlayerInput.InteractionTimer / Owner.PlayerInput.LookingAt.InteractionTime);
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		if (Owner == null) { return; }
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			text, fill
+		);
+	}
+}

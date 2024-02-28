@@ -1,0 +1,10 @@
+.fillbar {
+    position: inherit;
+    width: 500px;
+    height: 2px;
+    background-color: rgba(0,0,0,0);
+
+    > .fill {
+        background-color: white;
+    }
+}

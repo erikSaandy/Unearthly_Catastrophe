@@ -251,6 +251,11 @@ namespace Saandy {
             return (float)Math.Sqrt((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y));
         }
 
+		public static float Lerp( float a, float b, float t )
+		{
+			return a + (b - a) * t;
+		}
+
 		public static Vector3 Lerp( Vector3 a, Vector3 b, float t )
 		{
 			return a + (b - a) * t;

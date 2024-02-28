@@ -2,6 +2,7 @@
 using Dungeon;
 using Saandy;
 using Sandbox.Citizen;
+using Sandbox.UI;
 
 public sealed class Player : Component
 {
@@ -21,7 +22,6 @@ public sealed class Player : Component
 	public InventoryComponent Inventory { get; private set; }
 
 	public PlayerInput PlayerInput { get; set; }
-
 
 	[Sync] public CitizenAnimationHelper.HoldTypes CurrentHoldType { get; set; }
 
