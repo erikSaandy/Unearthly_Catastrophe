@@ -1,7 +1,8 @@
 {
   "RootObject": {
-    "Id": "9fedbf29-831d-48b1-8f86-8948740b0302",
+    "Id": "ee28aee0-775e-4fa5-a802-01d655fa10b4",
     "Name": "corridor_04",
+    "Networked": true,
     "Enabled": true,
     "Components": [
       {
@@ -13,28 +14,28 @@
         "Portals": [
           {
             "_type": "component",
-            "go": "1bb17ed5-ae3f-4ece-96dc-c0aaf0c203d2",
+            "go": "3e51497c-dd99-4c91-9852-9a131d666575",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "5186e3f0-73c6-445c-a83d-88de9ff7d4e6",
+            "go": "5e9c50f4-286f-47bb-8b0a-bab58e378327",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "2c1d229c-3ab4-420b-84e3-f53a22d18987",
+            "go": "365029fb-add4-4c19-8ac4-05b6e64cd7d0",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "47e9568c-dd4d-4922-bfdb-9f28be73164a",
+            "go": "352b14f6-55ef-49b3-8313-d12cf084813d",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "9fedbf29-831d-48b1-8f86-8948740b0302",
+          "go": "ee28aee0-775e-4fa5-a802-01d655fa10b4",
           "component_type": "ModelRenderer"
         }
       },
@@ -57,10 +58,11 @@
     ],
     "Children": [
       {
-        "Id": "1bb17ed5-ae3f-4ece-96dc-c0aaf0c203d2",
+        "Id": "3e51497c-dd99-4c91-9852-9a131d666575",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -70,10 +72,11 @@
         ]
       },
       {
-        "Id": "5186e3f0-73c6-445c-a83d-88de9ff7d4e6",
+        "Id": "5e9c50f4-286f-47bb-8b0a-bab58e378327",
         "Name": "Door (2)",
         "Position": "-132,0,0",
         "Rotation": "0,0,-0.7071067,0.7071069",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -83,9 +86,10 @@
         ]
       },
       {
-        "Id": "2c1d229c-3ab4-420b-84e3-f53a22d18987",
+        "Id": "365029fb-add4-4c19-8ac4-05b6e64cd7d0",
         "Name": "Door (3)",
         "Position": "0,-132,0",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -95,10 +99,11 @@
         ]
       },
       {
-        "Id": "47e9568c-dd4d-4922-bfdb-9f28be73164a",
+        "Id": "352b14f6-55ef-49b3-8313-d12cf084813d",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {

@@ -110,7 +110,7 @@
   "EntranceDoors": [
     {
       "Weight": 100,
-      "Prefab": "dungeons/lethal/doors/door_entrance_01.prefab"
+      "Prefab": "prefabs/door_entrance_01.prefab"
     }
   ],
   "Doors": [

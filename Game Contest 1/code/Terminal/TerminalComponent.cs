@@ -13,6 +13,9 @@ public sealed class TerminalComponent : Component
 		new TerminalCommandNextPage("next")
 	};
 
+	[Property][Category("Sound")] public SoundEvent TypingSound { get; set; }
+	[Property][Category( "Sound" )] public SoundEvent TypingEnterSound { get; set; }
+
 	public Player Owner { get; private set; } = default;
 
 	/// <summary>
@@ -31,7 +34,7 @@ public sealed class TerminalComponent : Component
 
 	public string PageInfo => "[PAGE " + (PageNumber + 1) + "/" + PageCount + "]";
 
-	[Property] public List<string> TextLines { get; set; } = new();
+	public List<string> TextLines { get; set; } = new();
 
 	public int PageNumber { get; private set; } = 0;
 
@@ -81,7 +84,7 @@ public sealed class TerminalComponent : Component
 		Network.TakeOwnership();
 
 		Log.Info( player + " interacted with terminal." );
-		player.PlayerInput = new TerminalInput( player, this );
+		player.PlayerInput = new PlayerTerminalInput( player, this );
 		Hud.Focus( true );
 
 	}
@@ -95,11 +98,19 @@ public sealed class TerminalComponent : Component
 
 	}
 
+
+	[Broadcast]
 	public void OnKeyPressed(string button)
 	{
 		if(button == "enter")
 		{
-			OnSubmit();
+			if ( !GameObject.IsProxy ) { OnSubmit(); }
+
+			Sound.Play( TypingEnterSound );
+		}
+		else
+		{
+			Sound.Play( TypingSound );
 		}
 
 	}

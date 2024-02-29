@@ -1,0 +1,54 @@
+{
+  "RootObject": {
+    "Id": "ce39d1a3-1e53-4c4e-b859-1ae4a506b981",
+    "Name": "kronos",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Moon",
+        "LandingPad": null
+      }
+    ],
+    "Children": [
+      {
+        "Id": "c884fbc2-2ebe-42d3-a629-3e45fb317448",
+        "Name": "Map Instance",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "MapInstance",
+            "MapName": "maps/moon_krypton.vmap",
+            "OnMapLoaded": null,
+            "OnMapUnloaded": null,
+            "UseMapFromLaunch": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "Id": "709c62fd-8cfd-42f0-9cd2-a1127b2514b8",
+        "Name": "door_entrance_01",
+        "Position": "-192,-0,0",
+        "Rotation": "0,0,-0.9999999,0.0000001490116",
+        "Enabled": true,
+        "__Prefab": "prefabs/door_entrance_01.prefab"
+      },
+      {
+        "Id": "06bda707-317e-4745-9600-b7490bb49589",
+        "Name": "Landing pad",
+        "Position": "1024,0,64",
+        "Rotation": "0,0,0.258819,0.9659258",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "ShipLandingPadComponent"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

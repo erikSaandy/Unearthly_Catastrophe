@@ -2,6 +2,7 @@
   "RootObject": {
     "Id": "73016fe7-31d3-40ca-ad0e-630dad167d30",
     "Name": "key",
+    "Networked": true,
     "Enabled": true,
     "Components": [
       {

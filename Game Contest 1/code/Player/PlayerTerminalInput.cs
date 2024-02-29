@@ -3,11 +3,11 @@ using Sandbox.UI;
 using Sandbox.VR;
 using System;
 
-public class TerminalInput : PlayerInput
+public class PlayerTerminalInput : PlayerInput
 {
 	private TerminalComponent Terminal { get; set; }
 
-	public TerminalInput( Player owner, TerminalComponent terminal ) : base(owner) {
+	public PlayerTerminalInput( Player owner, TerminalComponent terminal ) : base(owner) {
 
 		this.Terminal = terminal;
 

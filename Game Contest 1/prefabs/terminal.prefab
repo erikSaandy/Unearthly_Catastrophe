@@ -38,7 +38,8 @@
           "_type": "gameobject",
           "go": "a36c86b3-0326-4728-970c-918cd13e2354"
         },
-        "TextLines": []
+        "TypingEnterSound": "sounds/keyboard_typing_enter.sound",
+        "TypingSound": "sounds/keyboard_typing.sound"
       }
     ],
     "Children": [
@@ -107,24 +108,6 @@
             "__type": "InteractionProxy",
             "InteractionTime": 0,
             "ToolTip": "Open Terminal"
-          }
-        ]
-      },
-      {
-        "Id": "b7ba655b-bdd5-407b-aaff-e265ec2daec5",
-        "Name": "Point Light",
-        "Position": "36,-4,76.00001",
-        "Tags": "light_point,light",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "PointLight",
-            "Attenuation": 1,
-            "FogMode": "Enabled",
-            "FogStrength": 1,
-            "LightColor": "0.91373,0.98039,1,1",
-            "Radius": 400,
-            "Shadows": true
           }
         ]
       }

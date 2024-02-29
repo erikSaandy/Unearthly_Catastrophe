@@ -15,10 +15,8 @@ public class TerminalPageMoonList : ITerminalPage
 		List<string> l = Lines.ToList();
 
 		// List all moons.
-		foreach(MoonDefinition moon in LethalGameManager.Instance.MoonDefinitions )
+		foreach (MoonDefinition moon in LethalGameManager.MoonDefinitions )
 		{
-			Log.Info( moon.ResourceName );
-
 			l.Add( " " );
 			l.Add( $"> {moon.ResourceName.ToUpper()} ( '{moon.TravelCost} Credit )" );
 		}

@@ -4,7 +4,7 @@ namespace Dungeon;
 
 public static class DungeonGenerator
 {
-	private static readonly Vector3 DUNGEON_ORIGIN = new Vector3( 0, 0, 0 );
+	private static readonly Vector3 DUNGEON_ORIGIN = new Vector3( 0, 0, -2000 );
 
 	public const int LOCKED_DOOR_CHANCE = 10;
 
@@ -13,6 +13,7 @@ public static class DungeonGenerator
 	private static List<RoomSetup> SpawnedRooms;
 
 	private const int MainIterations = 15;
+
 
 	public static void GenerateDungeon(DungeonDefinition def)
 	{
@@ -29,6 +30,8 @@ public static class DungeonGenerator
 		entrance.InitiateBounds();
 		entrance.SpawnEntranceDoor();
 		entrance.GameObject.Name = "1 (entrance)";
+		entrance.GameObject.SetParent( LethalGameManager.CurrentMoon.GameObject );
+		entrance.GameObject.NetworkSpawn();
 
 		SpawnedRooms.Add( entrance );
 
@@ -44,7 +47,7 @@ public static class DungeonGenerator
 
 		if ( biomeDepth >= currentBiome.Continuance )
 		{
-			Log.Info( "> new biome" );
+			//Log.Info( "> new biome" );
 			currentBiome = DungeonResource.RandomBiome;
 			biomeDepth = 0;
 		}
@@ -54,7 +57,7 @@ public static class DungeonGenerator
 
 			if ( currentRoom == SpawnedRooms[0] ) { 
 				Log.Info( "[entrance has " + currentRoom.Data.Portals.Count + " portals left.]" );
-				Log.Info( iteration );
+				//Log.Info( iteration );
 			}
 			
 			RoomSetup nextRoom = null;
@@ -123,6 +126,8 @@ public static class DungeonGenerator
 		}
 
 		if( nextRoom != null ) {
+
+			nextRoom.GameObject.NetworkSpawn();
 			SpawnedRooms.Add( nextRoom );
 			//Log.Info( $"> Spawned room #{ SpawnedRooms.Count } (Iteration: {iteration})" );
 		}
@@ -154,6 +159,7 @@ public static class DungeonGenerator
 
 		public RoomSetup(Room room)
 		{
+
 			Prefab = room.Prefab;
 			PrefabFile pf = null;
 			if(!ResourceLibrary.TryGet<PrefabFile>( room.Prefab, out pf )) { return; }
@@ -162,6 +168,7 @@ public static class DungeonGenerator
 			GameObject.Name = room.Prefab;
 
 			Data = GameObject.Components.Get<RoomData>();
+
 
 			// Get new portal (doesn't delete in this case.)
 			MoveToNextPortal();
@@ -175,6 +182,8 @@ public static class DungeonGenerator
 			GameObject.Transform.Rotation = prevPortal.Rotation.Angles() - newPortal.LocalRotation.Angles() - new Angles( 0, 180, 0 );
 			//GameObject.Transform.Rotation = prevPortal.Rotation.RotateAroundAxis( prevPortal.Rotation.Up, 180 ).Angles() - newPortal.LocalRotation.Angles();
 			GameObject.Transform.Position = prevPortal.Position - newPortal.Position;
+
+			GameObject.SetParent( LethalGameManager.CurrentMoon.GameObject );
 
 			SpawnDoor( ActivePortal );
 
@@ -260,7 +269,7 @@ public static class DungeonGenerator
 			// LOCK DOORS
 			if(dc != null)
 			{
-				int r = Game.Random.Next( 0, 100 );
+				int r = LethalGameManager.Random.Next( 0, 100 );
 				if(r <= LOCKED_DOOR_CHANCE)
 				{
 					dc.IsLocked = true;
@@ -270,6 +279,8 @@ public static class DungeonGenerator
 			door.Transform.Position = portal.Transform.Position;
 			door.Transform.Rotation = portal.Transform.Rotation;
 			door.SetParent( GameObject );
+			door.NetworkSpawn();
+
 		}
 
 		public void SpawnBranchCap()

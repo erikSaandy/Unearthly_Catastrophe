@@ -56,6 +56,9 @@ public sealed class Player : Component
 		CurrentHud = HudObject.Components.Get<AliveHud>(true);
 		CurrentHud.Enabled = true;
 
+		LethalGameManager.OnStartLoadMoon += OnStartLoadMoon;
+		LethalGameManager.OnLoadedMoon += OnLoadedMoon;
+
 	}
 
 	protected override void OnUpdate()
@@ -73,6 +76,17 @@ public sealed class Player : Component
 
 	}
 
+	private void OnStartLoadMoon()
+	{
+		PlayerInput = new PlayerFreezeInput( this );
+		Log.Info( "freeze" );
+	}
+
+	private void OnLoadedMoon()
+	{
+		PlayerInput = new PlayerInput( this );
+	}
+
 	[Broadcast]
 	private void OnFootstep(SceneModel.FootstepEvent footstep)
 	{
@@ -86,6 +100,10 @@ public sealed class Player : Component
 		if ( GameObject.IsProxy ) { return; }
 
 		CurrentHud?.Destroy();
+
+		LethalGameManager.OnStartLoadMoon -= OnStartLoadMoon;
+		LethalGameManager.OnLoadedMoon -= OnLoadedMoon;
+
 	}
 
 

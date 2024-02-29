@@ -11,6 +11,12 @@ public sealed class RoomData : Component
 
 	[Property] public BBox Bounds { get; set; }
 
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+	}
+
 	protected override void DrawGizmos()
 	{
 		BBox AdjustedBounds = Bounds.Translate(-Transform.Position );

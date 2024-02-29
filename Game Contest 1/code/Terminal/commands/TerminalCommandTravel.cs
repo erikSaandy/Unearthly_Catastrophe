@@ -10,6 +10,18 @@ public class TerminalCommandTravel : TerminalCommand
 	public override void Run( TerminalComponent Terminal, params string[] parts )
 	{
 
+		if(parts.Length == 0) { return; }
+
+		for(int i = 0; i < LethalGameManager.MoonDefinitions.Length; i++ )
+		{
+			if( LethalGameManager.MoonDefinitions[i].ResourceName.ToLower() == parts[0].ToLower() )
+			{
+				Terminal.Exit();
+				Terminal.OpenPage( new TerminalPageMain() );
+
+				LethalGameManager.Instance.LoadMoon( LethalGameManager.MoonDefinitions[i] );
+			}
+		}
 	}
 
 }

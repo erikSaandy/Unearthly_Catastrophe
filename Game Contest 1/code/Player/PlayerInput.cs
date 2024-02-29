@@ -62,12 +62,12 @@ public class PlayerInput
 
 		foreach ( SceneTraceResult item in trace )
 		{
-			item.GameObject.Components.TryGet( out hit );
+			item.GameObject?.Components.TryGet( out hit );
 			if ( hit != null )
 			{
 				LookingAt = hit;
 
-				if ( Input.Pressed( "use" ) )
+				if ( Input.Pressed( "use" ) && hit.IsInteractable( Owner ) )
 				{
 					InteractedWith = hit;
 				}

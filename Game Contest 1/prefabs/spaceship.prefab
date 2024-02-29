@@ -1,23 +1,36 @@
 {
   "RootObject": {
-    "Id": "4b29bbd5-c7a6-43f2-9b5b-d31e9be80c40",
+    "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
     "Name": "spaceship",
     "Networked": true,
     "Enabled": true,
     "Components": [
       {
-        "__type": "Prop",
-        "Health": 0,
-        "IsStatic": true,
+        "__type": "ShipComponent"
+      },
+      {
+        "__type": "SkinnedModelRenderer",
+        "AnimationGraph": null,
+        "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
+        "CreateBoneObjects": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
         "Model": "models/spaceship/spaceship.vmdl",
-        "OnPropBreak": null,
-        "OnPropTakeDamage": null,
-        "ShowCreatedComponents": false
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/spaceship/spaceship.vmdl",
+        "Static": true,
+        "Surface": null
       }
     ],
     "Children": [
       {
-        "Id": "ab67d36b-b69a-46a3-b517-45facef45e6a",
+        "Id": "008c6826-2098-461f-8b33-78990bd09da7",
         "Name": "fluorescent_ceiling_light01",
         "Position": "0,-288,155.996",
         "Rotation": "-0.000003279054,0.9999999,0.000001093018,0",
@@ -35,7 +48,7 @@
         ],
         "Children": [
           {
-            "Id": "87efe5e0-b8a4-41f7-a398-538595549b7f",
+            "Id": "6038d80d-66c3-4bbe-8653-ba02de24824a",
             "Name": "Point Light",
             "Position": "0.0000000001433341,-0.00004371203,19.99603",
             "Rotation": "0.0000000000004547474,0.8728825,-0.0000000000002273737,0.4879304",
@@ -56,7 +69,7 @@
         ]
       },
       {
-        "Id": "b218bf35-3187-489e-a1da-9a2e46e9fb85",
+        "Id": "d244dd0d-9a11-4ba1-8f1c-6ae6bfffc128",
         "Name": "industrial_light02b",
         "Position": "-85.89304,24,120",
         "Rotation": "0.4997322,0.4997323,0.5002676,0.5002677",
@@ -74,7 +87,7 @@
         ],
         "Children": [
           {
-            "Id": "37601c90-8e84-41a2-9201-2b1e23a9585d",
+            "Id": "d76dba47-a4f6-4e88-b82c-e18a9979e656",
             "Name": "Point Light",
             "Position": "-0.00001957582,-8.023436,21.88446",
             "Tags": "light_point,light",
@@ -94,7 +107,7 @@
         ]
       },
       {
-        "Id": "8b1c48b1-52d6-4a1c-a706-e175a38e8683",
+        "Id": "b90416ce-6c63-4b90-8746-e9dab06b718c",
         "Name": "industrial_light02b (1)",
         "Position": "85.91022,23.99999,119.9081",
         "Rotation": "-0.4997323,0.4997323,0.5002676,-0.5002676",
@@ -112,7 +125,7 @@
         ],
         "Children": [
           {
-            "Id": "f5e5f2b6-0d63-43e2-87fd-be77c686242a",
+            "Id": "b8390f3f-2bbf-42c5-9f3a-d07649b8de4f",
             "Name": "Point Light",
             "Position": "0.00000259761,-7.999965,21.78178",
             "Tags": "light_point,light",
@@ -132,7 +145,7 @@
         ]
       },
       {
-        "Id": "2ebb0ad2-aa9d-473a-8b5d-49c245449922",
+        "Id": "19554343-6a5b-40c5-acb1-b8b9feee453d",
         "Name": "Spawnpoint (5)",
         "Position": "-56,24,1.006469",
         "Enabled": true,
@@ -144,7 +157,7 @@
         ]
       },
       {
-        "Id": "049268c2-8c42-49bd-8390-d4c1b710ba44",
+        "Id": "c31b3407-d0e4-4c4e-88d0-9aacc98cbde7",
         "Name": "Spawnpoint (4)",
         "Position": "-56,72,1.006469",
         "Enabled": true,
@@ -156,7 +169,7 @@
         ]
       },
       {
-        "Id": "6a3b233a-5557-46cc-b64f-e773f9ce3437",
+        "Id": "05f162ba-9196-46c0-bf37-0bd2bffe11dd",
         "Name": "Spawnpoint (3)",
         "Position": "54.79461,24,1.006469",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -169,7 +182,7 @@
         ]
       },
       {
-        "Id": "9798f4e7-52a7-4c37-bdbe-ea52445c639e",
+        "Id": "3e9ca9f7-68ac-436d-a295-8853eef278ac",
         "Name": "Spawnpoint (2)",
         "Position": "54.79461,72,1.006469",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -182,7 +195,7 @@
         ]
       },
       {
-        "Id": "e377fbba-d849-4579-ae41-967c530e6714",
+        "Id": "42349e64-07b3-4cda-b423-7bf0ec14142b",
         "Name": "Spawnpoint (1)",
         "Position": "-56,-24,1.006469",
         "Enabled": true,
@@ -194,7 +207,7 @@
         ]
       },
       {
-        "Id": "f1ea31b0-685c-459c-9306-6a42dca73cd4",
+        "Id": "9ffec092-7d52-459b-bca4-c3e8fd5da0ca",
         "Name": "Spawnpoint",
         "Position": "54.79461,-24,1.006469",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -207,7 +220,7 @@
         ]
       },
       {
-        "Id": "b2421bd9-fd82-4644-a3ac-b411639aab05",
+        "Id": "6152d3bb-9828-4ca3-9fd8-40e48d8b64d9",
         "Name": "GameObject (1)",
         "Position": "87.6813,-195.1613,0",
         "Rotation": "0,0,-0.9238794,0.3826834",
@@ -216,7 +229,7 @@
         "__Prefab": "prefabs/terminal.prefab"
       },
       {
-        "Id": "4a5736c4-7d77-4c6a-ba88-17680310ffee",
+        "Id": "20822cb6-69c6-43a1-a3dd-8f75460597e6",
         "Name": "GameObject (2)",
         "Position": "18.74464,-276.499,10.24886",
         "Tags": "item",
@@ -225,7 +238,7 @@
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
-        "Id": "0d2df318-7032-4efe-ad9b-936ae6bc918c",
+        "Id": "71538b45-e207-4e77-9279-c7b56d47eb1a",
         "Name": "probe",
         "Position": "0,0,60",
         "Enabled": true,
@@ -244,7 +257,7 @@
         ]
       },
       {
-        "Id": "0feebd30-0188-4c0e-b2ca-bd9363ca730c",
+        "Id": "13182d72-f309-498e-b247-a089f8bac55c",
         "Name": "probe (1)",
         "Position": "0,-312,60",
         "Enabled": true,

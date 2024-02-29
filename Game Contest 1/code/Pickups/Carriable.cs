@@ -7,6 +7,8 @@ using System.Numerics;
 
 public abstract class Carriable : Component, ICarriable
 {
+	public bool IsInteractable( Player player ) { return true; }
+
 	public float InteractionTime { get; set; } = 0f;
 	public abstract string ToolTip { get; set; }
 	public virtual string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - " + ToolTip; }

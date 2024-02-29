@@ -7,5 +7,9 @@ public partial class MoonDefinition : GameResource
 	
 	//TODO: Dungeon size stuff, loot potnetial, danger
 
-	[ResourceType( "vmap" )][JsonInclude][Property] public string MapPath { get; set; }
-}		
+	[ResourceType( "prefab" )][JsonInclude][Property] public string MoonPrefab { get; set; }
+
+
+	[ResourceType( "dungeon" )][JsonInclude][Property] public List<string> DungeonDefinitions { get; set; }
+
+}

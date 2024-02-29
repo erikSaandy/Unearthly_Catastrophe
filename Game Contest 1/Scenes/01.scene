@@ -1,0 +1,84 @@
+{
+  "Id": "a9244d95-87e1-439e-b1fc-e9eed8060b38",
+  "GameObjects": [
+    {
+      "Id": "8a21b5e3-859e-4888-9f68-7157ef4da4e3",
+      "Name": "Object",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ShipComponent"
+        }
+      ],
+      "Children": [
+        {
+          "Id": "703b2287-04ff-4c13-a3cd-72dc4b54808d",
+          "Name": "spaceship",
+          "Networked": true,
+          "Enabled": true,
+          "__Prefab": "prefabs/spaceship.prefab"
+        },
+        {
+          "Id": "a596558e-008f-48ed-afdc-fa196ce798e3",
+          "Name": "key",
+          "Enabled": true,
+          "__Prefab": "prefabs/items/key.prefab"
+        }
+      ]
+    },
+    {
+      "Id": "0ac8ba4c-8d93-4770-93fb-7aef8534aedd",
+      "Name": "Sun",
+      "Position": "-3.289985,490.8986,158.2825",
+      "Rotation": "0.4330126,0.2500001,-0.7499999,0.4330128",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "Id": "91ee195a-0fc5-483a-902e-5296c90894a4",
+      "Name": "asscrack",
+      "Position": "-1247.865,-43.91985,621.7286",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ShipComponent"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "01",
+  "Description": "",
+  "LastSaved": "2024-02-29T13:26:02.0370845\u002B01:00",
+  "__references": []
+}

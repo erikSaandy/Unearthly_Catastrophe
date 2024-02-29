@@ -1,0 +1,27 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+<root class="container @(LethalGameManager.IsLoading ? "visible" : "")">
+	Loading... 
+</root>
+
+@code
+{
+	public Player Owner { get; set; }
+
+	public override void Tick()
+	{
+		base.Tick();
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			LethalGameManager.IsLoading
+		);
+	}
+}

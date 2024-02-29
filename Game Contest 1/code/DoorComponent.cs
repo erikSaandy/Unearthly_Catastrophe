@@ -3,8 +3,10 @@ using Sandbox;
 
 public class DoorComponent : Component, IInteractable
 {
+	public bool IsInteractable( Player player ) { return !IsLocked || IsOpen || (IsLocked && player.Inventory?.ActiveItem is Key); }
 	public float InteractionTime { get; set; } = 0.7f;
 	public string ToolTip { get; set; } = "";
+
 
 	public virtual string GetToolTip( Player player ) { 
 
@@ -12,11 +14,11 @@ public class DoorComponent : Component, IInteractable
 		{
 			if(player.Inventory?.ActiveItem is Key)
 			{
-				return "[ Locked ]";
+				return $"{IInteractable.GetInteractionKey()} - Unlock Door";
 			}
 			else
 			{
-				return $"{IInteractable.GetInteractionKey()} - Unlock Door";
+				return "[ Locked ]";
 			}
 		} 
 		else if(IsOpen)
@@ -33,7 +35,7 @@ public class DoorComponent : Component, IInteractable
 
 
 	public bool IsOpen { get; private set; } = false;
-	[Property] public bool IsLocked { get; set; } = false;
+	[Property][Sync] public bool IsLocked { get; set; } = false;
 
 
 	[Property] public float OpenAngle { get; set; } = -135f;
@@ -48,7 +50,17 @@ public class DoorComponent : Component, IInteractable
 
 	public void OnInteract( Player player )
 	{
-		if(IsLocked) { return; }
+		if ( IsLocked )
+		{
+			if ( player.Inventory?.ActiveItem is Key )
+			{
+				IsLocked = false;
+			}
+			else
+			{
+				return;
+			}
+		}
 
 		if(IsOpen) { LerpAngles( 0 ); }
 		else { LerpAngles( OpenAngle ); }

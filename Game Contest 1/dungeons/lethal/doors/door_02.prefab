@@ -1,11 +1,11 @@
 {
   "RootObject": {
-    "Id": "b2b57488-33a1-4883-90ea-3dbeea5330bc",
+    "Id": "ecaf14be-8604-45f1-bbbe-d39e48a8a26d",
     "Name": "door_02",
     "Enabled": true,
     "Children": [
       {
-        "Id": "f69610be-9c3a-444e-bb3f-d5aee0e7809a",
+        "Id": "1d0cc72d-e500-4403-9dca-b9216bc65f1d",
         "Name": "door_frame_01",
         "Enabled": true,
         "Components": [
@@ -28,7 +28,7 @@
         ],
         "Children": [
           {
-            "Id": "985187bd-aab5-488c-928b-495d115ca7ff",
+            "Id": "17f96fa9-35d3-45c4-b954-6a427fdb0446",
             "Name": "doors_01",
             "Position": "28,4,0",
             "Networked": true,
@@ -36,6 +36,7 @@
             "Components": [
               {
                 "__type": "DoorComponent",
+                "IsLocked": false,
                 "OpenAngle": -135,
                 "RotationalAxis": "0,1,0"
               },
@@ -59,7 +60,7 @@
             ],
             "Children": [
               {
-                "Id": "4d0143e1-10dc-47e3-8b12-a8835e71335a",
+                "Id": "1da3da15-1a2a-4e45-aed0-66886356c399",
                 "Name": "door_handle_01",
                 "Position": "-43.99998,-2.437618,39.99998",
                 "Rotation": "-0.0000001376788,-0.7071067,-0.7071068,0.0000001376788",
@@ -84,7 +85,7 @@
                 ]
               },
               {
-                "Id": "2cbc3f8a-f0f4-4a4e-8d62-27f69321ee97",
+                "Id": "ec24f417-4b89-44ef-af7e-cc744f410432",
                 "Name": "door_handle_01",
                 "Position": "-43.99998,-6.225243,40",
                 "Rotation": "0.0000002753576,0.7071068,-0.7071068,0.0000002753576",
