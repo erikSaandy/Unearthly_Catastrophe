@@ -5,7 +5,8 @@ public class TerminalPageMoonList : ITerminalPage
 	public string[] Lines { get; set; } = new string[]
 	{
 		"Available destinations are listed down below.",
-		"Type 'MOON' followed by desired destination to travel.",
+		"Type 'ROUTE' followed by desired destination",
+		"To route the Auto-Pilot.",
 		"----------------------------------------------"
 	};
 
@@ -18,7 +19,7 @@ public class TerminalPageMoonList : ITerminalPage
 		foreach (MoonDefinition moon in LethalGameManager.MoonDefinitions )
 		{
 			l.Add( " " );
-			l.Add( $"> {moon.ResourceName.ToUpper()} ( '{moon.TravelCost} Credit )" );
+			l.Add( $"> {moon.ResourceName.ToUpper()} ( '{moon.TravelCost} Credits )" );
 		}
 
 		return l.ToArray();

@@ -8,7 +8,12 @@
       "Enabled": true,
       "Components": [
         {
-          "__type": "LethalGameManager"
+          "__type": "LethalGameManager",
+          "Ship": {
+            "_type": "component",
+            "go": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
+            "component_type": "ShipComponent"
+          }
         }
       ]
     },
@@ -50,14 +55,14 @@
     {
       "Id": "5746a167-f2ef-4476-9313-0326aae1a698",
       "Name": "key",
-      "Position": "1984,0.00000000000003945809,2065",
+      "Position": "2500,-33.95984,2500",
       "Enabled": true,
       "__Prefab": "prefabs/items/key.prefab"
     },
     {
       "Id": "78cedc54-e833-4ce3-9dcb-9920ea34cc10",
       "Name": "flashlight",
-      "Position": "1974.887,0.00000000000003851803,2066",
+      "Position": "2514.664,0.00000000000003851803,2517.896",
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
@@ -66,7 +71,8 @@
     {
       "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
       "Name": "spaceship",
-      "Position": "2000,0,2000",
+      "Position": "2500,0,2500",
+      "Tags": "spaceship",
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/spaceship.prefab"
@@ -95,6 +101,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-02-29T19:34:32.3657368\u002B01:00",
+  "LastSaved": "2024-03-04T22:48:08.6663871\u002B01:00",
   "__references": []
 }

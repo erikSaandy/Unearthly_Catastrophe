@@ -10,16 +10,18 @@ public class TerminalCommandTravel : TerminalCommand
 	public override void Run( TerminalComponent Terminal, params string[] parts )
 	{
 
-		if(parts.Length == 0) { return; }
+		if(parts == null) { return; }
 
-		for(int i = 0; i < LethalGameManager.MoonDefinitions.Length; i++ )
+		for ( int i = 0; i < LethalGameManager.MoonDefinitions.Length; i++ )
 		{
 			if( LethalGameManager.MoonDefinitions[i].ResourceName.ToLower() == parts[0].ToLower() )
 			{
 				Terminal.Exit();
 				Terminal.OpenPage( new TerminalPageMain() );
 
-				LethalGameManager.Instance.LoadMoon( LethalGameManager.MoonDefinitions[i] );
+				TerminalComponent.SelectedMoon = LethalGameManager.MoonDefinitions[i];
+				LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {TerminalComponent.SelectedMoon.ResourceName}";
+				LethalGameManager.Instance.Ship.Lever.IsLocked = false;
 			}
 		}
 	}

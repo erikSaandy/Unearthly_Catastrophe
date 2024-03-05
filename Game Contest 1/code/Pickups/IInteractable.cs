@@ -8,7 +8,7 @@ public interface IInteractable
 
 	public string GetToolTip( Player player );
 
-	public abstract bool IsInteractable( Player player );
+	public abstract bool IsInteractableBy( Player player );
 	public abstract void OnInteract( Player player );
 
 	public static string GetInteractionKey() { return $"[{Input.GetButtonOrigin( "use" ).ToUpper()}]"; }

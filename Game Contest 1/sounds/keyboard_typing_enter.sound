@@ -1,11 +1,14 @@
 {
   "UI": false,
-  "Volume": "8.00,1.00,0",
+  "Volume": "150.00,1.00,0",
   "Pitch": "0.85,1.15,1",
-  "Decibels": 70,
+  "Decibels": 200,
   "SelectionMode": "Random",
   "Sounds": [
     "sounds/keyboard_click04.vsnd"
   ],
+  "Occlusion": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
   "__references": []
 }

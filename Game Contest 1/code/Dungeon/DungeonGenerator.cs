@@ -38,7 +38,7 @@ public static class DungeonGenerator
 		//CreateRoomConnection( ref entrance, InitialDepth );
 		SearchRooms( ref entrance, ref biome, MainIterations, 0 );
 
-		Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms." );
+		Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms!]" );
 
 	}
 

@@ -30,16 +30,6 @@
         "Weight": 5
       },
       {
-        "__type": "Rigidbody",
-        "AngularDamping": 0,
-        "Gravity": true,
-        "LinearDamping": 0,
-        "Locking": {},
-        "MassOverride": 0,
-        "RigidbodyFlags": 0,
-        "StartAsleep": false
-      },
-      {
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "models/flashlight/flashlight.vmdl",

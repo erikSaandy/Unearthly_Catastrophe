@@ -2,11 +2,50 @@
   "RootObject": {
     "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
     "Name": "spaceship",
+    "Tags": "spaceship",
     "Networked": true,
     "Enabled": true,
     "Components": [
       {
-        "__type": "ShipComponent"
+        "__type": "ShipComponent",
+        "CurrentLandingPad": null,
+        "DockingCurveAcceleration": [
+          {
+            "y": 0.33000004,
+            "in": -2.8815377,
+            "out": 2.8815377
+          },
+          {
+            "x": 0.38839287,
+            "y": 1
+          },
+          {
+            "x": 0.83928573,
+            "y": 1
+          },
+          {
+            "x": 1,
+            "y": 0.56382984,
+            "in": 0.065573335,
+            "out": -0.065573335
+          }
+        ],
+        "DockingCurveXY": [
+          {
+            "y": 1,
+            "mode": "Linear"
+          },
+          {
+            "x": 1,
+            "mode": "Linear"
+          }
+        ],
+        "DockingTime": 6,
+        "Lever": {
+          "_type": "component",
+          "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
+          "component_type": "LeverComponent"
+        }
       },
       {
         "__type": "SkinnedModelRenderer",
@@ -24,15 +63,49 @@
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "models/spaceship/spaceship.vmdl",
-        "Static": true,
+        "Static": false,
         "Surface": null
       }
     ],
     "Children": [
       {
+        "Id": "43b878c4-1466-49df-a980-2b172f4d3369",
+        "Name": "Gap Collider",
+        "Position": "0,-11.17955,-2.880481",
+        "Scale": "3.613807,1.289862,0.1121138",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "BoxCollider",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "50,50,50",
+            "Static": false,
+            "Surface": null
+          }
+        ]
+      },
+      {
+        "Id": "0756677c-45fc-4262-ac78-84ebb036cd9c",
+        "Name": "Passenger transporter",
+        "Components": [
+          {
+            "__type": "PassengerTransporter"
+          },
+          {
+            "__type": "BoxCollider",
+            "Center": "0,0,0",
+            "IsTrigger": true,
+            "Scale": "520,850,200",
+            "Static": false,
+            "Surface": null
+          }
+        ]
+      },
+      {
         "Id": "008c6826-2098-461f-8b33-78990bd09da7",
         "Name": "fluorescent_ceiling_light01",
-        "Position": "0,-288,155.996",
+        "Position": "-0.000629576,-192.0003,155.9962",
         "Rotation": "-0.000003279054,0.9999999,0.000001093018,0",
         "Enabled": true,
         "Components": [
@@ -62,7 +135,7 @@
                 "FogStrength": 1,
                 "LightColor": "1.76,1.6278,1.34251,1",
                 "Radius": 400,
-                "Shadows": true
+                "Shadows": false
               }
             ]
           }
@@ -71,7 +144,7 @@
       {
         "Id": "d244dd0d-9a11-4ba1-8f1c-6ae6bfffc128",
         "Name": "industrial_light02b",
-        "Position": "-85.89304,24,120",
+        "Position": "-85.89309,128,120",
         "Rotation": "0.4997322,0.4997323,0.5002676,0.5002677",
         "Enabled": true,
         "Components": [
@@ -89,7 +162,7 @@
           {
             "Id": "d76dba47-a4f6-4e88-b82c-e18a9979e656",
             "Name": "Point Light",
-            "Position": "-0.00001957582,-8.023436,21.88446",
+            "Position": "-0.00001786383,-8.023409,31.83071",
             "Tags": "light_point,light",
             "Enabled": true,
             "Components": [
@@ -100,7 +173,7 @@
                 "FogStrength": 1,
                 "LightColor": "2.15274,1.97402,1.52194,1",
                 "Radius": 151.79968,
-                "Shadows": true
+                "Shadows": false
               }
             ]
           }
@@ -109,7 +182,7 @@
       {
         "Id": "b90416ce-6c63-4b90-8746-e9dab06b718c",
         "Name": "industrial_light02b (1)",
-        "Position": "85.91022,23.99999,119.9081",
+        "Position": "85.91022,128,119.9081",
         "Rotation": "-0.4997323,0.4997323,0.5002676,-0.5002676",
         "Enabled": true,
         "Components": [
@@ -127,7 +200,7 @@
           {
             "Id": "b8390f3f-2bbf-42c5-9f3a-d07649b8de4f",
             "Name": "Point Light",
-            "Position": "0.00000259761,-7.999965,21.78178",
+            "Position": "-0.00001108674,-7.99996,34.98917",
             "Tags": "light_point,light",
             "Enabled": true,
             "Components": [
@@ -138,7 +211,7 @@
                 "FogStrength": 1,
                 "LightColor": "2.15274,1.97402,1.52194,1",
                 "Radius": 151.79968,
-                "Shadows": true
+                "Shadows": false
               }
             ]
           }
@@ -147,7 +220,7 @@
       {
         "Id": "19554343-6a5b-40c5-acb1-b8b9feee453d",
         "Name": "Spawnpoint (5)",
-        "Position": "-56,24,1.006469",
+        "Position": "-56,96,1.006469",
         "Enabled": true,
         "Components": [
           {
@@ -159,7 +232,31 @@
       {
         "Id": "c31b3407-d0e4-4c4e-88d0-9aacc98cbde7",
         "Name": "Spawnpoint (4)",
-        "Position": "-56,72,1.006469",
+        "Position": "-56,128,1.006469",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "a0621674-1d74-4323-8c06-ed84558f23d0",
+        "Name": "Spawnpoint (7)",
+        "Position": "-56,160,1.006469",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "ee77a680-ba72-4fea-9f32-56609fe02c6f",
+        "Name": "Spawnpoint (9)",
+        "Position": "-56,160,1.006469",
         "Enabled": true,
         "Components": [
           {
@@ -171,7 +268,7 @@
       {
         "Id": "05f162ba-9196-46c0-bf37-0bd2bffe11dd",
         "Name": "Spawnpoint (3)",
-        "Position": "54.79461,24,1.006469",
+        "Position": "54.79461,96,1.006469",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
@@ -184,7 +281,33 @@
       {
         "Id": "3e9ca9f7-68ac-436d-a295-8853eef278ac",
         "Name": "Spawnpoint (2)",
-        "Position": "54.79461,72,1.006469",
+        "Position": "54.79461,128,1.006469",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "d9abf1f8-82fb-4525-b1d8-13a3c2e09d58",
+        "Name": "Spawnpoint (6)",
+        "Position": "54.79461,160,1.006469",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpawnPoint",
+            "Color": "0.8902,0.31765,0.05098,1"
+          }
+        ]
+      },
+      {
+        "Id": "a49765c6-b21e-498c-acac-8ceaa546be09",
+        "Name": "Spawnpoint (8)",
+        "Position": "54.79461,160,1.006469",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
@@ -197,7 +320,7 @@
       {
         "Id": "42349e64-07b3-4cda-b423-7bf0ec14142b",
         "Name": "Spawnpoint (1)",
-        "Position": "-56,-24,1.006469",
+        "Position": "-56,64,1.006469",
         "Enabled": true,
         "Components": [
           {
@@ -209,7 +332,7 @@
       {
         "Id": "9ffec092-7d52-459b-bca4-c3e8fd5da0ca",
         "Name": "Spawnpoint",
-        "Position": "54.79461,-24,1.006469",
+        "Position": "54.79461,64,1.006469",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
@@ -221,8 +344,8 @@
       },
       {
         "Id": "6152d3bb-9828-4ca3-9fd8-40e48d8b64d9",
-        "Name": "GameObject (1)",
-        "Position": "87.6813,-195.1613,0",
+        "Name": "Terminal",
+        "Position": "87.6813,-94.10116,0",
         "Rotation": "0,0,-0.9238794,0.3826834",
         "Networked": true,
         "Enabled": true,
@@ -231,7 +354,7 @@
       {
         "Id": "20822cb6-69c6-43a1-a3dd-8f75460597e6",
         "Name": "GameObject (2)",
-        "Position": "18.74464,-276.499,10.24886",
+        "Position": "18.74464,-276.499,46.48206",
         "Tags": "item",
         "Networked": true,
         "Enabled": true,
@@ -240,14 +363,14 @@
       {
         "Id": "71538b45-e207-4e77-9279-c7b56d47eb1a",
         "Name": "probe",
-        "Position": "0,0,60",
+        "Position": "0,128,60",
         "Enabled": true,
         "Components": [
           {
             "__type": "EnvmapProbe",
             "Bounds": {
-              "Mins": "-195,-140,-190",
-              "Maxs": "195,280,300"
+              "Mins": "-212,-140,-190",
+              "Maxs": "212,280,300"
             },
             "Feathering": 0.02,
             "Projection": "Box",
@@ -259,19 +382,214 @@
       {
         "Id": "13182d72-f309-498e-b247-a089f8bac55c",
         "Name": "probe (1)",
-        "Position": "0,-312,60",
+        "Position": "0,-192,60",
         "Enabled": true,
         "Components": [
           {
             "__type": "EnvmapProbe",
             "Bounds": {
-              "Mins": "-195,-250,-190",
-              "Maxs": "195,221.3001,185"
+              "Mins": "-256,-250,-190",
+              "Maxs": "256,221.3001,185"
             },
             "Feathering": 0.02,
             "Projection": "Sphere",
             "Texture": "textures/cubemaps/default2.vtex",
             "TintColor": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "Id": "aff7ed8c-c0c5-49e9-975a-ce962ee7be11",
+        "Name": "ship_lever_body",
+        "Position": "-100.5956,-80.42385,56",
+        "Rotation": "-0.6532815,-0.270598,-0.2705981,-0.6532816",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/ship_lever/ship_lever_body.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ],
+        "Children": [
+          {
+            "Id": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
+            "Name": "ship_lever",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "LeverComponent",
+                "ActivatedAngle": 65,
+                "DeactivatedAngle": 0,
+                "IsLocked": false,
+                "OnActivate": null,
+                "OnDeactivate": null,
+                "RotationalAxis": "0,0,1",
+                "Speed": 2,
+                "StartActivated": false,
+                "ToolTip": "Lift Off",
+                "ToolTipDeactivated": "Land on Moon"
+              },
+              {
+                "__type": "ModelRenderer",
+                "BodyGroups": 18446744073709551615,
+                "MaterialGroup": null,
+                "MaterialOverride": null,
+                "Model": "models/ship_lever/ship_lever.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1"
+              },
+              {
+                "__type": "BoxCollider",
+                "Center": "0,0,6",
+                "IsTrigger": false,
+                "Scale": "6,6,14",
+                "Static": false,
+                "Surface": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "a1747b99-599f-42d9-87d0-ec39b4f16cfb",
+        "Name": "screen",
+        "Position": "0.00005761746,-320,96",
+        "Rotation": "-0.1305262,0,0,0.9914449",
+        "Scale": "1.25,1.25,1.25",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/screen/screen.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "2e7b1e47-5ce7-4152-b101-844012806ba1",
+        "Name": "screen (2)",
+        "Position": "-48,-312,96",
+        "Rotation": "-0.1260786,0.03378267,-0.2566049,0.9576625",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/screen/screen.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "c98df671-27d0-4bd3-b2d6-235a857416da",
+        "Name": "screen (1)",
+        "Position": "48,-312,96",
+        "Rotation": "-0.1260786,-0.03378267,0.2566049,0.9576625",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/screen/screen.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "0c9da9f7-692f-4adf-9ef3-fbe85f4007dc",
+        "Name": "ship_table",
+        "Position": "-4.910359,-311.4558,0.03017274",
+        "Scale": "1.063558,1.063558,1.063558",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/ship_table/ship_table.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "2a2fa128-5c7f-468c-af64-aad09dda1ae0",
+        "Name": "buttons_onoff",
+        "Position": "-71.95967,210.1391,72",
+        "Rotation": "-0.4999999,0.5,-0.5,-0.4999999",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/buttons_onoff/buttons_onoff.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ],
+        "Children": [
+          {
+            "Id": "c4cc9fa2-0002-4273-a52e-32851bad92ee",
+            "Name": "button_on",
+            "Position": "7,0,4",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "BoxCollider",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "2,2,2",
+                "Static": false,
+                "Surface": null
+              },
+              {
+                "__type": "InteractionProxy",
+                "BlockInteractions": false,
+                "InteractionTime": 0.5,
+                "ToolTip": "Open Door"
+              }
+            ]
+          },
+          {
+            "Id": "f6049128-dda9-4205-a691-33d554636011",
+            "Name": "button_off",
+            "Position": "-7,0,4",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "BoxCollider",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "2,2,2",
+                "Static": false,
+                "Surface": null
+              },
+              {
+                "__type": "InteractionProxy",
+                "BlockInteractions": false,
+                "InteractionTime": 0.5,
+                "ToolTip": "Close Door"
+              }
+            ]
           }
         ]
       }

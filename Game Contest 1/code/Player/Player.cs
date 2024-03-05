@@ -35,6 +35,8 @@ public sealed class Player : Component
 	[Category( "Hud" )][Property] public GameObject HudObject;
 	public Hud CurrentHud { get; set; }
 
+	public GameObject OldGroundObject { get; private set; } = null;
+
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -79,7 +81,6 @@ public sealed class Player : Component
 	private void OnStartLoadMoon()
 	{
 		PlayerInput = new PlayerFreezeInput( this );
-		Log.Info( "freeze" );
 	}
 
 	private void OnLoadedMoon()
@@ -159,5 +160,6 @@ public sealed class Player : Component
 		Controller.Move();
 
 	}
+
 
 }

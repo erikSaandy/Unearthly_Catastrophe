@@ -246,10 +246,29 @@ namespace Saandy {
             return (a / GetGreatestCommonFactor(a, b)) * b;
         }
 
-        // Euclidian distance between A and B
-        public static float Distance(Vector2 A, Vector2 B) {
+		public static float Clamp01( float value )
+		{
+			if ( value < 0F )
+				return 0F;
+			else if ( value > 1F )
+				return 1F;
+			else
+				return value;
+		}
+
+		// Euclidian distance between A and B
+		public static float Distance(Vector2 A, Vector2 B) {
             return (float)Math.Sqrt((A.x - B.x) * (A.x - B.x) + (A.y - B.y) * (A.y - B.y));
         }
+
+		public static float LerpAngle( float a, float b, float t )
+		{
+			float delta = Repeat( (b - a), 360 );
+			if ( delta > 180 )
+				delta -= 360;
+
+			return a + delta * t;
+		}
 
 		public static float Lerp( float a, float b, float t )
 		{

@@ -29,16 +29,12 @@
 						remaps = 
 						[
 							{
-								from = "lambert1.vmat"
-								to = "dev/helper/reflectivity_90b.vmat"
+								from = "m_spaceship01.vmat"
+								to = "models/spaceship/material/m_spaceship01.vmat"
 							},
 							{
-								from = "lambert2.vmat"
-								to = "materials/dev/hs/reflectivity_hs_60.vmat"
-							},
-							{
-								from = "lambert3.vmat"
-								to = "materials/dev/reflectivity_20.vmat"
+								from = "m_spaceship02.vmat"
+								to = "models/spaceship/material/m_spaceship02.vmat"
 							},
 						]
 						use_global_default = false
@@ -92,6 +88,23 @@
 						{
 							exclude_by_default = false
 							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_box"
+						game_keys = 
+						{
+							bonename = ""
+							dimensions = [ 12.8782, 22.0067, 8.76543 ]
+							offset_origin = [ 0.202989, -1.80784, 1.6473 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
 						}
 					},
 				]

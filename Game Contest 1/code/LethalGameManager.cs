@@ -24,6 +24,8 @@ public class LethalGameManager : Component
 	public static Action OnLoadedMoon { get; set; }
 	public static Action OnStartLoadMoon { get; set; }
 
+	[Property] public ShipComponent Ship { get; set; }
+
 	protected override void OnAwake()
 	{
 		IsLoading = false;
@@ -60,10 +62,10 @@ public class LethalGameManager : Component
 	{
 		base.OnUpdate();
 
-		if ( Input.Pressed( "chat" ) )
-		{
-			LoadMoon( MoonDefinitions[0] );
-		}
+		//if ( Input.Pressed( "chat" ) )
+		//{
+		//	LoadMoon( MoonDefinitions[0] );
+		//}
 
 	}
 
@@ -79,6 +81,14 @@ public class LethalGameManager : Component
 	{
 		IsLoading = false;
 		OnLoadedMoon.Invoke();
+
+		Ship.Land( CurrentMoon.LandingPad );
+	}
+
+	[Broadcast( NetPermission.Anyone )]
+	public void LoadSelectedMoon( )
+	{
+		Instance.LoadMoon( TerminalComponent.SelectedMoon );
 	}
 
 	[Broadcast(NetPermission.Anyone)]
@@ -86,19 +96,21 @@ public class LethalGameManager : Component
 
 		if ( IsProxy ) return;
 
+		Ship.Lever.IsLocked = true;
 		Instance.LoadMoonAsync( moon );
 	}
+
 	private async void LoadMoonAsync(MoonDefinition moon)
 	{
-		Log.Info( "Loading moon " + moon.ResourceName + "..." );
+		Log.Info( "Loading moon " + moon.MoonPrefab + "..." );
+
+		await Task.Delay( 250 );
 
 		Balance -= moon.TravelCost;
 
 		StartLoadMoon();
 
-		await Task.Delay( 100 );
-
-		Log.Info(moon.MoonPrefab);
+		await Task.Delay( 1000 );
 
 		GameObject moonObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( moon.MoonPrefab ) ).Clone( Vector3.Zero );
 		moonObject.BreakFromPrefab();
@@ -108,9 +120,47 @@ public class LethalGameManager : Component
 
 		DungeonGenerator.GenerateDungeon( ResourceLibrary.Get<DungeonDefinition>( moon.DungeonDefinitions[0] ) );
 
-		LoadedMoon( );
+		LoadedMoon();
 
 	}
 
+	[Broadcast( NetPermission.Anyone )]
+	public void StartLeaveCurrentMoon()
+	{
+
+	}
+
+	[Broadcast( NetPermission.Anyone )]
+	public void LeftCurrentMoon()
+	{
+
+	}
+
+	[Broadcast( NetPermission.Anyone )]
+	public void LeaveCurrentMoon()
+	{
+		if ( IsProxy ) return;
+
+		Ship.Lever.IsLocked = true;
+
+		LeaveCurrentMoonAsync();
+
+	}
+
+	private async void LeaveCurrentMoonAsync( )
+	{
+		Log.Info( "Leaving moon " + CurrentMoon.GameObject.Name + "..." );
+		StartLeaveCurrentMoon();
+
+		await Task.Delay( 250 );
+
+		await Ship.TakeOff();
+
+		CurrentMoon.GameObject.Destroy();
+		CurrentMoon = null;
+
+		LeftCurrentMoon();
+
+	}
 
 }

@@ -7,7 +7,7 @@ using System.Numerics;
 
 public abstract class Carriable : Component, ICarriable
 {
-	public bool IsInteractable( Player player ) { return true; }
+	public bool IsInteractableBy( Player player ) { return true; }
 
 	public float InteractionTime { get; set; } = 0f;
 	public abstract string ToolTip { get; set; }
@@ -23,7 +23,7 @@ public abstract class Carriable : Component, ICarriable
 
 	public ModelRenderer Renderer { get; set; }
 	public ModelCollider Collider { get; set; }
-	public Rigidbody Rigidbody { get; set; }
+	//public Rigidbody Rigidbody { get; set; }
 
 	[Property] public Angles HeldAngleOffset { get; set; }
 
@@ -33,9 +33,18 @@ public abstract class Carriable : Component, ICarriable
 
 		Renderer = Components.Get<ModelRenderer>();
 		Collider = Components.Get<ModelCollider>();
-		Rigidbody = Components.Get<Rigidbody>();
+		//Rigidbody = Components.Get<Rigidbody>();
 
 		GameObject.BreakFromPrefab();
+	
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		DropToGround();
+
 	}
 
 	public virtual void OnInteract( Player player )
@@ -53,7 +62,7 @@ public abstract class Carriable : Component, ICarriable
 		Tags.Add( "owned" );
 
 		Collider.Enabled = false;
-		Rigidbody.Enabled = false;
+		//Rigidbody.Enabled = false;
 		GameObject.Enabled = false;
 		GameObject.SetParent( Owner.HandRBone );
 		Transform.LocalPosition = Vector3.Zero;
@@ -72,18 +81,45 @@ public abstract class Carriable : Component, ICarriable
 
 		Collider.Enabled = true;
 		GameObject.Enabled = true;
-		Rigidbody.Enabled = true;
+		//Rigidbody.Enabled = true;
 
 		GameObject.SetParent( null );
 
+		SceneTraceResult trace = Scene.Trace.Ray( Owner.Camera.Transform.Position, Owner.Camera.Transform.Position + Owner.Transform.Rotation.Forward * 64 )
+			.IgnoreGameObjectHierarchy( Owner.GameObject )
+			.IgnoreGameObjectHierarchy( GameObject )
+			.Size( 12f )
+			.Run();
+
+		GameObject.Transform.Position = trace.EndPosition;
+
+		DropToGround();
+
 		// apply force
-		Rigidbody.Velocity = Owner.EyeAngles.Forward * 250 + Owner.Controller.Velocity;
+		//Rigidbody.Velocity = Owner.EyeAngles.Forward * 250 + Owner.Controller.Velocity;
 
 		Tags.Remove( "owned" );
 		Owner = null;
 
 		GameObject.Network.DropOwnership();
 
+	}
+
+	private void DropToGround()
+	{
+		SceneTraceResult trace = Scene.Trace.Ray( Transform.Position, Transform.Position + Vector3.Down * 512 )
+		.UseRenderMeshes()
+		.Size(8)
+		.Run();
+
+		if ( Owner != null ) { GameObject.Transform.Rotation = Owner.Transform.Rotation.Angles().WithPitch( 0 ).WithRoll( 0 ); }
+
+		GameObject.Transform.Position = trace.EndPosition + Vector3.Up * 4;
+
+		if ( trace.GameObject != null && trace.GameObject.Tags.Has("spaceship"))
+		{
+			GameObject.SetParent( trace.GameObject );
+		}
 	}
 
 	public virtual void UpdateHeldPosition()

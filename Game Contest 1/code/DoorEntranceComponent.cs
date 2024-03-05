@@ -7,7 +7,7 @@ public class DoorEntranceComponent : Component, IInteractable
 	private static List<DoorEntranceComponent> EntranceDoors { get; set; } = new();
 
 
-	public bool IsInteractable( Player player ) { return !IsLocked; }
+	public bool IsInteractableBy( Player player ) { return !IsLocked; }
 	public float InteractionTime { get; set; } = 1.1f;
 	public string ToolTip { get; set; } = "";
 

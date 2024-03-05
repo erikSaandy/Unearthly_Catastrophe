@@ -1,9 +1,4 @@
-﻿using Sandbox;
-using Sandbox.UI;
-using Sandbox.VR;
-using System;
-
-public class PlayerInput
+﻿public class PlayerInput
 {
 
 	public Player Owner { get; protected set; }
@@ -55,7 +50,7 @@ public class PlayerInput
 
 		var from = Owner.CameraController.Camera.Transform.Position;
 		var to = from + Owner.Camera.Transform.Rotation.Forward * 70;
-		IEnumerable<SceneTraceResult> trace = Owner.Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy( Owner.GameObject ).WithoutTags( "owned" ).UseRenderMeshes().Size( 12f ).RunAll();
+		IEnumerable<SceneTraceResult> trace = Owner.Scene.Trace.Ray( from, to ).IgnoreGameObjectHierarchy( Owner.GameObject ).WithoutTags( "owned" ).Size( 12f ).RunAll();
 
 		IInteractable hit = null;
 		LookingAt = null;
@@ -65,9 +60,11 @@ public class PlayerInput
 			item.GameObject?.Components.TryGet( out hit );
 			if ( hit != null )
 			{
+				if( !hit.IsInteractableBy(Owner) ) { return; }
+
 				LookingAt = hit;
 
-				if ( Input.Pressed( "use" ) && hit.IsInteractable( Owner ) )
+				if ( InteractedWith == null && Input.Pressed( "use" ) && hit.IsInteractableBy( Owner ) )
 				{
 					InteractedWith = hit;
 				}

@@ -3,10 +3,9 @@ using Sandbox;
 
 public class DoorComponent : Component, IInteractable
 {
-	public bool IsInteractable( Player player ) { return !IsLocked || IsOpen || (IsLocked && player.Inventory?.ActiveItem is Key); }
+	public bool IsInteractableBy( Player player ) { return !IsLocked || IsOpen || (IsLocked && player.Inventory?.ActiveItem is Key); }
 	public float InteractionTime { get; set; } = 0.7f;
 	public string ToolTip { get; set; } = "";
-
 
 	public virtual string GetToolTip( Player player ) { 
 
@@ -40,6 +39,8 @@ public class DoorComponent : Component, IInteractable
 
 	[Property] public float OpenAngle { get; set; } = -135f;
 	[Property] public Vector3 RotationalAxis { get; set; } = new Vector3( 0, 1, 0 );
+
+	[Property] public float Speed { get; set; } = 1f;
 
 	protected override void OnAwake()
 	{
@@ -84,11 +85,11 @@ public class DoorComponent : Component, IInteractable
 
 		do
 		{
-			t += Time.Delta * 4;
+			t += Time.Delta * Speed;
 			angle = Math2d.Lerp( angle, targetAngle, t );
 			//Log.Info( angle );
 
-			await Task.Delay( 20 );
+			await Task.Delay( 5 );
 
 			Transform.LocalRotation = new Angles( (RotationalAxis * angle));
 

@@ -9,7 +9,7 @@ public sealed class TerminalComponent : Component
 		new TerminalCommandExit("exit", "quit", "stop", "leave"),
 		new TerminalCommandHome("home", "back", "main"),
 		new TerminalCommandMoonList("moons"),
-		new TerminalCommandTravel("moon"),
+		new TerminalCommandTravel("route"),
 		new TerminalCommandNextPage("next")
 	};
 
@@ -31,6 +31,8 @@ public sealed class TerminalComponent : Component
 
 	[Property] public GameObject KeyboardCollider { get; set; }
 	[Property] public GameObject ScreenCollider { get; set; }
+
+	public static MoonDefinition SelectedMoon { get; set; } = null;
 
 	public string PageInfo => "[PAGE " + (PageNumber + 1) + "/" + PageCount + "]";
 
@@ -167,7 +169,7 @@ public sealed class TerminalComponent : Component
 		Hud.TextEntry.InputText = "";
 
 		// Don't accept command if match is very weak.
-		if (bestMatch < 0.7f) { Log.Info( "could not find command matching " + input ); return; }
+		if (bestMatch < 0.7f) { Log.Info( $"could not find command matching '{input}'" ); return; }
 
 		string[] parts = input.Contains( ' ' ) ? input.Substring( input.IndexOf( " " ) + 1 ).Split( ' ' ) : null;
 		bestMatchCommand?.Run( this, parts );

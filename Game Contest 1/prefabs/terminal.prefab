@@ -24,7 +24,7 @@
       {
         "__type": "TerminalComponent",
         "CameraAngles": "0,180,0",
-        "CameraPosition": "30,8.5,68",
+        "CameraPosition": "25,8.5,68",
         "KeyboardCollider": {
           "_type": "gameobject",
           "go": "3587ee36-69d9-4f39-8599-fd30254eab3d"
@@ -82,6 +82,7 @@
           },
           {
             "__type": "InteractionProxy",
+            "BlockInteractions": false,
             "InteractionTime": 0,
             "ToolTip": "Open Terminal"
           }
@@ -106,6 +107,7 @@
           },
           {
             "__type": "InteractionProxy",
+            "BlockInteractions": false,
             "InteractionTime": 0,
             "ToolTip": "Open Terminal"
           }

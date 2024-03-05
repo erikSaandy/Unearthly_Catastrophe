@@ -6,8 +6,8 @@
 
 <root class="container">
 
-	<div class="crosshair @((Owner.PlayerInput.LookingAt == null) ? "" : "hover")">
-		<dif class="fill @((Owner.PlayerInput.LookingAt == null) ? "" : "hover")"></dif>
+	<div class="crosshair @((Owner?.PlayerInput?.LookingAt == null) ? "" : "hover")">
+		<dif class="fill @((Owner?.PlayerInput?.LookingAt == null) ? "" : "hover")"></dif>
 	</div>
 
 </root>
