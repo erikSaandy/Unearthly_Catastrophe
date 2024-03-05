@@ -19,9 +19,8 @@ public class TerminalCommandTravel : TerminalCommand
 				Terminal.Exit();
 				Terminal.OpenPage( new TerminalPageMain() );
 
-				TerminalComponent.SelectedMoon = LethalGameManager.MoonDefinitions[i];
-				LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {TerminalComponent.SelectedMoon.ResourceName}";
-				LethalGameManager.Instance.Ship.Lever.IsLocked = false;
+				TerminalComponent.SelectMoon(i);
+
 			}
 		}
 	}

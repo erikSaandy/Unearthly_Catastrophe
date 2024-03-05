@@ -88,6 +88,7 @@ public abstract class Carriable : Component, ICarriable
 		SceneTraceResult trace = Scene.Trace.Ray( Owner.Camera.Transform.Position, Owner.Camera.Transform.Position + Owner.Transform.Rotation.Forward * 64 )
 			.IgnoreGameObjectHierarchy( Owner.GameObject )
 			.IgnoreGameObjectHierarchy( GameObject )
+			.UseHitboxes()
 			.Size( 12f )
 			.Run();
 
@@ -109,6 +110,8 @@ public abstract class Carriable : Component, ICarriable
 	{
 		SceneTraceResult trace = Scene.Trace.Ray( Transform.Position, Transform.Position + Vector3.Down * 512 )
 		.UseRenderMeshes()
+		.UseHitboxes()
+		.UsePhysicsWorld()
 		.Size(8)
 		.Run();
 

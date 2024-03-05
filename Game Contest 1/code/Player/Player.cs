@@ -53,13 +53,13 @@ public sealed class Player : Component
 			return; 
 		}
 
+		LethalGameManager.OnStartLoadMoon += OnStartLoadMoon;
+		LethalGameManager.OnLoadedMoon += OnLoadedMoon;
+
 		Animator.Target.OnFootstepEvent += OnFootstep;
 
 		CurrentHud = HudObject.Components.Get<AliveHud>(true);
 		CurrentHud.Enabled = true;
-
-		LethalGameManager.OnStartLoadMoon += OnStartLoadMoon;
-		LethalGameManager.OnLoadedMoon += OnLoadedMoon;
 
 	}
 
@@ -78,13 +78,17 @@ public sealed class Player : Component
 
 	}
 
-	private void OnStartLoadMoon()
+	public void OnStartLoadMoon()
 	{
+		if ( IsProxy ) { return; }
+
 		PlayerInput = new PlayerFreezeInput( this );
 	}
 
-	private void OnLoadedMoon()
+	public void OnLoadedMoon()
 	{
+		if ( IsProxy ) { return; }
+
 		PlayerInput = new PlayerInput( this );
 	}
 

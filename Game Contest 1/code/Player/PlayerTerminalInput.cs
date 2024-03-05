@@ -11,7 +11,7 @@ public class PlayerTerminalInput : PlayerInput
 
 		this.Terminal = terminal;
 
-		Owner.Camera.GameObject.SetParent( Terminal.GameObject );
+		//Owner.Camera.GameObject.SetParent( Terminal.GameObject );
 	}
 
 	public override void UpdateInput()
@@ -25,8 +25,8 @@ public class PlayerTerminalInput : PlayerInput
 
 	public override void CameraInput()
 	{
-		Owner.Camera.Transform.LocalRotation = Terminal.CameraAngles;
-		Owner.Camera.Transform.LocalPosition = Terminal.CameraPosition;
+		Owner.Camera.Transform.Rotation = Terminal.CameraAngles;
+		Owner.Camera.Transform.Position = Terminal.ScreenCollider.Transform.Position + Terminal.ScreenCollider.Transform.Rotation.Up * Terminal.ScreenDistance;
 
 	}
 

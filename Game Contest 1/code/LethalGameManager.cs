@@ -1,6 +1,7 @@
 using Dungeon;
 using Sandbox;
 using static DungeonDefinition;
+using static Sandbox.Gizmo;
 
 public class LethalGameManager : Component
 {
@@ -51,6 +52,8 @@ public class LethalGameManager : Component
 	{
 		if(GameObject.IsProxy) { return; }
 
+		TerminalComponent.SelectMoon( 0 );
+
 		//Log.Info( Instance == null );
 
 		//if(Instance == null) { Instance = this; }
@@ -80,7 +83,9 @@ public class LethalGameManager : Component
 	private void LoadedMoon()
 	{
 		IsLoading = false;
-		OnLoadedMoon.Invoke();
+		OnLoadedMoon?.Invoke();
+
+		if ( GameObject.IsProxy ) return;
 
 		Ship.Land( CurrentMoon.LandingPad );
 	}
@@ -92,23 +97,26 @@ public class LethalGameManager : Component
 	}
 
 	[Broadcast(NetPermission.Anyone)]
-	public void LoadMoon( MoonDefinition moon ) {
+	public void LoadMoon( int moon ) {
 
-		if ( IsProxy ) return;
+		if ( GameObject.IsProxy ) return;
 
 		Ship.Lever.IsLocked = true;
+
 		Instance.LoadMoonAsync( moon );
+
 	}
 
-	private async void LoadMoonAsync(MoonDefinition moon)
+	private async void LoadMoonAsync( int moonId )
 	{
+		MoonDefinition moon = LethalGameManager.MoonDefinitions[moonId];
+
 		Log.Info( "Loading moon " + moon.MoonPrefab + "..." );
 
 		await Task.Delay( 250 );
+		StartLoadMoon();
 
 		Balance -= moon.TravelCost;
-
-		StartLoadMoon();
 
 		await Task.Delay( 1000 );
 
@@ -118,7 +126,7 @@ public class LethalGameManager : Component
 
 		CurrentMoon = moonObject.Components.Get<Moon>();
 
-		DungeonGenerator.GenerateDungeon( ResourceLibrary.Get<DungeonDefinition>( moon.DungeonDefinitions[0] ) );
+		await DungeonGenerator.GenerateDungeon( ResourceLibrary.Get<DungeonDefinition>( moon.DungeonDefinitions[0] ) );
 
 		LoadedMoon();
 
@@ -154,7 +162,13 @@ public class LethalGameManager : Component
 
 		await Task.Delay( 250 );
 
-		await Ship.TakeOff();
+		Ship.TakeOff();
+
+		await Task.DelayRealtimeSeconds( 3 );
+
+		Ship.Doors.Lock();
+
+		await Task.DelayRealtimeSeconds( 3 );
 
 		CurrentMoon.GameObject.Destroy();
 		CurrentMoon = null;

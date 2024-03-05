@@ -2,13 +2,14 @@ using Sandbox;
 
 public sealed class PassengerTransporter : Component, Component.ITriggerListener
 {
-	private List<CharacterController> Passengers { get; set; } = new();
+	public List<CharacterController> Passengers { get; private set; } = new();
 
 	private Vector3 oldPosition { get; set; }
 
 	protected override void OnAwake()
 	{
 		oldPosition = Transform.Position;
+
 	}
 
 	public void OnTriggerEnter( Collider other )
@@ -19,6 +20,7 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 		if (other.GameObject.Tags.Has("player"))
 		{
 			Passengers.Add( other.GameObject.Components.Get<CharacterController>() );
+			Log.Info( "Added passenger " + other.GameObject.Name );
 		}
 		
 	}
@@ -36,22 +38,23 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 
 	}
 
-	public void MovePassengers(Vector3 delta)
-	{
-		base.OnFixedUpdate();
+	//public void MovePassengers(Vector3 delta)
+	//{
+	//	base.OnFixedUpdate();
 
-		if ( delta.Length <= 0f ) { return; }
+	//	if ( delta.Length <= 0f ) { return; }
 
-		foreach ( CharacterController passenger in Passengers )
-		{
-			Vector3 tVel = passenger.Velocity;
+	//	foreach ( CharacterController passenger in Passengers )
+	//	{
+	//		//TODO: PassengerContainer instead, move passengers from shipcomponent.
+	//		Vector3 tVel = passenger.Velocity;
 
-			passenger.Velocity = delta / Time.Delta;
-			passenger.Move();
-			passenger.Velocity = tVel;
+	//		passenger.Accelerate(delta / Time.Delta);
+	//		passenger.Move();
+	//		passenger.Velocity = tVel;
 
-		}
+	//	}
 
-	}
+	//}
 
 }

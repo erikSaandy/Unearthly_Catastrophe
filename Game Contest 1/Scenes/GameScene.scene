@@ -71,7 +71,7 @@
     {
       "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
       "Name": "spaceship",
-      "Position": "2500,0,2500",
+      "Position": "0,-5000,3500",
       "Tags": "spaceship",
       "Networked": true,
       "Enabled": true,
@@ -101,6 +101,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-04T22:48:08.6663871\u002B01:00",
+  "LastSaved": "2024-03-05T22:21:12.7384082\u002B01:00",
   "__references": []
 }

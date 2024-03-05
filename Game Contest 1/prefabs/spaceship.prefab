@@ -41,6 +41,11 @@
           }
         ],
         "DockingTime": 6,
+        "Doors": {
+          "_type": "component",
+          "go": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
+          "component_type": "ShipDoorComponent"
+        },
         "Lever": {
           "_type": "component",
           "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
@@ -86,17 +91,18 @@
         ]
       },
       {
-        "Id": "0756677c-45fc-4262-ac78-84ebb036cd9c",
+        "Id": "c3f39ad0-e967-4d68-afee-a30babc23c7d",
         "Name": "Passenger transporter",
+        "Enabled": true,
         "Components": [
           {
             "__type": "PassengerTransporter"
           },
           {
             "__type": "BoxCollider",
-            "Center": "0,0,0",
+            "Center": "0,0,100",
             "IsTrigger": true,
-            "Scale": "520,850,200",
+            "Scale": "500,850,200",
             "Static": false,
             "Surface": null
           }
@@ -420,6 +426,7 @@
             "Id": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
             "Name": "ship_lever",
             "Position": "0,0,0",
+            "Networked": true,
             "Enabled": true,
             "Components": [
               {
@@ -509,12 +516,34 @@
             "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
+        ],
+        "Children": [
+          {
+            "Id": "3080b84f-da42-4414-a4d2-ec8fef12f5a3",
+            "Name": "WORLD PANEL BALANCE",
+            "Position": "0.0006713198,1.880875,0.00005215406",
+            "Rotation": "-0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "WorldPanel",
+                "HorizontalAlign": "Center",
+                "LookAtCamera": false,
+                "PanelSize": "560,560",
+                "RenderScale": 1,
+                "VerticalAlign": "Center"
+              },
+              {
+                "__type": "BalanceHud"
+              }
+            ]
+          }
         ]
       },
       {
         "Id": "0c9da9f7-692f-4adf-9ef3-fbe85f4007dc",
         "Name": "ship_table",
-        "Position": "-4.910359,-311.4558,0.03017274",
+        "Position": "0,-311.4558,0.03017274",
         "Scale": "1.063558,1.063558,1.063558",
         "Enabled": true,
         "Components": [
@@ -532,7 +561,7 @@
       {
         "Id": "2a2fa128-5c7f-468c-af64-aad09dda1ae0",
         "Name": "buttons_onoff",
-        "Position": "-71.95967,210.1391,72",
+        "Position": "-71.9596,210.1391,63.99994",
         "Rotation": "-0.4999999,0.5,-0.5,-0.4999999",
         "Enabled": true,
         "Components": [
@@ -564,7 +593,7 @@
               {
                 "__type": "InteractionProxy",
                 "BlockInteractions": false,
-                "InteractionTime": 0.5,
+                "InteractionTime": 0.2,
                 "ToolTip": "Open Door"
               }
             ]
@@ -586,8 +615,126 @@
               {
                 "__type": "InteractionProxy",
                 "BlockInteractions": false,
-                "InteractionTime": 0.5,
+                "InteractionTime": 0.2,
                 "ToolTip": "Close Door"
+              }
+            ]
+          },
+          {
+            "Id": "d4cd80d9-a01b-4884-a30c-4dea18638d50",
+            "Name": "Cable",
+            "Position": "-42.54767,0.007403031,0.005015028",
+            "Rotation": "-0.00002017617,-0.7071272,0.000000009933501,-0.7071066",
+            "Scale": "0.6669122,0.3656722,1.280289",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "ModelRenderer",
+                "BodyGroups": 18446744073709551615,
+                "MaterialGroup": null,
+                "MaterialOverride": "materials/cable/cable.vmat",
+                "Model": "models/citizen_props/broom01/broom01gib02_lod01.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Id": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
+        "Name": "ship_doors",
+        "Position": "0,222,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "ShipDoorComponent",
+            "ButtonOff": {
+              "_type": "component",
+              "go": "f6049128-dda9-4205-a691-33d554636011",
+              "component_type": "InteractionProxy"
+            },
+            "ButtonOn": {
+              "_type": "component",
+              "go": "c4cc9fa2-0002-4273-a52e-32851bad92ee",
+              "component_type": "InteractionProxy"
+            },
+            "CloseCurve": [
+              {},
+              {
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "CloseSpeed": 4,
+            "DoorLeft": {
+              "_type": "gameobject",
+              "go": "e0abeb5d-4989-44e6-8a72-5e8b589cf11a"
+            },
+            "DoorRight": {
+              "_type": "gameobject",
+              "go": "aea5bd14-a3c0-4732-8806-4aeac4d972a3"
+            },
+            "IsLocked": true,
+            "OpenCurve": [
+              {
+                "in": -3.071428,
+                "out": 3.071428
+              },
+              {
+                "x": 0.25,
+                "y": 0.35000002,
+                "mode": "Flat"
+              },
+              {
+                "x": 0.75,
+                "y": 0.35000002,
+                "in": -0.022849776,
+                "out": 0.022849776
+              },
+              {
+                "x": 1,
+                "y": 1,
+                "in": 0.26086962,
+                "out": -0.26086962
+              }
+            ],
+            "OpenSpeed": 1
+          }
+        ],
+        "Children": [
+          {
+            "Id": "aea5bd14-a3c0-4732-8806-4aeac4d972a3",
+            "Name": "ship-door_right",
+            "Position": "-68,0,0",
+            "Rotation": "0,0,-1,0.0000001947072",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Prop",
+                "Health": 0,
+                "IsStatic": true,
+                "Model": "models/ship_doors/ship-door_right.vmdl",
+                "OnPropBreak": null,
+                "OnPropTakeDamage": null,
+                "ShowCreatedComponents": false
+              }
+            ]
+          },
+          {
+            "Id": "e0abeb5d-4989-44e6-8a72-5e8b589cf11a",
+            "Name": "ship-door_left",
+            "Position": "68,0,0",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Prop",
+                "Health": 0,
+                "IsStatic": true,
+                "Model": "models/ship_doors/ship-door_left.vmdl",
+                "OnPropBreak": null,
+                "OnPropTakeDamage": null,
+                "ShowCreatedComponents": false
               }
             ]
           }

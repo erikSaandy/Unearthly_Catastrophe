@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using static DungeonDefinition;
 
 namespace Dungeon;
@@ -14,8 +15,7 @@ public static class DungeonGenerator
 
 	private const int MainIterations = 15;
 
-
-	public static void GenerateDungeon(DungeonDefinition def)
+	public static async Task GenerateDungeon(DungeonDefinition def)
 	{
 
 		SpawnedRooms = new List<RoomSetup>();
@@ -35,14 +35,25 @@ public static class DungeonGenerator
 
 		SpawnedRooms.Add( entrance );
 
+		await Task.Delay(5);
+
+		bool finished = false;
+
 		//CreateRoomConnection( ref entrance, InitialDepth );
-		SearchRooms( ref entrance, ref biome, MainIterations, 0 );
+		SearchRooms( ref entrance, ref biome, ref finished, MainIterations, 0 );
+
+		while(!finished )
+		{
+			await Task.Yield();
+		}
 
 		Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms!]" );
 
+		await Task.Delay( 1000 );
+
 	}
 
-	private static void SearchRooms( ref RoomSetup currentRoom, ref Biome currentBiome, int iteration, int biomeDepth )
+	private static void SearchRooms( ref RoomSetup currentRoom, ref Biome currentBiome, ref bool finished, int iteration, int biomeDepth )
 	{
 
 		if ( biomeDepth >= currentBiome.Continuance )
@@ -71,7 +82,7 @@ public static class DungeonGenerator
 				nextRoom.GameObject.Name = nextRoom.GameObject.Name + " (" + SpawnedRooms.Count.ToString() + ")";
 				nextRoom.MoveToNextPortal();
 
-				SearchRooms( ref nextRoom, ref currentBiome, --iteration, ++biomeDepth );
+				SearchRooms( ref nextRoom, ref currentBiome, ref finished, --iteration, ++biomeDepth );
 				//iteration = BranchIterations;
 
 			}
@@ -82,6 +93,11 @@ public static class DungeonGenerator
 
 			currentRoom.MoveToNextPortal();
 
+		}
+
+		if(currentRoom == SpawnedRooms[0] )
+		{
+			finished = true;
 		}
 
 	}

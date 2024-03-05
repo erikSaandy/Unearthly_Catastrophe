@@ -23,8 +23,8 @@
       },
       {
         "__type": "TerminalComponent",
-        "CameraAngles": "0,180,0",
-        "CameraPosition": "25,8.5,68",
+        "CameraAngles": "0,45,0",
+        "CameraPosition": "-12,-24.00002,67.29986",
         "KeyboardCollider": {
           "_type": "gameobject",
           "go": "3587ee36-69d9-4f39-8599-fd30254eab3d"
@@ -36,8 +36,9 @@
         },
         "ScreenCollider": {
           "_type": "gameobject",
-          "go": "a36c86b3-0326-4728-970c-918cd13e2354"
+          "go": "a8850efe-616e-45e6-906e-3453828eb2d4"
         },
+        "ScreenDistance": 16,
         "TypingEnterSound": "sounds/keyboard_typing_enter.sound",
         "TypingSound": "sounds/keyboard_typing.sound"
       }
@@ -89,11 +90,11 @@
         ]
       },
       {
-        "Id": "a36c86b3-0326-4728-970c-918cd13e2354",
+        "Id": "a8850efe-616e-45e6-906e-3453828eb2d4",
         "Name": "Screen",
-        "Position": "8.649749,8,66.42448",
-        "Rotation": "0,0.7933534,0,0.6087615",
-        "Scale": "0.3574039,0.5384045,0.09102613",
+        "Position": "10.1882,8.002461,72.17348",
+        "Rotation": "0.00000005960464,0.7933536,-0.00000001490116,0.6087615",
+        "Scale": "0.5034022,0.5384045,0.09102613",
         "Networked": true,
         "Enabled": true,
         "Components": [

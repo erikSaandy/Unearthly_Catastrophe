@@ -3,7 +3,7 @@ using Sandbox;
 
 public class DoorComponent : Component, IInteractable
 {
-	public bool IsInteractableBy( Player player ) { return !IsLocked || IsOpen || (IsLocked && player.Inventory?.ActiveItem is Key); }
+	public bool IsInteractableBy( Player player ) { return true; }// !IsLocked || IsOpen || (IsLocked && player.Inventory?.ActiveItem is Key); }
 	public float InteractionTime { get; set; } = 0.7f;
 	public string ToolTip { get; set; } = "";
 

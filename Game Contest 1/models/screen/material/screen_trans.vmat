@@ -4,21 +4,24 @@ Layer0
 {
 	shader "shaders/glass.shader"
 
+	//---- Rendering ----
+	F_DO_NOT_CAST_SHADOWS 1
+
 	//---- Fog ----
 	g_bFogEnabled "1"
 
 	//---- Glass ----
-	g_flBlurAmount "0.030"
+	g_flBlurAmount "0.300"
 	g_flRefractionStrength "1.000"
 
 	//---- Material ----
 	g_flTintColor "[1.000000 1.000000 1.000000 0.000000]"
-	TextureAmbientOcclusion "models/screen/material/m_screen_ao.png"
+	TextureAmbientOcclusion "[1.000000 1.000000 1.000000 0.000000]"
 	TextureBlendMask "materials/default/default_blend.tga"
-	TextureColor "models/screen/material/m_screen_color.png"
-	TextureMetalness "models/screen/material/m_screen_metal.png"
+	TextureColor "[0.458824 0.462745 0.494118 0.000000]"
+	TextureMetalness "[1.000000 1.000000 1.000000 0.000000]"
 	TextureNormal "models/screen/material/m_screen_normal.png"
-	TextureRoughness "models/screen/material/m_screen_rough.png"
+	TextureRoughness "[0.363000 0.363000 0.363000 0.000000]"
 	TextureTintMask "materials/default/default.tga"
-	TextureTranslucency "[0.242000 0.242000 0.242000 0.000000]"
+	TextureTranslucency "[0.496000 0.496000 0.496000 0.000000]"
 }

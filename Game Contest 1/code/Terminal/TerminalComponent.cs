@@ -32,7 +32,7 @@ public sealed class TerminalComponent : Component
 	[Property] public GameObject KeyboardCollider { get; set; }
 	[Property] public GameObject ScreenCollider { get; set; }
 
-	public static MoonDefinition SelectedMoon { get; set; } = null;
+	[Sync] public static int SelectedMoon { get; set; } = -1;
 
 	public string PageInfo => "[PAGE " + (PageNumber + 1) + "/" + PageCount + "]";
 
@@ -46,6 +46,16 @@ public sealed class TerminalComponent : Component
 
 
 	public bool ShowCursor => ((int)(Time.Now * 5) % 2) == 0;
+
+	[Property] public float ScreenDistance { get; set; } = 32;
+
+	[Broadcast]
+	public static void SelectMoon(int i)
+	{
+		TerminalComponent.SelectedMoon = i;
+		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.MoonDefinitions[SelectedMoon].ResourceName}";
+		LethalGameManager.Instance.Ship.Lever.IsLocked = false;
+	}
 
 	protected override void DrawGizmos()
 	{

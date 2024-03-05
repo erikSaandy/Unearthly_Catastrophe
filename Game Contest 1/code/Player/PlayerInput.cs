@@ -18,7 +18,7 @@
 	public PlayerInput(Player owner)
 	{
 		this.Owner = owner;
-		Owner.Camera.GameObject.SetParent( owner.GameObject );
+		//owner?.Camera?.GameObject?.SetParent( owner.GameObject );
 	}
 
 	public virtual void UpdateInput( )
