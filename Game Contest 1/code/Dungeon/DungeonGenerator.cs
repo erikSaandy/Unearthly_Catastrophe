@@ -30,7 +30,7 @@ public static class DungeonGenerator
 		entrance.InitiateBounds();
 		entrance.SpawnEntranceDoor();
 		entrance.GameObject.Name = "1 (entrance)";
-		entrance.GameObject.SetParent( LethalGameManager.CurrentMoon.GameObject );
+		entrance.GameObject.SetParent( LethalGameManager.Instance.CurrentMoon.GameObject );
 		entrance.GameObject.NetworkSpawn();
 
 		SpawnedRooms.Add( entrance );
@@ -199,7 +199,7 @@ public static class DungeonGenerator
 			//GameObject.Transform.Rotation = prevPortal.Rotation.RotateAroundAxis( prevPortal.Rotation.Up, 180 ).Angles() - newPortal.LocalRotation.Angles();
 			GameObject.Transform.Position = prevPortal.Position - newPortal.Position;
 
-			GameObject.SetParent( LethalGameManager.CurrentMoon.GameObject );
+			GameObject.SetParent( LethalGameManager.Instance.CurrentMoon.GameObject );
 
 			SpawnDoor( ActivePortal );
 

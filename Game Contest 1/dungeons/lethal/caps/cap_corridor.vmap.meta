@@ -16,7 +16,9 @@
       "HasCode": false,
       "CodePath": null,
       "PackageReferences": [],
-      "EditorReferences": [],
+      "EditorReferences": [
+        "facepunch.wall_brick_older_bottom_moss#18723"
+      ],
       "Metadata": {
         "SingleAssetSource": "dungeons/lethal/caps/cap_corridor.vmap"
       }

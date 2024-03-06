@@ -100,7 +100,7 @@
           },
           {
             "__type": "BoxCollider",
-            "Center": "0,0,100",
+            "Center": "0,0,80",
             "IsTrigger": true,
             "Scale": "500,850,200",
             "Static": false,
@@ -226,7 +226,7 @@
       {
         "Id": "19554343-6a5b-40c5-acb1-b8b9feee453d",
         "Name": "Spawnpoint (5)",
-        "Position": "-56,96,1.006469",
+        "Position": "-56,96,8",
         "Enabled": true,
         "Components": [
           {
@@ -238,7 +238,7 @@
       {
         "Id": "c31b3407-d0e4-4c4e-88d0-9aacc98cbde7",
         "Name": "Spawnpoint (4)",
-        "Position": "-56,128,1.006469",
+        "Position": "-56,128,8",
         "Enabled": true,
         "Components": [
           {
@@ -250,7 +250,7 @@
       {
         "Id": "a0621674-1d74-4323-8c06-ed84558f23d0",
         "Name": "Spawnpoint (7)",
-        "Position": "-56,160,1.006469",
+        "Position": "-56,160,8",
         "Enabled": true,
         "Components": [
           {
@@ -262,7 +262,7 @@
       {
         "Id": "ee77a680-ba72-4fea-9f32-56609fe02c6f",
         "Name": "Spawnpoint (9)",
-        "Position": "-56,160,1.006469",
+        "Position": "-56,160,8",
         "Enabled": true,
         "Components": [
           {
@@ -274,7 +274,7 @@
       {
         "Id": "05f162ba-9196-46c0-bf37-0bd2bffe11dd",
         "Name": "Spawnpoint (3)",
-        "Position": "54.79461,96,1.006469",
+        "Position": "54.79461,96,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
@@ -287,7 +287,7 @@
       {
         "Id": "3e9ca9f7-68ac-436d-a295-8853eef278ac",
         "Name": "Spawnpoint (2)",
-        "Position": "54.79461,128,1.006469",
+        "Position": "54.79461,128,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
@@ -300,7 +300,7 @@
       {
         "Id": "d9abf1f8-82fb-4525-b1d8-13a3c2e09d58",
         "Name": "Spawnpoint (6)",
-        "Position": "54.79461,160,1.006469",
+        "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
@@ -313,7 +313,7 @@
       {
         "Id": "a49765c6-b21e-498c-acac-8ceaa546be09",
         "Name": "Spawnpoint (8)",
-        "Position": "54.79461,160,1.006469",
+        "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [
@@ -326,7 +326,7 @@
       {
         "Id": "42349e64-07b3-4cda-b423-7bf0ec14142b",
         "Name": "Spawnpoint (1)",
-        "Position": "-56,64,1.006469",
+        "Position": "-56,64,8",
         "Enabled": true,
         "Components": [
           {
@@ -338,7 +338,7 @@
       {
         "Id": "9ffec092-7d52-459b-bca4-c3e8fd5da0ca",
         "Name": "Spawnpoint",
-        "Position": "54.79461,64,1.006469",
+        "Position": "54.79461,64,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
         "Components": [

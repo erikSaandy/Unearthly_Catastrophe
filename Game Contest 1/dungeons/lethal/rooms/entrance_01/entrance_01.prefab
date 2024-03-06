@@ -1,40 +1,40 @@
 {
   "RootObject": {
-    "Id": "4ad73800-5f88-43eb-b01f-a6672e919ac6",
+    "Id": "c9232ad5-534c-41ae-a038-12989b55c5b9",
     "Name": "entrance_01",
     "Enabled": true,
     "Components": [
       {
         "__type": "RoomData",
         "Bounds": {
-          "Mins": "-128,-400,-256",
+          "Mins": "-128,-400,-456",
           "Maxs": "128,128,216"
         },
         "Portals": [
           {
             "_type": "component",
-            "go": "fd5cb45f-3aa5-4804-975e-d075b0389e8f",
+            "go": "0edfe00b-875a-42d8-a4da-300c45797a08",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "8aa0d3dd-7bf9-4a51-916c-6fa2bb1c0bda",
+            "go": "1bf5040f-54a4-48fe-9c8d-375936cff771",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "5bc66be6-ab23-4bf1-90c9-b0b630b173a2",
+            "go": "6bb4b57f-b1f5-48ed-bb44-40c9a65d8a4a",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "c5d7dc88-68c6-4ce7-b87f-7356bcd8afa1",
+            "go": "f6815e31-18e1-4d87-a9b6-4204729e87e9",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "4ad73800-5f88-43eb-b01f-a6672e919ac6",
+          "go": "c9232ad5-534c-41ae-a038-12989b55c5b9",
           "component_type": "ModelRenderer"
         }
       },
@@ -57,7 +57,7 @@
     ],
     "Children": [
       {
-        "Id": "fd5cb45f-3aa5-4804-975e-d075b0389e8f",
+        "Id": "0edfe00b-875a-42d8-a4da-300c45797a08",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -70,7 +70,7 @@
         ]
       },
       {
-        "Id": "8aa0d3dd-7bf9-4a51-916c-6fa2bb1c0bda",
+        "Id": "1bf5040f-54a4-48fe-9c8d-375936cff771",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -83,7 +83,7 @@
         ]
       },
       {
-        "Id": "5bc66be6-ab23-4bf1-90c9-b0b630b173a2",
+        "Id": "6bb4b57f-b1f5-48ed-bb44-40c9a65d8a4a",
         "Name": "Door (2)",
         "Position": "-132,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
@@ -96,7 +96,7 @@
         ]
       },
       {
-        "Id": "c5d7dc88-68c6-4ce7-b87f-7356bcd8afa1",
+        "Id": "f6815e31-18e1-4d87-a9b6-4204729e87e9",
         "Name": "Door (3)",
         "Position": "0,-132,0",
         "Enabled": true,

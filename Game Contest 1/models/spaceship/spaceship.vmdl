@@ -72,7 +72,7 @@
 						_class = "PhysicsMeshFile"
 						name = "spaceship"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "metal"
 						collision_tags = "solid"
 						recenter_on_parent_bone = false
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -87,7 +87,112 @@
 						import_filter = 
 						{
 							exclude_by_default = false
-							exception_list = [  ]
+							exception_list = 
+							[
+								"body02_floor_brim_low",
+								"body02_floor_middle_low",
+								"body_hinge_screw_low",
+								"thruster01_pipe_low",
+								"thruster01_connector_low",
+								"thruster01_low",
+								"thruster02_pipe_low",
+								"thruster02_connector_low",
+								"thruster02_low",
+								"thruster03_pipe_low",
+								"thruster03_connector_low",
+								"thruster03_low",
+								"thruster04_pipe_low",
+								"thruster04_connector_low",
+								"thruster04_low",
+								"bracket01_low",
+								"bracket02_low",
+								"bracket03_low",
+								"bracket04_low",
+								"bracket05_low",
+								"bracket06_low",
+								"bracket07_low",
+								"bracket08_low",
+								"bracket09_low",
+								"bracket10_low",
+								"bracket11_low",
+								"bracket14_low",
+								"bracket13_low",
+								"bracket12_low",
+								"bracket15_low",
+								"bracket16_low",
+								"bracket17_low",
+								"bracket18_low",
+								"bracket19_low",
+								"bracket20_low",
+								"bracket21_low",
+								"bracket22_low",
+								"bracket23_low",
+								"rail_10_low",
+								"rail_13_low",
+								"rail_12_low",
+								"rail_11_low",
+								"rail_09_low",
+								"rail_08_low",
+								"rail_07_low",
+								"rail_06_low",
+								"rail_05_low",
+								"rail_04_low",
+								"rail_03_low",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "spaceship1"
+						parent_bone = ""
+						surface_prop = "metal"
+						collision_tags = "solid"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/spaceship/spaceship.fbx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"body02_floor_brim_low",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "spaceship1_copy"
+						parent_bone = ""
+						surface_prop = "metal"
+						collision_tags = "solid"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/spaceship/spaceship.fbx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"body02_floor_middle_low",
+							]
 						}
 					},
 				]

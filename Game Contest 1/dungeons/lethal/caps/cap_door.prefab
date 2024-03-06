@@ -1,7 +1,8 @@
 {
   "RootObject": {
-    "Id": "7593020d-1933-41c8-b2c5-f2208beb2495",
+    "Id": "16d3dc05-26a1-4156-9041-627e0cc9c8cb",
     "Name": "cap_door",
+    "Rotation": "0,0,0.7071067,0.7071068",
     "Enabled": true,
     "Components": [
       {

@@ -26,6 +26,8 @@
 		AnalogMove = Sandbox.Input.AnalogMove.Normal;
 		WantsToRun = Sandbox.Input.Down( "Run" );
 
+		Owner.Transform.Rotation = Rotation.FromYaw( Owner.EyeAngles.yaw );
+
 		DoInteractionTrace();
 
 		if ( Sandbox.Input.Pressed( "attack1" ) )

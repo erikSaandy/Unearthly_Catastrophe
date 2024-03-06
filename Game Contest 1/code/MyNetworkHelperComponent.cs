@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 [Title( "My Network Helper" )]
 [Category( "Networking" )]
 [Icon( "electrical_services" )]
-public sealed class MyNetworkHelper : Component, Component.INetworkListener
+public sealed class MyNetworkHelperComponent : Component, Component.INetworkListener
 {
 	/// <summary>
 	/// Create a server (if we're not joining one)
@@ -30,7 +30,7 @@ public sealed class MyNetworkHelper : Component, Component.INetworkListener
 
 		if ( StartServer && !GameNetworkSystem.IsActive )
 		{
-		    Sandbox.LoadingScreen.Title = "Creating Lobby";
+			Sandbox.LoadingScreen.Title = "Creating Lobby";
 			await Task.DelayRealtimeSeconds( 0.1f );
 			GameNetworkSystem.CreateLobby();
 		}
@@ -49,30 +49,25 @@ public sealed class MyNetworkHelper : Component, Component.INetworkListener
 		//
 		// Find a spawn location for this player
 		//
-		var startTx = FindSpawnLocation();
+		var startLocation = FindSpawnLocation().WithScale( 1 );
 
 		// Spawn this object and make the client the owner
-		var player = PlayerPrefab.Clone();//, name: $"Player - {channel.DisplayName}" );
-		player.Name = $"Player - {channel.DisplayName}";
-		player.Transform.Position = startTx.Position;
-		player.Transform.Rotation = startTx.Rotation.Angles();
-		Log.Info( startTx.Rotation.Angles() );
-		player.Transform.Scale = 1;
-
+		var player = PlayerPrefab.Clone( startLocation, name: $"Player - {channel.DisplayName}" );
 		player.NetworkSpawn( channel );
+
 	}
 
 	/// <summary>
 	/// Find the most appropriate place to respawn
 	/// </summary>
-	GameTransform FindSpawnLocation()
+	Transform FindSpawnLocation()
 	{
 		//
 		// If they have spawn point set then use those
 		//
 		if ( SpawnPoints is not null && SpawnPoints.Count > 0 )
 		{
-			return Random.Shared.FromList( SpawnPoints, default ).Transform;
+			return Random.Shared.FromList( SpawnPoints, default ).Transform.World;
 		}
 
 		//
@@ -81,12 +76,12 @@ public sealed class MyNetworkHelper : Component, Component.INetworkListener
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
 		if ( spawnPoints.Length > 0 )
 		{
-			return Random.Shared.FromArray( spawnPoints ).GameObject.Transform;
+			return Random.Shared.FromArray( spawnPoints ).Transform.World;
 		}
 
 		//
 		// Failing that, spawn where we are
 		//
-		return Transform;
+		return Transform.World;
 	}
 }

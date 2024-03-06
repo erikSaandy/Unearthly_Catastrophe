@@ -69,18 +69,20 @@ public class LeverComponent : Component, IInteractable
 		}
 	}
 
-	public void Deactivate()
+	public void Deactivate(bool invokeAction = true)
 	{
 		LerpAngles( false, DeactivatedAngle );
-
-		OnDeactivate?.Invoke();
+		
+		if ( invokeAction )
+			OnDeactivate?.Invoke();
 	}
 
-	public void Activate()
+	public void Activate( bool invokeAction = true )
 	{
 		LerpAngles( true, ActivatedAngle );
 
-		OnActivate?.Invoke();
+		if(invokeAction)
+			OnActivate?.Invoke();
 	}
 
 

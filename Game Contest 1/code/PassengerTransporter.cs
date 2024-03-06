@@ -15,7 +15,7 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 	public void OnTriggerEnter( Collider other )
 	{
 
-		if ( other.GameObject.IsAncestor( GameObject.Root ) ) { return; }
+		if ( GameObject.Root.IsAncestor( other.GameObject ) ) { return; }
 
 		if (other.GameObject.Tags.Has("player"))
 		{

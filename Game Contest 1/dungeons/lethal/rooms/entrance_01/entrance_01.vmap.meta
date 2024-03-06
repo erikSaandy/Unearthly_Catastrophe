@@ -18,7 +18,11 @@
       "PackageReferences": [],
       "EditorReferences": [
         "rustextended.metal_grate_b#43303",
-        "rustextended.metal_grate_a#43300"
+        "rustextended.metal_grate_a#43300",
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.concrete_cast_hs_02#37803",
+        "facepunch.concrete_c_damaged_hs#28940",
+        "facepunch.concrete_c_painted_hs#28942"
       ],
       "Metadata": {
         "SingleAssetSource": "dungeons/lethal/rooms/entrance_01/entrance_01.vmap"

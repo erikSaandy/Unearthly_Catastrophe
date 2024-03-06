@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public sealed class ShipComponent : Component
 {
-	private readonly Vector3 SPACE_POSITION = new Vector3( 0, -5000, -3500 );
+	private readonly Vector3 SPACE_POSITION = new Vector3( 0, -5000, 3500 );
 
 	[Property] public Curve DockingCurveXY { get; set; }
 	[Property] public Curve DockingCurveAcceleration { get; set; }
@@ -145,10 +145,18 @@ public sealed class ShipComponent : Component
 	}
 	*/
 
-	public void TakeOff()
+	public async Task FlyIntoSpaceLol()
 	{
+		Lever.Deactivate( invokeAction: false );
+
 		StartMovingTo( SPACE_POSITION );
 		CurrentLandingPad = null;
+
+		do
+		{
+			await Task.Yield();
+
+		} while ( IsMoving );
 	}
 
 	/*

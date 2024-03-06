@@ -1,11 +1,17 @@
-
+﻿
 using Dungeon;
 using Saandy;
 using Sandbox.Citizen;
 using Sandbox.UI;
 
-public sealed class Player : Component
+public sealed class Player : Component, Component.INetworkListener
 {
+
+	[Sync] public LifeState LifeState { get; private set; } = LifeState.Alive;
+	[Sync, Property] public float MaxHealth { get; private set; } = 100f;
+	[Sync] public float Health { get; private set; } = 100f;
+	private RealTimeSince TimeSinceDamaged { get; set; }
+	public RealTimeSince TimeSinceDeath { get; private set; }
 
 	public CharacterController Controller { get; set; }
 	public CitizenAnimationHelper Animator { get; set; }
@@ -20,6 +26,7 @@ public sealed class Player : Component
 
 	public EnergyBarComponent EnergyBar { get; private set; }
 	public InventoryComponent Inventory { get; private set; }
+	public RagdollController Ragdoll { get; private set; }
 
 	public PlayerInput PlayerInput { get; set; }
 
@@ -47,6 +54,7 @@ public sealed class Player : Component
 		Controller = Components.Get<CharacterController>();
 		Inventory = Components.Get<InventoryComponent>();
 		EnergyBar = Components.Get<EnergyBarComponent>();
+		Ragdoll = Components.Get<RagdollController>( true );
 
 		if ( GameObject.IsProxy ) {
 			CameraController.Camera.Destroy();
@@ -56,11 +64,16 @@ public sealed class Player : Component
 		LethalGameManager.OnStartLoadMoon += OnStartLoadMoon;
 		LethalGameManager.OnLoadedMoon += OnLoadedMoon;
 
-		Animator.Target.OnFootstepEvent += OnFootstep;
-
 		CurrentHud = HudObject.Components.Get<AliveHud>(true);
 		CurrentHud.Enabled = true;
 
+		LethalGameManager.OnPlayerConnected( GameObject.Id );
+
+	}
+
+	protected override void OnEnabled()
+	{
+		base.OnEnabled();
 	}
 
 	protected override void OnUpdate()
@@ -70,12 +83,121 @@ public sealed class Player : Component
 
 		if ( GameObject.IsProxy ) { return; }
 
-		Transform.Rotation = Rotation.FromYaw( EyeAngles.yaw );
-
 		//
+
+		if (Input.Pressed("flashlight"))
+		{
+			TakeDamage( 50, this.GameObject.Id );
+		}
 
 		PlayerInput?.UpdateInput();
 
+	}
+
+
+	[Broadcast]
+	public void TakeDamage( float damage, Guid attackerId )
+	{
+		if ( LifeState == LifeState.Dead )
+			return;
+
+		//if ( type == DamageType.Bullet )
+		//{
+		//	var p = new SceneParticles( Scene.SceneWorld, "particles/impact.flesh.bloodpuff.vpcf" );
+		//	p.SetControlPoint( 0, position );
+		//	p.SetControlPoint( 0, Rotation.LookAt( force.Normal * -1f ) );
+		//	p.PlayUntilFinished( Task );
+
+		//	if ( HurtSound is not null )
+		//	{
+		//		Sound.Play( HurtSound, Transform.Position );
+		//	}
+		//}
+
+		if ( IsProxy )
+			return;
+
+		TimeSinceDamaged = 0f;
+		Health = MathF.Max( Health - damage, 0f );
+
+		if ( Health <= 0f )
+		{
+			LifeState = LifeState.Dead;
+			Ragdoll.Ragdoll( );
+			OnKilled( Scene.Directory.FindByGuid( attackerId ) );
+			TimeSinceDeath = 0;
+		}
+	}
+
+	private void OnKilled( GameObject attacker )
+	{
+		if ( attacker.IsValid() )
+		{
+			/*
+			var player = attacker.Components.GetInAncestorsOrSelf<Player>();
+			if ( player.IsValid() )
+			{
+				var chat = Scene.GetAllComponents<Chat>().FirstOrDefault();
+
+				if ( chat.IsValid() )
+					chat.AddTextLocal( "💀️", $"{player.Network.OwnerConnection.DisplayName} has killed {Network.OwnerConnection.DisplayName}" );
+			}
+			*/
+		}
+
+		if ( IsProxy )
+			return;
+
+
+		PlayerInput = new PlayerSpectateInput( this );
+
+		LethalGameManager.Instance?.OnPlayerDeath( GameObject.Id );
+
+	}
+
+	public void Kill()
+	{
+		if ( LifeState == LifeState.Dead ) { return; }
+
+		TakeDamage( Health + 100, GameObject.Id );
+	}
+
+	public async void RespawnAsync( float seconds )
+	{
+		if ( IsProxy ) return;
+
+		await Task.DelaySeconds( seconds );
+		Respawn();
+	}
+
+	[Broadcast]
+	public void Respawn()
+	{
+		if ( IsProxy )
+			return;
+
+		Controller.Velocity = 0;
+		Controller.Acceleration = 0;
+		Ragdoll.Unragdoll(); 
+		MoveToSpawnPoint();
+		LifeState = LifeState.Alive;
+		Health = MaxHealth;
+		PlayerInput = new PlayerInput( this );
+
+	}
+
+	private void MoveToSpawnPoint()
+	{
+		if ( IsProxy )
+			return;
+
+		var spawnpoints = Scene.GetAllComponents<SpawnPoint>();
+		var randomSpawnpoint = Game.Random.FromList( spawnpoints.ToList() );
+		Log.Info( randomSpawnpoint.Transform.Position );
+
+		Transform.Position = randomSpawnpoint.Transform.Position;
+		Transform.Rotation = Rotation.FromYaw( randomSpawnpoint.Transform.Rotation.Yaw() );
+		EyeAngles = Transform.Rotation;
 	}
 
 	public void OnStartLoadMoon()
@@ -92,17 +214,14 @@ public sealed class Player : Component
 		PlayerInput = new PlayerInput( this );
 	}
 
-	[Broadcast]
-	private void OnFootstep(SceneModel.FootstepEvent footstep)
-	{
-	}
-
-
 	protected override void OnDestroy()
 	{
+
 		base.OnDestroy();
 
 		if ( GameObject.IsProxy ) { return; }
+
+		LethalGameManager.OnPlayerDisconnected( GameObject.Id );
 
 		CurrentHud?.Destroy();
 
@@ -110,7 +229,6 @@ public sealed class Player : Component
 		LethalGameManager.OnLoadedMoon -= OnLoadedMoon;
 
 	}
-
 
 	protected override void OnFixedUpdate()
 	{

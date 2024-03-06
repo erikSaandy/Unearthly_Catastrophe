@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "0f0532f4-eadc-4c31-bcec-250b477c45f6",
+    "Id": "fc7d85d9-16df-4968-a3b3-d6dc19aad74d",
     "Name": "kronos",
     "Enabled": true,
     "Components": [
@@ -8,14 +8,14 @@
         "__type": "Moon",
         "LandingPad": {
           "_type": "component",
-          "go": "a75bdd5b-1b37-4df9-8e4a-01af4e4e0ac4",
+          "go": "44e8f1b4-0d18-4ea3-9e09-403c98d7a3ec",
           "component_type": "ShipLandingPadComponent"
         }
       }
     ],
     "Children": [
       {
-        "Id": "1cc56919-12ef-4f63-92b9-f8f6d0ebb618",
+        "Id": "fbe70a99-a135-46d1-bb3b-39ab0cfade30",
         "Name": "Map Instance",
         "Enabled": true,
         "Components": [
@@ -30,18 +30,17 @@
         "Children": []
       },
       {
-        "Id": "1cc74108-0e66-430a-936a-cc1041eaf3a4",
+        "Id": "91c000d9-e477-42f6-afe9-9e5d2216a2e7",
         "Name": "door_entrance_01",
-        "Position": "-192,-0,0",
-        "Rotation": "0,0,-0.9999999,0.0000001490116",
+        "Position": "1023.999,768,0",
+        "Rotation": "0,0,-0.7071069,-0.7071065",
         "Enabled": true,
         "__Prefab": "prefabs/door_entrance_01.prefab"
       },
       {
-        "Id": "a75bdd5b-1b37-4df9-8e4a-01af4e4e0ac4",
+        "Id": "44e8f1b4-0d18-4ea3-9e09-403c98d7a3ec",
         "Name": "Landing pad",
-        "Position": "1024,0,64",
-        "Rotation": "0,0,0.258819,0.9659258",
+        "Position": "1024,-384,64",
         "Enabled": true,
         "Components": [
           {

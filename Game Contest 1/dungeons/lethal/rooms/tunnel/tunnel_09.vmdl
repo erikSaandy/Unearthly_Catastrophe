@@ -61,15 +61,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"mesh_2Mesh",
-								"mesh_33Mesh",
-								"mesh_34Mesh",
-								"mesh_37Mesh",
-								"mesh_36Mesh",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]

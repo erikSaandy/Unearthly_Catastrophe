@@ -23,7 +23,10 @@
         "sundayservice.plaster_generic_01#27364",
         "facepunch.plaster_hs_01#33578",
         "facepunch.floor_tile_02#47190",
-        "facepunch.trim_concrete_a#18735"
+        "facepunch.trim_concrete_a#18735",
+        "facepunch.floor_tile_02#48882",
+        "facepunch.wall_brick_older_bottom_moss#18723",
+        "facepunch.wall_brick_older#18725"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/lethal_room_collection.vmap"
