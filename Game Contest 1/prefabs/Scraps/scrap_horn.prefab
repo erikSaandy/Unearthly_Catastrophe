@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "169a31cf-c046-4fcf-8778-175619a3745c",
+    "Name": "scrap_horn",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "0,-55,-6.7",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_honker.vmdl.vtex",
+        "MaxValue": 42,
+        "MinValue": 12,
+        "Name": "Horn",
+        "Weight": 15
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_honker.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_honker.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

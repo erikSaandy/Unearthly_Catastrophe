@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "bc3ec757-d950-4b93-8985-f8e0bb579e6f",
+    "Name": "scrap_phone_book",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "-165,5,-90",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_phone_book.vmdl.vtex",
+        "MaxValue": 97,
+        "MinValue": 58,
+        "Name": "Phone Book",
+        "Weight": 80
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_phone_book.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_phone_book.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

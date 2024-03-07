@@ -7,7 +7,7 @@ public sealed class Scrap : Carriable, ISellable
 	[Property] public string Name { get; set; } = "";
 	public override string ToolTip { get; set; }
 
-	public override string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - Pickup" + GameObject.Name; }
+	public override string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - Pickup " + Name; }
 
 	protected override void OnStart()
 	{
@@ -18,23 +18,15 @@ public sealed class Scrap : Carriable, ISellable
 	{
 		base.OnDrop();
 
-
-
 	}
 
 	public override void OnUsePrimary()
 	{
-		base.OnDrop();
-	
-		
 
 	}
 
 	public override void OnUseSecondary()
 	{
-		base.OnDrop();
-
-
 
 	}
 }

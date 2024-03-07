@@ -7,6 +7,7 @@
       "Continuance": 1,
       "EntranceRooms": [
         {
+          "Weight": 100,
           "Prefab": "dungeons/lethal/rooms/entrance_01/entrance_01.prefab"
         }
       ],
@@ -42,6 +43,10 @@
         {
           "Weight": 30,
           "Prefab": "dungeons/lethal/rooms/corridor/corridor_06.prefab"
+        },
+        {
+          "Weight": 10,
+          "Prefab": "dungeons/lethal/rooms/loot_rooms/loot_room_01.prefab"
         }
       ]
     },
@@ -103,6 +108,10 @@
         {
           "Weight": 45,
           "Prefab": "dungeons/lethal/rooms/corridor/stairwell_01.prefab"
+        },
+        {
+          "Weight": 10,
+          "Prefab": "dungeons/lethal/rooms/loot_rooms/loot_room_01.prefab"
         }
       ]
     }
@@ -115,11 +124,11 @@
   ],
   "Doors": [
     {
-      "Weight": 100,
+      "Weight": 45,
       "Prefab": "dungeons/lethal/doors/door_01.prefab"
     },
     {
-      "Weight": 75,
+      "Weight": 100,
       "Prefab": "dungeons/lethal/doors/door_02.prefab"
     }
   ],

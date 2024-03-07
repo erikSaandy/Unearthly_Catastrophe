@@ -1,11 +1,12 @@
 {
   "RootObject": {
-    "Id": "e875625b-08e9-402d-8baf-97e0a6dee5f4",
+    "Id": "317d4e15-1b38-4afc-b005-2368fe84975c",
     "Name": "door_01",
+    "Position": "-4,0,0",
     "Enabled": true,
     "Children": [
       {
-        "Id": "9a48f448-c625-4129-830d-396506604fcc",
+        "Id": "ce112efa-717e-4805-876a-7956fcf858ab",
         "Name": "door_frame_01",
         "Enabled": true,
         "Components": [

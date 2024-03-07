@@ -181,6 +181,7 @@ public class LethalGameManager : Component
 		Ship.Land( CurrentMoon.LandingPad );
 	}
 
+
 	[Broadcast( NetPermission.Anyone )]
 	public void LoadSelectedMoon( )
 	{
@@ -188,13 +189,13 @@ public class LethalGameManager : Component
 	}
 
 	[Broadcast(NetPermission.Anyone)]
-	public void LoadMoon( int moon ) {
+	public void LoadMoon( int moon )
+	{
+		Ship.Lever.IsLocked = true;
 
-		if ( GameObject.IsProxy ) return;
+		if ( IsProxy ) { return; }
 
 		RespawnAllDeadPlayers();
-
-		Ship.Lever.IsLocked = true;
 
 		Instance.LoadMoonAsync( moon );
 

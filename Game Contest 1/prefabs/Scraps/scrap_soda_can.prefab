@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "6bd507c0-d897-4811-a947-712d307080d6",
+    "Name": "Soda Can",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "-135,-40,-80",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_soda_can.vmdl.vtex",
+        "MaxValue": 29,
+        "MinValue": 11,
+        "Name": "Soda Can",
+        "Weight": 25
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_soda_can.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_soda_can.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

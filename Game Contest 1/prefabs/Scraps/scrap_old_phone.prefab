@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "1d8d89f6-2e0e-4356-8972-66b916435bbf",
+    "Name": "scrap_old_phone",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "-90,-35,-25",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_old_phone.vmdl.vtex",
+        "MaxValue": 32,
+        "MinValue": 0,
+        "Name": "Old Phone",
+        "Weight": 7
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_old_phone.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_old_phone.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

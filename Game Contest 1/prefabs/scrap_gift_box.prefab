@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "d0647f76-504b-49ef-9ec7-f70e494b383b",
+    "Name": "scrap_gift_box",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "0,-10,-90",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_gift_box.vmdl.vtex",
+        "MaxValue": 35,
+        "MinValue": 5,
+        "Name": "Gift Box",
+        "Weight": 45
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_gift_box.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_gift_box.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

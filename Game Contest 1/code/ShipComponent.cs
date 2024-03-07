@@ -51,11 +51,16 @@ public sealed class ShipComponent : Component
 
 		if(IsProxy) { return; }
 
+		//TOOD: Move each player on the local client, and move ship on host?
+		// [Broadcast] Player.Move(vector3 dst)
+
 		if(IsMoving)
 		{
+			if(Transporter == null ) { Log.Warning( "Transporter is null?! whoops." ); }
+
 			if ( Vector3.DistanceBetween( WantedPosition, Transform.Position ) > 8f )
 			{
-				foreach ( CharacterController passenger in Transporter.Passengers )
+				foreach ( CharacterController passenger in Transporter?.Passengers )
 				{
 					passenger.GameObject.SetParent( GameObject );
 				}

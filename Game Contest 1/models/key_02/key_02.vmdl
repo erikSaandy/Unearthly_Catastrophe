@@ -47,18 +47,18 @@
 						parent_bone = ""
 						surface_prop = "metal.sheet"
 						collision_tags = "solid"
-						origin = [ -0.103203, 3.849359, 0.258896 ]
+						origin = [ -0.103203, 3.849359, 0.360573 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 3.357801, 10.122136, 0.530333 ]
+						dimensions = [ 3.357801, 10.122136, 1.303063 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
 						surface_prop = "metal.sheet"
 						collision_tags = "solid"
-						origin = [ -0.132641, -2.460659, 0.258896 ]
+						origin = [ -0.132641, -2.460659, 0.36057 ]
 						angles = [ 0.0, -45.0, 0.0 ]
-						dimensions = [ 7.217586, 7.217586, 0.530333 ]
+						dimensions = [ 7.217586, 7.217586, 1.384412 ]
 					},
 				]
 			},

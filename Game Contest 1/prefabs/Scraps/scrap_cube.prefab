@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "3ec3eb15-404e-4997-85ae-466e20da7f1b",
+    "Name": "scrap_cube",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "0,0,0",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_cube.vmdl.vtex",
+        "MaxValue": 72,
+        "MinValue": 6,
+        "Name": "Cube",
+        "Weight": 4
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_cube.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_cube.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

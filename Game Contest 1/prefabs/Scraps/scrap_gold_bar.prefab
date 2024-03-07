@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "8f82cca1-8462-4ab3-b639-b7c927f61abb",
+    "Name": "scrap_gold_bar",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "-90,-45,-25",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_gold_bar.vmdl.vtex",
+        "MaxValue": 220,
+        "MinValue": 159,
+        "Name": "Gold Bar",
+        "Weight": 95
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_gold_bar.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_gold_bar.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

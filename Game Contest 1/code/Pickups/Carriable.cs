@@ -3,6 +3,7 @@ using Sandbox.UI;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using static Sandbox.Clothing;
 
 
 public abstract class Carriable : Component, ICarriable
@@ -43,6 +44,8 @@ public abstract class Carriable : Component, ICarriable
 	{
 		base.OnStart();
 
+		if ( IsProxy ) { return; }
+
 		DropToGround();
 
 	}
@@ -53,19 +56,24 @@ public abstract class Carriable : Component, ICarriable
 
 		if ( Tags.Has("owned")) { Log.Info( $"Can't pick up owned item!" ); return; }
 		if ( Owner != null ) { Log.Info( $"Can't pick up owned item!" ); return; }
+
+		if (!player.Inventory.TryPickup(this, out int slotId)) { return; }
+
+		// transfer ownership
+		GameObject.Network.TakeOwnership();		
 		Owner = player;
-
-		if (!player.Inventory.TryPickup(this)) { return; }
-
-		GameObject.Network.TakeOwnership();
-
 		Tags.Add( "owned" );
 
-		Collider.Enabled = false;
-		//Rigidbody.Enabled = false;
-		GameObject.Enabled = false;
-		GameObject.SetParent( Owner.HandRBone );
-		Transform.LocalPosition = Vector3.Zero;
+
+		if ( slotId == player.Inventory.ActiveSlot )
+		{
+			Deploy();
+		}
+		else
+		{
+			Undeploy();
+		}
+
 	}
 
 
@@ -80,19 +88,18 @@ public abstract class Carriable : Component, ICarriable
 		Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
 
 		Collider.Enabled = true;
-		GameObject.Enabled = true;
-		//Rigidbody.Enabled = true;
-
+		Renderer.Enabled = true;
 		GameObject.SetParent( null );
 
-		SceneTraceResult trace = Scene.Trace.Ray( Owner.Camera.Transform.Position, Owner.Camera.Transform.Position + Owner.Transform.Rotation.Forward * 64 )
+		SceneTraceResult trace = Scene.Trace.Ray( Owner.Camera.Transform.Position, Owner.Camera.Transform.Position + Owner.Camera.Transform.Rotation.Forward * 64 )
 			.IgnoreGameObjectHierarchy( Owner.GameObject )
 			.IgnoreGameObjectHierarchy( GameObject )
 			.UseHitboxes()
-			.Size( 12f )
+			.Radius(8)
 			.Run();
 
 		GameObject.Transform.Position = trace.EndPosition;
+		Renderer.Enabled = true;
 
 		DropToGround();
 
@@ -108,20 +115,19 @@ public abstract class Carriable : Component, ICarriable
 
 	private void DropToGround()
 	{
-		SceneTraceResult trace = Scene.Trace.Ray( Transform.Position, Transform.Position + Vector3.Down * 512 )
-		.UseRenderMeshes()
+
+		SceneTraceResult trace = Scene.Trace.Sphere( (Renderer.Bounds.Size.z * 0.25f), Transform.Position, Transform.Position + Vector3.Down * 512 )
 		.UseHitboxes()
 		.UsePhysicsWorld()
-		.Size(8)
 		.Run();
 
 		if ( Owner != null ) { GameObject.Transform.Rotation = Owner.Transform.Rotation.Angles().WithPitch( 0 ).WithRoll( 0 ); }
 
-		GameObject.Transform.Position = trace.EndPosition + Vector3.Up * 4;
+		GameObject.Transform.Position = trace.EndPosition;
 
 		if ( trace.GameObject != null && trace.GameObject.Tags.Has("spaceship"))
 		{
-			GameObject.SetParent( trace.GameObject );
+			GameObject.SetParent( trace.GameObject.Root );
 		}
 	}
 
@@ -138,13 +144,18 @@ public abstract class Carriable : Component, ICarriable
 	[Broadcast]
 	public virtual void Undeploy()
 	{
-		GameObject.Enabled = false;
-		Transform.LocalPosition = Vector3.Zero;
+		Renderer.Enabled = false;
+
+		if ( IsProxy ) { return; }
+
 		GameObject.SetParent( Owner.GameObject );
+		Transform.LocalPosition = Vector3.Zero;
 
-		if (GameObject.IsProxy) { return; }
+		if(Owner.Inventory.ActiveItem == this)
+		{
+			Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
+		}
 
-		Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
 
 	}
 
@@ -154,9 +165,9 @@ public abstract class Carriable : Component, ICarriable
 	[Broadcast]
 	public virtual void Deploy()
 	{
-		GameObject.Enabled = true;
+		Renderer.Enabled = true;
 
-		if ( GameObject.IsProxy ) { return; }
+		if ( IsProxy ) { return; }
 
 		GameObject.SetParent( Owner.HandRBone );
 

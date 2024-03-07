@@ -22,8 +22,6 @@ public sealed class Flashlight : Carriable
 	{
 		base.OnInteract( player );
 
-		GameObject.Enabled = true;
-
 	}
 
 	public override void OnDrop()
@@ -43,13 +41,16 @@ public sealed class Flashlight : Carriable
 
 	public override void Undeploy()
 	{
-		base.Undeploy();
+		//base.Undeploy();
 
-		GameObject.Enabled = true;
+		Renderer.Enabled = true;
 
 		if ( GameObject.IsProxy ) { return; }
 
-		Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
+		if ( Owner.Inventory.ActiveItem == this )
+		{
+			Owner.CurrentHoldType = CitizenAnimationHelper.HoldTypes.None;
+		}
 
 		GameObject.SetParent( Owner.FlashlightRBone );
 		GameObject.Transform.LocalPosition = 0;

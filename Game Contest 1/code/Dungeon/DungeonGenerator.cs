@@ -7,7 +7,7 @@ public static class DungeonGenerator
 {
 	private static readonly Vector3 DUNGEON_ORIGIN = new Vector3( 0, 0, -2000 );
 
-	public const int LOCKED_DOOR_CHANCE = 10;
+	public const int LOCKED_DOOR_CHANCE = 8;
 
 	private static DungeonDefinition DungeonResource { get; set; }
 
@@ -108,7 +108,7 @@ public static class DungeonGenerator
 
 		if(!currentRoom.HasUnexploredPortals) { return null; }
 
-		for ( int i = 0; i < 4; i++ )
+		for ( int i = 0; i < 10; i++ )
 		{
 			nextRoom = new RoomSetup( currentBiome.RandomRoom );
 			if ( nextRoom.Data == null ) { Log.Error( "Could not load prefab " + nextRoom.Prefab ); }
@@ -175,7 +175,6 @@ public static class DungeonGenerator
 
 		public RoomSetup(Room room)
 		{
-
 			Prefab = room.Prefab;
 			PrefabFile pf = null;
 			if(!ResourceLibrary.TryGet<PrefabFile>( room.Prefab, out pf )) { return; }
@@ -318,6 +317,7 @@ public static class DungeonGenerator
 			cap.Transform.Position = ActivePortal.Transform.Position;
 			cap.Transform.Rotation = ActivePortal.Transform.Rotation;
 			cap.SetParent( GameObject );
+			cap.NetworkSpawn();
 		}
 
 		public void Destroy()

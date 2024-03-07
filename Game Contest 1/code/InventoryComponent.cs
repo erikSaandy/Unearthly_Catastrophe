@@ -1,13 +1,4 @@
-﻿
-using Saandy;
-using Sandbox;
-using Sandbox.UI;
-using System.Diagnostics;
-using System.Drawing;
-using System.Net.Mail;
-using System.Numerics;
-
-public sealed class InventoryComponent : Component
+﻿public sealed class InventoryComponent : Component
 {
 	[Property] public Player Owner { get; private set; }
 	[Property] public int Size { get; private set; } = 4;
@@ -38,12 +29,15 @@ public sealed class InventoryComponent : Component
 
 	}
 
-	public bool TryPickup(Carriable carriable)
+	public bool TryPickup(Carriable carriable, out int slotId)
 	{
+		slotId = -1;
+
 		for(int i = 0; i < Items.Length; i++ )
 		{
 			if ( Items[i] == null )
 			{
+				slotId = i;
 				return TryPickup( carriable, i );
 			}
 		}
@@ -58,11 +52,6 @@ public sealed class InventoryComponent : Component
 
 		Weight += carriable.Weight;
 		Items[slotId] = carriable;
-
-		if ( slotId == ActiveSlot )
-		{
-			Items[slotId].Deploy();
-		}
 
 		return true;
 

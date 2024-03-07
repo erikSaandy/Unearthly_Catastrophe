@@ -1,0 +1,513 @@
+{
+  "RootObject": {
+    "Id": "c70065e9-0f0c-450d-847f-3f4dd417bd32",
+    "Name": "loot_room_01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "RoomData",
+        "Bounds": {
+          "Mins": "-736,-448,-764",
+          "Maxs": "-64,832,672"
+        },
+        "Portals": [
+          {
+            "_type": "component",
+            "go": "29c89571-4cd5-4555-945a-990831eccb53",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "a0c4c0a7-e2ad-4339-bdef-b2e98f5fffa2",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "ff91da9e-d968-40b3-b8c6-d35b341d1538",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "044b98f2-4c98-4a7a-a11d-83f625bd2710",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "4dd9d6ad-5b6b-428d-b1d1-bee8d222cecb",
+            "component_type": "RoomPortal"
+          },
+          {
+            "_type": "component",
+            "go": "a5d48f5a-6264-46e3-953e-54877b8ef2f9",
+            "component_type": "RoomPortal"
+          }
+        ],
+        "Renderer": {
+          "_type": "component",
+          "go": "c70065e9-0f0c-450d-847f-3f4dd417bd32",
+          "component_type": "ModelRenderer"
+        }
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "dungeons/lethal/rooms/loot_rooms/loot_room_01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/rooms/loot_rooms/loot_room_01.vmdl",
+        "Static": true,
+        "Surface": null
+      }
+    ],
+    "Children": [
+      {
+        "Id": "29c89571-4cd5-4555-945a-990831eccb53",
+        "Name": "Door",
+        "Position": "-255.9997,836.0001,0.00001349466",
+        "Rotation": "0,0,1,0.0000001649049",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "a0c4c0a7-e2ad-4339-bdef-b2e98f5fffa2",
+        "Name": "Door (2)",
+        "Position": "-639.9997,836.0002,0.0000909205",
+        "Rotation": "0,0,1,0.0000001649049",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "a5d48f5a-6264-46e3-953e-54877b8ef2f9",
+        "Name": "Door (5)",
+        "Position": "-740,-351.9996,96",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "ff91da9e-d968-40b3-b8c6-d35b341d1538",
+        "Name": "Door (3)",
+        "Position": "-64,0.0000114441,0",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Corridor"
+          }
+        ]
+      },
+      {
+        "Id": "044b98f2-4c98-4a7a-a11d-83f625bd2710",
+        "Name": "Door (4)",
+        "Position": "-767.9999,384.0001,0.00002389784",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Corridor"
+          }
+        ]
+      },
+      {
+        "Id": "4dd9d6ad-5b6b-428d-b1d1-bee8d222cecb",
+        "Name": "Door (1)",
+        "Position": "-63.99993,320,0",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "PortalType": "Corridor"
+          }
+        ]
+      },
+      {
+        "Id": "46a08688-d7d4-48e9-a070-f55885781c7a",
+        "Name": "metal_staircase_step",
+        "Position": "-256,-108,0",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "d5a340a4-08ac-4cbc-ba8b-23aba0d9cfd0",
+        "Name": "metal_staircase_step (15)",
+        "Position": "-640,-60,-0",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "34b9f380-f860-4a61-ad3f-7286fd17e2ea",
+        "Name": "metal_staircase_step (1)",
+        "Position": "-256,-120,8",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "ec7c2c9e-20fa-4abf-a7ed-f47352af5f8f",
+        "Name": "metal_staircase_step (14)",
+        "Position": "-640,-72,8",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "01b528e5-6c1a-4c5e-bbc8-29f0f69118f7",
+        "Name": "metal_staircase_step (2)",
+        "Position": "-256,-132,16",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "8413f6d7-a295-4df5-8c56-4dc0ffa29682",
+        "Name": "metal_staircase_step (13)",
+        "Position": "-640,-84,16",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "96b744cd-c0f7-4f0b-a5b6-47765af11edc",
+        "Name": "metal_staircase_step (3)",
+        "Position": "-256,-144,24",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "8898d616-1de0-4594-849d-1a1a4c1b7f29",
+        "Name": "metal_staircase_step (12)",
+        "Position": "-640,-96,24",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "9bb9b5c9-171f-47ea-b6c9-76f5059ea1a0",
+        "Name": "metal_staircase_step (4)",
+        "Position": "-256,-156,32",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "361247e6-5981-407f-b64d-90ae76a20770",
+        "Name": "metal_staircase_step (11)",
+        "Position": "-640,-108,32",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "2cb6cd66-427b-44a1-8c21-3ccec46eb3c6",
+        "Name": "metal_staircase_step (5)",
+        "Position": "-256,-168,40",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "1990c2a2-f073-483f-a7ba-cc837a6d84d3",
+        "Name": "metal_staircase_step (10)",
+        "Position": "-640,-120,40",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "e238060d-4aaf-4110-be7a-db4db6315c98",
+        "Name": "metal_staircase_step (6)",
+        "Position": "-256,-180,48",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "d0c77e19-3760-48ac-81c5-6f8079e78590",
+        "Name": "metal_staircase_step (9)",
+        "Position": "-640,-132,48",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "8dbe9750-6fb6-4425-a0c0-22e612d7be80",
+        "Name": "metal_staircase_step (7)",
+        "Position": "-256,-192,56",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "1f92ec9d-f7c8-4c40-b6d7-98b7794b2a91",
+        "Name": "metal_staircase_step (8)",
+        "Position": "-640,-144,56",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "fcfe725d-aa9e-4246-ba50-f1814072e6ee",
+        "Name": "metal_staircase_step (16)",
+        "Position": "-640,-156,64",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "52691ea5-4fdb-4b10-bb03-a5693e770504",
+        "Name": "metal_staircase_step (17)",
+        "Position": "-640,-168,72",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "1b91d132-8409-4903-bbef-aab6307c159e",
+        "Name": "metal_staircase_step (18)",
+        "Position": "-640,-180,80",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "05abd62b-aa89-497f-afc4-0d5fdfc4ef9e",
+        "Name": "metal_staircase_step (19)",
+        "Position": "-640,-192,88",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

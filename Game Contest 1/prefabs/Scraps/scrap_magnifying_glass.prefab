@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "854f8af0-53df-4567-b74c-f6248f69bc98",
+    "Name": "scrap_magnifying_glass",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "100,0,30",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_magnifying_glass.vmdl.vtex",
+        "MaxValue": 44,
+        "MinValue": 0,
+        "Name": "Magnifying Glass",
+        "Weight": 15
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_magnifying_glass.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_magnifying_glass.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

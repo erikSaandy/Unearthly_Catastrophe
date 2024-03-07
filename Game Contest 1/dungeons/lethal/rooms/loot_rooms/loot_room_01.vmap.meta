@@ -1,0 +1,35 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "loot_room_01",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "loot_room_01",
+      "Tags": null,
+      "Schema": 0,
+      "HasAssets": false,
+      "AssetsPath": null,
+      "Resources": null,
+      "MenuResources": "*",
+      "HasCode": false,
+      "CodePath": null,
+      "PackageReferences": [],
+      "EditorReferences": [
+        "facepunch.metal_painted_black_a_hs#29194",
+        "facepunch.floor_tile_02#48882",
+        "facepunch.wall_concrete_low_a#18712",
+        "facepunch.plaster_hs_02#28800",
+        "facepunch.plaster_hs_01#33578",
+        "facepunch.floor_concrete_ramp_a#18641",
+        "facepunch.stone_cladding_hs_01#33580",
+        "facepunch.pipe_a_64#33815",
+        "facepunch.pipe_a_32#33813"
+      ],
+      "Metadata": {
+        "SingleAssetSource": "dungeons/lethal/rooms/loot_rooms/loot_room_01.vmap"
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "d7d0ee5d-d6a5-468a-9a3e-f845073dc2c7",
+    "Name": "scrap_die",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "0,0,0",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_dice.vmdl.vtex",
+        "MaxValue": 75,
+        "MinValue": 15,
+        "Name": "Die",
+        "Weight": 3
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_dice.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_dice.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ],
+    "Children": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}
