@@ -137,9 +137,9 @@ public sealed class ShipComponent : Component
 		{
 
 			if(!player.IsProxy)
-			{
-				Log.Info( "moved urself :)" );
-				player.Controller.MoveTo( player.Transform.Position + velocity, true );
+			{	
+				player.Controller.MoveTo( player.Transform.Position + (velocity * Time.Delta), true );
+				break;
 			}
 
 		}

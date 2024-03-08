@@ -36,6 +36,15 @@
       ]
     },
     {
+      "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
+      "Name": "spaceship",
+      "Position": "0,-3000,1500",
+      "Tags": "spaceship",
+      "Networked": true,
+      "Enabled": true,
+      "__Prefab": "prefabs/spaceship.prefab"
+    },
+    {
       "Id": "b797f93f-4060-492d-b0f7-5f43891491bd",
       "Name": "Sun",
       "Position": "-756.9304,-30.22823,448",
@@ -56,7 +65,7 @@
     {
       "Id": "5746a167-f2ef-4476-9313-0326aae1a698",
       "Name": "key",
-      "Position": "0,-4946.99,3500.243",
+      "Position": "0,-2939.088,1500",
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
@@ -65,34 +74,35 @@
     {
       "Id": "78cedc54-e833-4ce3-9dcb-9920ea34cc10",
       "Name": "flashlight",
-      "Position": "2514.664,0.00000000000003851803,2517.896",
+      "Position": "21.64913,-2906.936,1517.891",
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/items/flashlight.prefab"
     },
     {
-      "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
-      "Name": "spaceship",
-      "Position": "0,-3000,1500",
-      "Tags": "spaceship",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/spaceship.prefab"
-    },
-    {
       "Id": "4ec22489-b981-456a-b45f-a18c7c9d8433",
       "Name": "Metal Sheet",
-      "Position": "43.80766,-5148.799,3502.591",
+      "Position": "-1.754122,-2832.2,1517.739",
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/scrap_metal_sheet.prefab"
     },
     {
+      "Id": "bc3ec757-d950-4b93-8985-f8e0bb579e6f",
+      "Name": "scrap_phone_book",
+      "Position": "26.42944,-2838.952,1517.891",
+      "Rotation": "0,0,-0.1880295,0.9821634",
+      "Tags": "item",
+      "Networked": true,
+      "Enabled": true,
+      "__Prefab": "prefabs/scrap_phone_book.prefab"
+    },
+    {
       "Id": "3ec3eb15-404e-4997-85ae-466e20da7f1b",
       "Name": "Cube",
-      "Position": "23.08906,-5177.213,3505.986",
+      "Position": "-10.7135,-2857.735,1517.891",
       "Rotation": "0,0,0.4004267,0.9163288",
       "Tags": "item",
       "Networked": true,
@@ -102,7 +112,7 @@
     {
       "Id": "d7d0ee5d-d6a5-468a-9a3e-f845073dc2c7",
       "Name": "Die",
-      "Position": "-2.655224,-5193.322,3506.321",
+      "Position": "14.73486,-2863.413,1517.891",
       "Rotation": "0,0,-0.2638988,0.9645504",
       "Tags": "item",
       "Networked": true,
@@ -112,7 +122,7 @@
     {
       "Id": "d0647f76-504b-49ef-9ec7-f70e494b383b",
       "Name": "Gift Box",
-      "Position": "-33.31551,-5157.785,3508.438",
+      "Position": "2.384338,-2903.948,1517.891",
       "Rotation": "0,0,-0.161514,0.9868704",
       "Tags": "item",
       "Networked": true,
@@ -122,7 +132,7 @@
     {
       "Id": "169a31cf-c046-4fcf-8778-175619a3745c",
       "Name": "scrap_horn",
-      "Position": "-29.85734,-5117.987,3508.045",
+      "Position": "25.42627,-2874.327,1517.891",
       "Rotation": "0,0,-0.400291,0.9163881",
       "Tags": "item",
       "Networked": true,
@@ -132,8 +142,9 @@
     {
       "Id": "854f8af0-53df-4567-b74c-f6248f69bc98",
       "Name": "Magnifying Glass",
-      "Position": "48.13264,-5193.5,3507.029",
+      "Position": "-8.559204,-2876.29,1517.891",
       "Rotation": "0,0,0.4039855,0.9147654",
+      "Tags": "item",
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/scraps/scrap_magnifying_glass.prefab"
@@ -141,7 +152,7 @@
     {
       "Id": "1d8d89f6-2e0e-4356-8972-66b916435bbf",
       "Name": "Old Phone",
-      "Position": "-54.61589,-5139.861,3502.321",
+      "Position": "-23.07227,-2843.723,1517.891",
       "Rotation": "0,0,-0.1305262,0.9914449",
       "Tags": "item",
       "Networked": true,
@@ -149,19 +160,9 @@
       "__Prefab": "prefabs/scraps/scrap_old_phone.prefab"
     },
     {
-      "Id": "bc3ec757-d950-4b93-8985-f8e0bb579e6f",
-      "Name": "scrap_phone_book",
-      "Position": "23.57144,-5220.879,3502.321",
-      "Rotation": "0,0,-0.1880295,0.9821634",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scrap_phone_book.prefab"
-    },
-    {
       "Id": "6bd507c0-d897-4811-a947-712d307080d6",
       "Name": "Soda Can",
-      "Position": "-26.9162,-5223.943,3504.627",
+      "Position": "0.9605713,-2874.9,1517.891",
       "Rotation": "0,0,-0.119325,0.9928553",
       "Tags": "item",
       "Networked": true,
@@ -171,7 +172,7 @@
     {
       "Id": "8f82cca1-8462-4ab3-b639-b7c927f61abb",
       "Name": "Gold Bar",
-      "Position": "-0.000004845785,-5120,3502.321",
+      "Position": "-26.55262,-2888.419,1517.891",
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
@@ -201,6 +202,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-08T13:56:37.5005099\u002B01:00",
+  "LastSaved": "2024-03-08T20:18:50.2631535\u002B01:00",
   "__references": []
 }

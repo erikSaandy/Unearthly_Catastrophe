@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "dcf79fc6-974b-4f1d-8063-722dafe7e72e",
+    "Id": "a43243cc-4ab4-4c6c-8a6b-d769c9c50b65",
     "Name": "stairwell_01",
     "Enabled": true,
     "Components": [
@@ -10,31 +10,36 @@
           "Mins": "-60,-127.9998,0",
           "Maxs": "320,128,320"
         },
+        "LootSpawner": {
+          "_type": "component",
+          "go": "a43243cc-4ab4-4c6c-8a6b-d769c9c50b65",
+          "component_type": "LootSpawnerComponent"
+        },
         "Portals": [
           {
             "_type": "component",
-            "go": "0e1d718f-f2ec-40e9-a1e0-fe7130e80061",
+            "go": "3791d8dc-12b9-4554-bffd-7c5df0dc9cba",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "ecc4c23f-5787-4f21-b24c-7d9c67f1e665",
+            "go": "8184317e-cc14-4348-a353-77baf2133e3a",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "caaf0720-5cc0-4984-b6ff-20dfa3cbb0bf",
+            "go": "be5f8abd-1154-4293-911c-6ecf5590c455",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "64b33201-b61a-4674-ba08-2ca65648d5ad",
+            "go": "cbc91fa5-afeb-4e71-a8b4-bd098d5a2d61",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "dcf79fc6-974b-4f1d-8063-722dafe7e72e",
+          "go": "a43243cc-4ab4-4c6c-8a6b-d769c9c50b65",
           "component_type": "ModelRenderer"
         }
       },
@@ -53,11 +58,17 @@
         "Model": "dungeons/lethal/rooms/corridor/stairwell_01.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "LootSpawnerComponent",
+        "MaxItemCount": 3,
+        "Offset": "128,0,208",
+        "Radius": 250
       }
     ],
     "Children": [
       {
-        "Id": "0e1d718f-f2ec-40e9-a1e0-fe7130e80061",
+        "Id": "3791d8dc-12b9-4554-bffd-7c5df0dc9cba",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001947072",
@@ -70,7 +81,7 @@
         ]
       },
       {
-        "Id": "ecc4c23f-5787-4f21-b24c-7d9c67f1e665",
+        "Id": "8184317e-cc14-4348-a353-77baf2133e3a",
         "Name": "Door (1)",
         "Position": "0,132,192",
         "Rotation": "0,0,1,0.0000001947072",
@@ -83,7 +94,7 @@
         ]
       },
       {
-        "Id": "caaf0720-5cc0-4984-b6ff-20dfa3cbb0bf",
+        "Id": "be5f8abd-1154-4293-911c-6ecf5590c455",
         "Name": "Door (2)",
         "Position": "-0.00004353491,-132,0",
         "Enabled": true,
@@ -95,7 +106,7 @@
         ]
       },
       {
-        "Id": "64b33201-b61a-4674-ba08-2ca65648d5ad",
+        "Id": "cbc91fa5-afeb-4e71-a8b4-bd098d5a2d61",
         "Name": "Door (3)",
         "Position": "-0.00004353491,-132,192",
         "Enabled": true,

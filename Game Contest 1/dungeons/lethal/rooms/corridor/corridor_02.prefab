@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "173495d9-fc7b-4c4f-9948-d778adabb3ef",
+    "Id": "c62954a3-9af6-4e18-b6f4-8eb073ddc7a9",
     "Name": "corridor_02",
     "Enabled": true,
     "Components": [
@@ -10,21 +10,26 @@
           "Mins": "-64,-64,128",
           "Maxs": "128,128,0"
         },
+        "LootSpawner": {
+          "_type": "component",
+          "go": "c62954a3-9af6-4e18-b6f4-8eb073ddc7a9",
+          "component_type": "LootSpawnerComponent"
+        },
         "Portals": [
           {
             "_type": "component",
-            "go": "61727fef-9de9-4cdd-9367-f11aff5f534d",
+            "go": "ede2ec7f-9e5b-406c-b69b-5dac77cb0b74",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "2b7ce389-b58a-49e4-b199-913cddbe831d",
+            "go": "a46f48bb-f0dc-4895-8c10-af7f2c813647",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "173495d9-fc7b-4c4f-9948-d778adabb3ef",
+          "go": "c62954a3-9af6-4e18-b6f4-8eb073ddc7a9",
           "component_type": "ModelRenderer"
         }
       },
@@ -43,11 +48,17 @@
         "Model": "dungeons/lethal/rooms/corridor/corridor_02.vmdl",
         "Static": true,
         "Surface": null
+      },
+      {
+        "__type": "LootSpawnerComponent",
+        "MaxItemCount": 1,
+        "Offset": "24,24,6.199998",
+        "Radius": 124
       }
     ],
     "Children": [
       {
-        "Id": "61727fef-9de9-4cdd-9367-f11aff5f534d",
+        "Id": "ede2ec7f-9e5b-406c-b69b-5dac77cb0b74",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -60,7 +71,7 @@
         ]
       },
       {
-        "Id": "2b7ce389-b58a-49e4-b199-913cddbe831d",
+        "Id": "a46f48bb-f0dc-4895-8c10-af7f2c813647",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",

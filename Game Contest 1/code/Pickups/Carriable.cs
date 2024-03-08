@@ -113,11 +113,12 @@ public abstract class Carriable : Component, ICarriable
 
 	}
 
-	private void DropToGround()
+	public SceneTraceResult DropToGround()
 	{
 
-		SceneTraceResult trace = Scene.Trace.Sphere( (Renderer.Bounds.Size.z * 0.25f), Transform.Position, Transform.Position + Vector3.Down * 512 )
+		SceneTraceResult trace = Scene.Trace.Sphere( (Renderer.Bounds.Size.z * 0.4f), Transform.Position, Transform.Position + Vector3.Down * 512 )
 		.UseHitboxes()
+		.WithoutTags("item", "player")
 		.UsePhysicsWorld()
 		.Run();
 
@@ -125,10 +126,14 @@ public abstract class Carriable : Component, ICarriable
 
 		GameObject.Transform.Position = trace.EndPosition;
 
-		if ( trace.GameObject != null && trace.GameObject.Tags.Has("spaceship"))
+		if ( trace.GameObject != null )
 		{
 			GameObject.SetParent( trace.GameObject.Root );
+
 		}
+
+		return trace;
+
 	}
 
 	public virtual void UpdateHeldPosition()

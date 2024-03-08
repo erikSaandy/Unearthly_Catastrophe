@@ -22,10 +22,10 @@ public partial class DungeonDefinition : GameResource
 	[Description( "Door cap for this dungeon " )]
 	[JsonInclude][ResourceType( "prefab" )] public string DoorCap { get; set; }
 
-	[JsonIgnore][Hide] public Biome RandomBiome => GetRandom( Biomes );
+	[JsonIgnore][Hide] public Biome RandomBiome => Biomes.GetRandom();
 
-	[JsonIgnore][Hide] public Door RandomDoor => GetRandom( Doors );
-	[JsonIgnore][Hide] public Door RandomEntranceDoor => GetRandom( EntranceDoors );
+	[JsonIgnore][Hide] public Door RandomDoor => Doors.GetRandom();
+	[JsonIgnore][Hide] public Door RandomEntranceDoor => EntranceDoors.GetRandom();
 
 	public static T GetRandom<T>( List<T> pool ) where T : IWeighted
 	{
@@ -86,11 +86,5 @@ public class Door : IWeighted
 	[Description( "How likely is this door to appear?" )]
 	[JsonInclude][Range( 0, 100 )] public int Weight { get; set; }
 	[JsonInclude][ResourceType( "prefab" )] public string Prefab { get; set; }
-
-}
-
-public interface IWeighted {
-	[JsonInclude] public bool Disabled { get; set; }
-	[JsonInclude][Range( 0, 100 )] public int Weight { get; set; }
 
 }

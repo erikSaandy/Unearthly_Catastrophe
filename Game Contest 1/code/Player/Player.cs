@@ -4,7 +4,7 @@ using Saandy;
 using Sandbox.Citizen;
 using Sandbox.UI;
 
-public sealed class Player : Component, Component.INetworkListener
+public sealed class Player : Component, Component.INetworkListener, IKillable
 {
 
 	[Sync] public LifeState LifeState { get; private set; } = LifeState.Alive;

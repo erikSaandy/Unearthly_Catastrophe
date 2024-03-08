@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "a2c8bce9-fdf6-46ab-bf07-e3c52d48adf7",
+    "Id": "e3ff9937-45d2-4075-bd0f-d2f5438c1434",
     "Name": "corridor_03",
     "Enabled": true,
     "Components": [
@@ -10,26 +10,31 @@
           "Mins": "-128,-74,0",
           "Maxs": "128,127.9998,128"
         },
+        "LootSpawner": {
+          "_type": "component",
+          "go": "e3ff9937-45d2-4075-bd0f-d2f5438c1434",
+          "component_type": "LootSpawnerComponent"
+        },
         "Portals": [
           {
             "_type": "component",
-            "go": "9eac1fab-90af-4b85-aa80-368bcb8dfb0e",
+            "go": "6640befc-7745-4c0f-985a-1800062446f5",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "f661a6e3-ab1d-448a-8d6f-698a32c7718f",
+            "go": "24de509a-5353-4a31-b460-f69777ee9ac7",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "77404fa6-f274-4c25-8497-2a5cbf1d6bd0",
+            "go": "ad110b0b-0322-480a-bd8f-a083b1b5ce8d",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "a2c8bce9-fdf6-46ab-bf07-e3c52d48adf7",
+          "go": "e3ff9937-45d2-4075-bd0f-d2f5438c1434",
           "component_type": "ModelRenderer"
         }
       },
@@ -48,11 +53,17 @@
         "Model": "dungeons/lethal/rooms/corridor/corridor_03.vmdl",
         "Static": true,
         "Surface": null
+      },
+      {
+        "__type": "LootSpawnerComponent",
+        "MaxItemCount": 2,
+        "Offset": "0,0,8",
+        "Radius": 176.00002
       }
     ],
     "Children": [
       {
-        "Id": "9eac1fab-90af-4b85-aa80-368bcb8dfb0e",
+        "Id": "6640befc-7745-4c0f-985a-1800062446f5",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -65,7 +76,7 @@
         ]
       },
       {
-        "Id": "f661a6e3-ab1d-448a-8d6f-698a32c7718f",
+        "Id": "24de509a-5353-4a31-b460-f69777ee9ac7",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -78,7 +89,7 @@
         ]
       },
       {
-        "Id": "77404fa6-f274-4c25-8497-2a5cbf1d6bd0",
+        "Id": "ad110b0b-0322-480a-bd8f-a083b1b5ce8d",
         "Name": "Door (2)",
         "Position": "-132,0,0",
         "Rotation": "0,0,-0.7071067,0.7071068",

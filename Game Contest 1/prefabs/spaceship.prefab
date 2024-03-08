@@ -40,7 +40,6 @@
             "mode": "Linear"
           }
         ],
-        "DockingTime": 6,
         "Doors": {
           "_type": "component",
           "go": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
@@ -526,6 +525,73 @@
             "OnPropBreak": null,
             "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
+          }
+        ]
+      },
+      {
+        "Id": "52f6959a-2916-4369-a60d-bac3f5a5a35b",
+        "Name": "screen (3)",
+        "Position": "-142.5972,-192,95.99998",
+        "Rotation": "-0.09229594,0.09229595,-0.7010576,0.7010577",
+        "Scale": "1.394335,1.394335,1.394335",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Prop",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/screen/screen.vmdl",
+            "OnPropBreak": null,
+            "OnPropTakeDamage": null,
+            "ShowCreatedComponents": false
+          }
+        ],
+        "Children": [
+          {
+            "Id": "aa521337-cc67-4e56-9524-39160e46d03d",
+            "Name": "Text",
+            "Position": "0,0,0",
+            "Rotation": "0,0,0.7071068,0.7071068",
+            "Scale": "0.7171878,0.7171878,0.7171878",
+            "Enabled": true,
+            "Children": [
+              {
+                "Id": "a67b2d8a-7768-4ed4-8d28-57a47d8ee5e3",
+                "Name": "Header",
+                "Position": "2.584717,-0.0001526859,15.5475",
+                "Rotation": "0,0.000000000000003552714,1,-0.00000004371139",
+                "Scale": "0.4534729,0.4534729,0.4534729",
+                "Enabled": true,
+                "Components": [
+                  {
+                    "__type": "TextRenderer",
+                    "Color": "1,1,1,1",
+                    "FontFamily": "Poppins",
+                    "FontSize": 19.89,
+                    "Scale": 0.45,
+                    "Text": "Hello Technicians!"
+                  }
+                ]
+              },
+              {
+                "Id": "5fe9c218-418b-44d8-86f9-806a4583a1b0",
+                "Name": "Block",
+                "Position": "2.479487,-0.00006140624,-4.889696",
+                "Rotation": "0,0.000000000000003552714,1,-0.00000004371139",
+                "Scale": "0.6556392,0.6556392,0.6556392",
+                "Enabled": true,
+                "Components": [
+                  {
+                    "__type": "TextRenderer",
+                    "Color": "1,1,1,1",
+                    "FontFamily": "Poppins",
+                    "FontSize": 19.89,
+                    "Scale": 0.16,
+                    "Text": "Thank you for playing UC!\nI often find it\u0027s difficult to keep \nmy plans realistic when starting\na new project, and I fear\nI might not have had time\nto make it fun.\nPlease find the fun for me, if you can!\n                                                                            -Saandy"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },

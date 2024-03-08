@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "9a4a31bf-feee-44e2-8527-676999c152e8",
+    "Id": "6725cb0b-95df-49bc-9a8d-a011b7215a98",
     "Name": "tunnel_04",
     "Enabled": true,
     "Components": [
@@ -10,21 +10,26 @@
           "Mins": "-64,-128,0",
           "Maxs": "192,128,128"
         },
+        "LootSpawner": {
+          "_type": "component",
+          "go": "6725cb0b-95df-49bc-9a8d-a011b7215a98",
+          "component_type": "LootSpawnerComponent"
+        },
         "Portals": [
           {
             "_type": "component",
-            "go": "660a7f84-505e-4f0b-8bb8-ee2cefd61964",
+            "go": "6e9bdf43-60e3-4e5f-a586-cff1bed092c4",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "43f29119-c02b-43ff-b925-ab45058c2216",
+            "go": "5702db98-c6fe-4f55-8984-287337477d91",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "9a4a31bf-feee-44e2-8527-676999c152e8",
+          "go": "6725cb0b-95df-49bc-9a8d-a011b7215a98",
           "component_type": "ModelRenderer"
         }
       },
@@ -43,11 +48,17 @@
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_04.vmdl",
         "Static": true,
         "Surface": null
+      },
+      {
+        "__type": "LootSpawnerComponent",
+        "MaxItemCount": 1,
+        "Offset": "64,0,24",
+        "Radius": 150
       }
     ],
     "Children": [
       {
-        "Id": "660a7f84-505e-4f0b-8bb8-ee2cefd61964",
+        "Id": "6e9bdf43-60e3-4e5f-a586-cff1bed092c4",
         "Name": "Door",
         "Position": "0.00002110785,128,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -60,7 +71,7 @@
         ]
       },
       {
-        "Id": "43f29119-c02b-43ff-b925-ab45058c2216",
+        "Id": "5702db98-c6fe-4f55-8984-287337477d91",
         "Name": "Door (1)",
         "Position": "192,-64,0.00001124907",
         "Rotation": "0,0,0.7071067,0.7071068",

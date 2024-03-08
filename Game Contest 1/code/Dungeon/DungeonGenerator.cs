@@ -97,6 +97,7 @@ public static class DungeonGenerator
 
 		if(currentRoom == SpawnedRooms[0] )
 		{
+			PopulateWithScrap();
 			finished = true;
 		}
 
@@ -157,12 +158,23 @@ public static class DungeonGenerator
 		}
 	}
 
-	//private static bool OverlapsWithSpawnedRoom( ref RoomSetup prevRoom, RoomSetup potentialRoom )
-	//{
-	//	GameObject go =	potentialRoom.prefabScene;
-	//	GameTransform portalTx = potentialRoom.Portal.Transform;
-	//	go.Transform.Rotation =  go.Transform.Rotation.Angles().Forward * portalTx.Rotation.Angles();
-	//}
+	private static void PopulateWithScrap()
+	{
+		foreach(RoomSetup room in SpawnedRooms)
+		{
+			if(room.Data.LootSpawner != null)
+			{
+				Log.Info( "found loot spawner" );
+
+				int scrapCount = LethalGameManager.Random.Next( 0, room.Data.LootSpawner.MaxItemCount + 1 );
+
+				for(int i = 0; i < scrapCount; i++ )
+				{
+					room.Data.LootSpawner.TrySpawnItem( ScrapManager.RandomScrap );
+				}
+			}
+		}
+	}
 
 	private class RoomSetup
 	{
