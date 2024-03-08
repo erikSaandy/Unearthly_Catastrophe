@@ -1,0 +1,42 @@
+{
+  "RootObject": {
+    "Id": "4ec22489-b981-456a-b45f-a18c7c9d8433",
+    "Name": "Metal Sheet",
+    "Position": "43.80766,-5148.799,3502.591",
+    "Tags": "item",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Scrap",
+        "HeldAngleOffset": "-5,5,-65",
+        "HoldType": "HoldItem",
+        "Icon": "models/scrap_collection01/scrap_corrugated_metal.vmdl.vtex",
+        "MaxValue": 96,
+        "MinValue": 47,
+        "Name": "Metal Sheet",
+        "Weight": 41
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/scrap_collection01/scrap_corrugated_metal.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": false,
+        "Model": "models/scrap_collection01/scrap_corrugated_metal.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

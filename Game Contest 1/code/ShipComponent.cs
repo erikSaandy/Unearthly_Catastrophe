@@ -1,27 +1,41 @@
 using Saandy;
 using Sandbox;
 using System.Diagnostics;
+using System.Numerics;
 using System.Threading.Tasks;
+using static Sandbox.PhysicsContact;
 
 public sealed class ShipComponent : Component
 {
-	private readonly Vector3 SPACE_POSITION = new Vector3( 0, -5000, 3500 );
+
+	private readonly Vector3 SPACE_POSITION = new Vector3( 0, -3000, 1500 );
+
+	private CharacterController Controller { get; set; }
 
 	[Property] public Curve DockingCurveXY { get; set; }
 	[Property] public Curve DockingCurveAcceleration { get; set; }
 
-	[Property] public float DockingTime { get; set; } = 6f;
-
 	[Category( "Components" )][Property] private ShipLandingPadComponent CurrentLandingPad { get; set; }
 
-	[Sync] private Vector3 WantedPosition { get; set; }
+	[Sync][Property] public float Speed { get; set; }
+	private float SpeedPrev { get; set; }
+	private readonly float SpeedMin = 20;
+	private readonly float SpeedMax = 250;
+	private float accelerationFactor = 300.0f;
+	private float slowDownRadius = 250;
+
+	private Vector3 Velocity { get; set; } = new();
+
 	[Sync] private bool IsMoving { get; set; } = false;
 
-	public PassengerTransporter Transporter { get; private set; }
+
+	[Category( "Components" )][Property] public PassengerTransporter Transporter { get; private set; }
 
 	[Category("Components")][Property] public LeverComponent Lever { get; set; }
 
 	[Category( "Components" )][Property] public ShipDoorComponent Doors { get; set; }
+
+	private Vector3 TargetPosition { get; set; }
 
 	protected override void OnAwake()	
 	{
@@ -29,14 +43,16 @@ public sealed class ShipComponent : Component
 
 		GameObject.BreakFromPrefab();
 
-		WantedPosition = SPACE_POSITION;
-
-		Transporter = GameObject.Components.GetInChildren<PassengerTransporter>();
+		Controller = GameObject.Components.Get<CharacterController>();
 		//OnMoveShip += Transporter.MovePassengers;
 
 		Lever.IsLocked = true;
 		Lever.OnActivate += LethalGameManager.Instance.LoadSelectedMoon;
 		Lever.OnDeactivate += LethalGameManager.Instance.LeaveCurrentMoon;
+
+		TargetPosition = SPACE_POSITION;
+
+
 	}
 
 	protected override void OnUpdate()
@@ -51,34 +67,79 @@ public sealed class ShipComponent : Component
 
 		if(IsProxy) { return; }
 
-		//TOOD: Move each player on the local client, and move ship on host?
-		// [Broadcast] Player.Move(vector3 dst)
 
-		if(IsMoving)
+
+		BuildVelocity();
+
+		if ( IsMoving )
 		{
-			if(Transporter == null ) { Log.Warning( "Transporter is null?! whoops." ); }
+			Move( Velocity );
+		}
 
-			if ( Vector3.DistanceBetween( WantedPosition, Transform.Position ) > 8f )
+
+
+	}
+
+	private void BuildVelocity()
+	{
+		var distanceToTarget = Vector2.Distance( GameObject.Transform.Position, TargetPosition );
+
+		if ( distanceToTarget <= 4f )
+		{
+
+			StopMoving();
+
+			// do nothing else 
+			return;
+		}
+
+		IsMoving = true;
+
+		if ( distanceToTarget <= 128 )
+		{
+			// decelerate
+			// This will make it slower 
+			// the closer we get to the target position
+			Speed = SpeedPrev * (distanceToTarget / slowDownRadius);
+
+			// as long as it is not in the final position
+			// it should always keep a minimum speed
+			Speed = Math.Max( Speed, SpeedMin );
+		}
+		else
+		{
+			// accelerate
+			Speed += accelerationFactor * Time.Delta;
+
+			// Limit to MaxVelocity
+			Speed = Math.Min( Speed, SpeedMax );
+
+			SpeedPrev = Speed;
+		}
+
+		Vector3 dir = (TargetPosition - GameObject.Transform.Position).Normal;
+		Velocity = dir * Speed;
+
+	}
+
+	[Broadcast]
+	private void Move( Vector3 velocity )
+	{
+
+		if(!IsProxy)
+		{
+			Controller.Velocity = velocity;
+			Controller.Move();
+		}
+
+
+		foreach ( Player player in Transporter?.Passengers )
+		{
+
+			if(!player.IsProxy)
 			{
-				foreach ( CharacterController passenger in Transporter?.Passengers )
-				{
-					passenger.GameObject.SetParent( GameObject );
-				}
-
-				Vector3 oldPos = Transform.Position;
-				Transform.Position = Math2d.Lerp( Transform.Position, WantedPosition, Time.Delta * Time.Delta * 20 );
-				Vector3 newPos = Transform.Position;
-				Vector3 deltaPos = newPos - oldPos;
-
-				foreach ( CharacterController passenger in Transporter.Passengers )
-				{
-					passenger.GameObject.SetParent( Scene );
-				}
-
-			}
-			else
-			{
-				StopMoving();
+				Log.Info( "moved urself :)" );
+				player.Controller.MoveTo( player.Transform.Position + velocity, true );
 			}
 
 		}
@@ -89,11 +150,13 @@ public sealed class ShipComponent : Component
 	{
 		Lever.IsLocked = true;
 		IsMoving = true;
-		WantedPosition = pos;
+		TargetPosition = pos;
 	}
 
 	private void StopMoving()
 	{
+		Speed = 0;
+		Velocity = 0;
 		IsMoving = false;
 		Lever.IsLocked = false;
 	}
@@ -102,9 +165,6 @@ public sealed class ShipComponent : Component
 	{
 		CurrentLandingPad = landingPad;
 		//Transform.Rotation = CurrentLandingPad.Transform.Rotation;
-
-		WantedPosition = CurrentLandingPad.Transform.Position;
-
 		//LandAsync( landingPad.Transform.Position );
 
 		Doors.Unlock();

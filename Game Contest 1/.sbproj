@@ -1,9 +1,9 @@
 {
-  "Title": "Game Contest 1",
+  "Title": "Unearthly Catastrophe",
   "Type": "game",
   "Org": "saandy",
-  "Ident": "game_contest_1",
-  "Tags": null,
+  "Ident": "unearthly_catastrophe",
+  "Tags": "",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
@@ -26,7 +26,7 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/minimal.scene",
+    "StartupScene": "scenes/gamescene.scene",
     "ProjectTemplate": null,
     "ControlModes": {
       "Keyboard": true
@@ -226,7 +226,8 @@
         "trigger": "Trigger",
         "ladder": "Ignore",
         "water": "Trigger",
-        "spaceship": "Unset"
+        "spaceship": "Unset",
+        "item": "Collide"
       },
       "Pairs": [
         {
@@ -262,8 +263,19 @@
         {
           "a": "trigger",
           "b": "spaceship"
+        },
+        {
+          "a": "spaceship",
+          "b": "item",
+          "r": "Collide"
+        },
+        {
+          "a": "item",
+          "b": "item"
         }
       ]
-    }
+    },
+    "MapStartupScene": null,
+    "LaunchMode": "Normal"
   }
 }

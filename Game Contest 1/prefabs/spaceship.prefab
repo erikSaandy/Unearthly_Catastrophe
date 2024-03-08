@@ -50,6 +50,12 @@
           "_type": "component",
           "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
           "component_type": "LeverComponent"
+        },
+        "Speed": 0,
+        "Transporter": {
+          "_type": "component",
+          "go": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
+          "component_type": "PassengerTransporter"
         }
       },
       {
@@ -70,14 +76,45 @@
         "Model": "models/spaceship/spaceship.vmdl",
         "Static": false,
         "Surface": null
+      },
+      {
+        "__type": "CharacterController",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "",
+        "Radius": 16,
+        "StepHeight": 18
       }
     ],
     "Children": [
+      {
+        "Id": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
+        "Name": "Passenger Transporter",
+        "Networked": true,
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "PassengerTransporter",
+            "Passengers": []
+          },
+          {
+            "__type": "BoxCollider",
+            "Center": "0,0,100",
+            "IsTrigger": true,
+            "Scale": "500,800,200",
+            "Static": false,
+            "Surface": null
+          }
+        ]
+      },
       {
         "Id": "43b878c4-1466-49df-a980-2b172f4d3369",
         "Name": "Gap Collider",
         "Position": "0,-11.17955,-2.880481",
         "Scale": "3.613807,1.289862,0.1121138",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -85,24 +122,6 @@
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
-            "Static": false,
-            "Surface": null
-          }
-        ]
-      },
-      {
-        "Id": "c3f39ad0-e967-4d68-afee-a30babc23c7d",
-        "Name": "Passenger transporter",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "PassengerTransporter"
-          },
-          {
-            "__type": "BoxCollider",
-            "Center": "0,0,80",
-            "IsTrigger": true,
-            "Scale": "500,850,200",
             "Static": false,
             "Surface": null
           }
@@ -227,6 +246,7 @@
         "Id": "19554343-6a5b-40c5-acb1-b8b9feee453d",
         "Name": "Spawnpoint (5)",
         "Position": "-56,96,8",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -239,6 +259,7 @@
         "Id": "c31b3407-d0e4-4c4e-88d0-9aacc98cbde7",
         "Name": "Spawnpoint (4)",
         "Position": "-56,128,8",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -251,6 +272,7 @@
         "Id": "a0621674-1d74-4323-8c06-ed84558f23d0",
         "Name": "Spawnpoint (7)",
         "Position": "-56,160,8",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -263,6 +285,7 @@
         "Id": "ee77a680-ba72-4fea-9f32-56609fe02c6f",
         "Name": "Spawnpoint (9)",
         "Position": "-56,160,8",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -276,6 +299,7 @@
         "Name": "Spawnpoint (3)",
         "Position": "54.79461,96,8",
         "Rotation": "0,0,1,-0.00000004371139",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -289,6 +313,7 @@
         "Name": "Spawnpoint (2)",
         "Position": "54.79461,128,8",
         "Rotation": "0,0,1,-0.00000004371139",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -302,6 +327,7 @@
         "Name": "Spawnpoint (6)",
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -315,6 +341,7 @@
         "Name": "Spawnpoint (8)",
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -327,6 +354,7 @@
         "Id": "42349e64-07b3-4cda-b423-7bf0ec14142b",
         "Name": "Spawnpoint (1)",
         "Position": "-56,64,8",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -340,6 +368,7 @@
         "Name": "Spawnpoint",
         "Position": "54.79461,64,8",
         "Rotation": "0,0,1,-0.00000004371139",
+        "Networked": true,
         "Enabled": true,
         "Components": [
           {

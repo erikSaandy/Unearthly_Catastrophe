@@ -2,59 +2,45 @@ using Sandbox;
 
 public sealed class PassengerTransporter : Component, Component.ITriggerListener
 {
-	public List<CharacterController> Passengers { get; private set; } = new();
+	[Property] public List<Player> Passengers { get; private set; } = new();
 
-	private Vector3 oldPosition { get; set; }
 
 	protected override void OnAwake()
 	{
-		oldPosition = Transform.Position;
+		base.OnAwake();
 
 	}
 
 	public void OnTriggerEnter( Collider other )
 	{
 
+		// Already added.
 		if ( GameObject.Root.IsAncestor( other.GameObject ) ) { return; }
 
-		if (other.GameObject.Tags.Has("player"))
+
+		if ( other.GameObject.Tags.Has( "player" ) )
 		{
-			Passengers.Add( other.GameObject.Components.Get<CharacterController>() );
+			Player player = other.GameObject.Root.Components.Get<Player>();
+			Passengers.Add( player );
 			Log.Info( "Added passenger " + other.GameObject.Name );
+
 		}
-		
+
 	}
 
 	public void OnTriggerExit( Collider other )
 	{
-		foreach( CharacterController passenger in Passengers ) {
-			if( other.GameObject == passenger.GameObject)
+
+		foreach ( Player passenger in Passengers )
+		{
+			if ( other.GameObject == passenger.GameObject )
 			{
 				Passengers.Remove( passenger );
-				//other.GameObject.SetParent( Scene );
+				Log.Info( "Removed passenger " + other.GameObject.Name );
 				return;
 			}
 		}
 
 	}
-
-	//public void MovePassengers(Vector3 delta)
-	//{
-	//	base.OnFixedUpdate();
-
-	//	if ( delta.Length <= 0f ) { return; }
-
-	//	foreach ( CharacterController passenger in Passengers )
-	//	{
-	//		//TODO: PassengerContainer instead, move passengers from shipcomponent.
-	//		Vector3 tVel = passenger.Velocity;
-
-	//		passenger.Accelerate(delta / Time.Delta);
-	//		passenger.Move();
-	//		passenger.Velocity = tVel;
-
-	//	}
-
-	//}
 
 }

@@ -21,6 +21,7 @@
       "Id": "a54a2201-4b3b-4cf9-82d0-a758293cee65",
       "Name": "Network Helper",
       "Position": "0,0,171.1578",
+      "Networked": true,
       "Enabled": true,
       "Components": [
         {
@@ -55,7 +56,7 @@
     {
       "Id": "5746a167-f2ef-4476-9313-0326aae1a698",
       "Name": "key",
-      "Position": "0,-4946.99,3516.459",
+      "Position": "0,-4946.99,3500.243",
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
@@ -73,7 +74,7 @@
     {
       "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
       "Name": "spaceship",
-      "Position": "0,-5000,3500",
+      "Position": "0,-3000,1500",
       "Tags": "spaceship",
       "Networked": true,
       "Enabled": true,
@@ -86,34 +87,7 @@
       "Tags": "item",
       "Networked": true,
       "Enabled": true,
-      "Components": [
-        {
-          "__type": "Scrap",
-          "HeldAngleOffset": "-5,5,-65",
-          "HoldType": "HoldItem",
-          "Icon": "models/scrap_collection01/scrap_corrugated_metal.vmdl.vtex",
-          "MaxValue": 96,
-          "MinValue": 47,
-          "Name": "Metal Sheet",
-          "Weight": 41
-        },
-        {
-          "__type": "ModelRenderer",
-          "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
-          "MaterialOverride": null,
-          "Model": "models/scrap_collection01/scrap_corrugated_metal.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "ModelCollider",
-          "IsTrigger": false,
-          "Model": "models/scrap_collection01/scrap_corrugated_metal.vmdl",
-          "Static": false,
-          "Surface": null
-        }
-      ]
+      "__Prefab": "prefabs/scrap_metal_sheet.prefab"
     },
     {
       "Id": "3ec3eb15-404e-4997-85ae-466e20da7f1b",
@@ -138,7 +112,7 @@
     {
       "Id": "d0647f76-504b-49ef-9ec7-f70e494b383b",
       "Name": "Gift Box",
-      "Position": "-33.31551,-5157.785,3521.391",
+      "Position": "-33.31551,-5157.785,3508.438",
       "Rotation": "0,0,-0.161514,0.9868704",
       "Tags": "item",
       "Networked": true,
@@ -169,6 +143,7 @@
       "Name": "Old Phone",
       "Position": "-54.61589,-5139.861,3502.321",
       "Rotation": "0,0,-0.1305262,0.9914449",
+      "Tags": "item",
       "Networked": true,
       "Enabled": true,
       "__Prefab": "prefabs/scraps/scrap_old_phone.prefab"
@@ -226,6 +201,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-07T23:44:36.3432531\u002B01:00",
+  "LastSaved": "2024-03-08T13:56:37.5005099\u002B01:00",
   "__references": []
 }

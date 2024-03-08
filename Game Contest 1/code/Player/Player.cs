@@ -281,7 +281,25 @@ public sealed class Player : Component, Component.INetworkListener
 
 		Controller.Move();
 
+		if( Controller.GroundObject != OldGroundObject )
+		{
+			OnGroundChanged( OldGroundObject, Controller.GroundObject );
+			OldGroundObject = Controller.GroundObject;
+		}
+
 	}
 
+
+	private void OnGroundChanged(GameObject oldGround, GameObject newGround)
+	{
+		//if(newGround == LethalGameManager.Instance.Ship.GameObject)
+		//{
+		//	GameObject.SetParent( newGround.Root );
+		//}
+		//else if(newGround != null)
+		//{
+		//	GameObject.SetParent( Scene );
+		//}
+	}
 
 }
