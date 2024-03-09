@@ -13,9 +13,10 @@ TerminalHud {
 	pointer-events: all;
 
 	.textLine {
-		height: 9px;
-        font-size: 6px;
+		height: 7px;
+        font-size: 5px;
         font-family: Poppins;
+		font-weight: 400;
 		color: #00FF00;
 		letter-spacing: 0.8px;
 	}

@@ -8,6 +8,7 @@ public class TerminalPageShop : ITerminalPage
 		"Type BUY followed by any item.",
 		"Order items in bulk by typing a number.",
 		"----------------------------------------------",
+		"",
 	};
 
 	public string[] GetLines()
@@ -18,7 +19,6 @@ public class TerminalPageShop : ITerminalPage
 		// List all moons.
 		foreach (ShopManager.ShopItem item in ShopManager.Items )
 		{
-			l.Add( " " );
 			l.Add( $"> {item.Name}    //    Price: ${item.Cost}" );
 		}
 

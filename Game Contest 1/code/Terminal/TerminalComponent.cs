@@ -28,7 +28,7 @@ public sealed class TerminalComponent : Component
 	/// <summary>
 	/// MAX PAGE LENGTH
 	/// </summary>
-	public const int PageLineCount = 14;
+	public const int PageLineCount = 16;
 
 	[Property] public Vector3 CameraPosition { get; private set; }
 	[Property] public Angles CameraAngles { get; private set; }

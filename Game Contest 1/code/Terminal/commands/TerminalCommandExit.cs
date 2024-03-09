@@ -10,8 +10,6 @@ public class TerminalCommandExit : TerminalCommand
 	public override void Run( TerminalComponent Terminal, params string[] parts )
 	{
 		Terminal.Exit();
-		Terminal.OpenPage( new TerminalPageMain() );
-
 	}
 
 }
