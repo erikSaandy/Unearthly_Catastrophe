@@ -4,14 +4,21 @@ using Sandbox.UI;
 
 public sealed class TerminalComponent : Component
 {
-	readonly TerminalCommand[] Commands = new TerminalCommand[]
+	public readonly TerminalCommand[] Commands = new TerminalCommand[]
 	{
 		new TerminalCommandExit("exit", "quit", "stop", "leave"),
 		new TerminalCommandHome("home", "back", "main"),
 		new TerminalCommandMoonList("moons"),
-		new TerminalCommandTravel("route"),
-		new TerminalCommandNextPage("next")
+		new TerminalCommandRoute("route"),
+		new TerminalCommandShop("shop"),
+
+		new TerminalCommandConfirm("confirm"),
+		new TerminalCommandDeny("deny"),
+
+		new TerminalCommandNextPage("next"),
 	};
+
+	public ITerminalPage CurrentPage { get; private set; }
 
 	[Property][Category("Sound")] public SoundEvent TypingSound { get; set; }
 	[Property][Category( "Sound" )] public SoundEvent TypingEnterSound { get; set; }
@@ -32,7 +39,7 @@ public sealed class TerminalComponent : Component
 	[Property] public GameObject KeyboardCollider { get; set; }
 	[Property] public GameObject ScreenCollider { get; set; }
 
-	[Sync] public static int SelectedMoon { get; set; } = -1;
+	[Sync] public static int SelectedMoon { get; set; }
 
 	public string PageInfo => "[PAGE " + (PageNumber + 1) + "/" + PageCount + "]";
 
@@ -43,7 +50,6 @@ public sealed class TerminalComponent : Component
 	public int PageStartLine => PageLineCount * PageNumber;
 
 	public int PageCount => (TextLines.Count / PageLineCount) + 1;
-
 
 	public bool ShowCursor => ((int)(Time.Now * 5) % 2) == 0;
 
@@ -71,6 +77,8 @@ public sealed class TerminalComponent : Component
 	protected override void OnAwake()
 	{
 		base.OnAwake();
+
+		SelectedMoon = -1;
 
 		Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 
@@ -129,10 +137,10 @@ public sealed class TerminalComponent : Component
 
 	public void OpenPage( ITerminalPage page )
 	{
-
 		PageNumber = 0;
 		TextLines.Clear();
 
+		CurrentPage = page;
 		AddLinesAsync( page.GetLines() );
 	}
 
@@ -187,6 +195,7 @@ public sealed class TerminalComponent : Component
 
 	public void Exit()
 	{
+		OpenPage( new TerminalPageMain() );
 		Owner.PlayerInput = new PlayerInput( Owner );
 		Owner = null;
 		Hud.Focus( false );

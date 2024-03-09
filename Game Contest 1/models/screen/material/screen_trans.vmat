@@ -11,7 +11,7 @@ Layer0
 	g_bFogEnabled "1"
 
 	//---- Glass ----
-	g_flBlurAmount "0.300"
+	g_flBlurAmount "0.000"
 	g_flRefractionStrength "1.000"
 
 	//---- Material ----
@@ -23,5 +23,5 @@ Layer0
 	TextureNormal "models/screen/material/m_screen_normal.png"
 	TextureRoughness "[0.363000 0.363000 0.363000 0.000000]"
 	TextureTintMask "materials/default/default.tga"
-	TextureTranslucency "[0.496000 0.496000 0.496000 0.000000]"
+	TextureTranslucency "[0.955000 0.955000 0.955000 0.000000]"
 }

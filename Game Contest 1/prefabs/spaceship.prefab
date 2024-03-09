@@ -461,7 +461,7 @@
                 "__type": "LeverComponent",
                 "ActivatedAngle": 65,
                 "DeactivatedAngle": 0,
-                "IsLocked": false,
+                "IsLocked": true,
                 "OnActivate": null,
                 "OnDeactivate": null,
                 "RotationalAxis": "0,0,1",
@@ -616,7 +616,7 @@
           {
             "Id": "3080b84f-da42-4414-a4d2-ec8fef12f5a3",
             "Name": "WORLD PANEL BALANCE",
-            "Position": "0.0006713198,1.880875,0.00005215406",
+            "Position": "0.001660455,2.946451,0.00009548664",
             "Rotation": "-0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
             "Enabled": true,
             "Components": [
@@ -624,7 +624,7 @@
                 "__type": "WorldPanel",
                 "HorizontalAlign": "Center",
                 "LookAtCamera": false,
-                "PanelSize": "560,560",
+                "PanelSize": "750,750",
                 "RenderScale": 1,
                 "VerticalAlign": "Center"
               },

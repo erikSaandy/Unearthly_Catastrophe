@@ -27,7 +27,7 @@ public sealed class LootSpawnerComponent : Component
 		if ( !ResourceLibrary.TryGet<PrefabFile>( prefabPath, out pf ) ) { return false; }
 		GameObject lootObj = SceneUtility.GetPrefabScene( pf ).Clone();
 		lootObj.BreakFromPrefab();
-		Scrap scrap = lootObj.Components.Get<Scrap>();
+		Carriable carriable = lootObj.Components.Get<Carriable>();
 
 		// Try to place item five times.
 		for (int i = 0; i < 5; i++ )
@@ -36,18 +36,18 @@ public sealed class LootSpawnerComponent : Component
 			float angle = (LethalGameManager.Random.Next( 0, 100 ) * 0.01f) * MathF.Tau;
 			Vector3 dir = new Vector3( (float)Math.Sin( angle ), (float)Math.Cos( angle ), 0 );
 			float dst = LethalGameManager.Random.Next( 0, 100 ) * 0.01f * Radius;
-			scrap.Transform.Position = Transform.Position + Offset + (dir * dst);
+			lootObj.Transform.Position = Transform.Position + Offset + (dir * dst);
 
-			SceneTraceResult trace = scrap.DropToGround();
+			SceneTraceResult trace = carriable.DropToGround();
 
 			float dot = Vector3.Dot( trace.Normal, Vector3.Up );
 
 			// Placed item on ground! return true.
 			if ( !trace.StartedSolid && trace.Hit && dot > 0.7f )
 			{
-				Log.Info( "placed scrap on ground." );
-				scrap.GameObject.Transform.Rotation = Angles.Zero.WithYaw( LethalGameManager.Random.Next( 0, 360 ) );
-				scrap.GameObject.NetworkSpawn();
+				//Log.Info( "placed scrap on ground." );
+				carriable.GameObject.Transform.Rotation = Angles.Zero.WithYaw( LethalGameManager.Random.Next( 0, 360 ) );
+				carriable.GameObject.NetworkSpawn();
 				return true;
 			}
 
@@ -56,8 +56,8 @@ public sealed class LootSpawnerComponent : Component
 
 		// Scrap was unable to be placed on ground.
 
-		Log.Info( ">> destroy scrap :(" );
-		scrap.GameObject.Destroy();
+		//Log.Info( ">> destroy scrap :(" );
+		carriable.GameObject.Destroy();
 
 
 		return true;

@@ -17,10 +17,6 @@
 								from = "m_doors_01.vmat"
 								to = "models/doors_01/material/doors_01.vmat"
 							},
-							{
-								from = "m_doors_glass_01.vmat"
-								to = "models/doors_01/material/doors_01_glass.vmat"
-							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -53,6 +49,9 @@
 							exception_list = 
 							[
 								"bottom_low",
+								"left_low",
+								"top_low",
+								"right_low",
 							]
 						}
 					},

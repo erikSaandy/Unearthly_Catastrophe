@@ -20,6 +20,7 @@ public static class ScrapManager
 		new ScrapPrefab("prefabs/scraps/scrap_old_phone.prefab" , 50),
 		new ScrapPrefab("prefabs/scraps/scrap_phone_book.prefab" , 50),
 		new ScrapPrefab("prefabs/scraps/scrap_soda_can.prefab" , 50),
+		new ScrapPrefab("prefabs/items/key.prefab", 50),
 
 	};
 

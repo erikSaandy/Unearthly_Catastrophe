@@ -11,6 +11,9 @@ public sealed class Flashlight : Carriable
 
 	[Property] public Vector3 ShoulderedOffset { get; set; }
 	[Property] public Angles ShoulderedAngleOffset { get; set; }
+
+	public int ShopPrice { get; set; } = 20;
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();

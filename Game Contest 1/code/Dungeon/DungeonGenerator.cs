@@ -160,20 +160,29 @@ public static class DungeonGenerator
 
 	private static void PopulateWithScrap()
 	{
+		int totalScrapCount = 0;
+
 		foreach(RoomSetup room in SpawnedRooms)
 		{
 			if(room.Data.LootSpawner != null)
 			{
-				Log.Info( "found loot spawner" );
+				//Log.Info( "found loot spawner" );
 
-				int scrapCount = LethalGameManager.Random.Next( 0, room.Data.LootSpawner.MaxItemCount + 1 );
+				int spawnCount = LethalGameManager.Random.Next( 0, room.Data.LootSpawner.MaxItemCount + 1 );
 
-				for(int i = 0; i < scrapCount; i++ )
+				for(int i = 0; i < spawnCount; i++ )
 				{
-					room.Data.LootSpawner.TrySpawnItem( ScrapManager.RandomScrap );
+					if( room.Data.LootSpawner.TrySpawnItem( ScrapManager.RandomScrap ) )
+					{
+						totalScrapCount++;
+					}
+					
 				}
 			}
 		}
+
+		Log.Info( $"Spawned {totalScrapCount} scrap in dungeon." );
+
 	}
 
 	private class RoomSetup

@@ -7,6 +7,7 @@ public class LethalGameManager : Component
 	[Sync] public NetList<Guid> ConnectedPlayers { get; private set; }
 
 	[Sync] public int AlivePlayers { get; set; } = 0;
+
 	public static Player GetPlayer( int i ) 
 	{
 		Log.Info( "player" + i );
@@ -118,7 +119,8 @@ public class LethalGameManager : Component
 		GameObject.Network.TakeOwnership();
 
 		Random = new Random();
-		
+
+		Balance = 100;
 	}
 
 	[Broadcast]
