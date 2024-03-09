@@ -37,9 +37,11 @@ public class DoorEntranceComponent : Component, IInteractable
 
 	}
 
-	public void OnInteract( Player player )
+	public void OnInteract( Guid playerId )
 	{
-		if(IsLocked) { return; }
+		Player player = GameObject.Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
+
+		if (IsLocked) { return; }
 
 		for(int i = 0; i < EntranceDoors.Count; i++ )
 		{

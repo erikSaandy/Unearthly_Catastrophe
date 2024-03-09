@@ -21,9 +21,10 @@ public sealed class Flashlight : Carriable
 		ToggleOn( false );
 	}
 
-	public override void OnInteract( Player player )
+	public override void OnInteract( Guid playerId )
 	{
-		base.OnInteract( player );
+
+		base.OnInteract( playerId );
 
 	}
 

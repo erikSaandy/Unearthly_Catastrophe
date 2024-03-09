@@ -1,0 +1,36 @@
+{
+  "RootObject": {
+    "Id": "2def67de-bd4a-4d67-a6db-8bf45580e714",
+    "Name": "Land Mine",
+    "Position": "1.301458,-3164.136,1502.321",
+    "Networked": true,
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "LandMine",
+        "BlastRadius": 96,
+        "ModelRensderer": null
+      },
+      {
+        "__type": "ModelRenderer",
+        "BodyGroups": 18446744073709551615,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/landmine/landmine.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "IsTrigger": true,
+        "Model": "models/landmine/landmine.vmdl",
+        "Static": false,
+        "Surface": null
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

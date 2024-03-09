@@ -5,7 +5,8 @@ public class ShipDoorComponent : Component
 {
 
 
-	public bool IsOpen { get; private set; } = false;
+	[Sync] public bool IsOpen { get; private set; } = false;
+
 	[Property][Sync] public bool IsLocked { get; set; } = false;
 
 	[Category( "Open" )][Property] public Curve OpenCurve { get; set; }
@@ -17,8 +18,8 @@ public class ShipDoorComponent : Component
 	[Category( "Open" )][Property] public InteractionProxy ButtonOn { get; set; }
 	[Category( "Close" )][Property] public InteractionProxy ButtonOff { get; set; }
 
-	private float ReopenTime { get; set; } = 60f;
-	private float reopenTimer { get; set; } = 0;
+	private float ReopenTime { get; set; } = 25f;
+	private TimeSince TimeSinceReopen { get; set; } = 0;
 
 	[Category( "Open" )] private float OpenedDistance { get; set; } = 96;
 	[Category( "Open" )] private float OpenedScale { get; set; } = 0.5f;
@@ -35,6 +36,8 @@ public class ShipDoorComponent : Component
 	{
 		base.OnStart();
 
+		if(IsProxy) { return; }
+
 		ButtonOn.OnInteracted += Open;
 		ButtonOff.OnInteracted += Close;
 
@@ -48,16 +51,14 @@ public class ShipDoorComponent : Component
 
 		if(!IsLocked && !IsOpen)
 		{
-			reopenTimer += Time.Delta;
-
-			if(reopenTimer >= ReopenTime)
+			if(TimeSinceReopen >= ReopenTime)
 			{
 				Open();
 			}
 		}
 		else
 		{
-			reopenTimer = 0;
+			TimeSinceReopen = 0;
 		}
 
 	}
@@ -71,6 +72,9 @@ public class ShipDoorComponent : Component
 	public void Open()
 	{
 		if ( IsOpen || IsLocked ) { return; }
+
+		TimeSinceReopen = 0;
+
 		IsOpen = true;
 		OpenCloseAsync( ClosedScale, OpenedScale, new Vector3( ClosedDistance, 0, 0 ), new Vector3( OpenedDistance, 0, 0 ) );
 	}
@@ -104,6 +108,8 @@ public class ShipDoorComponent : Component
 	{
 		if ( !IsOpen || IsLocked ) { return; }
 		IsOpen = false;
+		TimeSinceReopen = 0;
+
 		OpenCloseAsync( OpenedScale, ClosedScale, new Vector3( OpenedDistance, 0, 0 ), new Vector3( ClosedDistance, 0, 0 ) );
 	}
 

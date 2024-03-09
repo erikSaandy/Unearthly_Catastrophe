@@ -48,7 +48,7 @@
       "Id": "b797f93f-4060-492d-b0f7-5f43891491bd",
       "Name": "Sun",
       "Position": "-756.9304,-30.22823,448",
-      "Rotation": "0.0499502,0.3794095,-0.1205905,0.9159757",
+      "Rotation": "-0.01001749,0.3825523,0.02418435,0.9235629",
       "Tags": "light_directional,light",
       "Enabled": true,
       "Components": [
@@ -58,145 +58,17 @@
           "FogStrength": 1,
           "LightColor": "2.74119,2.93961,3,1",
           "Shadows": true,
-          "SkyColor": "0.06977,0.06977,0.06977,1"
+          "SkyColor": "0.0093,0.0093,0.0093,1"
         }
       ]
     },
     {
-      "Id": "5746a167-f2ef-4476-9313-0326aae1a698",
-      "Name": "key",
-      "Position": "0,-2939.088,1500",
-      "Tags": "item",
+      "Id": "2def67de-bd4a-4d67-a6db-8bf45580e714",
+      "Name": "Land Mine",
+      "Position": "1.301458,-3164.136,1502.321",
       "Networked": true,
       "Enabled": true,
-      "__Prefab": "prefabs/items/key.prefab"
-    },
-    {
-      "Id": "78cedc54-e833-4ce3-9dcb-9920ea34cc10",
-      "Name": "flashlight",
-      "Position": "21.64913,-2906.936,1517.891",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/items/flashlight.prefab"
-    },
-    {
-      "Id": "bc3ec757-d950-4b93-8985-f8e0bb579e6f",
-      "Name": "scrap_phone_book",
-      "Position": "26.42944,-2838.952,1517.891",
-      "Rotation": "0,0,-0.1880295,0.9821634",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scrap_phone_book.prefab"
-    },
-    {
-      "Id": "3ec3eb15-404e-4997-85ae-466e20da7f1b",
-      "Name": "Cube",
-      "Position": "-10.7135,-2857.735,1517.891",
-      "Rotation": "0,0,0.4004267,0.9163288",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_cube.prefab"
-    },
-    {
-      "Id": "d7d0ee5d-d6a5-468a-9a3e-f845073dc2c7",
-      "Name": "Die",
-      "Position": "14.73486,-2863.413,1517.891",
-      "Rotation": "0,0,-0.2638988,0.9645504",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_die.prefab"
-    },
-    {
-      "Id": "d0647f76-504b-49ef-9ec7-f70e494b383b",
-      "Name": "Gift Box",
-      "Position": "2.384338,-2903.948,1517.891",
-      "Rotation": "0,0,-0.161514,0.9868704",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scrap_gift_box.prefab"
-    },
-    {
-      "Id": "169a31cf-c046-4fcf-8778-175619a3745c",
-      "Name": "scrap_horn",
-      "Position": "25.42627,-2874.327,1517.891",
-      "Rotation": "0,0,-0.400291,0.9163881",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_horn.prefab"
-    },
-    {
-      "Id": "854f8af0-53df-4567-b74c-f6248f69bc98",
-      "Name": "Magnifying Glass",
-      "Position": "-8.559204,-2876.29,1517.891",
-      "Rotation": "0,0,0.4039855,0.9147654",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_magnifying_glass.prefab"
-    },
-    {
-      "Id": "1d8d89f6-2e0e-4356-8972-66b916435bbf",
-      "Name": "Old Phone",
-      "Position": "-23.07227,-2843.723,1517.891",
-      "Rotation": "0,0,-0.1305262,0.9914449",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_old_phone.prefab"
-    },
-    {
-      "Id": "6bd507c0-d897-4811-a947-712d307080d6",
-      "Name": "Soda Can",
-      "Position": "0.9605713,-2874.9,1517.891",
-      "Rotation": "0,0,-0.119325,0.9928553",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_soda_can.prefab"
-    },
-    {
-      "Id": "8f82cca1-8462-4ab3-b639-b7c927f61abb",
-      "Name": "Gold Bar",
-      "Position": "-26.55262,-2888.419,1517.891",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_gold_bar.prefab"
-    },
-    {
-      "Id": "ecafa771-ad50-46b9-9dad-2fbead8f9d58",
-      "Name": "Metal Sheet",
-      "Position": "6.621304,-2828.759,1506.782",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_metal_sheet.prefab"
-    },
-    {
-      "Id": "7bd1e29d-0764-4ce7-9191-85335c985fc5",
-      "Name": "scrap_phone_book (1)",
-      "Position": "6.441376,-2901.877,1500",
-      "Rotation": "0,0,-0.5,0.8660254",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_phone_book.prefab"
-    },
-    {
-      "Id": "e4b2a5c6-8400-489c-b4ee-b954a055aa76",
-      "Name": "scrap_gift_box",
-      "Position": "-23.09545,-2926.239,1509",
-      "Rotation": "0,0.00000000000000000006105913,0.9999999,0.0000000000000000001831774",
-      "Tags": "item",
-      "Networked": true,
-      "Enabled": true,
-      "__Prefab": "prefabs/scraps/scrap_gift_box.prefab"
+      "__Prefab": "prefabs/items/landmine.prefab"
     }
   ],
   "SceneProperties": {
@@ -222,6 +94,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-09T01:56:25.8934364\u002B01:00",
+  "LastSaved": "2024-03-09T18:39:39.6930173\u002B01:00",
   "__references": []
 }

@@ -137,8 +137,16 @@ public sealed class ShipComponent : Component
 		{
 
 			if(!player.IsProxy)
-			{	
-				player.Controller.MoveTo( player.Transform.Position + (velocity / Time.Delta), true );
+			{
+				//Vector3 tVel = player.Controller.Velocity;
+				//player.Controller.Velocity = velocity;
+				//player.Controller.Move();
+				//player.Controller.Velocity = tVel;
+
+				//player.Controller.Velocity = velocity;
+				//player.Controller.Move();
+
+				player.Controller.MoveTo( player.Transform.Position + (velocity * Time.Delta), true );
 				break;
 			}
 
@@ -216,6 +224,10 @@ public sealed class ShipComponent : Component
 
 		StartMovingTo( SPACE_POSITION );
 		CurrentLandingPad = null;
+
+		await Task.DelayRealtimeSeconds( 5 );
+
+		LethalGameManager.Instance.KillAllStrandedPlayers();
 
 		do
 		{

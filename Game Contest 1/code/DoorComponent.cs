@@ -1,5 +1,7 @@
 using Saandy;
 using Sandbox;
+using static Sandbox.Gizmo;
+using System;
 
 public class DoorComponent : Component, IInteractable
 {
@@ -49,8 +51,10 @@ public class DoorComponent : Component, IInteractable
 		RotationalAxis = RotationalAxis.Normal;
 	}
 
-	public void OnInteract( Player player )
+	public void OnInteract( Guid playerId )
 	{
+		Player player = GameObject.Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
+
 		if ( IsLocked )
 		{
 			if ( player.Inventory?.ActiveItem is Key )

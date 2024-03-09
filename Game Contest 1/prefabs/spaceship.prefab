@@ -387,12 +387,53 @@
       },
       {
         "Id": "20822cb6-69c6-43a1-a3dd-8f75460597e6",
-        "Name": "GameObject (2)",
-        "Position": "18.74464,-276.499,46.48206",
+        "Name": "Flashlight",
+        "Position": "-55.82401,-300.0244,35.1362",
+        "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
         "Networked": true,
         "Enabled": true,
         "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "Id": "d15790df-2558-4d15-a1c1-b3368feb91ae",
+        "Name": "Flashlight",
+        "Position": "-68.72736,-287.121,35.1362",
+        "Rotation": "0,0,0.3826834,0.9238796",
+        "Tags": "item",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "Id": "ccf68553-a789-4cb2-9eac-7a63571cc2e7",
+        "Name": "Flashlight",
+        "Position": "-64.78712,-291.0613,35.1362",
+        "Rotation": "0,0,0.3826834,0.9238796",
+        "Tags": "item",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "Id": "3ace517c-54c3-4b19-a87e-26b8905aa3e5",
+        "Name": "Flashlight",
+        "Position": "-60.50956,-295.3389,35.1362",
+        "Rotation": "0,0,0.3826834,0.9238796",
+        "Tags": "item",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "Id": "cd076d86-5510-4cb8-b87f-0e366eef4a77",
+        "Name": "key",
+        "Position": "-39.94959,-297.6197,32.73829",
+        "Rotation": "0,0,0.258819,0.9659258",
+        "Tags": "item",
+        "Networked": true,
+        "Enabled": true,
+        "__Prefab": "prefabs/items/key.prefab"
       },
       {
         "Id": "71538b45-e207-4e77-9279-c7b56d47eb1a",

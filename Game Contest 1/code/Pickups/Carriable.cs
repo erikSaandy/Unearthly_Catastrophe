@@ -1,5 +1,6 @@
 ﻿using Sandbox.Citizen;
 using Sandbox.UI;
+using Sandbox.UI.Tests;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -50,12 +51,21 @@ public abstract class Carriable : Component, ICarriable
 
 	}
 
-	public virtual void OnInteract( Player player )
+	[Broadcast]
+	public virtual void OnInteract( Guid playerId )
 	{
-		if ( player.IsProxy ) { return; }
 
-		if ( Tags.Has("owned")) { Log.Info( $"Can't pick up owned item!" ); return; }
+		GameObject _obj = GameObject.Scene.Directory.FindByGuid( playerId );
+
+		if ( _obj.IsProxy ) {
+			Tags.Add( "owned" );
+			return;
+		}
+
+		if ( Tags.Has("owned")) { return; }
 		if ( Owner != null ) { Log.Info( $"Can't pick up owned item!" ); return; }
+
+		Player player = _obj.Components.Get<Player>();
 
 		if (!player.Inventory.TryPickup(this, out int slotId)) { return; }
 
@@ -63,7 +73,6 @@ public abstract class Carriable : Component, ICarriable
 		GameObject.Network.TakeOwnership();		
 		Owner = player;
 		Tags.Add( "owned" );
-
 
 		if ( slotId == player.Inventory.ActiveSlot )
 		{
@@ -80,8 +89,11 @@ public abstract class Carriable : Component, ICarriable
 	/// <summary>
 	/// This carriable was removed from player inventory.
 	/// </summary>
+	[Broadcast]	
 	public virtual void OnDrop()
 	{
+
+		Tags.Remove( "owned" );
 
 		if ( GameObject.IsProxy ) { return; }
 
@@ -106,14 +118,13 @@ public abstract class Carriable : Component, ICarriable
 		// apply force
 		//Rigidbody.Velocity = Owner.EyeAngles.Forward * 250 + Owner.Controller.Velocity;
 
-		Tags.Remove( "owned" );
 		Owner = null;
 
 		GameObject.Network.DropOwnership();
 
 	}
 
-	public SceneTraceResult DropToGround()
+	public virtual SceneTraceResult DropToGround()
 	{
 
 		SceneTraceResult trace = Scene.Trace.Sphere( (Renderer.Bounds.Size.z * 0.4f), Transform.Position, Transform.Position + Vector3.Down * 512 )
@@ -130,10 +141,16 @@ public abstract class Carriable : Component, ICarriable
 		{
 			GameObject.SetParent( trace.GameObject.Root );
 
+
+			OnDropOnGround( trace );
 		}
 
 		return trace;
 
+	}
+
+	protected virtual void OnDropOnGround( SceneTraceResult result )
+	{
 	}
 
 	public virtual void UpdateHeldPosition()

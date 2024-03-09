@@ -23,6 +23,8 @@
 
 	public virtual void UpdateInput( )
 	{
+		if( Owner.IsProxy ) { return; }
+
 		AnalogMove = Sandbox.Input.AnalogMove.Normal;
 		WantsToRun = Sandbox.Input.Down( "Run" );
 
@@ -49,6 +51,7 @@
 
 	private void DoInteractionTrace()
 	{
+		if ( Owner.IsProxy ) { return; }
 
 		var from = Owner.CameraController.Camera.Transform.Position;
 		var to = from + Owner.Camera.Transform.Rotation.Forward * 70;
@@ -79,7 +82,7 @@
 
 					if(InteractionTimer >= InteractedWith.InteractionTime)
 					{
-						LookingAt.OnInteract( Owner );
+						LookingAt.OnInteract( Owner.GameObject.Id );
 						InteractedWith = null;
 						InteractionTimer = 0;
 					}

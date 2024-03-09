@@ -10,7 +10,6 @@ public class LethalGameManager : Component
 
 	public static Player GetPlayer( int i ) 
 	{
-		Log.Info( "player" + i );
 		return Instance.Scene.Directory.FindByGuid( Instance.ConnectedPlayers[i] ).Components.Get<Player>();
 
 	}
@@ -51,6 +50,23 @@ public class LethalGameManager : Component
 		}
 	}
 
+	public void KillAllStrandedPlayers()
+	{
+		foreach ( Guid playerId in ConnectedPlayers )
+		{
+
+			if( Vector3.DistanceBetween( Transform.Position, LethalGameManager.Instance.Ship.Transform.Position ) > 800f )
+			{
+				Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
+
+				if ( player.LifeState == LifeState.Alive )
+				{
+					player.Kill();
+				}
+			}
+		}
+	}
+
 	[Broadcast]
 	public void OnPlayerDeath( Guid playerId )
 	{
@@ -62,6 +78,7 @@ public class LethalGameManager : Component
 		// All players are dead.
 		if( AlivePlayers <= 0)
 		{
+
 			// Not on a moon.
 			if(CurrentMoonGuid == default)
 			{
@@ -90,7 +107,16 @@ public class LethalGameManager : Component
 	/// <summary>
 	/// How much money does the team have?
 	/// </summary>
-	[Sync] public static int Balance { get; set; }
+	[Sync] public int Balance { get; set; }
+
+	[Broadcast]
+	public void AddBalance(int value)
+	{
+		if(IsProxy) { return; }
+
+		Balance += value;
+		Sandbox.Services.Stats.SetValue( "balance", Balance );
+	}
 
 	public static Random Random { get; private set; }
 
@@ -120,7 +146,7 @@ public class LethalGameManager : Component
 
 		Random = new Random();
 
-		Balance = 100;
+		AddBalance( 100 );
 	}
 
 	[Broadcast]
@@ -130,6 +156,14 @@ public class LethalGameManager : Component
 
 		Instance.ConnectedPlayers.Add( playerId );
 		Instance.AlivePlayers++;
+
+		if ( Instance.CurrentMoon != null )
+		{
+			Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
+			player.GameObject.Transform.Position = new Vector3( 0, 0, -8000 );
+			player.Kill();
+		}
+
 	}
 
 	[Broadcast]
@@ -274,7 +308,6 @@ public class LethalGameManager : Component
 		CurrentMoonGuid = default;
 
 		await Task.DelayRealtimeSeconds( 1 );
-
 
 		RespawnAllDeadPlayers();
 

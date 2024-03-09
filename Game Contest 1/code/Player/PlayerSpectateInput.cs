@@ -23,7 +23,7 @@ public class PlayerSpectateInput : PlayerInput
 		WantsToRun = false;
 
 		// Just died, spectate corpse.
-		if(Owner.TimeSinceDeath < 5)
+		if(Owner.TimeSinceDeath < 1 )
 		{
 			SpectatedPlayer = Owner;
 			return;
@@ -73,7 +73,7 @@ public class PlayerSpectateInput : PlayerInput
 
 		if(SpectatedPlayerId != -1 )
 		{
-			Log.Info( "found alive player." );
+			Log.Info( "found alive player to spectate." );
 			SpectatedPlayer = LethalGameManager.GetPlayer( SpectatedPlayerId );
 		}
 	}

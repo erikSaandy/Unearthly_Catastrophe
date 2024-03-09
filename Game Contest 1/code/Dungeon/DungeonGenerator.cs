@@ -79,6 +79,7 @@ public static class DungeonGenerator
 			// was able to spawn room!
 			if (nextRoom != null)
 			{
+				nextRoom.GameObject.NetworkSpawn();
 				nextRoom.GameObject.Name = nextRoom.GameObject.Name + " (" + SpawnedRooms.Count.ToString() + ")";
 				nextRoom.MoveToNextPortal();
 
@@ -144,7 +145,6 @@ public static class DungeonGenerator
 
 		if( nextRoom != null ) {
 
-			nextRoom.GameObject.NetworkSpawn();
 			SpawnedRooms.Add( nextRoom );
 			//Log.Info( $"> Spawned room #{ SpawnedRooms.Count } (Iteration: {iteration})" );
 		}
@@ -315,7 +315,7 @@ public static class DungeonGenerator
 			door.Transform.Position = portal.Transform.Position;
 			door.Transform.Rotation = portal.Transform.Rotation;
 			door.SetParent( GameObject );
-			door.NetworkSpawn();
+			//door.NetworkSpawn();
 
 		}
 

@@ -3,6 +3,7 @@ using Dungeon;
 using Saandy;
 using Sandbox.Citizen;
 using Sandbox.UI;
+using static Sandbox.Gizmo;
 
 public sealed class Player : Component, Component.INetworkListener, IKillable
 {
@@ -84,11 +85,6 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( GameObject.IsProxy ) { return; }
 
 		//
-
-		if (Input.Pressed("flashlight"))
-		{
-			TakeDamage( 50, this.GameObject.Id );
-		}
 
 		PlayerInput?.UpdateInput();
 

@@ -13,8 +13,10 @@ public class InteractionProxy : Component, IInteractable
 
 	public string GetToolTip(Player player) { return $"{IInteractable.GetInteractionKey()} - " + ToolTip; }
 
-	public void OnInteract( Player player )
+	public void OnInteract( Guid playerId )
 	{
+		Player player = GameObject.Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
+
 		OnInteracted?.Invoke( player );
 	}
 
