@@ -70,7 +70,15 @@
 		Owner.Animator.HoldType = Sandbox.Citizen.CitizenAnimationHelper.HoldTypes.None;
 	}
 
+	public void DropAll()
+	{
 
+		for(int i = 0; i < Items.Length; i++ )
+		{
+			Drop( i );
+		}
+
+	}
 
 }
 

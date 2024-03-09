@@ -58,6 +58,8 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		Ragdoll = Components.Get<RagdollController>( true );
 
 		if ( GameObject.IsProxy ) {
+
+			HudObject.Destroy();
 			CameraController.Camera.Destroy();
 			return; 
 		}
@@ -85,6 +87,11 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( GameObject.IsProxy ) { return; }
 
 		//
+
+		//if(Input.Pressed("flashlight"))
+		//{
+		//	Kill();
+		//}
 
 		PlayerInput?.UpdateInput();
 
@@ -119,7 +126,8 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( Health <= 0f )
 		{
 			LifeState = LifeState.Dead;
-			Ragdoll.Ragdoll( );
+			Ragdoll.Ragdoll();
+			Inventory.DropAll();
 			OnKilled( Scene.Directory.FindByGuid( attackerId ) );
 			TimeSinceDeath = 0;
 		}
