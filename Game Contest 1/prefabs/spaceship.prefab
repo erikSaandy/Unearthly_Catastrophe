@@ -802,6 +802,7 @@
                 "y": 1
               }
             ],
+            "CloseSound": "sounds/ship_doors_close.sound",
             "CloseSpeed": 4,
             "DoorLeft": {
               "_type": "gameobject",
@@ -835,6 +836,7 @@
                 "out": -0.26086962
               }
             ],
+            "OpenSound": "sounds/ship_doors_open.sound",
             "OpenSpeed": 1
           }
         ],

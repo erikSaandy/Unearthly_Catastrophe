@@ -25,6 +25,7 @@
           "go": "47c4f7df-871a-4720-a406-8b469829c36f",
           "component_type": "SpotLight"
         },
+        "OnOffSound": "sounds/flashlight_onoff.sound",
         "ShoulderedAngleOffset": "10,100,0",
         "ShoulderedOffset": "-4,0,1",
         "Weight": 5

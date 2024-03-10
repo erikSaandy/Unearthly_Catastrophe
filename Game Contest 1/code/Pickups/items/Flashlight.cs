@@ -14,11 +14,13 @@ public sealed class Flashlight : Carriable
 
 	public int ShopPrice { get; set; } = 20;
 
+	[Property][Category( "Sound" )] public SoundEvent OnOffSound { get; set; }
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 		GameObject.BreakFromPrefab();
-		ToggleOn( false );
+		ToggleOn( false, playSound: false );
 	}
 
 	public override void OnInteract( Guid playerId )
@@ -69,10 +71,12 @@ public sealed class Flashlight : Carriable
 	/// </summary>
 	/// <param name="toggle"></param>
 	[Broadcast]
-	private void ToggleOn(bool toggle)
+	private void ToggleOn(bool toggle, bool playSound = true )
 	{
 		Components.Get<ModelRenderer>().MaterialGroup = toggle ? "default" : "off";
 		LightSource.Enabled = toggle;
 		IsOn = toggle;
+
+		if (playSound ) { Sound.Play( OnOffSound, Transform.Position ); }
 	}
 }

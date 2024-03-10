@@ -1,0 +1,16 @@
+{
+  "UI": false,
+  "Volume": "45.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 30,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/flashlight_button01.vsnd",
+    "sounds/flashlight_button02.vsnd"
+  ],
+  "Occlusion": true,
+  "Reflections": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "__references": []
+}

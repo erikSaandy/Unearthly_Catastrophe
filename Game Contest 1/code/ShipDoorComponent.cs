@@ -30,6 +30,9 @@ public class ShipDoorComponent : Component
 	[Category("Open")][Property] public float OpenSpeed { get; set; } = 1f;
 	[Category( "Close" )][Property] public float CloseSpeed { get; set; } = 1f;
 
+	[Property][Category( "Sound" )] public SoundEvent OpenSound { get; set; }
+	[Property][Category( "Sound" )] public SoundEvent CloseSound { get; set; }
+
 	protected override void OnAwake() { base.OnAwake(); }
 
 	protected override void OnStart()
@@ -74,9 +77,11 @@ public class ShipDoorComponent : Component
 		if ( IsOpen || IsLocked ) { return; }
 
 		TimeSinceReopen = 0;
-
 		IsOpen = true;
+
+		Sound.Play( OpenSound, Transform.Position );
 		OpenCloseAsync( ClosedScale, OpenedScale, new Vector3( ClosedDistance, 0, 0 ), new Vector3( OpenedDistance, 0, 0 ) );
+
 	}
 
 
@@ -107,9 +112,11 @@ public class ShipDoorComponent : Component
 	public void Close()
 	{
 		if ( !IsOpen || IsLocked ) { return; }
+
 		IsOpen = false;
 		TimeSinceReopen = 0;
 
+		Sound.Play( CloseSound, Transform.Position );
 		OpenCloseAsync( OpenedScale, ClosedScale, new Vector3( OpenedDistance, 0, 0 ), new Vector3( ClosedDistance, 0, 0 ) );
 	}
 

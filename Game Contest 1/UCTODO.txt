@@ -1,0 +1,3 @@
+Ship passenger jank fix please
+Spawn at spawnpoint in ship doesn't work?
+Fix entrance doors ( teleport orientation, door pairing )
