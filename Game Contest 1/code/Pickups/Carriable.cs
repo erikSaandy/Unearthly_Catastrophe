@@ -3,6 +3,7 @@ using Sandbox.UI;
 using Sandbox.UI.Tests;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Numerics;
 using static Sandbox.Clothing;
 
@@ -74,6 +75,17 @@ public abstract class Carriable : Component, ICarriable
 		Owner = player;
 		Tags.Add( "owned" );
 
+		SceneTraceResult trace = Scene.Trace.Ray( Transform.Position, Transform.Position + Vector3.Down * 32 ).UseHitboxes().WithoutTags( "item", "player" ).Run();
+
+		if ( trace.Surface != null )
+		{
+			var sound = trace.Surface.Sounds.ImpactHard;
+			if ( sound is not null )
+			{
+				var handle = Sound.Play( sound, Transform.Position );
+			}
+		}
+
 		if ( slotId == player.Inventory.ActiveSlot )
 		{
 			Deploy();
@@ -140,9 +152,18 @@ public abstract class Carriable : Component, ICarriable
 		if ( trace.GameObject != null )
 		{
 			GameObject.SetParent( trace.GameObject.Root );
-
-
 			OnDropOnGround( trace );
+
+			if ( trace.Surface != null )
+			{
+
+				var sound = trace.Surface.Sounds.ImpactHard;
+				if ( sound is not null )
+				{
+					var handle = Sound.Play( sound, trace.HitPosition + trace.Normal * 5f );
+				}
+			}
+
 		}
 
 		return trace;

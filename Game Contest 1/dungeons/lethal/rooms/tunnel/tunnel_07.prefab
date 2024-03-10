@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "9a4a31bf-feee-44e2-8527-676999c152e8",
+    "Id": "2a1d9c15-476c-48d1-b2bf-4333457fd8d1",
     "Name": "tunnel_07",
     "Enabled": true,
     "Components": [
@@ -10,31 +10,32 @@
           "Mins": "-128,-128,0",
           "Maxs": "128,128,128"
         },
+        "LootSpawner": null,
         "Portals": [
           {
             "_type": "component",
-            "go": "660a7f84-505e-4f0b-8bb8-ee2cefd61964",
+            "go": "69c03a84-9f19-483e-821e-a4e22db23ef8",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "43f29119-c02b-43ff-b925-ab45058c2216",
+            "go": "3bf7dbf9-6361-4bf6-ac79-71dcb61c8466",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "dc62c617-b363-4f36-9224-51ded73e77cf",
+            "go": "589e33cd-03d1-46f7-b150-d2d0a32b5585",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "6f2dcaa1-0450-48cd-b02e-5433ba2ace15",
+            "go": "02b7e4f5-09da-4721-b230-d0fa4fb995bf",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "9a4a31bf-feee-44e2-8527-676999c152e8",
+          "go": "2a1d9c15-476c-48d1-b2bf-4333457fd8d1",
           "component_type": "ModelRenderer"
         }
       },
@@ -57,7 +58,7 @@
     ],
     "Children": [
       {
-        "Id": "660a7f84-505e-4f0b-8bb8-ee2cefd61964",
+        "Id": "69c03a84-9f19-483e-821e-a4e22db23ef8",
         "Name": "Door",
         "Position": "0.00002110785,128,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -70,7 +71,7 @@
         ]
       },
       {
-        "Id": "43f29119-c02b-43ff-b925-ab45058c2216",
+        "Id": "3bf7dbf9-6361-4bf6-ac79-71dcb61c8466",
         "Name": "Door (1)",
         "Position": "128,-0,0.000006498106",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -83,7 +84,7 @@
         ]
       },
       {
-        "Id": "dc62c617-b363-4f36-9224-51ded73e77cf",
+        "Id": "589e33cd-03d1-46f7-b150-d2d0a32b5585",
         "Name": "Door (2)",
         "Position": "-0.00006332347,-128,0",
         "Rotation": "0,0,0.0000003596121,-1",
@@ -96,7 +97,7 @@
         ]
       },
       {
-        "Id": "6f2dcaa1-0450-48cd-b02e-5433ba2ace15",
+        "Id": "02b7e4f5-09da-4721-b230-d0fa4fb995bf",
         "Name": "Door (3)",
         "Position": "-128,0,0.000006498106",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -107,11 +108,61 @@
             "PortalType": "Corridor"
           }
         ]
+      },
+      {
+        "Id": "2c561745-a2ea-4faf-a2f3-87d26dc8e1b2",
+        "Name": "light",
+        "Position": "0,-0.00001119012,128",
+        "Rotation": "1,0,0,-0.00000004371139",
+        "Networked": true,
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Model": "models/lightbulb_fixture/lightbulb_fixture.vmdl",
+            "RenderType": "On",
+            "Tint": "0.35349,0.34697,0.33047,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "IsTrigger": false,
+            "Model": "models/lightbulb_fixture/lightbulb_fixture.vmdl",
+            "Static": false,
+            "Surface": null
+          }
+        ],
+        "Children": [
+          {
+            "Id": "224b2b23-a6fe-4bc3-ab31-34ad4d87d1aa",
+            "Name": "Point Light",
+            "Position": "0,0.000001123446,12.85072",
+            "Rotation": "-1,0,0,-0.00000004371139",
+            "Tags": "light_point,light",
+            "Networked": true,
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "PointLight",
+                "Attenuation": 0.77,
+                "FogMode": "Enabled",
+                "FogStrength": 1,
+                "LightColor": "0.74419,0.69896,0.64727,1",
+                "Radius": 400,
+                "Shadows": true
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": []
+  "__references": [
+    "saandy.lightbulb_ceiling_fixture"
+  ]
 }

@@ -117,11 +117,61 @@
             "PortalType": "Door"
           }
         ]
+      },
+      {
+        "Id": "3f4a2e70-8d33-404d-8aa4-d9b02ed60de6",
+        "Name": "light (1)",
+        "Position": "0,-0.00001119012,128",
+        "Rotation": "1,0,0,-0.00000004371139",
+        "Networked": true,
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Model": "models/lightbulb_fixture/lightbulb_fixture.vmdl",
+            "RenderType": "On",
+            "Tint": "0.35349,0.34697,0.33047,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "IsTrigger": false,
+            "Model": "models/lightbulb_fixture/lightbulb_fixture.vmdl",
+            "Static": false,
+            "Surface": null
+          }
+        ],
+        "Children": [
+          {
+            "Id": "30be1004-ac5a-4476-9d4b-926bbe9f21d4",
+            "Name": "Point Light",
+            "Position": "0,0.000001123446,12.85072",
+            "Rotation": "-1,0,0,-0.00000004371139",
+            "Tags": "light_point,light",
+            "Networked": true,
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "PointLight",
+                "Attenuation": 0.77,
+                "FogMode": "Enabled",
+                "FogStrength": 1,
+                "LightColor": "0.74419,0.69896,0.64727,1",
+                "Radius": 400,
+                "Shadows": true
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": []
+  "__references": [
+    "saandy.lightbulb_ceiling_fixture"
+  ]
 }
