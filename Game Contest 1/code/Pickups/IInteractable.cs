@@ -2,7 +2,7 @@
 public interface IInteractable
 {
 
-	public float InteractionTime { get; set; }
+	public float InteractionTime { get; }
 
 	public string ToolTip { get; set; }
 

@@ -7,10 +7,18 @@ using static Sandbox.PhysicsContact;
 
 public sealed class ShipComponent : Component
 {
+	public enum MovementState
+	{
+		Docked,
+		Leaving,
+		Landing
+	}
+
+	[Sync] public MovementState CurrentMovementState { get; set; } = MovementState.Docked;
 
 	private readonly Vector3 SPACE_POSITION = new Vector3( 0, -3000, 1500 );
 
-	private CharacterController Controller { get; set; }
+	public CharacterController Controller { get; private set; }
 
 	[Property] public Curve DockingCurveXY { get; set; }
 	[Property] public Curve DockingCurveAcceleration { get; set; }
@@ -24,9 +32,7 @@ public sealed class ShipComponent : Component
 	private float accelerationFactor = 300.0f;
 	private float slowDownRadius = 250;
 
-	private Vector3 Velocity { get; set; } = new();
-
-	[Sync] private bool IsMoving { get; set; } = false;
+	[Sync] public bool IsMoving { get; private set; } = false;
 
 
 	[Category( "Components" )][Property] public PassengerTransporter Transporter { get; private set; }
@@ -35,7 +41,7 @@ public sealed class ShipComponent : Component
 
 	[Category( "Components" )][Property] public ShipDoorComponent Doors { get; set; }
 
-	private Vector3 TargetPosition { get; set; }
+	[Sync] private Vector3 TargetPosition { get; set; }
 
 	protected override void OnAwake()	
 	{
@@ -73,7 +79,7 @@ public sealed class ShipComponent : Component
 
 		if ( IsMoving )
 		{
-			Move( Velocity );
+			Move( Controller.Velocity );
 		}
 
 
@@ -118,7 +124,7 @@ public sealed class ShipComponent : Component
 		}
 
 		Vector3 dir = (TargetPosition - GameObject.Transform.Position).Normal;
-		Velocity = dir * Speed;
+		Controller.Velocity = dir * Speed;
 
 	}
 
@@ -128,7 +134,7 @@ public sealed class ShipComponent : Component
 
 		if(!IsProxy)
 		{
-			Controller.Velocity = velocity;
+			Controller.Accelerate( velocity );
 			Controller.Move();
 		}
 
@@ -146,7 +152,11 @@ public sealed class ShipComponent : Component
 				//player.Controller.Velocity = velocity;
 				//player.Controller.Move();
 
-				player.Controller.MoveTo( player.Transform.Position + (velocity * Time.Delta), true );
+				//Vector3 tVel = player.Controller.Velocity;
+				//player.Controller.Velocity = velocity;
+				//player.Controller.Move();
+				//player.Controller.Velocity = tVel;
+				//player.Controller.MoveTo( player.Transform.Position + (velocity), true );
 				break;
 			}
 
@@ -164,13 +174,16 @@ public sealed class ShipComponent : Component
 	private void StopMoving()
 	{
 		Speed = 0;
-		Velocity = 0;
+		Controller.Velocity = 0;
 		IsMoving = false;
 		Lever.IsLocked = false;
+		CurrentMovementState = MovementState.Docked;
+		Transform.Position = TargetPosition;
 	}
 
 	public void Land(ShipLandingPadComponent landingPad)
 	{
+		CurrentMovementState = MovementState.Landing;
 		CurrentLandingPad = landingPad;
 		//Transform.Rotation = CurrentLandingPad.Transform.Rotation;
 		//LandAsync( landingPad.Transform.Position );
@@ -220,6 +233,7 @@ public sealed class ShipComponent : Component
 
 	public async Task FlyIntoSpaceLol()
 	{
+		CurrentMovementState = MovementState.Leaving;
 		Lever.Deactivate( invokeAction: false );
 
 		StartMovingTo( SPACE_POSITION );

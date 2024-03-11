@@ -9,7 +9,7 @@ public sealed class EnergyBarComponent : Component
 	/// </summary>
 	[Property][Range(0, MaxEnergy)] public float Decay { get; set; } = 30;
 	[Property][Range( 0, MaxEnergy * 2 )] public float ExhaustionPenalty { get; set; } = 50;
-
+	[Property][Range( 0, MaxEnergy * 2 )] public float JumpPenalty { get; set; } = 10;
 	//[Property] public Curve DecayCurve;
 
 	public float CurrentEnergy { get; set; }
@@ -73,7 +73,7 @@ public sealed class EnergyBarComponent : Component
 	{
 		if(!IsExhausted)
 		{
-			CurrentEnergy -= 20;
+			CurrentEnergy -= JumpPenalty;
 		}
 	}
 

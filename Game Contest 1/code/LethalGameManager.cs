@@ -39,13 +39,18 @@ public class LethalGameManager : Component
 
 	public void RespawnAllDeadPlayers()
 	{
+		if ( IsProxy ) { return; }
+
+		Log.Info( "respawn all..." );
+
 		foreach ( Guid playerId in ConnectedPlayers )
 		{
 			Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
 			if ( player.LifeState == LifeState.Dead )
 			{
 				AlivePlayers++;
-				player.Respawn();
+				Log.Info( player.Network.OwnerConnection.DisplayName + " respawn..." );
+				player.Respawn( );
 			}
 		}
 	}
@@ -54,8 +59,8 @@ public class LethalGameManager : Component
 	{
 		foreach ( Guid playerId in ConnectedPlayers )
 		{
-
-			if( Vector3.DistanceBetween( Transform.Position, LethalGameManager.Instance.Ship.Transform.Position ) > 800f )
+			// Not on ship?
+			if( Instance.Ship.Transporter.Passengers.Find(p => p.GameObject.Id == playerId) == null )
 			{
 				Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
 
@@ -76,8 +81,9 @@ public class LethalGameManager : Component
 		AlivePlayers--;
 
 		// All players are dead.
-		if( AlivePlayers <= 0)
+		if( AlivePlayers <= 0 && Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
 		{
+			Log.Info( "all palyers dead" );
 
 			// Not on a moon.
 			if(CurrentMoonGuid == default)
@@ -140,11 +146,11 @@ public class LethalGameManager : Component
 
 		Instance = this;
 
+		Random = new Random();
+
 		if ( GameObject.IsProxy ) { return; }
 
 		GameObject.Network.TakeOwnership();
-
-		Random = new Random();
 
 		AddBalance( 100 );
 	}
@@ -258,6 +264,10 @@ public class LethalGameManager : Component
 
 		await DungeonGenerator.GenerateDungeon( ResourceLibrary.Get<DungeonDefinition>( moon.DungeonDefinitions[0] ) );
 
+		await Instance.Scene.NavMesh.Generate( Scene.PhysicsWorld );
+
+		//Instance.Scene.NavMesh.DrawMesh = true;
+
 		LoadedMoon();
 
 	}
@@ -271,7 +281,7 @@ public class LethalGameManager : Component
 	[Broadcast( NetPermission.Anyone )]
 	public void LeftCurrentMoon()
 	{
-		RespawnAllDeadPlayers();
+
 	}
 
 	[Broadcast( NetPermission.Anyone )]
@@ -290,11 +300,11 @@ public class LethalGameManager : Component
 		if ( CurrentMoon == null ) { Log.Error( "Can't leave moon as we are not currently on a moon." ); return; }
 
 		Ship.Lever.IsLocked = true;
+		StartLeaveCurrentMoon();
 
 		await Task.DelayRealtimeSeconds( secondDelay );
 
 		Log.Info( "Leaving moon " + CurrentMoon.GameObject.Name + "..." );
-		StartLeaveCurrentMoon();
 
 		await Task.Delay( 250 );
 

@@ -1,3 +1,15 @@
 Ship passenger jank fix please
-Spawn at spawnpoint in ship doesn't work?
-Fix entrance doors ( teleport orientation, door pairing )
+??? Spawn at spawnpoint in ship doesn't work?
+landmine
+enemy
+time limit
+
+notes
+circular corridor room
+-- thinner inventory slot ui
+distance fog dark, only see close to you
+smaller scale rooms
+-- run faster
+combine rooms into new loop room
+flashlight battery
+

@@ -11,7 +11,7 @@ public static class DungeonGenerator
 
 	private static DungeonDefinition DungeonResource { get; set; }
 
-	private static List<RoomSetup> SpawnedRooms;
+	public static List<RoomSetup> SpawnedRooms { get; private set; }
 
 	private const int MainIterations = 15;
 
@@ -185,7 +185,7 @@ public static class DungeonGenerator
 
 	}
 
-	private class RoomSetup
+	public class RoomSetup
 	{
 		public string Prefab { get; private set; }
 		public GameObject GameObject;

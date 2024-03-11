@@ -1,12 +1,12 @@
 {
   "RootObject": {
-    "Id": "006e5e9c-7694-4621-b83b-90834c84375b",
+    "Id": "374ad963-0a44-47c3-b523-5ae58f7996b8",
     "Name": "door_01",
     "Networked": true,
     "Enabled": true,
     "Children": [
       {
-        "Id": "29198074-79ee-47c6-8f40-af89c0759322",
+        "Id": "0758aca1-903c-4046-9878-680f22e79ab8",
         "Name": "door_frame_01",
         "Enabled": true,
         "Components": [
@@ -15,8 +15,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/doors_01/door_frame_01.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]

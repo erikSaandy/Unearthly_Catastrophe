@@ -39,10 +39,10 @@ public class ShipDoorComponent : Component
 	{
 		base.OnStart();
 
-		if(IsProxy) { return; }
-
 		ButtonOn.OnInteracted += Open;
 		ButtonOff.OnInteracted += Close;
+
+		if (IsProxy) { return; }
 
 		Lock();
 

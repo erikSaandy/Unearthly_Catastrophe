@@ -8,7 +8,6 @@
     "Components": [
       {
         "__type": "ShipComponent",
-        "CurrentLandingPad": null,
         "DockingCurveAcceleration": [
           {
             "y": 0.33000004,
@@ -58,13 +57,8 @@
         }
       },
       {
-        "__type": "SkinnedModelRenderer",
-        "AnimationGraph": null,
+        "__type": "ModelRenderer",
         "BodyGroups": 18446744073709551615,
-        "BoneMergeTarget": null,
-        "CreateBoneObjects": false,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "models/spaceship/spaceship.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
@@ -73,8 +67,7 @@
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "models/spaceship/spaceship.vmdl",
-        "Static": false,
-        "Surface": null
+        "Static": false
       },
       {
         "__type": "CharacterController",
@@ -103,8 +96,7 @@
             "Center": "0,0,100",
             "IsTrigger": true,
             "Scale": "500,800,200",
-            "Static": false,
-            "Surface": null
+            "Static": false
           }
         ]
       },
@@ -121,8 +113,7 @@
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
-            "Static": false,
-            "Surface": null
+            "Static": false
           }
         ]
       },
@@ -138,8 +129,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/fluorescent_ceiling_light01/fluorescent_ceiling_light01.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ],
@@ -177,8 +166,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/industrial_lights01/industrial_light02b.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ],
@@ -215,8 +202,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/industrial_lights01/industrial_light02b.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ],
@@ -245,7 +230,6 @@
         "Id": "19554343-6a5b-40c5-acb1-b8b9feee453d",
         "Name": "Spawnpoint (5)",
         "Position": "-56,96,8",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -258,7 +242,6 @@
         "Id": "c31b3407-d0e4-4c4e-88d0-9aacc98cbde7",
         "Name": "Spawnpoint (4)",
         "Position": "-56,128,8",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -271,7 +254,6 @@
         "Id": "a0621674-1d74-4323-8c06-ed84558f23d0",
         "Name": "Spawnpoint (7)",
         "Position": "-56,160,8",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -284,7 +266,6 @@
         "Id": "ee77a680-ba72-4fea-9f32-56609fe02c6f",
         "Name": "Spawnpoint (9)",
         "Position": "-56,160,8",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -298,7 +279,6 @@
         "Name": "Spawnpoint (3)",
         "Position": "54.79461,96,8",
         "Rotation": "0,0,1,-0.00000004371139",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -312,7 +292,6 @@
         "Name": "Spawnpoint (2)",
         "Position": "54.79461,128,8",
         "Rotation": "0,0,1,-0.00000004371139",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -326,7 +305,6 @@
         "Name": "Spawnpoint (6)",
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -340,7 +318,6 @@
         "Name": "Spawnpoint (8)",
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -353,7 +330,6 @@
         "Id": "42349e64-07b3-4cda-b423-7bf0ec14142b",
         "Name": "Spawnpoint (1)",
         "Position": "-56,64,8",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -367,7 +343,6 @@
         "Name": "Spawnpoint",
         "Position": "54.79461,64,8",
         "Rotation": "0,0,1,-0.00000004371139",
-        "Networked": true,
         "Enabled": true,
         "Components": [
           {
@@ -485,8 +460,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/ship_lever/ship_lever_body.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ],
@@ -503,8 +476,7 @@
                 "ActivatedAngle": 65,
                 "DeactivatedAngle": 0,
                 "IsLocked": true,
-                "OnActivate": null,
-                "OnDeactivate": null,
+                "PullSound": "sounds/lever_pull.sound",
                 "RotationalAxis": "0,0,1",
                 "Speed": 2,
                 "StartActivated": false,
@@ -514,8 +486,6 @@
               {
                 "__type": "ModelRenderer",
                 "BodyGroups": 18446744073709551615,
-                "MaterialGroup": null,
-                "MaterialOverride": null,
                 "Model": "models/ship_lever/ship_lever.vmdl",
                 "RenderType": "On",
                 "Tint": "1,1,1,1"
@@ -525,8 +495,7 @@
                 "Center": "0,0,6",
                 "IsTrigger": false,
                 "Scale": "6,6,14",
-                "Static": false,
-                "Surface": null
+                "Static": false
               }
             ]
           }
@@ -545,8 +514,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]
@@ -563,8 +530,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]
@@ -582,8 +547,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ],
@@ -648,8 +611,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ],
@@ -688,8 +649,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/ship_table/ship_table.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]
@@ -706,8 +665,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/buttons_onoff/buttons_onoff.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ],
@@ -723,8 +680,7 @@
                 "Center": "0,0,0",
                 "IsTrigger": false,
                 "Scale": "2,2,2",
-                "Static": false,
-                "Surface": null
+                "Static": false
               },
               {
                 "__type": "InteractionProxy",
@@ -745,8 +701,7 @@
                 "Center": "0,0,0",
                 "IsTrigger": false,
                 "Scale": "2,2,2",
-                "Static": false,
-                "Surface": null
+                "Static": false
               },
               {
                 "__type": "InteractionProxy",
@@ -767,7 +722,6 @@
               {
                 "__type": "ModelRenderer",
                 "BodyGroups": 18446744073709551615,
-                "MaterialGroup": null,
                 "MaterialOverride": "materials/cable/cable.vmat",
                 "Model": "models/citizen_props/broom01/broom01gib02_lod01.vmdl",
                 "RenderType": "On",
@@ -853,8 +807,6 @@
                 "Health": 0,
                 "IsStatic": true,
                 "Model": "models/ship_doors/ship-door_right.vmdl",
-                "OnPropBreak": null,
-                "OnPropTakeDamage": null,
                 "ShowCreatedComponents": false
               }
             ]
@@ -870,8 +822,6 @@
                 "Health": 0,
                 "IsStatic": true,
                 "Model": "models/ship_doors/ship-door_left.vmdl",
-                "OnPropBreak": null,
-                "OnPropTakeDamage": null,
                 "ShowCreatedComponents": false
               }
             ]

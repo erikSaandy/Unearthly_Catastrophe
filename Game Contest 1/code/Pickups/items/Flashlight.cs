@@ -77,6 +77,6 @@ public sealed class Flashlight : Carriable
 		LightSource.Enabled = toggle;
 		IsOn = toggle;
 
-		if (playSound ) { Sound.Play( OnOffSound, Transform.Position ); }
+		if ( playSound ) { Sound.Play( OnOffSound, Transform.Position ); }
 	}
 }

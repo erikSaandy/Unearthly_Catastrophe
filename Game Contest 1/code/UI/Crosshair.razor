@@ -19,7 +19,7 @@
 	protected override int BuildHash()
 	{
 		return System.HashCode.Combine(
-			Owner.PlayerInput.LookingAt
+			Owner?.PlayerInput?.LookingAt
 		);
 	}
 }

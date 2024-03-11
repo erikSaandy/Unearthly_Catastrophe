@@ -9,6 +9,8 @@ public class LeverComponent : Component, IInteractable
 	[Category("ToolTips")][Property] public string ToolTip { get; set; } = "";
 	[Category( "ToolTips" )][Property] public string ToolTipDeactivated { get; set; } = "";
 
+	[Property][Category( "Sound" )] public SoundEvent PullSound { get; set; }
+
 	public string GetToolTip( Player player )
 	{
 
@@ -47,6 +49,9 @@ public class LeverComponent : Component, IInteractable
 
 		if(StartActivated) { Activate(); }
 
+		OnActivate += PlaySound;
+		OnDeactivate += PlaySound;
+
 	}
 
 	protected override void OnUpdate()
@@ -70,22 +75,24 @@ public class LeverComponent : Component, IInteractable
 		}
 	}
 
+	[Broadcast]
 	public void Deactivate(bool invokeAction = true)
 	{
 		LerpAngles( false, DeactivatedAngle );
-		
+
 		if ( invokeAction )
 			OnDeactivate?.Invoke();
 	}
 
+	[Broadcast]
 	public void Activate( bool invokeAction = true )
 	{
 		LerpAngles( true, ActivatedAngle );
 
-		if(invokeAction)
+
+		if (invokeAction)
 			OnActivate?.Invoke();
 	}
-
 
 	[Broadcast]
 	private void LerpAngles( bool activeState, float targetAngle )
@@ -115,6 +122,11 @@ public class LeverComponent : Component, IInteractable
 
 		Transform.LocalRotation = new Angles( (RotationalAxis * targetAngle) );
 
+	}
+
+	private void PlaySound()
+	{
+		Sound.Play( PullSound, Transform.Position );
 	}
 
 }

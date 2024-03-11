@@ -55,13 +55,8 @@ public class PlayerSpectateInput : PlayerInput
 		// No player to spectate...
 		else
 		{
-			if(Input.Pressed("drop"))
-			{
-				Log.Info( "ass");
-				LethalGameManager.Instance.RespawnAllDeadPlayers();
-			}
-		}
 
+		}
 
 	}
 

@@ -1,12 +1,13 @@
 {
   "RootObject": {
-    "Id": "78d42e16-4606-4dac-8c58-f1df18a5d351",
+    "Id": "8e8a50b3-d59c-440a-8743-1b7fff0e9ce7",
     "Name": "door_entrance_01",
     "Networked": true,
     "Enabled": true,
     "Components": [
       {
         "__type": "DoorEntranceComponent",
+        "EnterDoorSound": "sounds/door_entrance.sound",
         "IsLocked": false
       },
       {
@@ -14,13 +15,12 @@
         "Center": "0,4,48",
         "IsTrigger": false,
         "Scale": "88,6,90",
-        "Static": false,
-        "Surface": null
+        "Static": false
       }
     ],
     "Children": [
       {
-        "Id": "e6ebaa67-055a-4288-ab58-c7adeb7f2445",
+        "Id": "51788cf1-908f-487e-a6d2-b3230c9c115a",
         "Name": "Cube",
         "Position": "0,-6.700449,49.45694",
         "Scale": "2,0.09999969,2",
@@ -29,7 +29,6 @@
           {
             "__type": "ModelRenderer",
             "BodyGroups": 18446744073709551615,
-            "MaterialGroup": null,
             "MaterialOverride": "materials/dev/primary_white_emissive.vmat",
             "Model": "models/dev/box.vmdl",
             "RenderType": "On",
@@ -38,7 +37,7 @@
         ]
       },
       {
-        "Id": "3b90f27e-293e-4cf9-a94f-d0f4a6507aa5",
+        "Id": "41fb49ce-adb2-4e22-9e94-10ad38d8b148",
         "Name": "door_frame_01",
         "Enabled": true,
         "Components": [
@@ -47,14 +46,12 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/doors_01/door_entrance_frame_01.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]
       },
       {
-        "Id": "f9f6e912-ff7f-451e-a8c0-682a04845532",
+        "Id": "0e3a4794-a2a9-4e46-8121-22bdc49a7960",
         "Name": "door_entrance_01",
         "Enabled": true,
         "Components": [
@@ -63,14 +60,12 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/doors_01/door_entrance_01.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]
       },
       {
-        "Id": "e000ab05-af1c-42f7-b86a-8f2f0454d529",
+        "Id": "e110949b-3f26-46fb-9653-a499734eac9a",
         "Name": "door_handle_01",
         "Position": "-8.035648,1.031753,46.32399",
         "Rotation": "-0.7070491,0.009025782,-0.009025713,0.7070491",
@@ -81,14 +76,12 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/doors_01/door_handle_01.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]
       },
       {
-        "Id": "155a6296-aa84-4b1e-8596-03370413228d",
+        "Id": "cd7ca86e-2332-491f-88f2-022ffd66ab1c",
         "Name": "door_handle_01",
         "Position": "6.457716,2.052843,46.32399",
         "Rotation": "0.0004498959,0.7071066,0.7071066,0.0004499853",
@@ -99,8 +92,6 @@
             "Health": 0,
             "IsStatic": true,
             "Model": "models/doors_01/door_handle_01.vmdl",
-            "OnPropBreak": null,
-            "OnPropTakeDamage": null,
             "ShowCreatedComponents": false
           }
         ]

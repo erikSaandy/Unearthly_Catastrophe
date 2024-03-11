@@ -44,6 +44,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 	public Hud CurrentHud { get; set; }
 
 	public GameObject OldGroundObject { get; private set; } = null;
+	public GameObject LastGroundObject { get; private set; } = null;
 
 	protected override void OnStart()
 	{
@@ -71,6 +72,8 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		CurrentHud.Enabled = true;
 
 		LethalGameManager.OnPlayerConnected( GameObject.Id );
+
+		Animator.Target.SetBodyGroup( "head", 1 );
 
 	}
 
@@ -103,19 +106,6 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 	{
 		if ( LifeState == LifeState.Dead )
 			return;
-
-		//if ( type == DamageType.Bullet )
-		//{
-		//	var p = new SceneParticles( Scene.SceneWorld, "particles/impact.flesh.bloodpuff.vpcf" );
-		//	p.SetControlPoint( 0, position );
-		//	p.SetControlPoint( 0, Rotation.LookAt( force.Normal * -1f ) );
-		//	p.PlayUntilFinished( Task );
-
-		//	if ( HurtSound is not null )
-		//	{
-		//		Sound.Play( HurtSound, Transform.Position );
-		//	}
-		//}
 
 		if ( IsProxy )
 			return;
@@ -152,7 +142,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( IsProxy )
 			return;
 
-
+		Animator.Target.SetBodyGroup( "head", 0 );
 		PlayerInput = new PlayerSpectateInput( this );
 
 		LethalGameManager.Instance?.OnPlayerDeath( GameObject.Id );
@@ -166,19 +156,10 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		TakeDamage( Health + 100, GameObject.Id );
 	}
 
-	public async void RespawnAsync( float seconds )
-	{
-		if ( IsProxy ) return;
-
-		await Task.DelaySeconds( seconds );
-		Respawn();
-	}
-
 	[Broadcast]
 	public void Respawn()
 	{
-		if ( IsProxy )
-			return;
+		if ( IsProxy ) { return; }
 
 		Controller.Velocity = 0;
 		Controller.Acceleration = 0;
@@ -187,21 +168,19 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		LifeState = LifeState.Alive;
 		Health = MaxHealth;
 		PlayerInput = new PlayerInput( this );
+		Animator.Target.SetBodyGroup( "head", 1 );
 
 	}
 
 	private void MoveToSpawnPoint()
 	{
-		if ( IsProxy )
-			return;
-
 		var spawnpoints = Scene.GetAllComponents<SpawnPoint>();
-		var randomSpawnpoint = Game.Random.FromList( spawnpoints.ToList() );
-		Log.Info( randomSpawnpoint.Transform.Position );
+		var randomSpawnpoint = LethalGameManager.Random.FromList( spawnpoints.ToList() );
 
-		Transform.Position = randomSpawnpoint.Transform.Position;
-		Transform.Rotation = Rotation.FromYaw( randomSpawnpoint.Transform.Rotation.Yaw() );
-		EyeAngles = Transform.Rotation;
+		//Transform.Rotation = randomSpawnpoint.Transform.Rotation;
+		Transform.Position = LethalGameManager.Instance.Ship.Transform.Position;
+		//Transform.Position = randomSpawnpoint.Transform.Position;
+		//EyeAngles = Transform.Rotation;
 	}
 
 	public void OnStartLoadMoon()
@@ -236,6 +215,9 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 	protected override void OnFixedUpdate()
 	{
+		if ( Controller == null ) { return; }
+		if ( Animator == null ) { return; }
+
 		Animator.IsGrounded = Controller.IsOnGround;
 		Animator.WithVelocity( Controller.Velocity );
 		Animator.WithLook( EyeAngles.Forward, 1, .8f, .5f );
@@ -245,8 +227,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 		if ( GameObject.IsProxy ) { return; }
 
-		if ( Controller == null )	{ return; }
-		if ( Animator == null )		{ return; }
+
 
 		float wantedSpeed = WalkSpeed;
 
@@ -282,28 +263,51 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
 		}
 
-
-		Controller.Move();
-
-		if( Controller.GroundObject != OldGroundObject )
+		if ( Controller.GroundObject != OldGroundObject )
 		{
 			OnGroundChanged( OldGroundObject, Controller.GroundObject );
 			OldGroundObject = Controller.GroundObject;
 		}
 
+		Controller.Move();
+
+		if ( LastGroundObject == LethalGameManager.Instance.Ship.GameObject && LethalGameManager.Instance.Ship.IsMoving )
+		{
+			Controller.Velocity = LethalGameManager.Instance.Ship.Controller.Velocity;
+			Controller.Move();
+			//Controller.Accelerate( LethalGameManager.Instance.Ship.Velocity );
+			//Controller.MoveTo( Transform.Position + (LethalGameManager.Instance.Ship.Velocity), true );
+			//Controller.Velocity += LethalGameManager.Instance.Ship.Controller.Velocity;
+			//Controller.Velocity = (LethalGameManager.Instance.Ship.Controller.Velocity);
+		}
+
+		if ( LastGroundObject == LethalGameManager.Instance.Ship.GameObject )
+		{
+			//Controller.Accelerate( LethalGameManager.Instance.Ship.Velocity );
+			//Controller.MoveTo( Transform.Position + (LethalGameManager.Instance.Ship.Velocity), true );
+			//Controller.Velocity -= LethalGameManager.Instance.Ship.Controller.Velocity;
+
+		}
 	}
 
 
 	private void OnGroundChanged(GameObject oldGround, GameObject newGround)
 	{
-		//if(newGround == LethalGameManager.Instance.Ship.GameObject)
-		//{
-		//	GameObject.SetParent( newGround.Root );
-		//}
-		//else if(newGround != null)
-		//{
-		//	GameObject.SetParent( Scene );
-		//}
+		if ( newGround != null )
+		{
+			LastGroundObject = newGround;
+		}
+
+		if(LastGroundObject == LethalGameManager.Instance.Ship.GameObject )
+		{
+			//GameObject.SetParent( newGround );
+		}
+		else
+		{
+			//GameObject.SetParent( Scene );
+		}
+
+
 	}
 
 }

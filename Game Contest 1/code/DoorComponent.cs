@@ -6,8 +6,11 @@ using System;
 public class DoorComponent : Component, IInteractable
 {
 	public bool IsInteractableBy( Player player ) { return true; }// !IsLocked || IsOpen || (IsLocked && player.Inventory?.ActiveItem is Key); }
-	public float InteractionTime { get; set; } = 0.7f;
+	public float InteractionTime { get { return IsLocked ? 0 : 0.7f; } }
 	public string ToolTip { get; set; } = "";
+
+	[Category("Sound")][Property] public SoundEvent OpenSound { get; set; }
+	[Category( "Sound" )][Property] public SoundEvent CloseSound { get; set; }
 
 	public virtual string GetToolTip( Player player ) { 
 
@@ -67,13 +70,39 @@ public class DoorComponent : Component, IInteractable
 			}
 		}
 
-		if(IsOpen) { LerpAngles( 0 ); }
-		else { LerpAngles( OpenAngle ); }
+		if(IsOpen) { Close(); }
+		else { Open(); }
 	}
 
 	[Broadcast]
+	public void Open()
+	{
+		if(IsOpen) { return; }
+		Tags.Add( "open_door" );
+
+		LerpAngles( OpenAngle );
+	}
+
+	[Broadcast]
+	public void Close()
+	{
+		if ( !IsOpen ) { return; }
+		Tags.Remove( "open_door" );
+
+		LerpAngles( 0 );
+	}
+
 	private void LerpAngles( float targetAngle )
 	{
+		if(IsOpen)
+		{
+			Sound.Play( CloseSound, Transform.Position );
+		}
+		else
+		{
+			Sound.Play( OpenSound, Transform.Position );
+		}
+
 		LerpAnglesAsync( targetAngle );
 	}
 

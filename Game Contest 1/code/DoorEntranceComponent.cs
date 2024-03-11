@@ -6,9 +6,10 @@ public class DoorEntranceComponent : Component, IInteractable
 {
 	private static List<DoorEntranceComponent> EntranceDoors { get; set; } = new();
 
+	[Property] public SoundEvent EnterDoorSound { get; set; }
 
-	public bool IsInteractableBy( Player player ) { return !IsLocked; }
-	public float InteractionTime { get; set; } = 1.1f;
+	public bool IsInteractableBy( Player player ) { return true; }
+	public float InteractionTime { get { return IsLocked ? 0 : 1.1f; } }
 	public string ToolTip { get; set; } = "";
 
 	public virtual string GetToolTip( Player player )
@@ -39,7 +40,6 @@ public class DoorEntranceComponent : Component, IInteractable
 
 	public void OnInteract( Guid playerId )
 	{
-		Player player = GameObject.Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
 
 		if (IsLocked) { return; }
 
@@ -47,16 +47,29 @@ public class DoorEntranceComponent : Component, IInteractable
 		{
 			if ( EntranceDoors[i] != this )
 			{
-				GoTo( i, player );
+				GoTo( i, playerId );
 				return;
 			}
 		}
 	}
 
-	public void GoTo(int doorId, Player player)
+	[Broadcast]
+	public void GoTo(int doorId, Guid playerId)
 	{
 		DoorEntranceComponent to = EntranceDoors[doorId];
+		Sound.Play( EnterDoorSound, to.Transform.Position );
+		Sound.Play( EnterDoorSound, Transform.Position );
+
+		if (IsProxy) { return; }
+
+		Player player = GameObject.Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
 		player.Transform.Position = to.Transform.Position + to.Transform.LocalRotation.Left * 32;
+		
+		Angles angleDelta = to.Transform.Rotation.Angles() - Transform.Rotation.Angles();
+		float yaw = angleDelta.yaw;
+		Log.Info( angleDelta );
+
+		player.EyeAngles = new Angles(0, player.EyeAngles.yaw + angleDelta.yaw + 180, 0);// player.EyeAngles. .RotateAroundAxis(Vector3.Up, angleDelta.yaw + 180 );
 	}
 
 }
