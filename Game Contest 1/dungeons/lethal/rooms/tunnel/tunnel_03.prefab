@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "4609f175-4137-4f96-bf8d-9caef4a8ed48",
+    "Id": "b116215c-f4a0-40a9-a143-3d6df5280469",
     "Name": "tunnel_03",
     "Enabled": true,
     "Components": [
@@ -10,24 +10,29 @@
           "Mins": "-64,-128,0",
           "Maxs": "64,0,128"
         },
+        "MonsterSpawners": [
+          {
+            "_type": "component",
+            "go": "a5b9dd13-dbf3-4965-a874-cf1c9da23df6",
+            "component_type": "MonsterSpawner"
+          }
+        ],
         "Portals": [
           {
             "_type": "component",
-            "go": "401fc1a0-ea89-41b1-81ec-320865268a5e",
+            "go": "e61dadf7-8bba-4b51-9258-3bdeaab34f52",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "4609f175-4137-4f96-bf8d-9caef4a8ed48",
+          "go": "b116215c-f4a0-40a9-a143-3d6df5280469",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
@@ -36,13 +41,12 @@
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       }
     ],
     "Children": [
       {
-        "Id": "401fc1a0-ea89-41b1-81ec-320865268a5e",
+        "Id": "e61dadf7-8bba-4b51-9258-3bdeaab34f52",
         "Name": "Door",
         "Position": "-0.00006464271,-132,0",
         "Enabled": true,
@@ -50,6 +54,18 @@
           {
             "__type": "RoomPortal",
             "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "a5b9dd13-dbf3-4965-a874-cf1c9da23df6",
+        "Name": "Monster Spawner",
+        "Position": "-0.00002492252,-64,-0.00001173201",
+        "Rotation": "0,0,0.7071069,-0.7071066",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "MonsterSpawner"
           }
         ]
       }

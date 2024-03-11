@@ -18,6 +18,9 @@
 	public PlayerInput(Player owner)
 	{
 		this.Owner = owner;
+
+		owner.Voice.Mode = Voice.ActivateMode.PushToTalk;
+
 		//owner?.Camera?.GameObject?.SetParent( owner.GameObject );
 	}
 
@@ -27,8 +30,6 @@
 
 		AnalogMove = Sandbox.Input.AnalogMove.Normal;
 		WantsToRun = Sandbox.Input.Down( "Run" );
-
-		Owner.Transform.Rotation = Rotation.FromYaw( Owner.EyeAngles.yaw );
 
 		DoInteractionTrace();
 
@@ -46,6 +47,20 @@
 		{
 			Owner.Inventory?.DropActive();
 		}
+
+		if ( Sandbox.Input.Pressed( "mute" ) )
+		{
+			//Toggle microphone
+			ToggleMicrophone();
+		}
+
+
+	}
+
+	public virtual void FixedUpdateInput()
+	{
+
+		if ( Owner.IsProxy ) { return; }
 
 	}
 
@@ -131,6 +146,11 @@
 			Owner.Inventory.ActiveSlot = slot;
 			Owner.Inventory.ActiveItem?.Deploy();
 		}
+	}
+
+	protected void ToggleMicrophone()
+	{
+		Owner.Voice.Mode = Owner.Voice.Mode == Voice.ActivateMode.PushToTalk ? Voice.ActivateMode.AlwaysOn : Voice.ActivateMode.PushToTalk;
 	}
 
 }

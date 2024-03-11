@@ -53,11 +53,24 @@ public sealed class ShipComponent : Component
 		//OnMoveShip += Transporter.MovePassengers;
 
 		Lever.IsLocked = true;
+		Lever.OnActivate = null;
+		Lever.OnDeactivate = null;
 		Lever.OnActivate += LethalGameManager.Instance.LoadSelectedMoon;
 		Lever.OnDeactivate += LethalGameManager.Instance.LeaveCurrentMoon;
 
 		TargetPosition = SPACE_POSITION;
 
+
+	}
+
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		Lever.OnActivate -= LethalGameManager.Instance.LoadSelectedMoon;
+		Lever.OnDeactivate -= LethalGameManager.Instance.LeaveCurrentMoon;
+		Lever.OnActivate = null;
+		Lever.OnDeactivate = null;
 
 	}
 

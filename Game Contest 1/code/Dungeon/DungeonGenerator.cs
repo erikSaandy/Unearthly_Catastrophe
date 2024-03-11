@@ -18,38 +18,46 @@ public static class DungeonGenerator
 	public static async Task GenerateDungeon(DungeonDefinition def)
 	{
 
-		SpawnedRooms = new List<RoomSetup>();
-
-		DungeonResource = def;
-		Biome biome = DungeonResource.RandomBiome;
-
-		RoomSetup entrance = new RoomSetup( biome.RandomEntrance );
-		if(entrance.Data == null) { Log.Error( "Could not load prefab " + entrance.Prefab ); }
-
-		entrance.GameObject.Transform.Position = DUNGEON_ORIGIN;
-		entrance.InitiateBounds();
-		entrance.SpawnEntranceDoor();
-		entrance.GameObject.Name = "1 (entrance)";
-		entrance.GameObject.SetParent( LethalGameManager.Instance.CurrentMoon.GameObject );
-		entrance.GameObject.NetworkSpawn();
-
-		SpawnedRooms.Add( entrance );
-
-		await Task.Delay(5);
-
-		bool finished = false;
-
-		//CreateRoomConnection( ref entrance, InitialDepth );
-		SearchRooms( ref entrance, ref biome, ref finished, MainIterations, 0 );
-
-		while(!finished )
+		try
 		{
-			await Task.Yield();
+			SpawnedRooms = new List<RoomSetup>();
+
+			DungeonResource = def;
+			Biome biome = DungeonResource.RandomBiome;
+
+			RoomSetup entrance = new RoomSetup( biome.RandomEntrance );
+			if(entrance.Data == null) { Log.Error( "Could not load prefab " + entrance.Prefab ); }
+
+			entrance.GameObject.Transform.Position = DUNGEON_ORIGIN;
+			entrance.InitiateBounds();
+			entrance.SpawnEntranceDoor();
+			entrance.GameObject.Name = "1 (entrance)";
+			entrance.GameObject.SetParent( LethalGameManager.Instance.CurrentMoon.GameObject );
+			entrance.GameObject.NetworkSpawn();
+
+			SpawnedRooms.Add( entrance );
+
+			//await Task.Delay(5);
+
+			bool finished = false;
+
+			//CreateRoomConnection( ref entrance, InitialDepth );
+			SearchRooms( ref entrance, ref biome, ref finished, MainIterations, 0 );
+
+			while(!finished )
+			{
+				await Task.Yield();
+			}
+
+			Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms!]" );
+
+			await Task.Delay( 1000 );
+
 		}
-
-		Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms!]" );
-
-		await Task.Delay( 1000 );
+		catch(Exception e)
+		{
+			Log.Error( e.Message );
+		}
 
 	}
 

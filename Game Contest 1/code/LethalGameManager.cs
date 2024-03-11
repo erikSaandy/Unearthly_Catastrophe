@@ -158,7 +158,7 @@ public class LethalGameManager : Component
 	[Broadcast]
 	public static void OnPlayerConnected(Guid playerId)
 	{
-		if(Instance.IsProxy) { return; }
+		if( Instance.GameObject.IsProxy ) { return; }
 
 		Instance.ConnectedPlayers.Add( playerId );
 		Instance.AlivePlayers++;
@@ -175,7 +175,7 @@ public class LethalGameManager : Component
 	[Broadcast]
 	public static void OnPlayerDisconnected(Guid playerId)
 	{
-		if ( Instance.IsProxy ) { return; }
+		if ( Instance.GameObject.IsProxy ) { return; }
 
 		Instance.ConnectedPlayers.Remove( playerId );
 		Instance.OnPlayerDeath(playerId);
@@ -183,7 +183,7 @@ public class LethalGameManager : Component
 
 	protected override void OnStart()
 	{
-		if(GameObject.IsProxy) { return; }
+		if(Instance.GameObject.IsProxy) { return; }
 
 		TerminalComponent.SelectMoon( 0 );
 
@@ -218,7 +218,7 @@ public class LethalGameManager : Component
 		IsLoading = false;
 		OnLoadedMoon?.Invoke();
 
-		if ( GameObject.IsProxy ) return;
+		if ( Instance.GameObject.IsProxy ) return;
 
 		Ship.Land( CurrentMoon.LandingPad );
 	}
@@ -235,7 +235,7 @@ public class LethalGameManager : Component
 	{
 		Ship.Lever.IsLocked = true;
 
-		if ( IsProxy ) { return; }
+		if ( Instance.GameObject.IsProxy ) { return; }
 
 		RespawnAllDeadPlayers();
 
@@ -245,6 +245,9 @@ public class LethalGameManager : Component
 
 	private async void LoadMoonAsync( int moonId )
 	{
+
+		if ( Instance.GameObject.IsProxy ) { return; }
+
 		MoonDefinition moon = LethalGameManager.MoonDefinitions[moonId];
 
 		Log.Info( "Loading moon " + moon.MoonPrefab + "..." );

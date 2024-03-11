@@ -3,8 +3,8 @@
     "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
     "Name": "spaceship",
     "Tags": "spaceship",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "ShipComponent",
@@ -84,8 +84,8 @@
       {
         "Id": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
         "Name": "Passenger Transporter",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "PassengerTransporter",
@@ -105,8 +105,8 @@
         "Name": "Gap Collider",
         "Position": "0,-11.17955,-2.880481",
         "Scale": "3.613807,1.289862,0.1121138",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "BoxCollider",
@@ -123,6 +123,7 @@
         "Position": "-0.000629576,-192.0003,155.9962",
         "Rotation": "-0.000003279054,0.9999999,0.000001093018,0",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -140,6 +141,7 @@
             "Rotation": "0.0000000000004547474,0.8728825,-0.0000000000002273737,0.4879304",
             "Tags": "light_point,light",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "PointLight",
@@ -160,6 +162,7 @@
         "Position": "-85.89309,128,120",
         "Rotation": "0.4997322,0.4997323,0.5002676,0.5002677",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -176,6 +179,7 @@
             "Position": "-0.00001786383,-8.023409,31.83071",
             "Tags": "light_point,light",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "PointLight",
@@ -196,6 +200,7 @@
         "Position": "85.91022,128,119.9081",
         "Rotation": "-0.4997323,0.4997323,0.5002676,-0.5002676",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -212,6 +217,7 @@
             "Position": "-0.00001108674,-7.99996,34.98917",
             "Tags": "light_point,light",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "PointLight",
@@ -231,6 +237,7 @@
         "Name": "Spawnpoint (5)",
         "Position": "-56,96,8",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -243,6 +250,7 @@
         "Name": "Spawnpoint (4)",
         "Position": "-56,128,8",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -255,6 +263,7 @@
         "Name": "Spawnpoint (7)",
         "Position": "-56,160,8",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -267,6 +276,7 @@
         "Name": "Spawnpoint (9)",
         "Position": "-56,160,8",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -280,6 +290,7 @@
         "Position": "54.79461,96,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -293,6 +304,7 @@
         "Position": "54.79461,128,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -306,6 +318,7 @@
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -319,6 +332,7 @@
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -331,6 +345,7 @@
         "Name": "Spawnpoint (1)",
         "Position": "-56,64,8",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -344,6 +359,7 @@
         "Position": "54.79461,64,8",
         "Rotation": "0,0,1,-0.00000004371139",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpawnPoint",
@@ -356,8 +372,8 @@
         "Name": "Terminal",
         "Position": "87.6813,-94.10116,0",
         "Rotation": "0,0,-0.9238794,0.3826834",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "__Prefab": "prefabs/terminal.prefab"
       },
       {
@@ -366,8 +382,8 @@
         "Position": "-55.82401,-300.0244,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
@@ -376,8 +392,8 @@
         "Position": "-68.72736,-287.121,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
@@ -386,8 +402,8 @@
         "Position": "-64.78712,-291.0613,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
@@ -396,8 +412,8 @@
         "Position": "-60.50956,-295.3389,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
@@ -406,8 +422,8 @@
         "Position": "-39.94959,-297.6197,32.73829",
         "Rotation": "0,0,0.258819,0.9659258",
         "Tags": "item",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "__Prefab": "prefabs/items/key.prefab"
       },
       {
@@ -415,6 +431,7 @@
         "Name": "probe",
         "Position": "0,128,60",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "EnvmapProbe",
@@ -434,6 +451,7 @@
         "Name": "probe (1)",
         "Position": "0,-192,60",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "EnvmapProbe",
@@ -454,6 +472,7 @@
         "Position": "-100.5956,-80.42385,56",
         "Rotation": "-0.6532815,-0.270598,-0.2705981,-0.6532816",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Prop",
@@ -468,8 +487,8 @@
             "Id": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
             "Name": "ship_lever",
             "Position": "0,0,0",
-            "Networked": true,
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "LeverComponent",
@@ -508,6 +527,7 @@
         "Rotation": "-0.1305262,0,0,0.9914449",
         "Scale": "1.25,1.25,1.25",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -524,6 +544,7 @@
         "Position": "-48,-312,96",
         "Rotation": "-0.1260786,0.03378267,-0.2566049,0.9576625",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -541,6 +562,7 @@
         "Rotation": "-0.09229594,0.09229595,-0.7010576,0.7010577",
         "Scale": "1.394335,1.394335,1.394335",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -558,6 +580,7 @@
             "Rotation": "0,0,0.7071068,0.7071068",
             "Scale": "0.7171878,0.7171878,0.7171878",
             "Enabled": true,
+            "NetworkMode": 2,
             "Children": [
               {
                 "Id": "a67b2d8a-7768-4ed4-8d28-57a47d8ee5e3",
@@ -566,6 +589,7 @@
                 "Rotation": "0,0.000000000000003552714,1,-0.00000004371139",
                 "Scale": "0.4534729,0.4534729,0.4534729",
                 "Enabled": true,
+                "NetworkMode": 2,
                 "Components": [
                   {
                     "__type": "TextRenderer",
@@ -584,6 +608,7 @@
                 "Rotation": "0,0.000000000000003552714,1,-0.00000004371139",
                 "Scale": "0.6556392,0.6556392,0.6556392",
                 "Enabled": true,
+                "NetworkMode": 2,
                 "Components": [
                   {
                     "__type": "TextRenderer",
@@ -605,6 +630,7 @@
         "Position": "48,-312,96",
         "Rotation": "-0.1260786,-0.03378267,0.2566049,0.9576625",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -621,6 +647,7 @@
             "Position": "0.001660455,2.946451,0.00009548664",
             "Rotation": "-0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "WorldPanel",
@@ -643,6 +670,7 @@
         "Position": "0,-311.4558,0.03017274",
         "Scale": "1.063558,1.063558,1.063558",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -659,6 +687,7 @@
         "Position": "-71.9596,210.1391,63.99994",
         "Rotation": "-0.4999999,0.5,-0.5,-0.4999999",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "Prop",
@@ -674,6 +703,7 @@
             "Name": "button_on",
             "Position": "7,0,4",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "BoxCollider",
@@ -695,6 +725,7 @@
             "Name": "button_off",
             "Position": "-7,0,4",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "BoxCollider",
@@ -718,6 +749,7 @@
             "Rotation": "-0.00002017617,-0.7071272,0.000000009933501,-0.7071066",
             "Scale": "0.6669122,0.3656722,1.280289",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "ModelRenderer",
@@ -736,6 +768,7 @@
         "Name": "ship_doors",
         "Position": "0,222,0",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "ShipDoorComponent",
@@ -801,6 +834,7 @@
             "Position": "-68,0,0",
             "Rotation": "0,0,-1,0.0000001947072",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "Prop",
@@ -816,6 +850,7 @@
             "Name": "ship-door_left",
             "Position": "68,0,0",
             "Enabled": true,
+            "NetworkMode": 2,
             "Components": [
               {
                 "__type": "Prop",
@@ -825,6 +860,24 @@
                 "ShowCreatedComponents": false
               }
             ]
+          }
+        ]
+      },
+      {
+        "Id": "918ec1bd-9ffa-490d-9eaa-9bc01027df22",
+        "Name": "poster_01",
+        "Position": "-124.6057,-101.1055,79.53167",
+        "Rotation": "0.2795738,0.6494342,-0.2796149,0.6495298",
+        "Scale": "13,13,13",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/poster_01/poster_01.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
           }
         ]
       }

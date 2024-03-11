@@ -11,6 +11,7 @@ public class PlayerTerminalInput : PlayerInput
 
 		this.Terminal = terminal;
 
+		owner.Voice.Volume = 1;
 		//Owner.Camera.GameObject.SetParent( Terminal.GameObject );
 	}
 

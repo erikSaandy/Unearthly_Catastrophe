@@ -1,9 +1,10 @@
 {
   "RootObject": {
-    "Id": "8e8a50b3-d59c-440a-8743-1b7fff0e9ce7",
+    "Id": "512525c5-e735-4377-913c-f9d26e18042f",
     "Name": "door_entrance_01",
-    "Networked": true,
+    "Tags": "entrance_door",
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "DoorEntranceComponent",
@@ -15,16 +16,17 @@
         "Center": "0,4,48",
         "IsTrigger": false,
         "Scale": "88,6,90",
-        "Static": false
+        "Static": true
       }
     ],
     "Children": [
       {
-        "Id": "51788cf1-908f-487e-a6d2-b3230c9c115a",
+        "Id": "2452e1f7-4e95-4afc-9cbd-b4172a6b5266",
         "Name": "Cube",
         "Position": "0,-6.700449,49.45694",
         "Scale": "2,0.09999969,2",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "ModelRenderer",
@@ -37,9 +39,10 @@
         ]
       },
       {
-        "Id": "41fb49ce-adb2-4e22-9e94-10ad38d8b148",
+        "Id": "0d6c1356-2395-4e76-80b6-d3f2a0e8213d",
         "Name": "door_frame_01",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Prop",
@@ -51,9 +54,10 @@
         ]
       },
       {
-        "Id": "0e3a4794-a2a9-4e46-8121-22bdc49a7960",
+        "Id": "2922516b-3a9b-4111-b06d-3cb57eeecc1c",
         "Name": "door_entrance_01",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Prop",
@@ -65,11 +69,12 @@
         ]
       },
       {
-        "Id": "e110949b-3f26-46fb-9653-a499734eac9a",
+        "Id": "a68d0eb5-ce19-4b9c-9db4-17d815b8c322",
         "Name": "door_handle_01",
         "Position": "-8.035648,1.031753,46.32399",
         "Rotation": "-0.7070491,0.009025782,-0.009025713,0.7070491",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Prop",
@@ -81,11 +86,12 @@
         ]
       },
       {
-        "Id": "cd7ca86e-2332-491f-88f2-022ffd66ab1c",
+        "Id": "d845836b-a284-477b-97ae-7e6ca8f08248",
         "Name": "door_handle_01",
         "Position": "6.457716,2.052843,46.32399",
         "Rotation": "0.0004498959,0.7071066,0.7071066,0.0004499853",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "Prop",

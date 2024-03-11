@@ -54,6 +54,16 @@ public class LeverComponent : Component, IInteractable
 
 	}
 
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		OnActivate -= PlaySound;
+		OnDeactivate -= PlaySound;
+		OnActivate = null;
+		OnDeactivate = null;
+	}
+
 	protected override void OnUpdate()
 	{
 
@@ -75,7 +85,6 @@ public class LeverComponent : Component, IInteractable
 		}
 	}
 
-	[Broadcast]
 	public void Deactivate(bool invokeAction = true)
 	{
 		LerpAngles( false, DeactivatedAngle );
@@ -84,7 +93,6 @@ public class LeverComponent : Component, IInteractable
 			OnDeactivate?.Invoke();
 	}
 
-	[Broadcast]
 	public void Activate( bool invokeAction = true )
 	{
 		LerpAngles( true, ActivatedAngle );

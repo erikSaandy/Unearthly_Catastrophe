@@ -77,7 +77,7 @@ public class DoorComponent : Component, IInteractable
 	[Broadcast]
 	public void Open()
 	{
-		if(IsOpen) { return; }
+		if( IsOpen ) { return; }
 		Tags.Add( "open_door" );
 
 		LerpAngles( OpenAngle );

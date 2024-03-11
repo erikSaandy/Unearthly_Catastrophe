@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "2a1d9c15-476c-48d1-b2bf-4333457fd8d1",
+    "Id": "a3064abc-d975-40c2-b40f-821e920dc653",
     "Name": "tunnel_07",
     "Enabled": true,
     "Components": [
@@ -10,40 +10,44 @@
           "Mins": "-128,-128,0",
           "Maxs": "128,128,128"
         },
-        "LootSpawner": null,
+        "MonsterSpawners": [
+          {
+            "_type": "component",
+            "go": "14925a85-b795-4c3f-a02f-252f142a1fc3",
+            "component_type": "MonsterSpawner"
+          }
+        ],
         "Portals": [
           {
             "_type": "component",
-            "go": "69c03a84-9f19-483e-821e-a4e22db23ef8",
+            "go": "9742dd7c-1b0a-45b9-b787-41a7ba5b9cc2",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "3bf7dbf9-6361-4bf6-ac79-71dcb61c8466",
+            "go": "8ae73f37-c5ab-486b-b4a3-0326e8a37005",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "589e33cd-03d1-46f7-b150-d2d0a32b5585",
+            "go": "3ec4babc-0a55-42d7-83ad-600a4d74e058",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "02b7e4f5-09da-4721-b230-d0fa4fb995bf",
+            "go": "412e1651-8dad-4d76-8430-3cead4d5f799",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "2a1d9c15-476c-48d1-b2bf-4333457fd8d1",
+          "go": "a3064abc-d975-40c2-b40f-821e920dc653",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_07.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
@@ -52,13 +56,12 @@
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_07.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       }
     ],
     "Children": [
       {
-        "Id": "69c03a84-9f19-483e-821e-a4e22db23ef8",
+        "Id": "9742dd7c-1b0a-45b9-b787-41a7ba5b9cc2",
         "Name": "Door",
         "Position": "0.00002110785,128,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -71,7 +74,7 @@
         ]
       },
       {
-        "Id": "3bf7dbf9-6361-4bf6-ac79-71dcb61c8466",
+        "Id": "8ae73f37-c5ab-486b-b4a3-0326e8a37005",
         "Name": "Door (1)",
         "Position": "128,-0,0.000006498106",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -84,7 +87,7 @@
         ]
       },
       {
-        "Id": "589e33cd-03d1-46f7-b150-d2d0a32b5585",
+        "Id": "3ec4babc-0a55-42d7-83ad-600a4d74e058",
         "Name": "Door (2)",
         "Position": "-0.00006332347,-128,0",
         "Rotation": "0,0,0.0000003596121,-1",
@@ -97,7 +100,7 @@
         ]
       },
       {
-        "Id": "02b7e4f5-09da-4721-b230-d0fa4fb995bf",
+        "Id": "412e1651-8dad-4d76-8430-3cead4d5f799",
         "Name": "Door (3)",
         "Position": "-128,0,0.000006498106",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -110,7 +113,7 @@
         ]
       },
       {
-        "Id": "2c561745-a2ea-4faf-a2f3-87d26dc8e1b2",
+        "Id": "f95062a8-9401-4aea-82db-5e2568659370",
         "Name": "light",
         "Position": "0,-0.00001119012,128",
         "Rotation": "1,0,0,-0.00000004371139",
@@ -120,8 +123,6 @@
           {
             "__type": "ModelRenderer",
             "BodyGroups": 18446744073709551615,
-            "MaterialGroup": null,
-            "MaterialOverride": null,
             "Model": "models/lightbulb_fixture/lightbulb_fixture.vmdl",
             "RenderType": "On",
             "Tint": "0.35349,0.34697,0.33047,1"
@@ -130,13 +131,12 @@
             "__type": "ModelCollider",
             "IsTrigger": false,
             "Model": "models/lightbulb_fixture/lightbulb_fixture.vmdl",
-            "Static": false,
-            "Surface": null
+            "Static": false
           }
         ],
         "Children": [
           {
-            "Id": "224b2b23-a6fe-4bc3-ab31-34ad4d87d1aa",
+            "Id": "8dc0e902-4b19-4ed9-ad01-10126d6f13da",
             "Name": "Point Light",
             "Position": "0,0.000001123446,12.85072",
             "Rotation": "-1,0,0,-0.00000004371139",
@@ -154,6 +154,17 @@
                 "Shadows": true
               }
             ]
+          }
+        ]
+      },
+      {
+        "Id": "14925a85-b795-4c3f-a02f-252f142a1fc3",
+        "Name": "Monster Spawner",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "MonsterSpawner"
           }
         ]
       }

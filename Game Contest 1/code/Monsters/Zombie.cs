@@ -5,7 +5,7 @@ using Sandbox.Citizen;
 using System;
 using System.Security.Cryptography;
 
-public class Zombie : Component, IKillable
+public class Zombie : Monster
 {
 	public enum State
 	{
@@ -16,19 +16,13 @@ public class Zombie : Component, IKillable
 
 	public State MoveState { get; set; } = State.Patrol;
 
-	[Sync] public LifeState LifeState { get; private set; } = LifeState.Alive;
-
-	[Sync] public RealTimeSince TimeSinceDeath { get; private set; }
-
-	private float LineOfSightSquared => (MoveState == State.Aggro) ? 120000 : 110000;
-	private float AggroDistance { get; set; } = 45000;
+	private float LineOfSightSquared => MoveState == State.Aggro ? 130000 : 110000;
+	private float AggroDistance { get; set; } = 37000;
+	private float AttackDistance { get; set; } = 4000;
 
 	[Category("Components")][Property] public NavMeshAgent Agent { get; private set; }
 	[Category( "Components" )][Property] public CitizenAnimationHelper Animator { get; private set; }
 	[Category( "Components" )][Property] public CharacterController Controller { get; private set; }
-
-	public float MaxHealth => 100;
-	public float Health { get; private set; }
 
 	[Property] public float WalkSpeed { get; set; } = 70;
 	[Property] public float RunSpeed { get; set; } = 120;
@@ -40,8 +34,9 @@ public class Zombie : Component, IKillable
 	public TimeSince TimeSinceUpdateTarget { get; private set; } = 30;
 	public TimeSince TimeSinceTrace { get; private set; } = 30;
 	public TimeSince TimeSinceAggro { get; private set; } = 30;
+	public RealTimeSince TimeSinceAttack { get; set; } = 0;
 
-	private GameObject LastAggroedPlayer { get; set; } = default;
+	private GameObject LastAggroedPlayer { get; set; } = null;
 
 	protected override void OnAwake()
 	{
@@ -63,8 +58,13 @@ public class Zombie : Component, IKillable
 	{
 		base.DrawGizmos();
 
+		Gizmo.Draw.Color = Color.Yellow;
+		Gizmo.Draw.SolidCylinder( 0, Vector3.Up * 4, MathF.Sqrt( LineOfSightSquared ) );
+
 		Gizmo.Draw.Color = Color.Red;
-		if(MoveState == State.Aggro)
+		Gizmo.Draw.SolidCylinder( 0, Vector3.Up * 4, MathF.Sqrt( AggroDistance ) );
+
+		if (MoveState == State.Aggro)
 		{
 			Gizmo.Draw.SolidSphere( 0, 32 );
 		}
@@ -81,24 +81,23 @@ public class Zombie : Component, IKillable
 
 		if ( IsProxy ) { return; }
 
-		if ( Input.Down("jump"))
-		{
-			Transform.Position = DungeonGenerator.SpawnedRooms[0].GameObject.Transform.Position;
-			ChangeTargetPosition();
-			StartPatroling( Transform.Position );
-		}
+		//if ( Input.Down("jump"))
+		//{
+		//	Transform.Position = DungeonGenerator.SpawnedRooms[0].GameObject.Transform.Position;
+		//	ChangeTargetPosition();
+		//	StartPatroling( Transform.Position );
+		//}
 
 		// Patrol nest sees a player, continue chasing player until line of sight is broken.
 		// Patrol last seen area 
 
-		float speed = WalkSpeed;
-		UpdateMovement( ref speed );
+		UpdateMovement();
 
-		// Do raycasts
+		// Do door raycasts
 		if ( WantedMoveDirection != 0 && TimeSinceTrace > 3 )
 		{
 			TimeSinceTrace = 0;
-			IEnumerable<SceneTraceResult> trace = Scene.Trace.Ray( Transform.Position, Transform.Position + (WantedMoveDirection * 64) ).IgnoreGameObjectHierarchy( GameObject ).UsePhysicsWorld().RunAll();
+			IEnumerable<SceneTraceResult> trace = Scene.Trace.Ray( Animator.EyeSource.Transform.Position, Animator.EyeSource.Transform.Position + (WantedMoveDirection * 32) ).IgnoreGameObjectHierarchy( GameObject ).UsePhysicsWorld().RunAll();	
 
 			foreach ( SceneTraceResult result in trace )
 			{
@@ -106,7 +105,10 @@ public class Zombie : Component, IKillable
 				{
 					if ( result.GameObject.Components.TryGet<DoorComponent>( out DoorComponent door ) )
 					{
-						door.Open();
+						if( !door.IsLocked )
+						{
+							door.Open();
+						}
 					}
 				}
 			}
@@ -114,84 +116,23 @@ public class Zombie : Component, IKillable
 
 	}
 
-	private void UpdateMovement(ref float speed)
+	private void UpdateMovement()
 	{
+		float speed = WalkSpeed;
 		float turnSpeed = 3.5f;
 		float friction = 10f;
 
 		if ( MoveState == State.Patrol )
 		{
-			GameObject playerToAggro = FindPlayerToAggro();
-			if ( playerToAggro != null )
-			{
-				AggroPlayer( playerToAggro );
-				return;
-			}
-
-			// Patrol to new locations
-			if ( TimeSinceUpdateTarget > 10 )
-			{
-				ChangeTargetPosition();
-
-			}
-
-			WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;
-
-			Vector3 targetPos = Agent.TargetPosition ?? default;
-
-			if ( targetPos != default )
-			{
-				if ( Vector3.DistanceBetween( Transform.Position, targetPos ) < 25 )
-				{
-					MoveState = State.Idle;
-				}
-			}
-
+			DoPatrol(ref speed, ref turnSpeed, ref friction );
 		}
-
 		else if ( MoveState == State.Idle )
 		{
-			speed = 0;
-			Controller.Velocity.Set( 0, 0, Controller.Velocity.z );
-
-			GameObject playerToAggro = FindPlayerToAggro();
-			if ( playerToAggro != null )
-			{
-				AggroPlayer( playerToAggro );
-				return;
-			}
-
-			Log.Info( "idle" );
-			if ( TimeSinceUpdateTarget > 5 )
-			{
-
-				StartPatroling( NestPosition );
-				TimeSinceUpdateTarget = 0;
-			}
-
+			DoIdle( ref speed, ref turnSpeed, ref friction );
 		}
-
 		else if ( MoveState == State.Aggro )
 		{
-			speed = RunSpeed;
-			friction = 6;
-			turnSpeed = 15;
-
-			if ( TimeSinceUpdateTarget > 1 )
-			{
-				GameObject playerToAggro = FindPlayerToAggro();
-				if ( playerToAggro != null )
-				{
-					AggroPlayer( playerToAggro );
-					return;
-				}
-
-				// Stop aggroing.
-				StartPatroling( Transform.Position );
-			}
-
-			WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;
-
+			DoAggro( ref speed, ref turnSpeed, ref friction );
 		}
 
 		if ( Controller.IsOnGround )
@@ -217,51 +158,88 @@ public class Zombie : Component, IKillable
 	private void StartPatroling ( Vector3 newNest )
 	{
 		NestPosition = newNest;
-		
+		LastAggroedPlayer = null;
+
 		Agent.MoveTo( ChangeTargetPosition() );
 		MoveState = State.Patrol;
 	}
 
 	private void AggroPlayer(GameObject playerObject)
 	{
-		Log.Info( "aggro" );
+		Log.Info( $"{GameObject.Name} aggro" );
 		Agent.MoveTo( playerObject.Transform.Position );
 		MoveState = State.Aggro;
 		LastAggroedPlayer = playerObject;
 		TimeSinceAggro = 0;
 		TimeSinceUpdateTarget = 0;
+		NestPosition = playerObject.Transform.Position;
 	}
 
-	private GameObject FindPlayerToAggro()
+	private GameObject FindPlayerToAggro(out float dstToPlayerSqr)
 	{
+		dstToPlayerSqr = 0;
+
 		foreach ( Guid guid in LethalGameManager.Instance.ConnectedPlayers )
 		{
 			GameObject playerObject = Scene.Directory.FindByGuid( guid );
-			float dstToPlayerSqr = Vector3.DistanceBetweenSquared( playerObject.Transform.Position, Transform.Position );
+
+			if(playerObject == null) { return null; }
+
+			// Don't aggro dead players.
+			if ( playerObject.Tags.Has("dead") ) { return null; }
+
+			dstToPlayerSqr = Vector3.DistanceBetweenSquared( playerObject.Transform.Position, Transform.Position );
+			//Log.Info( dstToPlayerSqr );
+
+			// Allways aggro when player is within attack range.
+			if ( dstToPlayerSqr < AttackDistance )
+			{
+				return playerObject;
+			}
 
 			// Player is within line of sight
 			if ( dstToPlayerSqr < LineOfSightSquared )
 			{
-				// still within line of sight...
-				if(TimeSinceAggro < 8 && playerObject == LastAggroedPlayer)
+				Vector3 dir = (playerObject.Transform.Position - Transform.Position).Normal;
+				float dot = Vector3.Dot( Transform.Rotation.Forward, dir );
+
+				// If player is withing aggro range, continue chase.
+				if ( LastAggroedPlayer == playerObject && dstToPlayerSqr < AggroDistance )
 				{
-					return LastAggroedPlayer;
+					Log.Info( "chase" );
+					return playerObject;
 				}
 
-				SceneTraceResult trace = Scene.Trace.Ray( Transform.Position, playerObject.Transform.Position ).WithoutTags( "item" ).IgnoreGameObjectHierarchy( playerObject ).UseHitboxes().Run();
-
-				// LOS to player
-				if ( trace.GameObject == playerObject )
+				// Can't aggro if looking the other way.
+				if ( dot < 0.5f )
 				{
-					return playerObject;
+					return null;
 				}
 
 				// Player is withing aggro range
 				if ( dstToPlayerSqr < AggroDistance )
 				{
-
 					return playerObject;
+				}
 
+				// still aggro, and player is not far away enough.
+				if (TimeSinceAggro < 8 && playerObject == LastAggroedPlayer)
+				{
+					return LastAggroedPlayer;
+				}
+
+				// Scene.Trace.Ray( Transform.Position, Transform.Position + (WantedMoveDirection * 64) ).IgnoreGameObjectHierarchy( GameObject ).UsePhysicsWorld().RunAll();
+				SceneTraceResult trace = Scene.Trace.Ray( Animator.EyeSource.Transform.Position, Animator.EyeSource.Transform.Position + (dir * LineOfSightSquared) )
+					.IgnoreGameObjectHierarchy( GameObject.Root )
+					//.UseHitboxes()
+					.UseRenderMeshes()
+					.WithoutTags( "item", "door" )
+					.Run();
+
+				// LOS to player
+				if ( trace.GameObject == playerObject )
+				{
+					return playerObject;
 				}
 			}
 
@@ -270,13 +248,99 @@ public class Zombie : Component, IKillable
 		return null;
 	}
 
-	public virtual void Kill()
+	private void DoPatrol( ref float speed, ref float turnSpeed, ref float friction)
+	{
+		GameObject playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
+		if ( playerToAggro != null )
+		{
+			AggroPlayer( playerToAggro );
+			return;
+		}
+
+		// Patrol to new locations
+		if ( TimeSinceUpdateTarget > 10 )
+		{
+			ChangeTargetPosition();
+
+		}
+
+		WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;
+
+		Vector3 targetPos = Agent.TargetPosition ?? default;
+
+		if ( targetPos != default )
+		{
+			if ( Vector3.DistanceBetween( Transform.Position, targetPos ) < 25 )
+			{
+				MoveState = State.Idle;
+			}
+		}
+	}
+
+	private void DoIdle(ref float speed, ref float turnSpeed, ref float friction )
+	{
+		speed = 0;
+		Controller.Velocity.Set( 0, 0, Controller.Velocity.z );
+
+		GameObject playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
+		if ( playerToAggro != null )
+		{
+			AggroPlayer( playerToAggro );
+
+			return;
+		}
+
+		Log.Info( $"{GameObject.Name} idle" );
+		if ( TimeSinceUpdateTarget > 5 )
+		{
+
+			StartPatroling( NestPosition );
+			TimeSinceUpdateTarget = 0;
+		}
+	}
+
+	private void DoAggro( ref float speed, ref float turnSpeed, ref float friction )
+	{
+		speed = RunSpeed;
+		friction = 6;
+		turnSpeed = 15;
+
+		GameObject playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
+
+		if ( TimeSinceUpdateTarget > 1 )
+		{
+			if ( playerToAggro != null )
+			{
+				AggroPlayer( playerToAggro );
+			}
+			else
+			{
+				// Stop aggroing.
+				Log.Info( $"{GameObject.Name} stop aggroing" );
+				StartPatroling( NestPosition );
+			}
+		}
+
+		//Log.Info( dstToPlayerSqr );
+		// Attack player
+		if ( playerToAggro != null && TimeSinceAttack > 2 && dstToPlayerSqr < AttackDistance )
+		{
+			TimeSinceAttack = 0;
+			Log.Info( $"{GameObject.Name} ATTACK" );
+			playerToAggro.Components.Get<IKillable>().TakeDamage( 40, GameObject.Id, Transform.Rotation.Up * 300 );
+		}
+
+		WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;
+
+	}
+
+	public override void Kill()
 	{
 		if ( LifeState == LifeState.Dead ) { return; }
 		TakeDamage( Health + 100, GameObject.Id );
 	}
 
-	public virtual void TakeDamage( float damage, Guid attackerId )
+	public override void TakeDamage( float damage, Guid attackerId, Vector3 impulseForce = default )
 	{
 		if ( LifeState == LifeState.Dead )
 			return;

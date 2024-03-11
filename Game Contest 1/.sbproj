@@ -203,6 +203,11 @@
           "Name": "Chat",
           "KeyboardCode": "enter",
           "GroupName": "Other"
+        },
+        {
+          "Name": "Mute",
+          "KeyboardCode": "M",
+          "GroupName": "Other"
         }
       ]
     },

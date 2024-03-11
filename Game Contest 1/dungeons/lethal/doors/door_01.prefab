@@ -1,21 +1,28 @@
 {
   "RootObject": {
-    "Id": "374ad963-0a44-47c3-b523-5ae58f7996b8",
+    "Id": "f2601d44-1321-438e-bf04-be4aef9fbbcd",
     "Name": "door_01",
     "Networked": true,
     "Enabled": true,
     "Children": [
       {
-        "Id": "0758aca1-903c-4046-9878-680f22e79ab8",
+        "Id": "61184bfb-d4a1-46e0-9a9f-225e7daefd3a",
         "Name": "door_frame_01",
+        "Tags": "door",
         "Enabled": true,
         "Components": [
           {
-            "__type": "Prop",
-            "Health": 0,
-            "IsStatic": true,
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
             "Model": "models/doors_01/door_frame_01.vmdl",
-            "ShowCreatedComponents": false
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "IsTrigger": false,
+            "Model": "models/doors_01/door_frame_01.vmdl",
+            "Static": false
           }
         ]
       }

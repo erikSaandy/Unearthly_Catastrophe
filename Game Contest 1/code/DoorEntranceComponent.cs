@@ -4,7 +4,6 @@ using System.Numerics;
 
 public class DoorEntranceComponent : Component, IInteractable
 {
-	private static List<DoorEntranceComponent> EntranceDoors { get; set; } = new();
 
 	[Property] public SoundEvent EnterDoorSound { get; set; }
 
@@ -29,47 +28,64 @@ public class DoorEntranceComponent : Component, IInteractable
 
 	}
 
-	protected override void OnAwake()
+	protected override void OnStart()
 	{
-		base.OnAwake();
+		base.OnStart();
 
-		if(EntranceDoors.Count >= 2) { EntranceDoors.RemoveAt( 0 ); }
-		EntranceDoors.Add(this);
+		GameObject.Tags.Add( "door_entrance" );
+
+		if(GameObject.IsPrefabInstance)
+		{
+			GameObject.BreakFromPrefab();
+		}
+
+		if ( GameObject.IsProxy ) { return; }
 
 	}
 
 	public void OnInteract( Guid playerId )
 	{
+		GoToConnectedDoor( playerId );
+	}
 
-		if (IsLocked) { return; }
+	private void GoToConnectedDoor( Guid playerId )
+	{
+		if ( IsLocked ) { return; }
 
-		for(int i = 0; i < EntranceDoors.Count; i++ )
+		//Log.Info( Scene.Directory.FindByGuid( playerId ).Network.OwnerConnection.DisplayName + " going into entrance door." );
+		List<DoorEntranceComponent> entranceDoors = Scene.GetAllComponents<DoorEntranceComponent>().ToList<DoorEntranceComponent>();
+
+		for ( int i = 0; i < entranceDoors.Count; i++ )
 		{
-			if ( EntranceDoors[i] != this )
+			//Log.Info( entranceDoors[i].Root );
+			if ( entranceDoors[i].GameObject != GameObject )
 			{
-				GoTo( i, playerId );
+				GoTo( entranceDoors[i].GameObject.Id, playerId );
 				return;
 			}
 		}
 	}
 
+
 	[Broadcast]
-	public void GoTo(int doorId, Guid playerId)
+	public void GoTo( Guid doorId, Guid playerId)
 	{
-		DoorEntranceComponent to = EntranceDoors[doorId];
+		GameObject to = GameObject.Scene.Directory.FindByGuid( doorId );
 		Sound.Play( EnterDoorSound, to.Transform.Position );
 		Sound.Play( EnterDoorSound, Transform.Position );
 
-		if (IsProxy) { return; }
+		GameObject playerObj = GameObject.Scene.Directory.FindByGuid( playerId );
 
-		Player player = GameObject.Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
-		player.Transform.Position = to.Transform.Position + to.Transform.LocalRotation.Left * 32;
+		if(playerObj.IsProxy) { return; }
+
+		Player player = playerObj?.Components.Get<Player>();
 		
 		Angles angleDelta = to.Transform.Rotation.Angles() - Transform.Rotation.Angles();
 		float yaw = angleDelta.yaw;
-		Log.Info( angleDelta );
 
-		player.EyeAngles = new Angles(0, player.EyeAngles.yaw + angleDelta.yaw + 180, 0);// player.EyeAngles. .RotateAroundAxis(Vector3.Up, angleDelta.yaw + 180 );
+		Angles rotation = new( 0, player.EyeAngles.yaw + angleDelta.yaw + 180, 0 );
+		player.TeleportTo( to.Transform.Position + ( Vector3.Up * 8 ) + ( to.Transform.Rotation.Left * 32 ) , rotation );
+
 	}
 
 }

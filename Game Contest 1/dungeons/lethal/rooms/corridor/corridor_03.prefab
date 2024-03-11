@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "e3ff9937-45d2-4075-bd0f-d2f5438c1434",
+    "Id": "566eabb3-6a52-48a9-bcb5-46029936c469",
     "Name": "corridor_03",
     "Enabled": true,
     "Components": [
@@ -12,37 +12,42 @@
         },
         "LootSpawner": {
           "_type": "component",
-          "go": "e3ff9937-45d2-4075-bd0f-d2f5438c1434",
+          "go": "566eabb3-6a52-48a9-bcb5-46029936c469",
           "component_type": "LootSpawnerComponent"
         },
+        "MonsterSpawners": [
+          {
+            "_type": "component",
+            "go": "f046e65e-28c3-47fb-a444-e5a55ae4d8fc",
+            "component_type": "MonsterSpawner"
+          }
+        ],
         "Portals": [
           {
             "_type": "component",
-            "go": "6640befc-7745-4c0f-985a-1800062446f5",
+            "go": "be51b9a1-1f0e-4c27-b277-37b92d5864f2",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "24de509a-5353-4a31-b460-f69777ee9ac7",
+            "go": "068cf7a6-cfe5-46f3-8605-1b9ff7b1bb32",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "ad110b0b-0322-480a-bd8f-a083b1b5ce8d",
+            "go": "beea3e54-3440-483e-89ed-db8905da9e30",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "e3ff9937-45d2-4075-bd0f-d2f5438c1434",
+          "go": "566eabb3-6a52-48a9-bcb5-46029936c469",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/corridor/corridor_03.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
@@ -51,8 +56,7 @@
         "__type": "ModelCollider",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/corridor/corridor_03.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       },
       {
         "__type": "LootSpawnerComponent",
@@ -63,7 +67,7 @@
     ],
     "Children": [
       {
-        "Id": "6640befc-7745-4c0f-985a-1800062446f5",
+        "Id": "be51b9a1-1f0e-4c27-b277-37b92d5864f2",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -76,7 +80,7 @@
         ]
       },
       {
-        "Id": "24de509a-5353-4a31-b460-f69777ee9ac7",
+        "Id": "068cf7a6-cfe5-46f3-8605-1b9ff7b1bb32",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -89,7 +93,7 @@
         ]
       },
       {
-        "Id": "ad110b0b-0322-480a-bd8f-a083b1b5ce8d",
+        "Id": "beea3e54-3440-483e-89ed-db8905da9e30",
         "Name": "Door (2)",
         "Position": "-132,0,0",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -98,6 +102,17 @@
           {
             "__type": "RoomPortal",
             "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "Id": "f046e65e-28c3-47fb-a444-e5a55ae4d8fc",
+        "Name": "Monster Spawner",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "MonsterSpawner"
           }
         ]
       }

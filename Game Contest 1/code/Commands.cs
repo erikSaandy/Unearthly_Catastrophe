@@ -27,6 +27,8 @@ public static class Commands
 
 	private static void KillSelf()
 	{
+		//Log.Info( LethalGameManager.Instance.ConnectedPlayers.Count );
+		
 		foreach ( Guid playerId in LethalGameManager.Instance.ConnectedPlayers )
 		{
 			GameObject playerObject = LethalGameManager.Instance.Scene.Directory.FindByGuid( playerId );

@@ -5,13 +5,14 @@
     width: 500px;
     height: 16px;
     background-color: darkslategrey;
+    border-radius: 16px;
 
     > .fill {
         background-color: dodgerblue;
+        border-radius: 16px;
 
         &.exhausted {
             background-color: dimgrey;
         }
     }
-
 }

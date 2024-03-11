@@ -14,6 +14,8 @@ public class PlayerSpectateInput : PlayerInput
 	public PlayerSpectateInput(Player owner ) : base( owner ) {
 		this.Owner = owner;
 
+		owner.Voice.Volume = 0;
+
 		CycleNextAlivePlayer();
 	}
 
@@ -79,6 +81,7 @@ public class PlayerSpectateInput : PlayerInput
 
 	public override void CameraInput()
 	{
+
 		EyeAngles += Sandbox.Input.AnalogLook;
 		EyeAngles = EyeAngles.WithPitch( Math.Clamp( EyeAngles.pitch, Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch ) );
 

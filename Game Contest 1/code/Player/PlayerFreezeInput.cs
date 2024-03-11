@@ -6,7 +6,9 @@ using System;
 public class PlayerFreezeInput : PlayerInput
 {
 
-	public PlayerFreezeInput( Player owner ) : base( owner ) { }
+	public PlayerFreezeInput( Player owner ) : base( owner ) {
+		owner.Voice.Volume = 1;
+	}
 
 	public override void UpdateInput()
 	{
@@ -14,6 +16,11 @@ public class PlayerFreezeInput : PlayerInput
 		WantsToRun = false;
 
 		Owner.Controller.Velocity = 0;
+
+		if ( Sandbox.Input.Pressed( "mute" ) )
+		{
+			ToggleMicrophone();
+		}
 
 	}
 

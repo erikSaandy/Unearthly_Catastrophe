@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "a2c72a78-b4c5-48a5-a3f8-3372462f9f15",
+    "Id": "5d71f6a8-68b9-4a74-a310-183f2eefae7d",
     "Name": "loot_room_01",
     "Enabled": true,
     "Components": [
@@ -12,44 +12,51 @@
         },
         "LootSpawner": {
           "_type": "component",
-          "go": "a2c72a78-b4c5-48a5-a3f8-3372462f9f15",
+          "go": "5d71f6a8-68b9-4a74-a310-183f2eefae7d",
           "component_type": "LootSpawnerComponent"
         },
+        "MonsterSpawners": [
+          {
+            "_type": "component",
+            "go": "76b8dbec-724e-48ed-a9a3-d44ce784b2dc",
+            "component_type": "MonsterSpawner"
+          }
+        ],
         "Portals": [
           {
             "_type": "component",
-            "go": "f501226d-5846-4c41-bf44-b2954f05fa75",
+            "go": "0b4e35f5-7f3f-43c4-a062-799b676b558c",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "caa2773a-7538-4bf4-9765-76fd71c435d6",
+            "go": "aa6dc638-9b9c-4ad0-be77-c49ea5ddb50d",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "1a7fd4f3-4262-47fd-ae34-361e70f63111",
+            "go": "0ef29038-15e9-4026-b8ee-ab478d99bef5",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "da4b1f37-6320-409f-9dc0-d74b33d7075c",
+            "go": "81ab0c1d-14f3-4482-8f2e-a5f17c45a780",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "68884217-6c69-4c0a-90d1-20e9ee85c979",
+            "go": "dba59182-d66a-4a48-8190-fa978e417d7c",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "240ccaf9-a40f-40b6-87ac-0f6f9d6ed8d4",
+            "go": "803b782c-2225-418d-8301-55bb449175c1",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "a2c72a78-b4c5-48a5-a3f8-3372462f9f15",
+          "go": "5d71f6a8-68b9-4a74-a310-183f2eefae7d",
           "component_type": "ModelRenderer"
         }
       },
@@ -75,7 +82,7 @@
     ],
     "Children": [
       {
-        "Id": "f501226d-5846-4c41-bf44-b2954f05fa75",
+        "Id": "0b4e35f5-7f3f-43c4-a062-799b676b558c",
         "Name": "Door",
         "Position": "-255.9997,836.0001,0.00001349466",
         "Rotation": "0,0,1,0.0000001649049",
@@ -88,7 +95,7 @@
         ]
       },
       {
-        "Id": "caa2773a-7538-4bf4-9765-76fd71c435d6",
+        "Id": "aa6dc638-9b9c-4ad0-be77-c49ea5ddb50d",
         "Name": "Door (2)",
         "Position": "-639.9997,836.0002,0.0000909205",
         "Rotation": "0,0,1,0.0000001649049",
@@ -101,7 +108,7 @@
         ]
       },
       {
-        "Id": "240ccaf9-a40f-40b6-87ac-0f6f9d6ed8d4",
+        "Id": "803b782c-2225-418d-8301-55bb449175c1",
         "Name": "Door (5)",
         "Position": "-740,-351.9996,96",
         "Rotation": "0,0,0.7071069,-0.7071066",
@@ -114,7 +121,7 @@
         ]
       },
       {
-        "Id": "1a7fd4f3-4262-47fd-ae34-361e70f63111",
+        "Id": "0ef29038-15e9-4026-b8ee-ab478d99bef5",
         "Name": "Door (3)",
         "Position": "-64,0.0000114441,0",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -127,7 +134,7 @@
         ]
       },
       {
-        "Id": "da4b1f37-6320-409f-9dc0-d74b33d7075c",
+        "Id": "81ab0c1d-14f3-4482-8f2e-a5f17c45a780",
         "Name": "Door (4)",
         "Position": "-767.9999,384.0001,0.00002389784",
         "Rotation": "0,0,-0.7071067,0.7071068",
@@ -140,7 +147,7 @@
         ]
       },
       {
-        "Id": "68884217-6c69-4c0a-90d1-20e9ee85c979",
+        "Id": "dba59182-d66a-4a48-8190-fa978e417d7c",
         "Name": "Door (1)",
         "Position": "-63.99993,320,0",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -153,7 +160,7 @@
         ]
       },
       {
-        "Id": "2b4323a6-e6da-4ebd-a49b-90a8f6897014",
+        "Id": "ab705773-e561-4945-9d9e-1205a8bfea61",
         "Name": "metal_staircase_step",
         "Position": "-256,-108,0",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -170,12 +177,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "6511eb5f-53e1-45ef-aa2b-0024846bbcad",
+        "Id": "b1cf21b6-fd78-4a60-b537-50b662f2a39b",
         "Name": "metal_staircase_step (8)",
         "Position": "-639.9999,-59.99987,0.000002970787",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -192,12 +200,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "78e1e00d-48a0-4d64-aa89-e2f64ff017d9",
+        "Id": "c6d5b505-76e2-4fd1-bd5b-a53ff07a7d56",
         "Name": "metal_staircase_step (9)",
         "Position": "-639.9996,-71.99988,8",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -214,12 +223,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "b796d3d9-7f05-4c57-b80c-cbd8635450e6",
+        "Id": "d9ea83aa-b46f-4261-a140-418e5c40130d",
         "Name": "metal_staircase_step (10)",
         "Position": "-639.9994,-83.99988,16",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -236,12 +246,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "1a431f85-f9ac-4920-9c03-350b1712215a",
+        "Id": "3d3b8aff-2e72-45bb-9722-7abead7087a9",
         "Name": "metal_staircase_step (11)",
         "Position": "-639.9991,-95.99988,24",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -258,12 +269,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "ddba142d-1790-47db-ba74-52d75a7d6696",
+        "Id": "934546f1-ce42-4f49-afce-609d9e2ff047",
         "Name": "metal_staircase_step (12)",
         "Position": "-639.9988,-107.9999,32",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -280,12 +292,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "0bd68438-b7a7-4e2b-a672-92aad7370816",
+        "Id": "78a5cbb1-0291-4d9a-960e-49e8cd8c4d52",
         "Name": "metal_staircase_step (13)",
         "Position": "-639.9984,-119.9999,40",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -302,12 +315,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "5e6c96a0-48b7-4328-b34f-b964694438c1",
+        "Id": "d60e82bc-ea39-4938-b2c1-cc15e917e9d1",
         "Name": "metal_staircase_step (14)",
         "Position": "-639.9982,-131.9999,48",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -324,12 +338,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "1952a05f-16c0-4979-b605-641263fabfbc",
+        "Id": "2544498a-fd9a-44fe-86d0-217d4c4b8b5a",
         "Name": "metal_staircase_step (15)",
         "Position": "-639.998,-143.9999,56",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -346,12 +361,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "7a219879-3006-4bb8-a849-ffbfb3ab70c6",
+        "Id": "9b0fc8db-390c-4442-b549-b55a1d84285d",
         "Name": "metal_staircase_step (16)",
         "Position": "-639.9976,-155.9999,64",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -368,12 +384,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "ab88fa49-3e1d-4c19-9d72-60e91fa1b631",
+        "Id": "12827f98-c516-4cd2-9000-da7f7caecebb",
         "Name": "metal_staircase_step (17)",
         "Position": "-639.9974,-167.9999,72",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -390,12 +407,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "0c941b38-db5a-4f4b-8cad-5b6999c37934",
+        "Id": "583b859c-72ba-472a-9ceb-84abd001ccaa",
         "Name": "metal_staircase_step (18)",
         "Position": "-639.9972,-179.9999,80",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -412,12 +430,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "4ef41f52-9a7e-468e-a378-04820759bbf4",
+        "Id": "f6794167-37be-41dc-a93a-fe5d02427c16",
         "Name": "metal_staircase_step (19)",
         "Position": "-639.9969,-191.9998,88",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -434,12 +453,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "b76c7a5f-6eb5-47f3-a9d2-aa585aedf45f",
+        "Id": "cae23a87-b4ca-492e-8ad3-e18409087b9c",
         "Name": "metal_staircase_step (1)",
         "Position": "-255.9998,-119.9999,8",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -456,12 +476,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "1866f61b-480c-44e5-be07-10b9c987a25c",
+        "Id": "d7334b00-20b2-4a4a-baab-bfbda3698777",
         "Name": "metal_staircase_step (2)",
         "Position": "-255.9997,-131.9999,16",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -478,12 +499,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "9c188f2c-93d2-438a-8bb2-94c8e197816e",
+        "Id": "d78f4953-321d-4596-93c7-1aaa323814fa",
         "Name": "metal_staircase_step (3)",
         "Position": "-255.9996,-143.9999,24",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -500,12 +522,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "3ecb54ce-ac0c-43ce-8f18-ac0d1579d50c",
+        "Id": "942bbdeb-3577-4291-9b1d-54c5ed9b1d96",
         "Name": "metal_staircase_step (4)",
         "Position": "-255.9995,-155.9999,32",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -522,12 +545,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "d03551ae-4d4c-4ed2-910f-57310b1a97a5",
+        "Id": "10cabd6a-ba83-4800-bbaf-63594633f67e",
         "Name": "metal_staircase_step (5)",
         "Position": "-255.9994,-167.9999,40",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -544,12 +568,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "9f3ddc47-3756-41d4-a619-cd11ae272abc",
+        "Id": "a98fd6c4-4c3c-4d1f-b492-3cdaf7a75d2c",
         "Name": "metal_staircase_step (6)",
         "Position": "-255.9993,-179.9999,48",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -566,12 +591,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "e0833ad0-b61b-4001-b03d-567927de0bf3",
+        "Id": "e3f64546-3d21-42c5-a66b-5927f9226a42",
         "Name": "metal_staircase_step (7)",
         "Position": "-255.9992,-191.9999,56",
         "Rotation": "0,0,0.7071067,0.7071068",
@@ -588,12 +614,13 @@
           {
             "__type": "ModelCollider",
             "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
           }
         ]
       },
       {
-        "Id": "7d8470d6-2aca-4423-9e64-3621683d6ca7",
+        "Id": "46d93288-d6d8-46d9-a060-1a20c4d872fb",
         "Name": "Death Volume",
         "Position": "-448,288,-501.259",
         "Scale": "5.14688,21.54616,10.5162",
@@ -608,6 +635,18 @@
             "IsTrigger": false,
             "Scale": "50,50,50",
             "Static": false
+          }
+        ]
+      },
+      {
+        "Id": "76b8dbec-724e-48ed-a9a3-d44ce784b2dc",
+        "Name": "Monster Spawner",
+        "Position": "-192,160,0",
+        "Rotation": "0,0,1,0.0000001947072",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "MonsterSpawner"
           }
         ]
       }

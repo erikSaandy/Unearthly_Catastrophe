@@ -25,8 +25,6 @@ public sealed class CameraController : Component
 
 		// Update eye angles
 
-		Owner.PlayerInput?.CameraInput();
-
 	}
 
 }
