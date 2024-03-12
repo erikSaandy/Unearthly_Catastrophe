@@ -20,12 +20,9 @@ public sealed class ShipComponent : Component
 
 	public CharacterController Controller { get; private set; }
 
-	[Property] public Curve DockingCurveXY { get; set; }
-	[Property] public Curve DockingCurveAcceleration { get; set; }
-
 	[Category( "Components" )][Property] private ShipLandingPadComponent CurrentLandingPad { get; set; }
 
-	[Sync][Property] public float Speed { get; set; }
+	public float Speed { get; set; }
 	private float SpeedPrev { get; set; }
 	private readonly float SpeedMin = 20;
 	private readonly float SpeedMax = 250;
@@ -84,96 +81,50 @@ public sealed class ShipComponent : Component
 	{
 		base.OnFixedUpdate();
 
-		if(IsProxy) { return; }
-
-
-
-		BuildVelocity();
-
 		if ( IsMoving )
 		{
-			Move( Controller.Velocity );
+			Move();
 		}
-
-
 
 	}
 
-	private void BuildVelocity()
-	{
-		var distanceToTarget = Vector2.Distance( GameObject.Transform.Position, TargetPosition );
-
-		if ( distanceToTarget <= 4f )
-		{
-
-			StopMoving();
-
-			// do nothing else 
-			return;
-		}
-
-		IsMoving = true;
-
-		if ( distanceToTarget <= 128 )
-		{
-			// decelerate
-			// This will make it slower 
-			// the closer we get to the target position
-			Speed = SpeedPrev * (distanceToTarget / slowDownRadius);
-
-			// as long as it is not in the final position
-			// it should always keep a minimum speed
-			Speed = Math.Max( Speed, SpeedMin );
-		}
-		else
-		{
-			// accelerate
-			Speed += accelerationFactor * Time.Delta;
-
-			// Limit to MaxVelocity
-			Speed = Math.Min( Speed, SpeedMax );
-
-			SpeedPrev = Speed;
-		}
-
-		Vector3 dir = (TargetPosition - GameObject.Transform.Position).Normal;
-		Controller.Velocity = dir * Speed;
-
-	}
-
-	[Broadcast]
-	private void Move( Vector3 velocity )
+	private void Move()
 	{
 
-		if(!IsProxy)
-		{
-			Controller.Accelerate( velocity );
-			Controller.Move();
-		}
-
+		Vector3 velocity = BuildVelocity();
 
 		foreach ( Player player in Transporter?.Passengers )
 		{
 
-			if(!player.IsProxy)
+			if(player.IsProxy) { continue; }
+
+			Log.Info( player.GameObject.Name + " move on ship" );
+
+			Vector3 tVel = player.Controller.Velocity;
+			player.Controller.MoveTo( player.Transform.Position + (velocity * Time.Delta), true );
+
+			// Snap to ship
+			Vector3 from = player.Transform.Position + Vector3.Zero.WithZ( player.Controller.Height * 0.5f );
+			Vector3 to = player.Transform.Position - Vector3.Zero.WithZ( player.Controller.Height * 0.5f );
+			SceneTraceResult trace = Scene.Trace.Ray( from, to ).Radius( 12 ).IgnoreGameObjectHierarchy( player.GameObject ).WithoutTags( "item" ).Run();
+
+			if ( trace.Hit )
 			{
-				//Vector3 tVel = player.Controller.Velocity;
-				//player.Controller.Velocity = velocity;
-				//player.Controller.Move();
-				//player.Controller.Velocity = tVel;
-
-				//player.Controller.Velocity = velocity;
-				//player.Controller.Move();
-
-				//Vector3 tVel = player.Controller.Velocity;
-				//player.Controller.Velocity = velocity;
-				//player.Controller.Move();
-				//player.Controller.Velocity = tVel;
-				//player.Controller.MoveTo( player.Transform.Position + (velocity), true );
-				break;
+				player.Transform.Position = trace.EndPosition;
 			}
 
 		}
+
+		if(IsProxy) { return; }
+
+		Controller.Velocity = velocity;
+		Controller.Move();
+
+		//if ( !IsProxy )
+		//{
+		//	Controller.Velocity = ( velocity );
+		//	Controller.Move();
+		//}
 
 	}
 
@@ -203,6 +154,48 @@ public sealed class ShipComponent : Component
 
 		Doors.Unlock();
 		StartMovingTo( CurrentLandingPad.Transform.Position );
+
+	}
+
+	private Vector3 BuildVelocity()
+	{
+		var distanceToTarget = Vector2.Distance( GameObject.Transform.Position, TargetPosition );
+
+		if ( distanceToTarget <= 4f )
+		{
+
+			StopMoving();
+
+			// do nothing else 
+			return 0;
+		}
+
+		IsMoving = true;
+
+		if ( distanceToTarget <= 128 )
+		{
+			// decelerate
+			// This will make it slower 
+			// the closer we get to the target position
+			Speed = SpeedPrev * (distanceToTarget / slowDownRadius);
+
+			// as long as it is not in the final position
+			// it should always keep a minimum speed
+			Speed = Math.Max( Speed, SpeedMin );
+		}
+		else
+		{
+			// accelerate
+			Speed += accelerationFactor * Time.Delta;
+
+			// Limit to MaxVelocity
+			Speed = Math.Min( Speed, SpeedMax );
+
+			SpeedPrev = Speed;
+		}
+
+		Vector3 dir = (TargetPosition - GameObject.Transform.Position).Normal;
+		return dir * Speed;
 
 	}
 

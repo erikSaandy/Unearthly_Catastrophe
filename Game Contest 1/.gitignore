@@ -24,3 +24,4 @@ code/Editor/.vscode/*
 *.los
 *.vpk
 **/source/*
+*.pdf

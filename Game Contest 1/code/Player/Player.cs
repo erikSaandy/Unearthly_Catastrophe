@@ -100,6 +100,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		{
 			Renderer.SetBodyGroup( "head", 0 );
 		}
+
 	}
 
 	protected override void OnUpdate()
@@ -305,23 +306,6 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		Controller.Move();
 
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.ToRotation().Yaw() );
-
-		//if ( LastGroundObject == LethalGameManager.Instance.Ship.GameObject && LethalGameManager.Instance.Ship.IsMoving )
-		//{
-		//	Controller.Velocity = LethalGameManager.Instance.Ship.Controller.Velocity;
-		//	Controller.Move();
-		//	//Controller.Accelerate( LethalGameManager.Instance.Ship.Velocity );
-		//	//Controller.MoveTo( Transform.Position + (LethalGameManager.Instance.Ship.Velocity), true );
-		//	//Controller.Velocity += LethalGameManager.Instance.Ship.Controller.Velocity;
-		//	//Controller.Velocity = (LethalGameManager.Instance.Ship.Controller.Velocity);
-		//}
-
-		//if ( LastGroundObject == LethalGameManager.Instance.Ship.GameObject )
-		//{
-		//	//Controller.Accelerate( LethalGameManager.Instance.Ship.Velocity );
-		//	//Controller.MoveTo( Transform.Position + (LethalGameManager.Instance.Ship.Velocity), true );
-		//	//Controller.Velocity -= LethalGameManager.Instance.Ship.Controller.Velocity;
-		//}
 
 	}
 

@@ -269,8 +269,6 @@ public class LethalGameManager : Component
 
 		await Instance.Scene.NavMesh.Generate( Scene.PhysicsWorld );
 
-		//Instance.Scene.NavMesh.DrawMesh = true;
-
 		LoadedMoon();
 
 	}

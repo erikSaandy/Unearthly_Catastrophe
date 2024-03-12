@@ -8,37 +8,6 @@
     "Components": [
       {
         "__type": "ShipComponent",
-        "DockingCurveAcceleration": [
-          {
-            "y": 0.33000004,
-            "in": -2.8815377,
-            "out": 2.8815377
-          },
-          {
-            "x": 0.38839287,
-            "y": 1
-          },
-          {
-            "x": 0.83928573,
-            "y": 1
-          },
-          {
-            "x": 1,
-            "y": 0.56382984,
-            "in": 0.065573335,
-            "out": -0.065573335
-          }
-        ],
-        "DockingCurveXY": [
-          {
-            "y": 1,
-            "mode": "Linear"
-          },
-          {
-            "x": 1,
-            "mode": "Linear"
-          }
-        ],
         "Doors": {
           "_type": "component",
           "go": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
@@ -49,7 +18,6 @@
           "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
           "component_type": "LeverComponent"
         },
-        "Speed": 0,
         "Transporter": {
           "_type": "component",
           "go": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
@@ -84,6 +52,7 @@
       {
         "Id": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
         "Name": "Passenger Transporter",
+        "Position": "0,0,-16.24386",
         "Enabled": true,
         "NetworkMode": 1,
         "Components": [
