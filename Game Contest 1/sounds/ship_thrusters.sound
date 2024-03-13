@@ -1,0 +1,15 @@
+{
+  "UI": false,
+  "Volume": "0.40,0.60,0",
+  "Pitch": "0.95,1.05,1",
+  "Decibels": 512,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/ship_thrusters.vsnd"
+  ],
+  "Occlusion": true,
+  "Reflections": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "__references": []
+}

@@ -11,6 +11,7 @@ public class DoorComponent : Component, IInteractable
 
 	[Category("Sound")][Property] public SoundEvent OpenSound { get; set; }
 	[Category( "Sound" )][Property] public SoundEvent CloseSound { get; set; }
+	[Category( "Sound" )][Property] public SoundEvent LockedSound { get; set; }
 
 	public virtual string GetToolTip( Player player ) { 
 
@@ -58,16 +59,9 @@ public class DoorComponent : Component, IInteractable
 	{
 		Player player = GameObject.Scene.Directory.FindByGuid( playerId )?.Components.Get<Player>();
 
-		if ( IsLocked )
-		{
-			if ( player.Inventory?.ActiveItem is Key )
-			{
-				IsLocked = false;
-			}
-			else
-			{
-				return;
-			}
+		if ( IsLocked ) {
+			PlayLockedSound();
+			return; 
 		}
 
 		if(IsOpen) { Close(); }
@@ -130,5 +124,11 @@ public class DoorComponent : Component, IInteractable
 		
 		Transform.LocalRotation = new Angles( (RotationalAxis * angle) );
 
+	}
+
+	[Broadcast]
+	private void PlayLockedSound()
+	{
+		Sound.Play( LockedSound, Transform.Position );
 	}
 }

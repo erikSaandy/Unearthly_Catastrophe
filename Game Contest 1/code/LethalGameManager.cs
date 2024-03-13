@@ -122,6 +122,7 @@ public class LethalGameManager : Component
 
 		Balance += value;
 		Sandbox.Services.Stats.SetValue( "balance", Balance );
+		Log.Info( $"added ${value} to ship balance." );
 	}
 
 	public static Random Random { get; private set; }

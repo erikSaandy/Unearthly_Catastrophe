@@ -22,8 +22,8 @@ public sealed class ShipComponent : Component
 
 	[Category( "Components" )][Property] private ShipLandingPadComponent CurrentLandingPad { get; set; }
 
-	public float Speed { get; set; }
-	private float SpeedPrev { get; set; }
+	[Sync] public float Speed { get; set; }
+	[Sync] float SpeedPrev { get; set; }
 	private readonly float SpeedMin = 20;
 	private readonly float SpeedMax = 250;
 	private float accelerationFactor = 300.0f;
@@ -39,6 +39,9 @@ public sealed class ShipComponent : Component
 	[Category( "Components" )][Property] public ShipDoorComponent Doors { get; set; }
 
 	[Sync] private Vector3 TargetPosition { get; set; }
+
+	[Category( "Sounds" )][Property] List<SoundPointComponent> Thrusters { get; set; }
+	[Property][Range(0, 1)] float ThrusterVolume { get; set; } = 0.4f;
 
 	protected override void OnAwake()	
 	{
@@ -88,6 +91,54 @@ public sealed class ShipComponent : Component
 
 	}
 
+	[Broadcast]
+	private void StartThrusters()
+	{
+		Log.Info( "start" );
+		ToggleThrustersAsync( true );
+	}
+
+
+	[Broadcast]
+	private void StopThrusters()
+	{
+		Log.Info( "stop" );
+		ToggleThrustersAsync( false, speed: 3 );
+	}
+
+	private async void ToggleThrustersAsync(bool activate = true, float speed = 1)
+	{
+
+		foreach (SoundPointComponent point in Thrusters)
+		{
+			point.Volume = activate ? 0 : 1;
+			point.StartSound();
+		}
+
+
+		// toggle thrusters gradually
+		float t = 0;
+		float volume = 0;
+
+		do
+		{
+			t += Time.Delta * 0.01f * speed;
+			volume = (activate ? t : (t * -1) + 1) * ThrusterVolume;
+
+			for ( int i = 0; i < Thrusters.Count; i++ )
+			{
+				Thrusters[i].Volume = volume;
+			}
+
+			await Task.Yield();
+
+		}
+		while ( t < 1f );
+
+
+
+	}
+
 	private void Move()
 	{
 
@@ -100,13 +151,16 @@ public sealed class ShipComponent : Component
 
 			Log.Info( player.GameObject.Name + " move on ship" );
 
-			Vector3 tVel = player.Controller.Velocity;
-			player.Controller.MoveTo( player.Transform.Position + (velocity * Time.Delta), true );
+			//Vector3 tVel = player.Controller.Velocity;
+			player.Controller?.MoveTo( player.Transform.Position + (velocity * Time.Delta), true );
+			//player.Controller.Velocity = velocity;
+			//player.Controller.Move();
+			//player.Controller.Velocity = tVel;
 
 			// Snap to ship
 			Vector3 from = player.Transform.Position + Vector3.Zero.WithZ( player.Controller.Height * 0.5f );
 			Vector3 to = player.Transform.Position - Vector3.Zero.WithZ( player.Controller.Height * 0.5f );
-			SceneTraceResult trace = Scene.Trace.Ray( from, to ).Radius( 12 ).IgnoreGameObjectHierarchy( player.GameObject ).WithoutTags( "item" ).Run();
+			SceneTraceResult trace = Scene.Trace.Ray( from, to ).Radius( 2 ).IgnoreGameObjectHierarchy( player.GameObject ).WithoutTags( "item" ).Run();
 
 			if ( trace.Hit )
 			{
@@ -133,6 +187,7 @@ public sealed class ShipComponent : Component
 		Lever.IsLocked = true;
 		IsMoving = true;
 		TargetPosition = pos;
+		StartThrusters();
 	}
 
 	private void StopMoving()
@@ -143,6 +198,7 @@ public sealed class ShipComponent : Component
 		Lever.IsLocked = false;
 		CurrentMovementState = MovementState.Docked;
 		Transform.Position = TargetPosition;
+		StopThrusters();
 	}
 
 	public void Land(ShipLandingPadComponent landingPad)
@@ -154,7 +210,6 @@ public sealed class ShipComponent : Component
 
 		Doors.Unlock();
 		StartMovingTo( CurrentLandingPad.Transform.Position );
-
 	}
 
 	private Vector3 BuildVelocity()
@@ -254,6 +309,7 @@ public sealed class ShipComponent : Component
 			await Task.Yield();
 
 		} while ( IsMoving );
+
 	}
 
 	/*

@@ -14,7 +14,7 @@ public abstract class Carriable : Component, ICarriable
 
 	public float InteractionTime { get; set; } = 0f;
 	public abstract string ToolTip { get; set; }
-	public virtual string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - " + ToolTip; }
+	public virtual string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - {ToolTip}"; }
 
 	public Player Owner { get; set; }
 
@@ -220,5 +220,10 @@ public abstract class Carriable : Component, ICarriable
 
 	[Broadcast] public abstract void OnUsePrimary();
 	[Broadcast] public abstract void OnUseSecondary();
+
+	public virtual void WasUsedOn( Guid interactable )
+	{
+
+	}
 
 }

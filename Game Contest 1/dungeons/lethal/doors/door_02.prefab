@@ -1,15 +1,16 @@
 {
   "RootObject": {
-    "Id": "02c40a84-7e34-4a01-a451-cae982a8b9f8",
+    "Id": "87ce5b04-fe98-4947-9195-918619a5ac18",
     "Name": "door_02",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Children": [
       {
-        "Id": "8db4d0c5-05c5-44c9-b70f-186f090d68c2",
+        "Id": "129a249c-6948-47b6-a42b-320c9813e256",
         "Name": "door_frame_01",
         "Tags": "door",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "ModelPhysics",
@@ -27,16 +28,17 @@
         ],
         "Children": [
           {
-            "Id": "93f44eb3-b8af-472e-8f4a-72d2bd05416a",
+            "Id": "eb766ec3-ac4a-46fd-85ad-e0e699ac7e28",
             "Name": "doors_01",
             "Position": "28,4,0",
-            "Networked": true,
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "DoorComponent",
                 "CloseSound": "sounds/door_close.sound",
                 "IsLocked": false,
+                "LockedSound": "sounds/door_locked.sound",
                 "OpenAngle": -135,
                 "OpenSound": "sounds/door_open.sound",
                 "RotationalAxis": "0,1,0",
@@ -59,11 +61,12 @@
             ],
             "Children": [
               {
-                "Id": "1ee5e7c9-fc0c-418b-ad7a-3f567b65a01d",
+                "Id": "fdf8d518-2864-42ff-b794-a317b646a7e5",
                 "Name": "door_handle_01",
                 "Position": "-43.99998,-2.437618,39.99998",
                 "Rotation": "-0.0000001376788,-0.7071067,-0.7071068,0.0000001376788",
                 "Enabled": true,
+                "NetworkMode": 2,
                 "Components": [
                   {
                     "__type": "ModelRenderer",
@@ -81,11 +84,12 @@
                 ]
               },
               {
-                "Id": "c07add65-d62a-4580-b3b7-b4eaf23e7665",
+                "Id": "8124888b-e7f8-4843-ac9e-31dbf072745c",
                 "Name": "door_handle_01",
                 "Position": "-43.99998,-6.225243,40",
                 "Rotation": "0.0000002753576,0.7071068,-0.7071068,0.0000002753576",
                 "Enabled": true,
+                "NetworkMode": 2,
                 "Components": [
                   {
                     "__type": "ModelRenderer",

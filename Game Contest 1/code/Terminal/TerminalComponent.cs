@@ -126,11 +126,11 @@ public sealed class TerminalComponent : Component
 		{
 			if ( !GameObject.IsProxy ) { OnSubmit(); }
 
-			Sound.Play( TypingEnterSound );
+			Sound.Play( TypingEnterSound, KeyboardCollider.Transform.Position );
 		}
 		else
 		{
-			Sound.Play( TypingSound );
+			Sound.Play( TypingSound, KeyboardCollider.Transform.Position );
 		}
 
 	}

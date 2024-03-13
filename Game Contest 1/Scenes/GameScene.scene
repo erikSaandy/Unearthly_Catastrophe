@@ -45,11 +45,26 @@
       "__Prefab": "prefabs/spaceship.prefab"
     },
     {
+      "Id": "cc7eb07a-6751-46e1-9b4a-ab745a6e57e1",
+      "Name": "Skybox",
+      "Position": "-1199.133,-3502.854,2034.458",
+      "Tags": "skybox",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "SkyBox2D",
+          "SkyMaterial": "materials/skybox/light_test_dark.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
       "Id": "b797f93f-4060-492d-b0f7-5f43891491bd",
       "Name": "Sun",
       "Position": "-756.9304,-30.22823,448",
       "Rotation": "-0.01001749,0.3825523,0.02418435,0.9235629",
-      "Tags": "light_directional,light",
+      "Tags": "light_directional,light,skybox",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -120,6 +135,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-12T01:34:12.3729848\u002B01:00",
+  "LastSaved": "2024-03-12T16:16:48.6337184\u002B01:00",
   "__references": []
 }

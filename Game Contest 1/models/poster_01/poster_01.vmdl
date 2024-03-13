@@ -15,6 +15,28 @@
 						use_global_default = true
 						global_default_material = "models/poster_01/material/microphone_prompt.vmat"
 					},
+					{
+						_class = "MaterialGroup"
+						name = "fort"
+						remaps = 
+						[
+							{
+								from = "models/poster_01/material/microphone_prompt.vmat"
+								to = "models/poster_01/material/the_fort.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "bumpy_ride"
+						remaps = 
+						[
+							{
+								from = "models/poster_01/material/microphone_prompt.vmat"
+								to = "models/poster_01/material/bumpy_ride.vmat"
+							},
+						]
+					},
 				]
 			},
 			{

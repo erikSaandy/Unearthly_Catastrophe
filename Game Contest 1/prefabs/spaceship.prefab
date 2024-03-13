@@ -18,6 +18,29 @@
           "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
           "component_type": "LeverComponent"
         },
+        "Thrusters": [
+          {
+            "_type": "component",
+            "go": "54621fa4-a400-4b14-b883-9967126b38e8",
+            "component_type": "SoundPointComponent"
+          },
+          {
+            "_type": "component",
+            "go": "1ec508fe-de05-4f12-a8a5-8ead2ce52d30",
+            "component_type": "SoundPointComponent"
+          },
+          {
+            "_type": "component",
+            "go": "abf889a1-b80d-49b0-804b-e8b69059fef2",
+            "component_type": "SoundPointComponent"
+          },
+          {
+            "_type": "component",
+            "go": "83807d82-7622-4e7e-80a9-5195a089ce84",
+            "component_type": "SoundPointComponent"
+          }
+        ],
+        "ThrusterVolume": 0.4,
         "Transporter": {
           "_type": "component",
           "go": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
@@ -844,9 +867,164 @@
           {
             "__type": "ModelRenderer",
             "BodyGroups": 18446744073709551615,
+            "MaterialGroup": "bumpy_ride",
             "Model": "models/poster_01/poster_01.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "Id": "ae19e850-c96c-460f-b668-09d5bbff95a8",
+        "Name": "poster_01 (2)",
+        "Position": "-85.74065,176,79.51859",
+        "Rotation": "0,0.7071068,0,0.7071068",
+        "Scale": "13,13,13",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": "default",
+            "Model": "models/poster_01/poster_01.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "Id": "aee1d933-4e56-46e4-be6f-5bf2a3d07520",
+        "Name": "poster_01 (3)",
+        "Position": "85.77602,176,79.51858",
+        "Rotation": "-0.7071068,0.0000001376788,0.7071068,0.0000001376788",
+        "Scale": "13,13,13",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": "default",
+            "Model": "models/poster_01/poster_01.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "Id": "22713831-938e-48c7-af62-27a3ed21b18f",
+        "Name": "poster_01 (1)",
+        "Position": "152.8798,-151.2014,74.77022",
+        "Rotation": "0.7071021,-0.002611348,-0.7071021,0.002611623",
+        "Scale": "13,13,13",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": "fort",
+            "Model": "models/poster_01/poster_01.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "Id": "6ace2c50-e982-4e43-92e7-6de2f4256d29",
+        "Name": "thrusters",
+        "Position": "0,0,37.72995",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Children": [
+          {
+            "Id": "54621fa4-a400-4b14-b883-9967126b38e8",
+            "Name": "thruster01",
+            "Position": "112,128,-96",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "SoundPointComponent",
+                "Force2d": false,
+                "MaxRepeatTime": 0.2,
+                "MinRepeatTime": 0.2,
+                "Pitch": 1,
+                "PlayOnStart": false,
+                "Repeat": false,
+                "SoundEvent": "sounds/ship_thrusters.sound",
+                "SoundOverride": true,
+                "StopOnNew": false,
+                "Volume": 1
+              }
+            ]
+          },
+          {
+            "Id": "1ec508fe-de05-4f12-a8a5-8ead2ce52d30",
+            "Name": "thruster02",
+            "Position": "160,-192,-96",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "SoundPointComponent",
+                "Force2d": false,
+                "MaxRepeatTime": 0.2,
+                "MinRepeatTime": 0.2,
+                "Pitch": 1,
+                "PlayOnStart": false,
+                "Repeat": false,
+                "SoundEvent": "sounds/ship_thrusters.sound",
+                "SoundOverride": true,
+                "StopOnNew": false,
+                "Volume": 1
+              }
+            ]
+          },
+          {
+            "Id": "abf889a1-b80d-49b0-804b-e8b69059fef2",
+            "Name": "thruster03",
+            "Position": "-96,128,-96",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "SoundPointComponent",
+                "Force2d": false,
+                "MaxRepeatTime": 0.2,
+                "MinRepeatTime": 0.2,
+                "Pitch": 1,
+                "PlayOnStart": false,
+                "Repeat": false,
+                "SoundEvent": "sounds/ship_thrusters.sound",
+                "SoundOverride": true,
+                "StopOnNew": false,
+                "Volume": 1
+              }
+            ]
+          },
+          {
+            "Id": "83807d82-7622-4e7e-80a9-5195a089ce84",
+            "Name": "thruster04",
+            "Position": "-144,-192,-96",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "SoundPointComponent",
+                "Force2d": false,
+                "MaxRepeatTime": 0.2,
+                "MinRepeatTime": 0.2,
+                "Pitch": 1,
+                "PlayOnStart": false,
+                "Repeat": false,
+                "SoundEvent": "sounds/ship_thrusters.sound",
+                "SoundOverride": true,
+                "StopOnNew": false,
+                "Volume": 1
+              }
+            ]
           }
         ]
       }

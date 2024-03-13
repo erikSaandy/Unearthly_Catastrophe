@@ -1,11 +1,10 @@
 // HIGH PRIO
-Ship passenger jank fix please
-??? Spawn at spawnpoint in ship doesn't work?
 time limit
+monster spawn
 
 // WANTS
 landmine
-turret
+..turret
 
 POST-LAUNCH
 notes

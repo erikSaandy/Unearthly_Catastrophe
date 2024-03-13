@@ -9,7 +9,7 @@
     "sounds/flashlight_button02.vsnd"
   ],
   "Occlusion": true,
-  "Reflections": false,
+  "Reflections": true,
   "OcclusionRadius": 64,
   "DistanceAttenuation": true,
   "__references": []

@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 public static class Commands
 {
-	[ConCmd("kill")]
-	public static void Kill(string name = "")
+	[ConCmd( "kill" )]
+	public static void Kill( string name = "" )
 	{
-		if(name == string.Empty)
+		if ( name == string.Empty )
 		{
 			KillSelf();
 			return;
 		}
 
-		foreach(Guid playerId in LethalGameManager.Instance.ConnectedPlayers)
+		foreach ( Guid playerId in LethalGameManager.Instance.ConnectedPlayers )
 		{
 			GameObject playerObject = LethalGameManager.Instance.Scene.Directory.FindByGuid( playerId );
 
-			if(playerObject.Network.OwnerConnection.DisplayName.ToLower() == name.ToLower() ) {
+			if ( playerObject.Network.OwnerConnection.DisplayName.ToLower() == name.ToLower() )
+			{
 				playerObject.Components.Get<IKillable>().Kill();
 			}
 
@@ -28,7 +29,7 @@ public static class Commands
 	private static void KillSelf()
 	{
 		//Log.Info( LethalGameManager.Instance.ConnectedPlayers.Count );
-		
+
 		foreach ( Guid playerId in LethalGameManager.Instance.ConnectedPlayers )
 		{
 			GameObject playerObject = LethalGameManager.Instance.Scene.Directory.FindByGuid( playerId );
@@ -39,6 +40,18 @@ public static class Commands
 			break;
 
 		}
+	}
+
+	[ConCmd( "killall" )]
+	private static void KillAll()
+	{
+
+		foreach ( Guid playerId in LethalGameManager.Instance.ConnectedPlayers )
+		{
+			LethalGameManager.Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<IKillable>().Kill();
+
+		}
+
 	}
 
 }

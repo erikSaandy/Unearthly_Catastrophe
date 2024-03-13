@@ -98,6 +98,7 @@
 					if(InteractionTimer >= InteractedWith.InteractionTime)
 					{
 						LookingAt.OnInteract( Owner.GameObject.Id );
+						Owner.Inventory.ActiveItem?.WasUsedOn( item.GameObject.Id );
 						InteractedWith = null;
 						InteractionTimer = 0;
 					}

@@ -92,6 +92,14 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 	public void HideHead(bool hide = true)
 	{
+		// yeah I know lmao
+		List<GameObject> hairObjects = GameObject.Children.FindAll( x => x.Name.Contains( "hair" ) || x.Name.Contains( "eyebrows" ) || x.Name.Contains( "stubble" ) || x.Name.Contains("eyelashes") );
+
+		foreach ( GameObject hair in hairObjects )
+		{
+			hair.Enabled = !hide;
+		}
+
 		if ( hide )
 		{
 			Renderer.SetBodyGroup( "head", 1 );

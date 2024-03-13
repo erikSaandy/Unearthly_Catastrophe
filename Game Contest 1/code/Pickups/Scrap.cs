@@ -7,7 +7,7 @@ public sealed class Scrap : Carriable, ISellable
 	[Property] public string Name { get; set; } = "";
 	public override string ToolTip { get; set; }
 
-	public override string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - Pickup " + Name; }
+	public override string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - Pickup {Name} [${Value}]"; }
 
 	protected override void OnStart()
 	{
@@ -32,7 +32,7 @@ public sealed class Scrap : Carriable, ISellable
 		if(Value == 0) { return; }
 
 		// Added scrap to ship
-		if(result.GameObject == LethalGameManager.Instance.Ship.GameObject)
+		if(result.GameObject.Root == LethalGameManager.Instance.Ship.GameObject)
 		{
 			LethalGameManager.Instance.AddBalance( Value );
 			Value = 0;

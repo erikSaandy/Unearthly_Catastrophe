@@ -59,6 +59,18 @@
 
 	public void DropActive() => Drop( ActiveSlot );
 
+	public void Drop(IInteractable item)
+	{
+		for(int i = 0; i < Items.Length; i++ )
+		{
+			if(Items[i] == item)
+			{
+				Drop( i );
+				break;
+			}
+		}
+	} 
+
 	public void Drop( int slotId )
 	{
 		if ( Items[slotId] == null ) { Log.Info( $"can't drop null item from slot {slotId}." ); return; }
