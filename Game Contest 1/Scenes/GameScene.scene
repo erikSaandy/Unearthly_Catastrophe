@@ -18,6 +18,18 @@
       ]
     },
     {
+      "Id": "874bf5a5-0e56-4dbb-b268-f8e861eb3b64",
+      "Name": "Moon Timer",
+      "Position": "164.4927,159.9231,-115.3871",
+      "Enabled": true,
+      "NetworkMode": 1,
+      "Components": [
+        {
+          "__type": "MoonTimerComponent"
+        }
+      ]
+    },
+    {
       "Id": "a54a2201-4b3b-4cf9-82d0-a758293cee65",
       "Name": "Network Helper",
       "Position": "0,0,171.1578",
@@ -47,7 +59,6 @@
     {
       "Id": "cc7eb07a-6751-46e1-9b4a-ab745a6e57e1",
       "Name": "Skybox",
-      "Position": "-1199.133,-3502.854,2034.458",
       "Tags": "skybox",
       "Enabled": true,
       "NetworkMode": 2,
@@ -103,13 +114,6 @@
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "prefabs/scraps/scrap_cube.prefab"
-    },
-    {
-      "Id": "8307dcfb-4b1f-45e8-8828-390c99586277",
-      "Name": "Test Monster",
-      "Position": "-130.4268,-3639.639,2691.442",
-      "NetworkMode": 2,
-      "__Prefab": "code/monsters/zombie.prefab"
     }
   ],
   "SceneProperties": {
@@ -135,6 +139,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-12T16:16:48.6337184\u002B01:00",
+  "LastSaved": "2024-03-13T02:43:30.4641433\u002B01:00",
   "__references": []
 }

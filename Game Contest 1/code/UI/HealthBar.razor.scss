@@ -1,6 +1,6 @@
-.energybar {
+.healthbar {
     position: absolute;
-    top: 32px;
+    top: 56px;
     left: 32px;
     width: 500px;
     height: 16px;
@@ -9,11 +9,7 @@
     border: 1px;
 
     > .fill {
-        background-color: dodgerblue;
+        background-color: #ff3838;
         border-radius: 16px;
-
-        &.exhausted {
-            background-color: dimgrey;
-        }
     }
 }

@@ -94,7 +94,6 @@ public sealed class ShipComponent : Component
 	[Broadcast]
 	private void StartThrusters()
 	{
-		Log.Info( "start" );
 		ToggleThrustersAsync( true );
 	}
 
@@ -102,7 +101,6 @@ public sealed class ShipComponent : Component
 	[Broadcast]
 	private void StopThrusters()
 	{
-		Log.Info( "stop" );
 		ToggleThrustersAsync( false, speed: 3 );
 	}
 

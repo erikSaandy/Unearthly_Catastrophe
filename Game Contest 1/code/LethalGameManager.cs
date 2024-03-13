@@ -184,7 +184,8 @@ public class LethalGameManager : Component
 
 	protected override void OnStart()
 	{
-		if(Instance.GameObject.IsProxy) { return; }
+
+		if (Instance.GameObject.IsProxy) { return; }
 
 		TerminalComponent.SelectMoon( 0 );
 
@@ -318,6 +319,8 @@ public class LethalGameManager : Component
 
 		CurrentMoon.GameObject.Destroy();
 		CurrentMoonGuid = default;
+
+		MonsterManager.DeleteAllMonsters();
 
 		await Task.DelayRealtimeSeconds( 1 );
 

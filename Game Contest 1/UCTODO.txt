@@ -1,6 +1,6 @@
 // HIGH PRIO
-time limit
-monster spawn
+Moon Timer ( start timer on land on moon, hide timer in dungeon, show timer outside, leave moon on timer finished)
+zombie sounds ( idle growl, attack, aggro )
 
 // WANTS
 landmine

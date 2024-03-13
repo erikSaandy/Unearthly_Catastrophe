@@ -1,0 +1,27 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+@if(Timer == null) { return; }
+
+<root class="container">
+	<div class="icon @(Visible ? "visible" : "")" />
+	<div class="timer @(Visible ? "visible" : "")">@Timer.FormattedTimeRemaining</div>
+</root>
+
+@code
+{
+	public MoonTimerComponent Timer => MoonTimerComponent.Instance;
+
+	public bool Visible => Timer.Visible && Timer.IsCounting;
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			(int)Timer?.SecondsRemaining,
+			Visible
+		);
+	}
+}

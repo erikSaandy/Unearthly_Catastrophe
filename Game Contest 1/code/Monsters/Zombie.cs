@@ -49,8 +49,17 @@ public class Zombie : Monster
 		Animator = Components.Get<CitizenAnimationHelper>();
 		Controller = Components.Get<CharacterController>();
 
-		// On spawn
-		//StartPatroling( Transform.Position );
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		if(IsProxy) { return; }
+
+		Animator.Height = Math2d.Map( (float)Random.Shared.NextDouble(), 0, 1, 0.7f, 1.2f );
+
+		StartPatroling( Transform.Position );
 
 	}
 
@@ -71,13 +80,18 @@ public class Zombie : Monster
 
 	}
 
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		Animator.IsGrounded = Controller.IsOnGround;
+		Animator.WithVelocity( Controller.Velocity * (MoveState == State.Aggro ? 2 : 1) );
+		Animator.WithLook( EyeAngles.Forward, 1, .8f, .5f );
+	}
+
 	protected override void OnFixedUpdate()
 	{
 		base.OnFixedUpdate();
-
-		Animator.IsGrounded = Controller.IsOnGround;
-		Animator.WithVelocity( Controller.Velocity );
-		Animator.WithLook( EyeAngles.Forward, 1, .8f, .5f );
 
 		if ( IsProxy ) { return; }
 
@@ -97,7 +111,11 @@ public class Zombie : Monster
 		if ( WantedMoveDirection != 0 && TimeSinceTrace > 3 )
 		{
 			TimeSinceTrace = 0;
-			IEnumerable<SceneTraceResult> trace = Scene.Trace.Ray( Animator.EyeSource.Transform.Position, Animator.EyeSource.Transform.Position + (WantedMoveDirection * 32) ).IgnoreGameObjectHierarchy( GameObject ).UsePhysicsWorld().RunAll();	
+			IEnumerable<SceneTraceResult> trace = Scene.Trace.Ray( Animator.EyeSource.Transform.Position, Animator.EyeSource.Transform.Position + (WantedMoveDirection * 32) )
+				.IgnoreGameObjectHierarchy( GameObject )
+				.WithoutTags("monster")
+				.UsePhysicsWorld()
+				.RunAll();	
 
 			foreach ( SceneTraceResult result in trace )
 			{
@@ -140,6 +158,17 @@ public class Zombie : Monster
 			Controller.ApplyFriction( friction );
 		}
 
+
+		Vector3 targetPos = Agent.TargetPosition ?? 0;	
+		if(targetPos != Vector3.Zero)
+		{
+			// Stop when reached target position
+			if ( Vector3.DistanceBetweenSquared( Transform.Position, targetPos ) < AttackDistance )
+			{
+				speed = 0;
+			}
+		}
+
 		float angle = Vector3.VectorAngle( WantedMoveDirection ).yaw;
 		EyeAngles = Rotation.Lerp( EyeAngles, new Angles( 0, angle, 0 ), Time.Delta * turnSpeed );
 		Transform.Rotation = EyeAngles;
@@ -166,7 +195,6 @@ public class Zombie : Monster
 
 	private void AggroPlayer(GameObject playerObject)
 	{
-		Log.Info( $"{GameObject.Name} aggro" );
 		Agent.MoveTo( playerObject.Transform.Position );
 		MoveState = State.Aggro;
 		LastAggroedPlayer = playerObject;
@@ -206,7 +234,6 @@ public class Zombie : Monster
 				// If player is withing aggro range, continue chase.
 				if ( LastAggroedPlayer == playerObject && dstToPlayerSqr < AggroDistance )
 				{
-					Log.Info( "chase" );
 					return playerObject;
 				}
 
@@ -233,7 +260,7 @@ public class Zombie : Monster
 					.IgnoreGameObjectHierarchy( GameObject.Root )
 					//.UseHitboxes()
 					.UseRenderMeshes()
-					.WithoutTags( "item", "door" )
+					.WithoutTags( "item", "door", "monster" )
 					.Run();
 
 				// LOS to player
@@ -290,7 +317,7 @@ public class Zombie : Monster
 			return;
 		}
 
-		Log.Info( $"{GameObject.Name} idle" );
+		//Log.Info( $"{GameObject.Name} idle" );
 		if ( TimeSinceUpdateTarget > 5 )
 		{
 
@@ -307,7 +334,7 @@ public class Zombie : Monster
 
 		GameObject playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 
-		if ( TimeSinceUpdateTarget > 1 )
+		if ( TimeSinceUpdateTarget > 0.1f )
 		{
 			if ( playerToAggro != null )
 			{
@@ -326,8 +353,10 @@ public class Zombie : Monster
 		if ( playerToAggro != null && TimeSinceAttack > 2 && dstToPlayerSqr < AttackDistance )
 		{
 			TimeSinceAttack = 0;
-			Log.Info( $"{GameObject.Name} ATTACK" );
-			playerToAggro.Components.Get<IKillable>().TakeDamage( 40, GameObject.Id, Transform.Rotation.Up * 300 );
+			Log.Info( $"Zombie attacked {GameObject.Name}" );
+			Animator?.TriggerDeploy();
+			Controller.Punch( Vector3.Up * 150 );
+			playerToAggro.Components.Get<IKillable>().TakeDamage( 0, GameObject.Id, Transform.Rotation.Up * 300 );
 		}
 
 		WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;

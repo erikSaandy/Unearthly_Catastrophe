@@ -22,6 +22,7 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 		{
 			Player player = other.GameObject.Root.Components.Get<Player>();
 			Passengers.Add( player );
+			player.Heal( 200 );
 			Log.Info( "Added passenger " + other.GameObject.Name );
 
 		}

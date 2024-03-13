@@ -13,6 +13,9 @@ public static class DungeonGenerator
 
 	public static List<RoomSetup> SpawnedRooms { get; private set; }
 
+	private static List<Guid> MonsterSpawners { get; set; } = new();
+
+
 	private const int MainIterations = 15;
 
 	public static async Task GenerateDungeon(DungeonDefinition def)
@@ -20,6 +23,7 @@ public static class DungeonGenerator
 
 		try
 		{
+			MonsterSpawners = new();
 			SpawnedRooms = new List<RoomSetup>();
 
 			DungeonResource = def;
@@ -50,6 +54,13 @@ public static class DungeonGenerator
 			}
 
 			Log.Info( $"[Generated dungeon with {SpawnedRooms.Count} rooms!]" );
+
+			Log.Info( "[Spawning scrap in dungeon...]" );
+			PopulateWithScrap();
+
+			Log.Info( "[Spawning monsters...]" );
+			Log.Info( "monsterspawner count: " + MonsterSpawners.Count );
+			MonsterManager.SpawnMonsters( MonsterSpawners );
 
 			await Task.Delay( 1000 );
 
@@ -91,6 +102,16 @@ public static class DungeonGenerator
 				nextRoom.GameObject.Name = nextRoom.GameObject.Name + " (" + SpawnedRooms.Count.ToString() + ")";
 				nextRoom.MoveToNextPortal();
 
+				if(nextRoom.Data.MonsterSpawners != null)
+				{
+					for(int i = 0; i < nextRoom.Data.MonsterSpawners.Count; i++ )
+					{
+						if ( nextRoom.Data.MonsterSpawners[i] == null) { return; }
+						MonsterSpawners.Add( nextRoom.Data.MonsterSpawners[i].GameObject.Id );
+					}
+
+				}
+
 				SearchRooms( ref nextRoom, ref currentBiome, ref finished, --iteration, ++biomeDepth );
 				//iteration = BranchIterations;
 
@@ -104,9 +125,9 @@ public static class DungeonGenerator
 
 		}
 
+		// Finally...
 		if(currentRoom == SpawnedRooms[0] )
 		{
-			PopulateWithScrap();
 			finished = true;
 		}
 

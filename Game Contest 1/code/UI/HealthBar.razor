@@ -1,0 +1,38 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits Panel
+
+@if (Owner.EnergyBar != null)
+{
+	<root class="healthbar">
+		<div class="fill" @ref="HealthFill"> </div>
+	</root>
+}
+
+@code
+{
+	public Player Owner { get; set; }
+	Panel HealthFill { get; set; }
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		if (Owner == null) { return; }
+
+		if (Owner.EnergyBar != null)
+		{
+			HealthFill.Style.Width = Length.Percent(Owner.Health / Owner.MaxHealth * 100f);
+		}
+
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			Owner?.Health
+		);
+	}
+}

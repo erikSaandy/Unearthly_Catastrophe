@@ -1,8 +1,9 @@
 {
   "RootObject": {
-    "Id": "a3064abc-d975-40c2-b40f-821e920dc653",
+    "Id": "92aa623b-7490-40cc-bc80-30cbe86f53ce",
     "Name": "tunnel_07",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
@@ -13,35 +14,35 @@
         "MonsterSpawners": [
           {
             "_type": "component",
-            "go": "14925a85-b795-4c3f-a02f-252f142a1fc3",
+            "go": "e3418505-2c7a-4016-8cdf-b92b11826f17",
             "component_type": "MonsterSpawner"
           }
         ],
         "Portals": [
           {
             "_type": "component",
-            "go": "9742dd7c-1b0a-45b9-b787-41a7ba5b9cc2",
+            "go": "c712ce64-0d3e-4eb3-8c6d-6dc0309f9dfa",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "8ae73f37-c5ab-486b-b4a3-0326e8a37005",
+            "go": "67b0348f-fc8f-4c1c-9e3e-7012a7cbda20",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "3ec4babc-0a55-42d7-83ad-600a4d74e058",
+            "go": "7aa8fd6a-0685-4625-a864-c527540bdf00",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "412e1651-8dad-4d76-8430-3cead4d5f799",
+            "go": "08759b9c-a9b2-4255-bb52-634325e8826b",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "a3064abc-d975-40c2-b40f-821e920dc653",
+          "go": "92aa623b-7490-40cc-bc80-30cbe86f53ce",
           "component_type": "ModelRenderer"
         }
       },
@@ -61,11 +62,12 @@
     ],
     "Children": [
       {
-        "Id": "9742dd7c-1b0a-45b9-b787-41a7ba5b9cc2",
+        "Id": "c712ce64-0d3e-4eb3-8c6d-6dc0309f9dfa",
         "Name": "Door",
         "Position": "0.00002110785,128,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -74,11 +76,12 @@
         ]
       },
       {
-        "Id": "8ae73f37-c5ab-486b-b4a3-0326e8a37005",
+        "Id": "67b0348f-fc8f-4c1c-9e3e-7012a7cbda20",
         "Name": "Door (1)",
         "Position": "128,-0,0.000006498106",
         "Rotation": "0,0,0.7071067,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -87,11 +90,12 @@
         ]
       },
       {
-        "Id": "3ec4babc-0a55-42d7-83ad-600a4d74e058",
+        "Id": "7aa8fd6a-0685-4625-a864-c527540bdf00",
         "Name": "Door (2)",
         "Position": "-0.00006332347,-128,0",
         "Rotation": "0,0,0.0000003596121,-1",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -100,11 +104,12 @@
         ]
       },
       {
-        "Id": "412e1651-8dad-4d76-8430-3cead4d5f799",
+        "Id": "08759b9c-a9b2-4255-bb52-634325e8826b",
         "Name": "Door (3)",
         "Position": "-128,0,0.000006498106",
         "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -113,12 +118,12 @@
         ]
       },
       {
-        "Id": "f95062a8-9401-4aea-82db-5e2568659370",
+        "Id": "0ea50533-a780-4836-97d5-f697be82a81a",
         "Name": "light",
         "Position": "0,-0.00001119012,128",
         "Rotation": "1,0,0,-0.00000004371139",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "ModelRenderer",
@@ -136,13 +141,13 @@
         ],
         "Children": [
           {
-            "Id": "8dc0e902-4b19-4ed9-ad01-10126d6f13da",
+            "Id": "bc5c7c2d-63f3-4371-8380-6428badc0996",
             "Name": "Point Light",
             "Position": "0,0.000001123446,12.85072",
             "Rotation": "-1,0,0,-0.00000004371139",
             "Tags": "light_point,light",
-            "Networked": true,
             "Enabled": true,
+            "NetworkMode": 1,
             "Components": [
               {
                 "__type": "PointLight",
@@ -158,10 +163,11 @@
         ]
       },
       {
-        "Id": "14925a85-b795-4c3f-a02f-252f142a1fc3",
+        "Id": "e3418505-2c7a-4016-8cdf-b92b11826f17",
         "Name": "Monster Spawner",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "MonsterSpawner"

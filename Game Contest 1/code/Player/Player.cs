@@ -10,7 +10,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 	[Sync] public LifeState LifeState { get; private set; } = LifeState.Alive;
 	[Sync, Property] public float MaxHealth { get; private set; } = 100f;
-	[Sync] public float Health { get; private set; } = 100f;
+	[Sync, Property] public float Health { get; private set; } = 100f;
 	private RealTimeSince TimeSinceDamaged { get; set; }
 	public RealTimeSince TimeSinceDeath { get; private set; }
 
@@ -124,6 +124,16 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		Animator.WithLook( EyeAngles.Forward, 1, .8f, .5f );
 		//Animator.DuckLevel = 1f;
 		Animator.HoldType = CurrentHoldType;
+
+	}
+
+	[Broadcast]
+	public void Heal( float amount )
+	{
+		if ( IsProxy || LifeState == LifeState.Dead )
+			return;
+
+		Health = Math.Clamp( Health + amount, 0, MaxHealth );
 
 	}
 

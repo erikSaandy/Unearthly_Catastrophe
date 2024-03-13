@@ -1,8 +1,9 @@
 {
   "RootObject": {
-    "Id": "b116215c-f4a0-40a9-a143-3d6df5280469",
+    "Id": "9f86d4c4-2b0e-4424-a334-215142561625",
     "Name": "tunnel_03",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
@@ -13,20 +14,20 @@
         "MonsterSpawners": [
           {
             "_type": "component",
-            "go": "a5b9dd13-dbf3-4965-a874-cf1c9da23df6",
+            "go": "70183c4e-900d-44a9-947a-5856221f211d",
             "component_type": "MonsterSpawner"
           }
         ],
         "Portals": [
           {
             "_type": "component",
-            "go": "e61dadf7-8bba-4b51-9258-3bdeaab34f52",
+            "go": "ae7270ff-78dc-4904-b380-48aeeea34231",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "b116215c-f4a0-40a9-a143-3d6df5280469",
+          "go": "9f86d4c4-2b0e-4424-a334-215142561625",
           "component_type": "ModelRenderer"
         }
       },
@@ -46,10 +47,11 @@
     ],
     "Children": [
       {
-        "Id": "e61dadf7-8bba-4b51-9258-3bdeaab34f52",
+        "Id": "ae7270ff-78dc-4904-b380-48aeeea34231",
         "Name": "Door",
         "Position": "-0.00006464271,-132,0",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -58,11 +60,12 @@
         ]
       },
       {
-        "Id": "a5b9dd13-dbf3-4965-a874-cf1c9da23df6",
+        "Id": "70183c4e-900d-44a9-947a-5856221f211d",
         "Name": "Monster Spawner",
         "Position": "-0.00002492252,-64,-0.00001173201",
         "Rotation": "0,0,0.7071069,-0.7071066",
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "MonsterSpawner"
