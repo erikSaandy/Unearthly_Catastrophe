@@ -102,6 +102,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 		if ( hide )
 		{
+			//Renderer.RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
 			Renderer.SetBodyGroup( "head", 1 );
 		}
 		else
@@ -261,6 +262,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 		if ( GameObject.IsProxy ) { return; }
 
+		LifeState = LifeState.Dead;
 		LethalGameManager.OnPlayerDisconnected( GameObject.Id );
 
 		CurrentHud?.Destroy();

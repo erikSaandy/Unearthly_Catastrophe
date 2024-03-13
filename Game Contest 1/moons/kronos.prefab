@@ -1,50 +1,95 @@
 {
   "RootObject": {
-    "Id": "fc7d85d9-16df-4968-a3b3-d6dc19aad74d",
+    "Id": "5484ea42-e30c-45f6-a399-8275da24ca50",
     "Name": "kronos",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "Moon",
+        "Id": "491952ea-e60e-4542-bc5d-2279d9aeefa0",
         "LandingPad": {
           "_type": "component",
-          "go": "44e8f1b4-0d18-4ea3-9e09-403c98d7a3ec",
-          "component_type": "ShipLandingPadComponent"
+          "component_id": "3b4eb58c-deb6-426e-aa4c-d4c944380eae",
+          "go": "00000000-0000-0000-0000-000000000000",
+          "component_type": null
         }
       }
     ],
     "Children": [
       {
-        "Id": "fbe70a99-a135-46d1-bb3b-39ab0cfade30",
+        "Id": "925dc385-d3b6-4a5b-bdfd-7b1809b5c36c",
         "Name": "Map Instance",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "MapInstance",
+            "Id": "ebaee2ca-17a5-4201-a7f8-061c805ef0fe",
             "MapName": "maps/moon_krypton.vmap",
-            "OnMapLoaded": null,
-            "OnMapUnloaded": null,
             "UseMapFromLaunch": false
           }
         ],
         "Children": []
       },
       {
-        "Id": "91c000d9-e477-42f6-afe9-9e5d2216a2e7",
+        "Id": "21337812-9159-4d0d-9b7a-1c9392d1f427",
         "Name": "door_entrance_01",
         "Position": "1023.999,768,0",
         "Rotation": "0,0,-0.7071069,-0.7071065",
         "Enabled": true,
+        "NetworkMode": 2,
         "__Prefab": "prefabs/door_entrance_01.prefab"
       },
       {
-        "Id": "44e8f1b4-0d18-4ea3-9e09-403c98d7a3ec",
+        "Id": "e00de176-e32e-4b32-a7e2-15933843a3b0",
         "Name": "Landing pad",
-        "Position": "1024,-384,64",
+        "Position": "538.3263,1.574829,64.0011",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
-            "__type": "ShipLandingPadComponent"
+            "__type": "ShipLandingPadComponent",
+            "Id": "3b4eb58c-deb6-426e-aa4c-d4c944380eae"
+          }
+        ]
+      },
+      {
+        "Id": "7bf637a9-bc49-4f4b-a76e-2d14da9ecbc7",
+        "Name": "SoundScape",
+        "Position": "714.5441,-938.7059,144.1532",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SoundscapeTrigger",
+            "Id": "36a37889-2ca6-4549-bcd9-32448c279f9a",
+            "BoxSize": "4000,6000,256",
+            "Radius": 500,
+            "Soundscape": "music/eerie_song_01.sndscape",
+            "StayActiveOnExit": false,
+            "Type": "Box"
+          }
+        ]
+      },
+      {
+        "Id": "1f99aa7c-ce7b-4300-bbbe-e0dff9a60f6b",
+        "Name": "MoonTimer Trigger",
+        "Position": "252.2675,-191.9118,97.97519",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "MoonTimerTriggerComponent",
+            "Id": "4b409d9e-8105-4b98-98b6-805f542540c3"
+          },
+          {
+            "__type": "BoxCollider",
+            "Id": "bfed5bc8-b753-46a5-b2a7-2cf4fa7782c0",
+            "Center": "0,0,0",
+            "IsTrigger": true,
+            "Scale": "8000,12000,256",
+            "Static": false
           }
         ]
       }

@@ -35,7 +35,7 @@ public class LeverComponent : Component, IInteractable
 	[Property] public bool StartActivated { get; private set; } = false;
 	public bool IsActivated { get; private set; } = false;
 
-	[Property][Sync] public bool IsLocked { get; set; } = false;
+	[Property] public bool IsLocked => (TerminalComponent.SelectedMoon == -1) || (LethalGameManager.Instance.Ship.IsMoving);
 
 	[Property] public float DeactivatedAngle { get; set; } = 1f;
 	[Property] public float ActivatedAngle { get; set; } = 90f;
@@ -43,12 +43,14 @@ public class LeverComponent : Component, IInteractable
 
 	[Property] public float Speed { get; set; } = 1f;
 
-	protected override void OnStart()
+	protected override void OnAwake()
 	{
-		base.OnStart();
+		base.OnAwake();
 
 		if(StartActivated) { Activate(); }
 
+		OnActivate = null;
+		OnDeactivate = null;
 		OnActivate += PlaySound;
 		OnDeactivate += PlaySound;
 
@@ -58,8 +60,6 @@ public class LeverComponent : Component, IInteractable
 	{
 		base.OnDestroy();
 
-		OnActivate -= PlaySound;
-		OnDeactivate -= PlaySound;
 		OnActivate = null;
 		OnDeactivate = null;
 	}

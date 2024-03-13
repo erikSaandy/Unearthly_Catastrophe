@@ -4,22 +4,20 @@ using System;
 public class LethalGameManager : Component
 {
 	public static LethalGameManager Instance { get; set; } = null;
-	[Sync] public NetList<Guid> ConnectedPlayers { get; private set; }
+	public IEnumerable<Player> ConnectedPlayers => Scene.Components.GetAll<Player>(find: FindMode.EnabledInSelfAndChildren).OrderBy(x => x.GetHashCode());
+	public IEnumerable<Player> AlivePlayers => ConnectedPlayers.Where( x => x.LifeState == LifeState.Alive );
+	public IEnumerable<Player> DeadPlayers => ConnectedPlayers.Where( x => x.LifeState == LifeState.Dead );
 
-	[Sync] public int AlivePlayers { get; set; } = 0;
-
-	public static Player GetPlayer( int i ) 
-	{
-		return Instance.Scene.Directory.FindByGuid( Instance.ConnectedPlayers[i] ).Components.Get<Player>();
-
-	}
+	public static Player GetPlayer( int i ) { return Instance.ConnectedPlayers.ElementAt( i ); }
 
 	public static int GetNextPlayerIdAlive(int startId)
 	{
-		for(int i = 0; i < Instance.ConnectedPlayers.Count; i++ )
+		List<Player> connections = Instance.ConnectedPlayers.ToList();
+
+		for (int i = 0; i < connections.Count; i++ )
 		{
-			int index = (startId + i) % Instance.ConnectedPlayers.Count;
-			Player player = Instance.Scene.Directory.FindByGuid( Instance.ConnectedPlayers[index] )?.Components.Get<Player>();
+			int index = (startId + i) % connections.Count;
+			Player player = connections.ElementAt( index );
 
 			// Player alive?
 			if(player != null && player.LifeState == LifeState.Alive) 
@@ -42,32 +40,25 @@ public class LethalGameManager : Component
 		if ( IsProxy ) { return; }
 
 		Log.Info( "respawn all..." );
+		List<Player> deadPlayers = Instance.DeadPlayers.ToList();
 
-		foreach ( Guid playerId in ConnectedPlayers )
+		foreach ( Player player in deadPlayers )
 		{
-			Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
-			if ( player.LifeState == LifeState.Dead )
-			{
-				AlivePlayers++;
-				Log.Info( player.Network.OwnerConnection.DisplayName + " respawn..." );
-				player.Respawn( );
-			}
+			Log.Info( player.Network.OwnerConnection.DisplayName + " respawn..." );
+			player.Respawn();
 		}
 	}
 
 	public void KillAllStrandedPlayers()
 	{
-		foreach ( Guid playerId in ConnectedPlayers )
-		{
-			// Not on ship?
-			if( Instance.Ship.Transporter.Passengers.Find(p => p.GameObject.Id == playerId) == null )
-			{
-				Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
+		List<Player> alivePlayers = Instance.AlivePlayers.ToList();
 
-				if ( player.LifeState == LifeState.Alive )
-				{
-					player.Kill();
-				}
+		foreach ( Player player in alivePlayers )
+		{
+			// alive player not on ship?
+			if( !Instance.Ship.Transporter.Passengers.Contains( player ) )
+			{
+				player.Kill();
 			}
 		}
 	}
@@ -78,12 +69,12 @@ public class LethalGameManager : Component
 		// only host.
 		if(IsProxy) { return; }
 
-		AlivePlayers--;
+
 
 		// All players are dead.
-		if( AlivePlayers <= 0 && Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
+		if( Instance.AlivePlayers.Count() <= 0 && Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
 		{
-			Log.Info( "all palyers dead" );
+			Log.Info( "all palyers dead, ship now leaving." );
 
 			// Not on a moon.
 			if(CurrentMoonGuid == default)
@@ -138,8 +129,6 @@ public class LethalGameManager : Component
 
 		base.OnAwake();
 
-		ConnectedPlayers = new NetList<Guid>();
-
 		MoonDefinitions = new[]
 		{
 			ResourceLibrary.Get<MoonDefinition>( "moons/kronos.moon" )
@@ -151,6 +140,8 @@ public class LethalGameManager : Component
 
 		if ( GameObject.IsProxy ) { return; }
 
+		Ship = Scene.GetAllComponents<ShipComponent>().First();
+
 		GameObject.Network.TakeOwnership();
 
 		AddBalance( 100 );
@@ -161,9 +152,7 @@ public class LethalGameManager : Component
 	{
 		if( Instance.GameObject.IsProxy ) { return; }
 
-		Instance.ConnectedPlayers.Add( playerId );
-		Instance.AlivePlayers++;
-
+		// Already on moon? start spectating
 		if ( Instance.CurrentMoon != null )
 		{
 			Player player = Instance.Scene.Directory.FindByGuid( playerId ).Components.Get<Player>();
@@ -178,7 +167,6 @@ public class LethalGameManager : Component
 	{
 		if ( Instance.GameObject.IsProxy ) { return; }
 
-		Instance.ConnectedPlayers.Remove( playerId );
 		Instance.OnPlayerDeath(playerId);
 	}
 
@@ -190,7 +178,7 @@ public class LethalGameManager : Component
 		TerminalComponent.SelectMoon( 0 );
 
 		//Log.Info( Instance == null );
-
+		 
 		//if(Instance == null) { Instance = this; }
 		//else if(Instance != this) { this.Destroy(); }
 
@@ -199,43 +187,55 @@ public class LethalGameManager : Component
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
-
 		//if ( Input.Pressed( "chat" ) )
 		//{
 		//	LoadMoon( MoonDefinitions[0] );
 		//}
 
+		if ( Instance.GameObject.IsProxy ) { return; }
+
 	}
 
 	[Broadcast( NetPermission.Anyone )]
-	private void StartLoadMoon()
+	public void StartLoadMoon()
 	{
 		IsLoading = true;
 		OnStartLoadMoon?.Invoke();
 	}
 
 	[Broadcast( NetPermission.Anyone )]
-	private void LoadedMoon()
+	public void LoadedMoon()
 	{
+
 		IsLoading = false;
 		OnLoadedMoon?.Invoke();
 
+		Log.Info( "[ Loaded Moon Successfully ]" );
+
 		if ( Instance.GameObject.IsProxy ) return;
 
+		// Land ship
 		Ship.Land( CurrentMoon.LandingPad );
+
+		// Start timer
+		MoonTimerComponent.Instance.StartTimer( 400, delegate { LeaveCurrentMoon(); } );
 	}
 
 
 	[Broadcast( NetPermission.Anyone )]
 	public void LoadSelectedMoon( )
 	{
+		if ( Instance.GameObject.IsProxy ) { return; }
+
+		Log.Info( "Selected moon: " + TerminalComponent.SelectedMoon );
 		Instance.LoadMoon( TerminalComponent.SelectedMoon );
 	}
 
 	[Broadcast(NetPermission.Anyone)]
 	public void LoadMoon( int moon )
 	{
-		Ship.Lever.IsLocked = true;
+
+		//Ship.Lever.IsLocked = true;
 
 		if ( Instance.GameObject.IsProxy ) { return; }
 
@@ -269,6 +269,7 @@ public class LethalGameManager : Component
 
 		await DungeonGenerator.GenerateDungeon( ResourceLibrary.Get<DungeonDefinition>( moon.DungeonDefinitions[0] ) );
 
+		Log.Info( "Generating navmesh.." );
 		await Instance.Scene.NavMesh.Generate( Scene.PhysicsWorld );
 
 		LoadedMoon();
@@ -276,13 +277,13 @@ public class LethalGameManager : Component
 	}
 
 	[Broadcast( NetPermission.Anyone )]
-	public void StartLeaveCurrentMoon()
+	private void StartLeaveCurrentMoon()
 	{
 
 	}
 
 	[Broadcast( NetPermission.Anyone )]
-	public void LeftCurrentMoon()
+	private void LeftCurrentMoon()
 	{
 
 	}
@@ -302,7 +303,9 @@ public class LethalGameManager : Component
 
 		if ( CurrentMoon == null ) { Log.Error( "Can't leave moon as we are not currently on a moon." ); return; }
 
-		Ship.Lever.IsLocked = true;
+		MoonTimerComponent.Instance.StopTimer();
+
+		//Ship.Lever.IsLocked = true;
 		StartLeaveCurrentMoon();
 
 		await Task.DelayRealtimeSeconds( secondDelay );
@@ -314,6 +317,8 @@ public class LethalGameManager : Component
 		await Ship.FlyIntoSpaceLol();
 
 		Ship.Doors.Lock();
+
+		KillAllStrandedPlayers();
 
 		await Task.DelayRealtimeSeconds( 3 );
 

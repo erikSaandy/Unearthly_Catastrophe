@@ -14,7 +14,7 @@ public class Zombie : Monster
 		Idle
 	}
 
-	public State MoveState { get; set; } = State.Patrol;
+	[Property] public State MoveState { get; set; } = State.Patrol;
 
 	private float LineOfSightSquared => MoveState == State.Aggro ? 130000 : 110000;
 	private float AggroDistance { get; set; } = 37000;
@@ -36,7 +36,7 @@ public class Zombie : Monster
 	public TimeSince TimeSinceAggro { get; private set; } = 30;
 	public RealTimeSince TimeSinceAttack { get; set; } = 0;
 
-	private GameObject LastAggroedPlayer { get; set; } = null;
+	private Player LastAggroedPlayer { get; set; } = null;
 
 	protected override void OnAwake()
 	{
@@ -158,17 +158,6 @@ public class Zombie : Monster
 			Controller.ApplyFriction( friction );
 		}
 
-
-		Vector3 targetPos = Agent.TargetPosition ?? 0;	
-		if(targetPos != Vector3.Zero)
-		{
-			// Stop when reached target position
-			if ( Vector3.DistanceBetweenSquared( Transform.Position, targetPos ) < AttackDistance )
-			{
-				speed = 0;
-			}
-		}
-
 		float angle = Vector3.VectorAngle( WantedMoveDirection ).yaw;
 		EyeAngles = Rotation.Lerp( EyeAngles, new Angles( 0, angle, 0 ), Time.Delta * turnSpeed );
 		Transform.Rotation = EyeAngles;
@@ -193,48 +182,46 @@ public class Zombie : Monster
 		MoveState = State.Patrol;
 	}
 
-	private void AggroPlayer(GameObject playerObject)
+	private void AggroPlayer(Player player)
 	{
-		Agent.MoveTo( playerObject.Transform.Position );
+		Agent.MoveTo( player.Transform.Position );
 		MoveState = State.Aggro;
-		LastAggroedPlayer = playerObject;
+		LastAggroedPlayer = player;
 		TimeSinceAggro = 0;
 		TimeSinceUpdateTarget = 0;
-		NestPosition = playerObject.Transform.Position;
+		NestPosition = player.Transform.Position;
 	}
 
-	private GameObject FindPlayerToAggro(out float dstToPlayerSqr)
+	private Player FindPlayerToAggro(out float dstToPlayerSqr)
 	{
 		dstToPlayerSqr = 0;
 
-		foreach ( Guid guid in LethalGameManager.Instance.ConnectedPlayers )
+		List<Player> players = LethalGameManager.Instance.AlivePlayers.ToList();
+
+		foreach ( Player player in players )
 		{
-			GameObject playerObject = Scene.Directory.FindByGuid( guid );
 
-			if(playerObject == null) { return null; }
+			//if( player == null) { return null; }
 
-			// Don't aggro dead players.
-			if ( playerObject.Tags.Has("dead") ) { return null; }
-
-			dstToPlayerSqr = Vector3.DistanceBetweenSquared( playerObject.Transform.Position, Transform.Position );
+			dstToPlayerSqr = Vector3.DistanceBetweenSquared( player.Transform.Position, Transform.Position );
 			//Log.Info( dstToPlayerSqr );
 
 			// Allways aggro when player is within attack range.
 			if ( dstToPlayerSqr < AttackDistance )
 			{
-				return playerObject;
+				return player;
 			}
 
 			// Player is within line of sight
 			if ( dstToPlayerSqr < LineOfSightSquared )
 			{
-				Vector3 dir = (playerObject.Transform.Position - Transform.Position).Normal;
+				Vector3 dir = (player.Transform.Position - Transform.Position).Normal;
 				float dot = Vector3.Dot( Transform.Rotation.Forward, dir );
 
 				// If player is withing aggro range, continue chase.
-				if ( LastAggroedPlayer == playerObject && dstToPlayerSqr < AggroDistance )
+				if ( LastAggroedPlayer == player && dstToPlayerSqr < AggroDistance )
 				{
-					return playerObject;
+					return player;
 				}
 
 				// Can't aggro if looking the other way.
@@ -246,11 +233,11 @@ public class Zombie : Monster
 				// Player is withing aggro range
 				if ( dstToPlayerSqr < AggroDistance )
 				{
-					return playerObject;
+					return player;
 				}
 
 				// still aggro, and player is not far away enough.
-				if (TimeSinceAggro < 8 && playerObject == LastAggroedPlayer)
+				if (TimeSinceAggro < 8 && player == LastAggroedPlayer)
 				{
 					return LastAggroedPlayer;
 				}
@@ -264,9 +251,9 @@ public class Zombie : Monster
 					.Run();
 
 				// LOS to player
-				if ( trace.GameObject == playerObject )
+				if ( trace.GameObject == player.GameObject )
 				{
-					return playerObject;
+					return player;
 				}
 			}
 
@@ -277,7 +264,7 @@ public class Zombie : Monster
 
 	private void DoPatrol( ref float speed, ref float turnSpeed, ref float friction)
 	{
-		GameObject playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
+		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 		if ( playerToAggro != null )
 		{
 			AggroPlayer( playerToAggro );
@@ -287,21 +274,12 @@ public class Zombie : Monster
 		// Patrol to new locations
 		if ( TimeSinceUpdateTarget > 10 )
 		{
+			Log.Info( "new target" );
 			ChangeTargetPosition();
 
 		}
 
 		WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;
-
-		Vector3 targetPos = Agent.TargetPosition ?? default;
-
-		if ( targetPos != default )
-		{
-			if ( Vector3.DistanceBetween( Transform.Position, targetPos ) < 25 )
-			{
-				MoveState = State.Idle;
-			}
-		}
 	}
 
 	private void DoIdle(ref float speed, ref float turnSpeed, ref float friction )
@@ -309,7 +287,7 @@ public class Zombie : Monster
 		speed = 0;
 		Controller.Velocity.Set( 0, 0, Controller.Velocity.z );
 
-		GameObject playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
+		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 		if ( playerToAggro != null )
 		{
 			AggroPlayer( playerToAggro );
@@ -332,7 +310,7 @@ public class Zombie : Monster
 		friction = 6;
 		turnSpeed = 15;
 
-		GameObject playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
+		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 
 		if ( TimeSinceUpdateTarget > 0.1f )
 		{

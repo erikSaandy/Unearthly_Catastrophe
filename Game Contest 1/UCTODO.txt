@@ -1,6 +1,9 @@
 // HIGH PRIO
 Moon Timer ( start timer on land on moon, hide timer in dungeon, show timer outside, leave moon on timer finished)
 zombie sounds ( idle growl, attack, aggro )
+Remove all scrap from ship and reset balance when all players die.
+add music (System to tell when player enters and leaves dungeon)
+Get players and alive state by looking at scene rather than keeping a list.
 
 // WANTS
 landmine

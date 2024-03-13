@@ -13,10 +13,14 @@ public sealed class MoonTimerComponent : Component
 
 	private RealTimeSince TimeSinceStarted { get; set; }
 
-	[Sync] public bool Visible { get; private set; } = true;
+	/// <summary>
+	/// Is the timer visible on this client?
+	/// </summary>
+	public bool Visible { get; private set; } = false;
 
-	[Broadcast] public void Show() { if( IsProxy ) { return; } Visible = true; }
-	[Broadcast] public void Hide() { if ( IsProxy ) { return; } Visible = false; }
+	public void Show() { Visible = true; }
+	public void Hide() { Visible = false; }
+
 	public void ToggleVisibility() { if( Visible ) { Hide(); } else { Show(); } }
 
 	public float SecondsSinceStart
@@ -48,14 +52,16 @@ public sealed class MoonTimerComponent : Component
 
 	public void StartTimer(float targetTime, Action onFinish )
 	{
-		this.OnFinish = onFinish;
 
+		this.OnFinish = onFinish;
+		Log.Info( "started timer for " + TargetTime + " seconds." );
 		StartTimer( targetTime );
 	}
 
 	[Broadcast]
 	public void StartTimer( float targetTime )
 	{
+
 		Log.Info( "start timer" );
 		IsCounting = true;
 		SecondsSinceStart = 0;
@@ -68,6 +74,7 @@ public sealed class MoonTimerComponent : Component
 	[Broadcast]
 	public void StopTimer()
 	{
+
 		IsCounting = false;
 
 		if ( IsProxy ) { return; }
@@ -80,8 +87,6 @@ public sealed class MoonTimerComponent : Component
 	{
 		Instance = this;
 
-		Instance.StartTimer(300, delegate { } );
-
 		base.OnStart();
 	}
 
@@ -91,16 +96,11 @@ public sealed class MoonTimerComponent : Component
 
 		if( !IsCounting ) { return; }
 
-		if( TimeSinceStarted >= TargetTime )
+		if( SecondsSinceStart >= TargetTime )
 		{
 			IsCounting = false;
 			OnFinish?.Invoke();
 			OnFinish = null;
-		}
-
-		if(Input.Pressed("jump"))
-		{
-			ToggleVisibility();
 		}
 
 	}

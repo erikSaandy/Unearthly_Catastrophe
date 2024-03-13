@@ -60,7 +60,7 @@ public sealed class TerminalComponent : Component
 	{
 		TerminalComponent.SelectedMoon = i;
 		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.MoonDefinitions[SelectedMoon].ResourceName}";
-		LethalGameManager.Instance.Ship.Lever.IsLocked = false;
+		//LethalGameManager.Instance.Ship.Lever.IsLocked = false;
 	}
 
 	protected override void DrawGizmos()

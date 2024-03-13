@@ -9,11 +9,7 @@
       "Components": [
         {
           "__type": "LethalGameManager",
-          "Ship": {
-            "_type": "component",
-            "go": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
-            "component_type": "ShipComponent"
-          }
+          "Id": "68273751-051a-4110-a7db-d86bf9598648"
         }
       ]
     },
@@ -25,7 +21,8 @@
       "NetworkMode": 1,
       "Components": [
         {
-          "__type": "MoonTimerComponent"
+          "__type": "MoonTimerComponent",
+          "Id": "efec3eb2-6871-4d03-9102-029308265ebb"
         }
       ]
     },
@@ -38,6 +35,7 @@
       "Components": [
         {
           "__type": "MyNetworkHelperComponent",
+          "Id": "7d04b63a-693e-4ca0-bc1c-c181cd9a913b",
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
@@ -65,6 +63,7 @@
       "Components": [
         {
           "__type": "SkyBox2D",
+          "Id": "e123ddb2-982c-4e89-a48c-3ebf2d73c9fc",
           "SkyMaterial": "materials/skybox/light_test_dark.vmat",
           "Tint": "1,1,1,1"
         }
@@ -81,6 +80,7 @@
       "Components": [
         {
           "__type": "DirectionalLight",
+          "Id": "532b2b5a-2251-4a8c-abb3-552e698f3710",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "2.74119,2.93961,3,1",
@@ -108,7 +108,7 @@
     {
       "Id": "f5ff6f9d-9b31-4391-86ec-0ceeae11f0fe",
       "Name": "scrap_cube",
-      "Position": "1.262939,-3299.558,1536.553",
+      "Position": "1.262207,-3299.558,1629.093",
       "Rotation": "0,0,0.2556595,0.9667668",
       "Tags": "item",
       "Enabled": true,
@@ -139,6 +139,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-13T02:43:30.4641433\u002B01:00",
+  "LastSaved": "2024-03-13T19:38:41.2126283\u002B01:00",
   "__references": []
 }

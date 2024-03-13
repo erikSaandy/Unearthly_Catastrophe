@@ -84,9 +84,10 @@ public class LandMine : Component, Component.ITriggerListener
 	{
 		await Task.DelayRealtimeSeconds( 0.5f );
 
-		foreach(Guid id in LethalGameManager.Instance.ConnectedPlayers)
+		List<Player> connections = LethalGameManager.Instance.ConnectedPlayers.ToList();
+
+		foreach ( Player player in connections )
 		{
-			GameObject player = Scene.Directory.FindByGuid( id );
 			float dst = Vector3.DistanceBetween( player.Transform.Position, Transform.Position );
 			if(dst < BlastRadius)
 			{

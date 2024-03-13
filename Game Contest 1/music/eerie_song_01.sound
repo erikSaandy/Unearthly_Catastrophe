@@ -1,0 +1,15 @@
+{
+  "UI": false,
+  "Volume": "0.20,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 70,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "music/eerie_song_01.vsnd"
+  ],
+  "Occlusion": false,
+  "Reflections": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": false,
+  "__references": []
+}

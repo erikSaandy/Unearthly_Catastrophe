@@ -23,6 +23,7 @@ public static class DungeonGenerator
 
 		try
 		{
+
 			MonsterSpawners = new();
 			SpawnedRooms = new List<RoomSetup>();
 
@@ -30,7 +31,7 @@ public static class DungeonGenerator
 			Biome biome = DungeonResource.RandomBiome;
 
 			RoomSetup entrance = new RoomSetup( biome.RandomEntrance );
-			if(entrance.Data == null) { Log.Error( "Could not load prefab " + entrance.Prefab ); }
+			if ( entrance.Data == null ) { Log.Error( "Could not load prefab " + entrance.Prefab ); }
 
 			entrance.GameObject.Transform.Position = DUNGEON_ORIGIN;
 			entrance.InitiateBounds();
@@ -38,17 +39,12 @@ public static class DungeonGenerator
 			entrance.GameObject.Name = "1 (entrance)";
 			entrance.GameObject.SetParent( LethalGameManager.Instance.CurrentMoon.GameObject );
 			entrance.GameObject.NetworkSpawn();
-
 			SpawnedRooms.Add( entrance );
 
-			//await Task.Delay(5);
-
 			bool finished = false;
-
-			//CreateRoomConnection( ref entrance, InitialDepth );
 			SearchRooms( ref entrance, ref biome, ref finished, MainIterations, 0 );
 
-			while(!finished )
+			while ( !finished )
 			{
 				await Task.Yield();
 			}
@@ -61,8 +57,6 @@ public static class DungeonGenerator
 			Log.Info( "[Spawning monsters...]" );
 			Log.Info( "monsterspawner count: " + MonsterSpawners.Count );
 			MonsterManager.SpawnMonsters( MonsterSpawners );
-
-			await Task.Delay( 1000 );
 
 		}
 		catch(Exception e)

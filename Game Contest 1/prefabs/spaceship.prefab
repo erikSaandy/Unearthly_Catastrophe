@@ -8,47 +8,56 @@
     "Components": [
       {
         "__type": "ShipComponent",
+        "Id": "745357ff-3421-4c22-ab08-d0831ab17184",
         "Doors": {
           "_type": "component",
-          "go": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
-          "component_type": "ShipDoorComponent"
+          "component_id": "bd33f97f-11ea-4257-978a-aacc3ff7dc10",
+          "go": "00000000-0000-0000-0000-000000000000",
+          "component_type": null
         },
         "Lever": {
           "_type": "component",
-          "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
-          "component_type": "LeverComponent"
+          "component_id": "c0f92653-be94-4310-8dbb-a06e3a633b62",
+          "go": "00000000-0000-0000-0000-000000000000",
+          "component_type": null
         },
         "Thrusters": [
           {
             "_type": "component",
-            "go": "54621fa4-a400-4b14-b883-9967126b38e8",
-            "component_type": "SoundPointComponent"
+            "component_id": "8dbb5b42-e1ba-402d-9997-d297f1c638fc",
+            "go": "00000000-0000-0000-0000-000000000000",
+            "component_type": null
           },
           {
             "_type": "component",
-            "go": "1ec508fe-de05-4f12-a8a5-8ead2ce52d30",
-            "component_type": "SoundPointComponent"
+            "component_id": "c79abb2d-6b50-4010-a54e-f4965f6f17c6",
+            "go": "00000000-0000-0000-0000-000000000000",
+            "component_type": null
           },
           {
             "_type": "component",
-            "go": "abf889a1-b80d-49b0-804b-e8b69059fef2",
-            "component_type": "SoundPointComponent"
+            "component_id": "e79cba1c-8b0f-4e65-9c29-c524143b0b75",
+            "go": "00000000-0000-0000-0000-000000000000",
+            "component_type": null
           },
           {
             "_type": "component",
-            "go": "83807d82-7622-4e7e-80a9-5195a089ce84",
-            "component_type": "SoundPointComponent"
+            "component_id": "30bec27e-98bc-44bb-b34c-d3fe64bcaafb",
+            "go": "00000000-0000-0000-0000-000000000000",
+            "component_type": null
           }
         ],
         "ThrusterVolume": 0.4,
         "Transporter": {
           "_type": "component",
-          "go": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
-          "component_type": "PassengerTransporter"
+          "component_id": "2bcc15f6-855e-4f6b-9b4f-5da549536f73",
+          "go": "00000000-0000-0000-0000-000000000000",
+          "component_type": null
         }
       },
       {
         "__type": "ModelRenderer",
+        "Id": "106434a8-a1cb-4049-bd31-36f7e6bc98da",
         "BodyGroups": 18446744073709551615,
         "Model": "models/spaceship/spaceship.vmdl",
         "RenderType": "On",
@@ -56,12 +65,14 @@
       },
       {
         "__type": "ModelCollider",
+        "Id": "9f335251-24fa-4991-b79e-02d595f81344",
         "IsTrigger": false,
         "Model": "models/spaceship/spaceship.vmdl",
         "Static": false
       },
       {
         "__type": "CharacterController",
+        "Id": "82e9fcee-f7a1-420c-8adb-284fa0559867",
         "Acceleration": 10,
         "Bounciness": 0.3,
         "GroundAngle": 45,
@@ -75,19 +86,21 @@
       {
         "Id": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
         "Name": "Passenger Transporter",
-        "Position": "0,0,-16.24386",
+        "Position": "0,-44.04869,-16.24386",
         "Enabled": true,
         "NetworkMode": 1,
         "Components": [
           {
             "__type": "PassengerTransporter",
+            "Id": "2bcc15f6-855e-4f6b-9b4f-5da549536f73",
             "Passengers": []
           },
           {
             "__type": "BoxCollider",
+            "Id": "f339d0ba-a879-475e-85c8-b2d81980fa6e",
             "Center": "0,0,100",
             "IsTrigger": true,
-            "Scale": "500,800,200",
+            "Scale": "500,900,256",
             "Static": false
           }
         ]
@@ -102,6 +115,7 @@
         "Components": [
           {
             "__type": "BoxCollider",
+            "Id": "6fad0aa2-81c4-410a-93f6-6fb9a2a56d6f",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
@@ -119,10 +133,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "abff1366-50d5-493b-856e-238cb5b1917a",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/fluorescent_ceiling_light01/fluorescent_ceiling_light01.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/fluorescent_ceiling_light01/fluorescent_ceiling_light01.vmdl"
           }
         ],
         "Children": [
@@ -137,6 +151,7 @@
             "Components": [
               {
                 "__type": "PointLight",
+                "Id": "d02dd2f6-3b99-4170-b346-0e1daaffbf20",
                 "Attenuation": 1.29,
                 "FogMode": "Enabled",
                 "FogStrength": 1,
@@ -158,10 +173,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "949333da-0765-4cc5-9ecf-da16f96f8a61",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/industrial_lights01/industrial_light02b.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/industrial_lights01/industrial_light02b.vmdl"
           }
         ],
         "Children": [
@@ -175,6 +190,7 @@
             "Components": [
               {
                 "__type": "PointLight",
+                "Id": "13bfd826-d4d5-444f-9dfb-28f832436986",
                 "Attenuation": 1.45,
                 "FogMode": "Enabled",
                 "FogStrength": 1,
@@ -196,10 +212,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "69b6035b-9d57-48ef-ab59-71b922af6d26",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/industrial_lights01/industrial_light02b.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/industrial_lights01/industrial_light02b.vmdl"
           }
         ],
         "Children": [
@@ -213,6 +229,7 @@
             "Components": [
               {
                 "__type": "PointLight",
+                "Id": "9d5462cb-f92f-4ee6-8ad3-ce788d519f41",
                 "Attenuation": 1.45,
                 "FogMode": "Enabled",
                 "FogStrength": 1,
@@ -233,6 +250,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "69675c58-b95f-4566-8b2f-173015ee7507",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -246,6 +264,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "3fa71975-8db0-4876-ae97-ebed2766e952",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -259,6 +278,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "9976238a-9e41-4697-a448-0ab0705d954c",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -272,6 +292,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "a09e267b-93e5-4b3b-97e0-089277e717b1",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -286,6 +307,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "218b123f-fd2f-44b8-8089-3964e2bd4c21",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -300,6 +322,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "953cf2fd-152a-4ee7-8a27-a46b0f7759c9",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -314,6 +337,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "d706d81c-446d-47c6-bec1-0daf48f5e2e0",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -328,6 +352,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "166b256f-b4ec-4375-9c22-261af083f742",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -341,6 +366,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "2a4b69e3-618c-4b00-8b03-8dc8f2e5a99a",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -355,6 +381,7 @@
         "Components": [
           {
             "__type": "SpawnPoint",
+            "Id": "76ce9543-9111-428f-a4cb-bee0f3470966",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
@@ -427,6 +454,7 @@
         "Components": [
           {
             "__type": "EnvmapProbe",
+            "Id": "1912ad2e-6762-4ab2-a1ae-c94fc95753a1",
             "Bounds": {
               "Mins": "-212,-140,-190",
               "Maxs": "212,280,300"
@@ -447,6 +475,7 @@
         "Components": [
           {
             "__type": "EnvmapProbe",
+            "Id": "04198d4b-9c55-448e-bd73-cedf2f078620",
             "Bounds": {
               "Mins": "-256,-250,-190",
               "Maxs": "256,221.3001,185"
@@ -468,10 +497,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "7f6899da-378b-4172-9773-b5bb5160d3e9",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/ship_lever/ship_lever_body.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/ship_lever/ship_lever_body.vmdl"
           }
         ],
         "Children": [
@@ -483,19 +512,8 @@
             "NetworkMode": 1,
             "Components": [
               {
-                "__type": "LeverComponent",
-                "ActivatedAngle": 65,
-                "DeactivatedAngle": 0,
-                "IsLocked": true,
-                "PullSound": "sounds/lever_pull.sound",
-                "RotationalAxis": "0,0,1",
-                "Speed": 2,
-                "StartActivated": false,
-                "ToolTip": "Lift Off",
-                "ToolTipDeactivated": "Land on Moon"
-              },
-              {
                 "__type": "ModelRenderer",
+                "Id": "612f3b8c-701a-4219-be47-1d84a8704e49",
                 "BodyGroups": 18446744073709551615,
                 "Model": "models/ship_lever/ship_lever.vmdl",
                 "RenderType": "On",
@@ -503,10 +521,24 @@
               },
               {
                 "__type": "BoxCollider",
+                "Id": "1b80339d-bd1a-4467-a1a7-b2f79cce48f7",
                 "Center": "0,0,6",
                 "IsTrigger": false,
                 "Scale": "6,6,14",
                 "Static": false
+              },
+              {
+                "__type": "LeverComponent",
+                "Id": "c0f92653-be94-4310-8dbb-a06e3a633b62",
+                "ActivatedAngle": 90,
+                "DeactivatedAngle": 1,
+                "IsLocked": false,
+                "PullSound": "sounds/lever_pull.sound",
+                "RotationalAxis": "0,0,1",
+                "Speed": 1,
+                "StartActivated": false,
+                "ToolTip": "",
+                "ToolTipDeactivated": ""
               }
             ]
           }
@@ -523,10 +555,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "7f851eec-1e3b-487f-a955-eb5c395aa3f6",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/screen/screen.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/screen/screen.vmdl"
           }
         ]
       },
@@ -540,10 +572,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "d632f2cd-cd8f-4f90-aef1-65c6ff49906c",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/screen/screen.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/screen/screen.vmdl"
           }
         ]
       },
@@ -558,10 +590,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "d8388623-4479-4df6-b2aa-1963a39e565b",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/screen/screen.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/screen/screen.vmdl"
           }
         ],
         "Children": [
@@ -585,6 +617,7 @@
                 "Components": [
                   {
                     "__type": "TextRenderer",
+                    "Id": "811dce50-c939-4d23-88a3-98985da3c11a",
                     "Color": "1,1,1,1",
                     "FontFamily": "Poppins",
                     "FontSize": 19.89,
@@ -604,6 +637,7 @@
                 "Components": [
                   {
                     "__type": "TextRenderer",
+                    "Id": "9cfc112d-cc25-491c-9f8f-d73d6b600840",
                     "Color": "1,1,1,1",
                     "FontFamily": "Poppins",
                     "FontSize": 19.89,
@@ -626,10 +660,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "057343b0-05f7-4d7f-9db3-a378baa2ea72",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/screen/screen.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/screen/screen.vmdl"
           }
         ],
         "Children": [
@@ -643,6 +677,7 @@
             "Components": [
               {
                 "__type": "WorldPanel",
+                "Id": "2b436495-7eb8-469e-ac73-8273f4509362",
                 "HorizontalAlign": "Center",
                 "LookAtCamera": false,
                 "PanelSize": "750,750",
@@ -650,7 +685,8 @@
                 "VerticalAlign": "Center"
               },
               {
-                "__type": "BalanceHud"
+                "__type": "BalanceHud",
+                "Id": "0ea7ede2-ccf0-4555-a174-2d80b9bee575"
               }
             ]
           }
@@ -666,10 +702,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "3fe5cf3a-f4f7-4d7e-8392-c996bf003c96",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/ship_table/ship_table.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/ship_table/ship_table.vmdl"
           }
         ]
       },
@@ -683,10 +719,10 @@
         "Components": [
           {
             "__type": "Prop",
+            "Id": "17a7e320-044f-456d-a064-76d6bb525bf4",
             "Health": 0,
             "IsStatic": true,
-            "Model": "models/buttons_onoff/buttons_onoff.vmdl",
-            "ShowCreatedComponents": false
+            "Model": "models/buttons_onoff/buttons_onoff.vmdl"
           }
         ],
         "Children": [
@@ -699,6 +735,7 @@
             "Components": [
               {
                 "__type": "BoxCollider",
+                "Id": "41dbb226-9eaa-4c45-9887-1dcff67560ff",
                 "Center": "0,0,0",
                 "IsTrigger": false,
                 "Scale": "2,2,2",
@@ -706,6 +743,7 @@
               },
               {
                 "__type": "InteractionProxy",
+                "Id": "749bb48d-b619-4dd5-a2d7-5cd64c91a0a4",
                 "BlockInteractions": false,
                 "InteractionTime": 0.2,
                 "ToolTip": "Open Door"
@@ -721,6 +759,7 @@
             "Components": [
               {
                 "__type": "BoxCollider",
+                "Id": "b3392a19-48de-47b1-bba9-36f2ef093bf1",
                 "Center": "0,0,0",
                 "IsTrigger": false,
                 "Scale": "2,2,2",
@@ -728,6 +767,7 @@
               },
               {
                 "__type": "InteractionProxy",
+                "Id": "c1915250-cc29-455c-8520-573049f7e065",
                 "BlockInteractions": false,
                 "InteractionTime": 0.2,
                 "ToolTip": "Close Door"
@@ -745,6 +785,7 @@
             "Components": [
               {
                 "__type": "ModelRenderer",
+                "Id": "3580a583-5ed2-4ccd-b20c-0eb67d239434",
                 "BodyGroups": 18446744073709551615,
                 "MaterialOverride": "materials/cable/cable.vmat",
                 "Model": "models/citizen_props/broom01/broom01gib02_lod01.vmdl",
@@ -764,15 +805,18 @@
         "Components": [
           {
             "__type": "ShipDoorComponent",
+            "Id": "bd33f97f-11ea-4257-978a-aacc3ff7dc10",
             "ButtonOff": {
               "_type": "component",
-              "go": "f6049128-dda9-4205-a691-33d554636011",
-              "component_type": "InteractionProxy"
+              "component_id": "c1915250-cc29-455c-8520-573049f7e065",
+              "go": "00000000-0000-0000-0000-000000000000",
+              "component_type": null
             },
             "ButtonOn": {
               "_type": "component",
-              "go": "c4cc9fa2-0002-4273-a52e-32851bad92ee",
-              "component_type": "InteractionProxy"
+              "component_id": "749bb48d-b619-4dd5-a2d7-5cd64c91a0a4",
+              "go": "00000000-0000-0000-0000-000000000000",
+              "component_type": null
             },
             "CloseCurve": [
               {},
@@ -830,10 +874,10 @@
             "Components": [
               {
                 "__type": "Prop",
+                "Id": "6825c9ac-e12e-4747-aff0-0db58bb5816f",
                 "Health": 0,
                 "IsStatic": true,
-                "Model": "models/ship_doors/ship-door_right.vmdl",
-                "ShowCreatedComponents": false
+                "Model": "models/ship_doors/ship-door_right.vmdl"
               }
             ]
           },
@@ -846,10 +890,10 @@
             "Components": [
               {
                 "__type": "Prop",
+                "Id": "8041a321-4e14-40c4-849c-5f0370057d8c",
                 "Health": 0,
                 "IsStatic": true,
-                "Model": "models/ship_doors/ship-door_left.vmdl",
-                "ShowCreatedComponents": false
+                "Model": "models/ship_doors/ship-door_left.vmdl"
               }
             ]
           }
@@ -866,6 +910,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
+            "Id": "9e5c0e5c-7157-49a1-ba8e-489dcbff3264",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "bumpy_ride",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -877,7 +922,7 @@
       {
         "Id": "ae19e850-c96c-460f-b668-09d5bbff95a8",
         "Name": "poster_01 (2)",
-        "Position": "-85.74065,176,79.51859",
+        "Position": "-85.74063,160,79.51861",
         "Rotation": "0,0.7071068,0,0.7071068",
         "Scale": "13,13,13",
         "Enabled": true,
@@ -885,6 +930,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
+            "Id": "1a7b3770-481e-43ed-97ef-74c20991aa47",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "default",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -896,7 +942,7 @@
       {
         "Id": "aee1d933-4e56-46e4-be6f-5bf2a3d07520",
         "Name": "poster_01 (3)",
-        "Position": "85.77602,176,79.51858",
+        "Position": "85.77602,160,79.51858",
         "Rotation": "-0.7071068,0.0000001376788,0.7071068,0.0000001376788",
         "Scale": "13,13,13",
         "Enabled": true,
@@ -904,6 +950,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
+            "Id": "37f5d028-d1b9-4710-9b35-f19f61d74768",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "default",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -923,6 +970,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
+            "Id": "5d3708c0-bc51-4b93-8d23-7335e81a128e",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "fort",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -947,11 +995,19 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
+                "Id": "8dbb5b42-e1ba-402d-9997-d297f1c638fc",
+                "DistanceAttenuation": false,
+                "DistanceAttenuationOverride": false,
                 "Force2d": false,
                 "MaxRepeatTime": 0.2,
                 "MinRepeatTime": 0.2,
+                "Occlusion": false,
+                "OcclusionOverride": false,
+                "OcclusionRadius": 32,
                 "Pitch": 1,
                 "PlayOnStart": false,
+                "ReflectionOverride": false,
+                "Reflections": false,
                 "Repeat": false,
                 "SoundEvent": "sounds/ship_thrusters.sound",
                 "SoundOverride": true,
@@ -969,11 +1025,19 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
+                "Id": "c79abb2d-6b50-4010-a54e-f4965f6f17c6",
+                "DistanceAttenuation": false,
+                "DistanceAttenuationOverride": false,
                 "Force2d": false,
                 "MaxRepeatTime": 0.2,
                 "MinRepeatTime": 0.2,
+                "Occlusion": false,
+                "OcclusionOverride": false,
+                "OcclusionRadius": 32,
                 "Pitch": 1,
                 "PlayOnStart": false,
+                "ReflectionOverride": false,
+                "Reflections": false,
                 "Repeat": false,
                 "SoundEvent": "sounds/ship_thrusters.sound",
                 "SoundOverride": true,
@@ -991,11 +1055,19 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
+                "Id": "e79cba1c-8b0f-4e65-9c29-c524143b0b75",
+                "DistanceAttenuation": false,
+                "DistanceAttenuationOverride": false,
                 "Force2d": false,
                 "MaxRepeatTime": 0.2,
                 "MinRepeatTime": 0.2,
+                "Occlusion": false,
+                "OcclusionOverride": false,
+                "OcclusionRadius": 32,
                 "Pitch": 1,
                 "PlayOnStart": false,
+                "ReflectionOverride": false,
+                "Reflections": false,
                 "Repeat": false,
                 "SoundEvent": "sounds/ship_thrusters.sound",
                 "SoundOverride": true,
@@ -1013,11 +1085,19 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
+                "Id": "30bec27e-98bc-44bb-b34c-d3fe64bcaafb",
+                "DistanceAttenuation": false,
+                "DistanceAttenuationOverride": false,
                 "Force2d": false,
                 "MaxRepeatTime": 0.2,
                 "MinRepeatTime": 0.2,
+                "Occlusion": false,
+                "OcclusionOverride": false,
+                "OcclusionRadius": 32,
                 "Pitch": 1,
                 "PlayOnStart": false,
+                "ReflectionOverride": false,
+                "Reflections": false,
                 "Repeat": false,
                 "SoundEvent": "sounds/ship_thrusters.sound",
                 "SoundOverride": true,

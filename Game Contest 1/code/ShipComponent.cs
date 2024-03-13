@@ -3,7 +3,6 @@ using Sandbox;
 using System.Diagnostics;
 using System.Numerics;
 using System.Threading.Tasks;
-using static Sandbox.PhysicsContact;
 
 public sealed class ShipComponent : Component
 {
@@ -43,23 +42,18 @@ public sealed class ShipComponent : Component
 	[Category( "Sounds" )][Property] List<SoundPointComponent> Thrusters { get; set; }
 	[Property][Range(0, 1)] float ThrusterVolume { get; set; } = 0.4f;
 
-	protected override void OnAwake()	
+	protected override void OnStart()	
 	{
 		base.OnAwake();
 
 		GameObject.BreakFromPrefab();
 
 		Controller = GameObject.Components.Get<CharacterController>();
-		//OnMoveShip += Transporter.MovePassengers;
-
-		Lever.IsLocked = true;
-		Lever.OnActivate = null;
-		Lever.OnDeactivate = null;
-		Lever.OnActivate += LethalGameManager.Instance.LoadSelectedMoon;
-		Lever.OnDeactivate += LethalGameManager.Instance.LeaveCurrentMoon;
-
 		TargetPosition = SPACE_POSITION;
 
+		//Lever.IsLocked = true;
+		Lever.OnActivate += LethalGameManager.Instance.LoadSelectedMoon;
+		Lever.OnDeactivate += LethalGameManager.Instance.LeaveCurrentMoon;
 
 	}
 
@@ -69,8 +63,6 @@ public sealed class ShipComponent : Component
 
 		Lever.OnActivate -= LethalGameManager.Instance.LoadSelectedMoon;
 		Lever.OnDeactivate -= LethalGameManager.Instance.LeaveCurrentMoon;
-		Lever.OnActivate = null;
-		Lever.OnDeactivate = null;
 
 	}
 
@@ -182,7 +174,7 @@ public sealed class ShipComponent : Component
 
 	private void StartMovingTo(Vector3 pos)
 	{
-		Lever.IsLocked = true;
+		//Lever.IsLocked = true;
 		IsMoving = true;
 		TargetPosition = pos;
 		StartThrusters();
@@ -193,7 +185,7 @@ public sealed class ShipComponent : Component
 		Speed = 0;
 		Controller.Velocity = 0;
 		IsMoving = false;
-		Lever.IsLocked = false;
+		//Lever.IsLocked = false;
 		CurrentMovementState = MovementState.Docked;
 		Transform.Position = TargetPosition;
 		StopThrusters();

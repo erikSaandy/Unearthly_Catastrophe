@@ -1,0 +1,11 @@
+{
+  "MasterVolume": "0.15,1.00,0",
+  "LoopedSounds": [
+    {
+      "SoundFile": "music/eerie_song_01.vsnd",
+      "Volume": "0.50,1.00,0"
+    }
+  ],
+  "StingSounds": [],
+  "__references": []
+}
