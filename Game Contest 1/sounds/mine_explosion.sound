@@ -1,13 +1,11 @@
 {
   "UI": false,
-  "Volume": "0.60,1.00,0",
-  "Pitch": "0.85,1.20,1",
-  "Decibels": 200,
+  "Volume": "1.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/keyboard_click01.vsnd",
-    "sounds/keyboard_click02.vsnd",
-    "sounds/keyboard_click03.vsnd"
+    "sounds/mine_explosion.vsnd"
   ],
   "Occlusion": true,
   "Reflections": true,

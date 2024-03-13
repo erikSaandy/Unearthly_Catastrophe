@@ -10,7 +10,6 @@ public class TerminalCommandNextPage : TerminalCommand
 	public override void Run( TerminalComponent Terminal, params string[] parts )
 	{
 		Terminal.GoToNextPage();
-		Log.Info( "ey" );
 	}
 
 }

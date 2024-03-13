@@ -1,31 +1,64 @@
 {
   "RootObject": {
-    "Id": "2def67de-bd4a-4d67-a6db-8bf45580e714",
-    "Name": "Land Mine",
-    "Position": "1.301458,-3164.136,1502.321",
-    "Networked": true,
+    "__guid": "2def67de-bd4a-4d67-a6db-8bf45580e714",
+    "Name": "landmine",
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "LandMine",
-        "BlastRadius": 96,
-        "ModelRensderer": null
+        "__guid": "7ce147f7-8764-4bd2-803b-b8a687eecfc8",
+        "BeepingSound": "sounds/mine_beeping_fast.sound",
+        "BlastRadius": 108,
+        "ExplosionParticle": {
+          "_type": "component",
+          "component_id": "c37bd8af-03cb-41d5-8686-209bc366f83f",
+          "go": "1318d6bc-7e7d-49bc-9242-ace36bc26ca4",
+          "component_type": "LegacyParticleSystem"
+        },
+        "ExplosionSound": "sounds/mine_explosion.sound",
+        "Renderer": {
+          "_type": "component",
+          "component_id": "1d48eaf5-3587-4669-9a51-529139c4beb7",
+          "go": "2def67de-bd4a-4d67-a6db-8bf45580e714",
+          "component_type": "ModelRenderer"
+        },
+        "TriggeredSound": "sounds/button_pressed_01.sound"
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "1d48eaf5-3587-4669-9a51-529139c4beb7",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "models/landmine/landmine.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelCollider",
+        "__guid": "5194d400-62fd-499d-b8c3-21dc3ab4a1f2",
         "IsTrigger": true,
         "Model": "models/landmine/landmine.vmdl",
-        "Static": false,
-        "Surface": null
+        "Static": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "1318d6bc-7e7d-49bc-9242-ace36bc26ca4",
+        "Name": "Particle",
+        "Tags": "particles",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "LegacyParticleSystem",
+            "__guid": "c37bd8af-03cb-41d5-8686-209bc366f83f",
+            "__enabled": false,
+            "ControlPoints": [],
+            "Looped": false,
+            "Particles": "particles/explosion/barrel_explosion/explosion_barrel.vpcf",
+            "PlaybackSpeed": 0.61
+          }
+        ]
       }
     ]
   },

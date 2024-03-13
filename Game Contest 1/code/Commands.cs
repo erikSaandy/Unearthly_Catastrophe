@@ -28,10 +28,9 @@ public static class Commands
 	private static void KillSelf()
 	{
 		//Log.Info( LethalGameManager.Instance.ConnectedPlayers.Count );
-		Log.Info( LethalGameManager.Instance.ConnectedPlayers.Count() );
+
 		foreach ( Player player in LethalGameManager.Instance.AlivePlayers )
 		{
-
 
 			if ( player.IsProxy ) { continue; }
 

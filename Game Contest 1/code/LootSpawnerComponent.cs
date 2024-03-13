@@ -27,7 +27,7 @@ public sealed class LootSpawnerComponent : Component
 		if ( !ResourceLibrary.TryGet<PrefabFile>( prefabPath, out pf ) ) { return false; }
 		GameObject lootObj = SceneUtility.GetPrefabScene( pf ).Clone();
 		lootObj.BreakFromPrefab();
-		Carriable carriable = lootObj.Components.Get<Carriable>();
+		Item item = lootObj.Components.Get<Item>();
 
 		// Try to place item five times.
 		for (int i = 0; i < 5; i++ )
@@ -38,7 +38,7 @@ public sealed class LootSpawnerComponent : Component
 			float dst = LethalGameManager.Random.Next( 0, 100 ) * 0.01f * Radius;
 			lootObj.Transform.Position = Transform.Position + Offset + (dir * dst);
 
-			SceneTraceResult trace = carriable.DropToGround();
+			SceneTraceResult trace = item.DropToGround();
 
 			float dot = Vector3.Dot( trace.Normal, Vector3.Up );
 
@@ -46,8 +46,8 @@ public sealed class LootSpawnerComponent : Component
 			if ( !trace.StartedSolid && trace.Hit && dot > 0.7f )
 			{
 				//Log.Info( "placed scrap on ground." );
-				carriable.GameObject.Transform.Rotation = Angles.Zero.WithYaw( LethalGameManager.Random.Next( 0, 360 ) );
-				carriable.GameObject.NetworkSpawn();
+				item.GameObject.Transform.Rotation = Angles.Zero.WithYaw( LethalGameManager.Random.Next( 0, 360 ) );
+				item.GameObject.NetworkSpawn();
 				return true;
 			}
 
@@ -57,7 +57,7 @@ public sealed class LootSpawnerComponent : Component
 		// Scrap was unable to be placed on ground.
 
 		//Log.Info( ">> destroy scrap :(" );
-		carriable.GameObject.Destroy();
+		item.GameObject.Destroy();
 
 
 		return true;

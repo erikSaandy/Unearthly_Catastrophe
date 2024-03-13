@@ -1,14 +1,6 @@
 ﻿using Sandbox.Citizen;
-using Sandbox.UI;
-using Sandbox.UI.Tests;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Numerics;
-using static Sandbox.Clothing;
 
-
-public abstract class Carriable : Component, ICarriable
+public abstract class Carriable : Item, IInteractable
 {
 	public bool IsInteractableBy( Player player ) { return true; }
 
@@ -136,7 +128,7 @@ public abstract class Carriable : Component, ICarriable
 
 	}
 
-	public virtual SceneTraceResult DropToGround()
+	public override SceneTraceResult DropToGround()
 	{
 
 		SceneTraceResult trace = Scene.Trace.Sphere( (Renderer.Bounds.Size.z * 0.4f), Transform.Position, Transform.Position + Vector3.Down * 512 )

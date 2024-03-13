@@ -2,19 +2,19 @@
   "Id": "013b260d-f514-4f35-93e0-30dfd90376ef",
   "GameObjects": [
     {
-      "Id": "f9522c0b-1fd0-4d9b-a34e-cc434b07d046",
+      "__guid": "f9522c0b-1fd0-4d9b-a34e-cc434b07d046",
       "Name": "GameManager",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
         {
           "__type": "LethalGameManager",
-          "Id": "68273751-051a-4110-a7db-d86bf9598648"
+          "__guid": "68273751-051a-4110-a7db-d86bf9598648"
         }
       ]
     },
     {
-      "Id": "874bf5a5-0e56-4dbb-b268-f8e861eb3b64",
+      "__guid": "874bf5a5-0e56-4dbb-b268-f8e861eb3b64",
       "Name": "Moon Timer",
       "Position": "164.4927,159.9231,-115.3871",
       "Enabled": true,
@@ -22,12 +22,12 @@
       "Components": [
         {
           "__type": "MoonTimerComponent",
-          "Id": "efec3eb2-6871-4d03-9102-029308265ebb"
+          "__guid": "efec3eb2-6871-4d03-9102-029308265ebb"
         }
       ]
     },
     {
-      "Id": "a54a2201-4b3b-4cf9-82d0-a758293cee65",
+      "__guid": "a54a2201-4b3b-4cf9-82d0-a758293cee65",
       "Name": "Network Helper",
       "Position": "0,0,171.1578",
       "Enabled": true,
@@ -35,7 +35,7 @@
       "Components": [
         {
           "__type": "MyNetworkHelperComponent",
-          "Id": "7d04b63a-693e-4ca0-bc1c-c181cd9a913b",
+          "__guid": "7d04b63a-693e-4ca0-bc1c-c181cd9a913b",
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
+      "__guid": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
       "Name": "spaceship",
       "Position": "0,-3000,1500",
       "Tags": "spaceship",
@@ -55,7 +55,7 @@
       "__Prefab": "prefabs/spaceship.prefab"
     },
     {
-      "Id": "cc7eb07a-6751-46e1-9b4a-ab745a6e57e1",
+      "__guid": "cc7eb07a-6751-46e1-9b4a-ab745a6e57e1",
       "Name": "Skybox",
       "Tags": "skybox",
       "Enabled": true,
@@ -63,14 +63,14 @@
       "Components": [
         {
           "__type": "SkyBox2D",
-          "Id": "e123ddb2-982c-4e89-a48c-3ebf2d73c9fc",
+          "__guid": "e123ddb2-982c-4e89-a48c-3ebf2d73c9fc",
           "SkyMaterial": "materials/skybox/light_test_dark.vmat",
           "Tint": "1,1,1,1"
         }
       ]
     },
     {
-      "Id": "b797f93f-4060-492d-b0f7-5f43891491bd",
+      "__guid": "b797f93f-4060-492d-b0f7-5f43891491bd",
       "Name": "Sun",
       "Position": "-756.9304,-30.22823,448",
       "Rotation": "-0.01001749,0.3825523,0.02418435,0.9235629",
@@ -80,7 +80,7 @@
       "Components": [
         {
           "__type": "DirectionalLight",
-          "Id": "532b2b5a-2251-4a8c-abb3-552e698f3710",
+          "__guid": "532b2b5a-2251-4a8c-abb3-552e698f3710",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "2.74119,2.93961,3,1",
@@ -90,25 +90,19 @@
       ]
     },
     {
-      "Id": "2def67de-bd4a-4d67-a6db-8bf45580e714",
-      "Name": "Land Mine",
-      "Position": "1.301458,-3164.136,1499.9",
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/items/landmine.prefab"
-    },
-    {
-      "Id": "c79b62c6-097b-4698-82ec-fd63eee0c6dc",
+      "__guid": "c79b62c6-097b-4698-82ec-fd63eee0c6dc",
       "Name": "Soda Can",
-      "Position": "-17.23794,-3304.986,1537.553",
+      "Position": "-17.96405,-3303.372,1537.553",
+      "Rotation": "0,0,0.7071067,0.7071068",
       "Tags": "item",
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "prefabs/scraps/scrap_soda_can.prefab"
     },
     {
-      "Id": "f5ff6f9d-9b31-4391-86ec-0ceeae11f0fe",
+      "__guid": "f5ff6f9d-9b31-4391-86ec-0ceeae11f0fe",
       "Name": "scrap_cube",
-      "Position": "1.262207,-3299.558,1629.093",
+      "Position": "1.260742,-3299.559,1537.859",
       "Rotation": "0,0,0.2556595,0.9667668",
       "Tags": "item",
       "Enabled": true,
@@ -139,6 +133,6 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-13T19:38:41.2126283\u002B01:00",
+  "LastSaved": "2024-03-13T22:48:22.4672927\u002B01:00",
   "__references": []
 }

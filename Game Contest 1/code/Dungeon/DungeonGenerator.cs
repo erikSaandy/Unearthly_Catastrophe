@@ -191,11 +191,11 @@ public static class DungeonGenerator
 			{
 				//Log.Info( "found loot spawner" );
 
-				int spawnCount = LethalGameManager.Random.Next( 0, room.Data.LootSpawner.MaxItemCount + 1 );
+				int spawnCount = LethalGameManager.Random.Next( 0, room.Data.LootSpawner.MaxItemCount + 2 );
 
 				for(int i = 0; i < spawnCount; i++ )
 				{
-					if( room.Data.LootSpawner.TrySpawnItem( ScrapManager.RandomScrap ) )
+					if( room.Data.LootSpawner.TrySpawnItem( DungeonItemManager.RandomScrap ) )
 					{
 						totalScrapCount++;
 					}

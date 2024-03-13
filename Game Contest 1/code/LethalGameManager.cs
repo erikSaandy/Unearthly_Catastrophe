@@ -1,4 +1,5 @@
 using Dungeon;
+using Sandbox.UI;
 using System;
 
 public class LethalGameManager : Component
@@ -9,6 +10,7 @@ public class LethalGameManager : Component
 	public IEnumerable<Player> DeadPlayers => ConnectedPlayers.Where( x => x.LifeState == LifeState.Dead );
 
 	public static Player GetPlayer( int i ) { return Instance.ConnectedPlayers.ElementAt( i ); }
+
 
 	public static int GetNextPlayerIdAlive(int startId)
 	{
@@ -39,12 +41,11 @@ public class LethalGameManager : Component
 	{
 		if ( IsProxy ) { return; }
 
-		Log.Info( "respawn all..." );
 		List<Player> deadPlayers = Instance.DeadPlayers.ToList();
 
 		foreach ( Player player in deadPlayers )
 		{
-			Log.Info( player.Network.OwnerConnection.DisplayName + " respawn..." );
+			Log.Info( "Respawning " + player.Network.OwnerConnection.DisplayName + "..." );
 			player.Respawn();
 		}
 	}
@@ -56,7 +57,7 @@ public class LethalGameManager : Component
 		foreach ( Player player in alivePlayers )
 		{
 			// alive player not on ship?
-			if( !Instance.Ship.Transporter.Passengers.Contains( player ) )
+			if( !Instance.Ship.Transporter.Passengers.Contains( player ) || Vector3.DistanceBetween(player.Transform.Position, Instance.Ship.Transform.Position) > 500 )
 			{
 				player.Kill();
 			}
@@ -74,7 +75,7 @@ public class LethalGameManager : Component
 		// All players are dead.
 		if( Instance.AlivePlayers.Count() <= 0 && Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
 		{
-			Log.Info( "all palyers dead, ship now leaving." );
+			Log.Info( "all palyers dead. ship now leaving." );
 
 			// Not on a moon.
 			if(CurrentMoonGuid == default)
@@ -85,14 +86,31 @@ public class LethalGameManager : Component
 			// On a moon.
 			else
 			{
-				LeaveCurrentMoonAsync(6);
+				LeaveCurrentMoonAsync(3);
+				OnNoobsLostGame();
 			}
 		}
+
+	}
+
+	[Broadcast] //[Authority] 
+	private void OnNoobsLostGame()
+	{
+		if ( IsProxy ) { return; }
+
+		List<Scrap> shipScrap = Instance.Ship.Components.GetAll<Scrap>( FindMode.InChildren ).ToList();
+		for(int i = 0; i < shipScrap.Count; i++ )
+		{
+			shipScrap[i]?.GameObject?.Destroy();
+		}
+
+		Balance = 100;
 
 	}
  
 	public static MoonDefinition[] MoonDefinitions { get; private set; }
 
+	[Sync] public int SelectedMoon { get; set; } = -1;
 	[Sync] public Guid CurrentMoonGuid { get; set; } = default;
 	public Moon CurrentMoon => (CurrentMoonGuid == default) ? null : Instance.Scene.Directory.FindByGuid( CurrentMoonGuid ).Components.Get<Moon>();
 
@@ -145,6 +163,7 @@ public class LethalGameManager : Component
 		GameObject.Network.TakeOwnership();
 
 		AddBalance( 100 );
+
 	}
 
 	[Broadcast]
@@ -167,7 +186,7 @@ public class LethalGameManager : Component
 	{
 		if ( Instance.GameObject.IsProxy ) { return; }
 
-		Instance.OnPlayerDeath(playerId);
+		Instance?.OnPlayerDeath(playerId);
 	}
 
 	protected override void OnStart()
@@ -175,7 +194,7 @@ public class LethalGameManager : Component
 
 		if (Instance.GameObject.IsProxy) { return; }
 
-		TerminalComponent.SelectMoon( 0 );
+		//TerminalComponent.SelectMoon( 0 );
 
 		//Log.Info( Instance == null );
 		 
@@ -218,7 +237,7 @@ public class LethalGameManager : Component
 		Ship.Land( CurrentMoon.LandingPad );
 
 		// Start timer
-		MoonTimerComponent.Instance.StartTimer( 400, delegate { LeaveCurrentMoon(); } );
+		MoonTimerComponent.Instance.StartTimer( 720, delegate { LeaveCurrentMoon(); } );
 	}
 
 
@@ -227,8 +246,8 @@ public class LethalGameManager : Component
 	{
 		if ( Instance.GameObject.IsProxy ) { return; }
 
-		Log.Info( "Selected moon: " + TerminalComponent.SelectedMoon );
-		Instance.LoadMoon( TerminalComponent.SelectedMoon );
+		Log.Info( "Selected moon: " + SelectedMoon );
+		Instance.LoadMoon( SelectedMoon );
 	}
 
 	[Broadcast(NetPermission.Anyone)]

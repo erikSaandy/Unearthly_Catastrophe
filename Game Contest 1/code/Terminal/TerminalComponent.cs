@@ -6,14 +6,14 @@ public sealed class TerminalComponent : Component
 {
 	public readonly TerminalCommand[] Commands = new TerminalCommand[]
 	{
-		new TerminalCommandExit("exit", "quit", "stop", "leave"),
+		new TerminalCommandExit("exit", "quit", "leave"),
 		new TerminalCommandHome("home", "back", "main"),
 		new TerminalCommandMoonList("moons"),
-		new TerminalCommandRoute("route"),
-		new TerminalCommandShop("shop"),
+		new TerminalCommandRoute("route", "goto"),
+		//new TerminalCommandShop("shop, store"),
 
-		new TerminalCommandConfirm("confirm"),
-		new TerminalCommandDeny("deny"),
+		new TerminalCommandConfirm("confirm", "yes"),
+		new TerminalCommandDeny("deny", "no"),
 
 		new TerminalCommandNextPage("next"),
 	};
@@ -39,8 +39,6 @@ public sealed class TerminalComponent : Component
 	[Property] public GameObject KeyboardCollider { get; set; }
 	[Property] public GameObject ScreenCollider { get; set; }
 
-	[Sync] public static int SelectedMoon { get; set; }
-
 	public string PageInfo => "[PAGE " + (PageNumber + 1) + "/" + PageCount + "]";
 
 	public List<string> TextLines { get; set; } = new();
@@ -58,8 +56,8 @@ public sealed class TerminalComponent : Component
 	[Broadcast]
 	public static void SelectMoon(int i)
 	{
-		TerminalComponent.SelectedMoon = i;
-		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.MoonDefinitions[SelectedMoon].ResourceName}";
+		LethalGameManager.Instance.SelectedMoon = i;
+		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.MoonDefinitions[LethalGameManager.Instance.SelectedMoon].ResourceName}";
 		//LethalGameManager.Instance.Ship.Lever.IsLocked = false;
 	}
 
@@ -77,8 +75,6 @@ public sealed class TerminalComponent : Component
 	protected override void OnAwake()
 	{
 		base.OnAwake();
-
-		SelectedMoon = -1;
 
 		Network.SetOwnerTransfer(OwnerTransfer.Takeover);
 

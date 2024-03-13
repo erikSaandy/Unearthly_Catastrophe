@@ -145,14 +145,13 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( LifeState == LifeState.Dead )
 			return;
 
+		// Controller.Punch( impulseForce * 10000 );
+
 		if ( IsProxy )
 			return;
 
 		TimeSinceDamaged = 0f;
 		Health = MathF.Max( Health - damage, 0f );
-
-		Log.Info( impulseForce );
-		Controller.Punch( impulseForce * 10000 );
 
 		if ( Health <= 0f )
 		{
@@ -322,6 +321,11 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		}
 
 		PlayerInput?.FixedUpdateInput();
+
+		if(Input.EscapePressed)
+		{
+			Game.Overlay.ShowBinds();
+		}
 
 		Controller.Move();
 

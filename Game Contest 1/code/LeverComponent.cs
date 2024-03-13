@@ -35,7 +35,7 @@ public class LeverComponent : Component, IInteractable
 	[Property] public bool StartActivated { get; private set; } = false;
 	public bool IsActivated { get; private set; } = false;
 
-	[Property] public bool IsLocked => (TerminalComponent.SelectedMoon == -1) || (LethalGameManager.Instance.Ship.IsMoving);
+	[Property] public bool IsLocked => (LethalGameManager.Instance.SelectedMoon == -1) || (LethalGameManager.Instance.Ship.IsMoving);
 
 	[Property] public float DeactivatedAngle { get; set; } = 1f;
 	[Property] public float ActivatedAngle { get; set; } = 90f;

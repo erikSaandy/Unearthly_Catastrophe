@@ -167,10 +167,10 @@ public class Zombie : Monster
 
 	}
 
-	private Vector3 ChangeTargetPosition()
+	private void ChangeTargetPosition()
 	{
 		TimeSinceUpdateTarget = 0;
-		return Scene.NavMesh.GetRandomPoint( NestPosition, 700 ) ?? Transform.Position;
+		Agent.MoveTo( Scene.NavMesh.GetRandomPoint( NestPosition, 700 ) ?? Transform.Position );
 	}
 
 	private void StartPatroling ( Vector3 newNest )
@@ -178,7 +178,7 @@ public class Zombie : Monster
 		NestPosition = newNest;
 		LastAggroedPlayer = null;
 
-		Agent.MoveTo( ChangeTargetPosition() );
+		ChangeTargetPosition();
 		MoveState = State.Patrol;
 	}
 
@@ -274,7 +274,7 @@ public class Zombie : Monster
 		// Patrol to new locations
 		if ( TimeSinceUpdateTarget > 10 )
 		{
-			Log.Info( "new target" );
+			//Log.Info( "new target" );
 			ChangeTargetPosition();
 
 		}
@@ -312,7 +312,7 @@ public class Zombie : Monster
 
 		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 
-		if ( TimeSinceUpdateTarget > 0.1f )
+		if ( TimeSinceUpdateTarget > 0.5f )
 		{
 			if ( playerToAggro != null )
 			{

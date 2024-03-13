@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
+    "__guid": "4fc3e745-14cc-452f-b7f2-3a22c5c40948",
     "Name": "spaceship",
     "Tags": "spaceship",
     "Enabled": true,
@@ -8,56 +8,56 @@
     "Components": [
       {
         "__type": "ShipComponent",
-        "Id": "745357ff-3421-4c22-ab08-d0831ab17184",
+        "__guid": "745357ff-3421-4c22-ab08-d0831ab17184",
         "Doors": {
           "_type": "component",
           "component_id": "bd33f97f-11ea-4257-978a-aacc3ff7dc10",
-          "go": "00000000-0000-0000-0000-000000000000",
-          "component_type": null
+          "go": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
+          "component_type": "ShipDoorComponent"
         },
         "Lever": {
           "_type": "component",
           "component_id": "c0f92653-be94-4310-8dbb-a06e3a633b62",
-          "go": "00000000-0000-0000-0000-000000000000",
-          "component_type": null
+          "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
+          "component_type": "LeverComponent"
         },
         "Thrusters": [
           {
             "_type": "component",
             "component_id": "8dbb5b42-e1ba-402d-9997-d297f1c638fc",
-            "go": "00000000-0000-0000-0000-000000000000",
-            "component_type": null
+            "go": "54621fa4-a400-4b14-b883-9967126b38e8",
+            "component_type": "SoundPointComponent"
           },
           {
             "_type": "component",
             "component_id": "c79abb2d-6b50-4010-a54e-f4965f6f17c6",
-            "go": "00000000-0000-0000-0000-000000000000",
-            "component_type": null
+            "go": "1ec508fe-de05-4f12-a8a5-8ead2ce52d30",
+            "component_type": "SoundPointComponent"
           },
           {
             "_type": "component",
             "component_id": "e79cba1c-8b0f-4e65-9c29-c524143b0b75",
-            "go": "00000000-0000-0000-0000-000000000000",
-            "component_type": null
+            "go": "abf889a1-b80d-49b0-804b-e8b69059fef2",
+            "component_type": "SoundPointComponent"
           },
           {
             "_type": "component",
             "component_id": "30bec27e-98bc-44bb-b34c-d3fe64bcaafb",
-            "go": "00000000-0000-0000-0000-000000000000",
-            "component_type": null
+            "go": "83807d82-7622-4e7e-80a9-5195a089ce84",
+            "component_type": "SoundPointComponent"
           }
         ],
         "ThrusterVolume": 0.4,
         "Transporter": {
           "_type": "component",
           "component_id": "2bcc15f6-855e-4f6b-9b4f-5da549536f73",
-          "go": "00000000-0000-0000-0000-000000000000",
-          "component_type": null
+          "go": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
+          "component_type": "PassengerTransporter"
         }
       },
       {
         "__type": "ModelRenderer",
-        "Id": "106434a8-a1cb-4049-bd31-36f7e6bc98da",
+        "__guid": "106434a8-a1cb-4049-bd31-36f7e6bc98da",
         "BodyGroups": 18446744073709551615,
         "Model": "models/spaceship/spaceship.vmdl",
         "RenderType": "On",
@@ -65,14 +65,14 @@
       },
       {
         "__type": "ModelCollider",
-        "Id": "9f335251-24fa-4991-b79e-02d595f81344",
+        "__guid": "9f335251-24fa-4991-b79e-02d595f81344",
         "IsTrigger": false,
         "Model": "models/spaceship/spaceship.vmdl",
         "Static": false
       },
       {
         "__type": "CharacterController",
-        "Id": "82e9fcee-f7a1-420c-8adb-284fa0559867",
+        "__guid": "82e9fcee-f7a1-420c-8adb-284fa0559867",
         "Acceleration": 10,
         "Bounciness": 0.3,
         "GroundAngle": 45,
@@ -84,7 +84,7 @@
     ],
     "Children": [
       {
-        "Id": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
+        "__guid": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
         "Name": "Passenger Transporter",
         "Position": "0,-44.04869,-16.24386",
         "Enabled": true,
@@ -92,12 +92,12 @@
         "Components": [
           {
             "__type": "PassengerTransporter",
-            "Id": "2bcc15f6-855e-4f6b-9b4f-5da549536f73",
+            "__guid": "2bcc15f6-855e-4f6b-9b4f-5da549536f73",
             "Passengers": []
           },
           {
             "__type": "BoxCollider",
-            "Id": "f339d0ba-a879-475e-85c8-b2d81980fa6e",
+            "__guid": "f339d0ba-a879-475e-85c8-b2d81980fa6e",
             "Center": "0,0,100",
             "IsTrigger": true,
             "Scale": "500,900,256",
@@ -106,7 +106,7 @@
         ]
       },
       {
-        "Id": "43b878c4-1466-49df-a980-2b172f4d3369",
+        "__guid": "43b878c4-1466-49df-a980-2b172f4d3369",
         "Name": "Gap Collider",
         "Position": "0,-11.17955,-2.880481",
         "Scale": "3.613807,1.289862,0.1121138",
@@ -115,7 +115,7 @@
         "Components": [
           {
             "__type": "BoxCollider",
-            "Id": "6fad0aa2-81c4-410a-93f6-6fb9a2a56d6f",
+            "__guid": "6fad0aa2-81c4-410a-93f6-6fb9a2a56d6f",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
@@ -124,7 +124,7 @@
         ]
       },
       {
-        "Id": "008c6826-2098-461f-8b33-78990bd09da7",
+        "__guid": "008c6826-2098-461f-8b33-78990bd09da7",
         "Name": "fluorescent_ceiling_light01",
         "Position": "-0.000629576,-192.0003,155.9962",
         "Rotation": "-0.000003279054,0.9999999,0.000001093018,0",
@@ -133,7 +133,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "abff1366-50d5-493b-856e-238cb5b1917a",
+            "__guid": "abff1366-50d5-493b-856e-238cb5b1917a",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/fluorescent_ceiling_light01/fluorescent_ceiling_light01.vmdl"
@@ -141,7 +141,7 @@
         ],
         "Children": [
           {
-            "Id": "6038d80d-66c3-4bbe-8653-ba02de24824a",
+            "__guid": "6038d80d-66c3-4bbe-8653-ba02de24824a",
             "Name": "Point Light",
             "Position": "0.0000000001433341,-0.00004371203,19.99603",
             "Rotation": "0.0000000000004547474,0.8728825,-0.0000000000002273737,0.4879304",
@@ -151,7 +151,7 @@
             "Components": [
               {
                 "__type": "PointLight",
-                "Id": "d02dd2f6-3b99-4170-b346-0e1daaffbf20",
+                "__guid": "d02dd2f6-3b99-4170-b346-0e1daaffbf20",
                 "Attenuation": 1.29,
                 "FogMode": "Enabled",
                 "FogStrength": 1,
@@ -164,7 +164,7 @@
         ]
       },
       {
-        "Id": "d244dd0d-9a11-4ba1-8f1c-6ae6bfffc128",
+        "__guid": "d244dd0d-9a11-4ba1-8f1c-6ae6bfffc128",
         "Name": "industrial_light02b",
         "Position": "-85.89309,128,120",
         "Rotation": "0.4997322,0.4997323,0.5002676,0.5002677",
@@ -173,7 +173,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "949333da-0765-4cc5-9ecf-da16f96f8a61",
+            "__guid": "949333da-0765-4cc5-9ecf-da16f96f8a61",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/industrial_lights01/industrial_light02b.vmdl"
@@ -181,7 +181,7 @@
         ],
         "Children": [
           {
-            "Id": "d76dba47-a4f6-4e88-b82c-e18a9979e656",
+            "__guid": "d76dba47-a4f6-4e88-b82c-e18a9979e656",
             "Name": "Point Light",
             "Position": "-0.00001786383,-8.023409,31.83071",
             "Tags": "light_point,light",
@@ -190,7 +190,7 @@
             "Components": [
               {
                 "__type": "PointLight",
-                "Id": "13bfd826-d4d5-444f-9dfb-28f832436986",
+                "__guid": "13bfd826-d4d5-444f-9dfb-28f832436986",
                 "Attenuation": 1.45,
                 "FogMode": "Enabled",
                 "FogStrength": 1,
@@ -203,7 +203,7 @@
         ]
       },
       {
-        "Id": "b90416ce-6c63-4b90-8746-e9dab06b718c",
+        "__guid": "b90416ce-6c63-4b90-8746-e9dab06b718c",
         "Name": "industrial_light02b (1)",
         "Position": "85.91022,128,119.9081",
         "Rotation": "-0.4997323,0.4997323,0.5002676,-0.5002676",
@@ -212,7 +212,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "69b6035b-9d57-48ef-ab59-71b922af6d26",
+            "__guid": "69b6035b-9d57-48ef-ab59-71b922af6d26",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/industrial_lights01/industrial_light02b.vmdl"
@@ -220,7 +220,7 @@
         ],
         "Children": [
           {
-            "Id": "b8390f3f-2bbf-42c5-9f3a-d07649b8de4f",
+            "__guid": "b8390f3f-2bbf-42c5-9f3a-d07649b8de4f",
             "Name": "Point Light",
             "Position": "-0.00001108674,-7.99996,34.98917",
             "Tags": "light_point,light",
@@ -229,7 +229,7 @@
             "Components": [
               {
                 "__type": "PointLight",
-                "Id": "9d5462cb-f92f-4ee6-8ad3-ce788d519f41",
+                "__guid": "9d5462cb-f92f-4ee6-8ad3-ce788d519f41",
                 "Attenuation": 1.45,
                 "FogMode": "Enabled",
                 "FogStrength": 1,
@@ -242,7 +242,7 @@
         ]
       },
       {
-        "Id": "19554343-6a5b-40c5-acb1-b8b9feee453d",
+        "__guid": "19554343-6a5b-40c5-acb1-b8b9feee453d",
         "Name": "Spawnpoint (5)",
         "Position": "-56,96,8",
         "Enabled": true,
@@ -250,13 +250,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "69675c58-b95f-4566-8b2f-173015ee7507",
+            "__guid": "69675c58-b95f-4566-8b2f-173015ee7507",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "c31b3407-d0e4-4c4e-88d0-9aacc98cbde7",
+        "__guid": "c31b3407-d0e4-4c4e-88d0-9aacc98cbde7",
         "Name": "Spawnpoint (4)",
         "Position": "-56,128,8",
         "Enabled": true,
@@ -264,13 +264,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "3fa71975-8db0-4876-ae97-ebed2766e952",
+            "__guid": "3fa71975-8db0-4876-ae97-ebed2766e952",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "a0621674-1d74-4323-8c06-ed84558f23d0",
+        "__guid": "a0621674-1d74-4323-8c06-ed84558f23d0",
         "Name": "Spawnpoint (7)",
         "Position": "-56,160,8",
         "Enabled": true,
@@ -278,13 +278,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "9976238a-9e41-4697-a448-0ab0705d954c",
+            "__guid": "9976238a-9e41-4697-a448-0ab0705d954c",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "ee77a680-ba72-4fea-9f32-56609fe02c6f",
+        "__guid": "ee77a680-ba72-4fea-9f32-56609fe02c6f",
         "Name": "Spawnpoint (9)",
         "Position": "-56,160,8",
         "Enabled": true,
@@ -292,13 +292,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "a09e267b-93e5-4b3b-97e0-089277e717b1",
+            "__guid": "a09e267b-93e5-4b3b-97e0-089277e717b1",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "05f162ba-9196-46c0-bf37-0bd2bffe11dd",
+        "__guid": "05f162ba-9196-46c0-bf37-0bd2bffe11dd",
         "Name": "Spawnpoint (3)",
         "Position": "54.79461,96,8",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -307,13 +307,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "218b123f-fd2f-44b8-8089-3964e2bd4c21",
+            "__guid": "218b123f-fd2f-44b8-8089-3964e2bd4c21",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "3e9ca9f7-68ac-436d-a295-8853eef278ac",
+        "__guid": "3e9ca9f7-68ac-436d-a295-8853eef278ac",
         "Name": "Spawnpoint (2)",
         "Position": "54.79461,128,8",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -322,13 +322,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "953cf2fd-152a-4ee7-8a27-a46b0f7759c9",
+            "__guid": "953cf2fd-152a-4ee7-8a27-a46b0f7759c9",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "d9abf1f8-82fb-4525-b1d8-13a3c2e09d58",
+        "__guid": "d9abf1f8-82fb-4525-b1d8-13a3c2e09d58",
         "Name": "Spawnpoint (6)",
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -337,13 +337,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "d706d81c-446d-47c6-bec1-0daf48f5e2e0",
+            "__guid": "d706d81c-446d-47c6-bec1-0daf48f5e2e0",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "a49765c6-b21e-498c-acac-8ceaa546be09",
+        "__guid": "a49765c6-b21e-498c-acac-8ceaa546be09",
         "Name": "Spawnpoint (8)",
         "Position": "54.79461,160,8",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -352,13 +352,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "166b256f-b4ec-4375-9c22-261af083f742",
+            "__guid": "166b256f-b4ec-4375-9c22-261af083f742",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "42349e64-07b3-4cda-b423-7bf0ec14142b",
+        "__guid": "42349e64-07b3-4cda-b423-7bf0ec14142b",
         "Name": "Spawnpoint (1)",
         "Position": "-56,64,8",
         "Enabled": true,
@@ -366,13 +366,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "2a4b69e3-618c-4b00-8b03-8dc8f2e5a99a",
+            "__guid": "2a4b69e3-618c-4b00-8b03-8dc8f2e5a99a",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "9ffec092-7d52-459b-bca4-c3e8fd5da0ca",
+        "__guid": "9ffec092-7d52-459b-bca4-c3e8fd5da0ca",
         "Name": "Spawnpoint",
         "Position": "54.79461,64,8",
         "Rotation": "0,0,1,-0.00000004371139",
@@ -381,13 +381,13 @@
         "Components": [
           {
             "__type": "SpawnPoint",
-            "Id": "76ce9543-9111-428f-a4cb-bee0f3470966",
+            "__guid": "76ce9543-9111-428f-a4cb-bee0f3470966",
             "Color": "0.8902,0.31765,0.05098,1"
           }
         ]
       },
       {
-        "Id": "6152d3bb-9828-4ca3-9fd8-40e48d8b64d9",
+        "__guid": "6152d3bb-9828-4ca3-9fd8-40e48d8b64d9",
         "Name": "Terminal",
         "Position": "87.6813,-94.10116,0",
         "Rotation": "0,0,-0.9238794,0.3826834",
@@ -396,9 +396,9 @@
         "__Prefab": "prefabs/terminal.prefab"
       },
       {
-        "Id": "20822cb6-69c6-43a1-a3dd-8f75460597e6",
+        "__guid": "20822cb6-69c6-43a1-a3dd-8f75460597e6",
         "Name": "Flashlight",
-        "Position": "-55.82401,-300.0244,35.1362",
+        "Position": "-53.47339,-302.375,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
         "Enabled": true,
@@ -406,9 +406,19 @@
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
-        "Id": "d15790df-2558-4d15-a1c1-b3368feb91ae",
+        "__guid": "e4f8d7bd-fd61-4c04-99e4-eade76adceb7",
+        "Name": "Flashlight (4)",
+        "Position": "90.50968,-271.5292,35.1362",
+        "Rotation": "0,0,0.9238796,0.3826836",
+        "Tags": "item",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "__guid": "d15790df-2558-4d15-a1c1-b3368feb91ae",
         "Name": "Flashlight",
-        "Position": "-68.72736,-287.121,35.1362",
+        "Position": "-70.44395,-285.4044,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
         "Enabled": true,
@@ -416,7 +426,17 @@
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
-        "Id": "ccf68553-a789-4cb2-9eac-7a63571cc2e7",
+        "__guid": "96005d85-c1b8-44ae-b835-93bb7810fdca",
+        "Name": "Flashlight (1)",
+        "Position": "84.85282,-277.186,35.1362",
+        "Rotation": "0,0,0.9238796,0.3826836",
+        "Tags": "item",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "__guid": "ccf68553-a789-4cb2-9eac-7a63571cc2e7",
         "Name": "Flashlight",
         "Position": "-64.78712,-291.0613,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
@@ -426,9 +446,19 @@
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
-        "Id": "3ace517c-54c3-4b19-a87e-26b8905aa3e5",
+        "__guid": "33620938-afe6-4b47-812f-1f2ab6c9f46f",
+        "Name": "Flashlight (2)",
+        "Position": "79.19597,-282.8429,35.1362",
+        "Rotation": "0,0,0.9238796,0.3826836",
+        "Tags": "item",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "__guid": "3ace517c-54c3-4b19-a87e-26b8905aa3e5",
         "Name": "Flashlight",
-        "Position": "-60.50956,-295.3389,35.1362",
+        "Position": "-59.13027,-296.7181,35.1362",
         "Rotation": "0,0,0.3826834,0.9238796",
         "Tags": "item",
         "Enabled": true,
@@ -436,7 +466,17 @@
         "__Prefab": "prefabs/items/flashlight.prefab"
       },
       {
-        "Id": "cd076d86-5510-4cb8-b87f-0e366eef4a77",
+        "__guid": "696d22bb-5a53-4218-bc39-dca12252b7b3",
+        "Name": "Flashlight (3)",
+        "Position": "73.53911,-288.4997,35.1362",
+        "Rotation": "0,0,0.9238796,0.3826836",
+        "Tags": "item",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/flashlight.prefab"
+      },
+      {
+        "__guid": "cd076d86-5510-4cb8-b87f-0e366eef4a77",
         "Name": "key",
         "Position": "-39.94959,-297.6197,32.73829",
         "Rotation": "0,0,0.258819,0.9659258",
@@ -446,7 +486,7 @@
         "__Prefab": "prefabs/items/key.prefab"
       },
       {
-        "Id": "71538b45-e207-4e77-9279-c7b56d47eb1a",
+        "__guid": "71538b45-e207-4e77-9279-c7b56d47eb1a",
         "Name": "probe",
         "Position": "0,128,60",
         "Enabled": true,
@@ -454,7 +494,7 @@
         "Components": [
           {
             "__type": "EnvmapProbe",
-            "Id": "1912ad2e-6762-4ab2-a1ae-c94fc95753a1",
+            "__guid": "1912ad2e-6762-4ab2-a1ae-c94fc95753a1",
             "Bounds": {
               "Mins": "-212,-140,-190",
               "Maxs": "212,280,300"
@@ -467,7 +507,7 @@
         ]
       },
       {
-        "Id": "13182d72-f309-498e-b247-a089f8bac55c",
+        "__guid": "13182d72-f309-498e-b247-a089f8bac55c",
         "Name": "probe (1)",
         "Position": "0,-192,60",
         "Enabled": true,
@@ -475,7 +515,7 @@
         "Components": [
           {
             "__type": "EnvmapProbe",
-            "Id": "04198d4b-9c55-448e-bd73-cedf2f078620",
+            "__guid": "04198d4b-9c55-448e-bd73-cedf2f078620",
             "Bounds": {
               "Mins": "-256,-250,-190",
               "Maxs": "256,221.3001,185"
@@ -488,7 +528,7 @@
         ]
       },
       {
-        "Id": "aff7ed8c-c0c5-49e9-975a-ce962ee7be11",
+        "__guid": "aff7ed8c-c0c5-49e9-975a-ce962ee7be11",
         "Name": "ship_lever_body",
         "Position": "-100.5956,-80.42385,56",
         "Rotation": "-0.6532815,-0.270598,-0.2705981,-0.6532816",
@@ -497,7 +537,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "7f6899da-378b-4172-9773-b5bb5160d3e9",
+            "__guid": "7f6899da-378b-4172-9773-b5bb5160d3e9",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/ship_lever/ship_lever_body.vmdl"
@@ -505,7 +545,7 @@
         ],
         "Children": [
           {
-            "Id": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
+            "__guid": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
             "Name": "ship_lever",
             "Position": "0,0,0",
             "Enabled": true,
@@ -513,7 +553,7 @@
             "Components": [
               {
                 "__type": "ModelRenderer",
-                "Id": "612f3b8c-701a-4219-be47-1d84a8704e49",
+                "__guid": "612f3b8c-701a-4219-be47-1d84a8704e49",
                 "BodyGroups": 18446744073709551615,
                 "Model": "models/ship_lever/ship_lever.vmdl",
                 "RenderType": "On",
@@ -521,7 +561,7 @@
               },
               {
                 "__type": "BoxCollider",
-                "Id": "1b80339d-bd1a-4467-a1a7-b2f79cce48f7",
+                "__guid": "1b80339d-bd1a-4467-a1a7-b2f79cce48f7",
                 "Center": "0,0,6",
                 "IsTrigger": false,
                 "Scale": "6,6,14",
@@ -529,15 +569,15 @@
               },
               {
                 "__type": "LeverComponent",
-                "Id": "c0f92653-be94-4310-8dbb-a06e3a633b62",
-                "ActivatedAngle": 90,
+                "__guid": "c0f92653-be94-4310-8dbb-a06e3a633b62",
+                "ActivatedAngle": 65,
                 "DeactivatedAngle": 1,
                 "IsLocked": false,
                 "PullSound": "sounds/lever_pull.sound",
                 "RotationalAxis": "0,0,1",
                 "Speed": 1,
                 "StartActivated": false,
-                "ToolTip": "",
+                "ToolTip": "Lift Off",
                 "ToolTipDeactivated": ""
               }
             ]
@@ -545,7 +585,7 @@
         ]
       },
       {
-        "Id": "a1747b99-599f-42d9-87d0-ec39b4f16cfb",
+        "__guid": "a1747b99-599f-42d9-87d0-ec39b4f16cfb",
         "Name": "screen",
         "Position": "0.00005761746,-320,96",
         "Rotation": "-0.1305262,0,0,0.9914449",
@@ -555,15 +595,41 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "7f851eec-1e3b-487f-a955-eb5c395aa3f6",
+            "__guid": "7f851eec-1e3b-487f-a955-eb5c395aa3f6",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl"
           }
+        ],
+        "Children": [
+          {
+            "__guid": "fc226ab3-4bf6-45c6-a90d-439831b39dea",
+            "Name": "WORLD PANEL BALANCE",
+            "Position": "0.0007127364,2.931331,0.0001760483",
+            "Rotation": "0,0,0.707107,0.707107",
+            "Scale": "0.839986,0.839986,0.839986",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "WorldPanel",
+                "__guid": "e338f721-9399-4065-b3e6-1cb1561b1c6f",
+                "HorizontalAlign": "Center",
+                "LookAtCamera": false,
+                "PanelSize": "750,750",
+                "RenderScale": 1,
+                "VerticalAlign": "Center"
+              },
+              {
+                "__type": "BalanceHud",
+                "__guid": "d33ddbff-3787-44d7-9ee7-95e6237b2907"
+              }
+            ]
+          }
         ]
       },
       {
-        "Id": "2e7b1e47-5ce7-4152-b101-844012806ba1",
+        "__guid": "2e7b1e47-5ce7-4152-b101-844012806ba1",
         "Name": "screen (2)",
         "Position": "-48,-312,96",
         "Rotation": "-0.1260786,0.03378267,-0.2566049,0.9576625",
@@ -572,15 +638,41 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "d632f2cd-cd8f-4f90-aef1-65c6ff49906c",
+            "__guid": "d632f2cd-cd8f-4f90-aef1-65c6ff49906c",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl"
           }
+        ],
+        "Children": [
+          {
+            "__guid": "5bc15ac9-b584-4a5f-b6c8-1020e8f9aa12",
+            "Name": "WORLD PANEL BALANCE",
+            "Position": "0.001090777,3.103348,0.0002816319",
+            "Rotation": "0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
+            "Scale": "0.9416737,0.9416737,0.9416737",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "WorldPanel",
+                "__guid": "f06019d9-ce2d-420a-bc24-952769eb61aa",
+                "HorizontalAlign": "Center",
+                "LookAtCamera": false,
+                "PanelSize": "750,750",
+                "RenderScale": 1,
+                "VerticalAlign": "Center"
+              },
+              {
+                "__type": "BalanceHud",
+                "__guid": "59b8300e-ed77-46c6-8538-533f67917a44"
+              }
+            ]
+          }
         ]
       },
       {
-        "Id": "52f6959a-2916-4369-a60d-bac3f5a5a35b",
+        "__guid": "52f6959a-2916-4369-a60d-bac3f5a5a35b",
         "Name": "screen (3)",
         "Position": "-142.5972,-192,95.99998",
         "Rotation": "-0.09229594,0.09229595,-0.7010576,0.7010577",
@@ -590,7 +682,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "d8388623-4479-4df6-b2aa-1963a39e565b",
+            "__guid": "d8388623-4479-4df6-b2aa-1963a39e565b",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl"
@@ -598,26 +690,26 @@
         ],
         "Children": [
           {
-            "Id": "aa521337-cc67-4e56-9524-39160e46d03d",
+            "__guid": "aa521337-cc67-4e56-9524-39160e46d03d",
             "Name": "Text",
-            "Position": "0,0,0",
-            "Rotation": "0,0,0.7071068,0.7071068",
+            "Position": "0.0000003115781,0.4120173,0.0001300065",
+            "Rotation": "-0.000000007450581,0.00000001493226,0.7071073,0.7071072",
             "Scale": "0.7171878,0.7171878,0.7171878",
             "Enabled": true,
             "NetworkMode": 2,
             "Children": [
               {
-                "Id": "a67b2d8a-7768-4ed4-8d28-57a47d8ee5e3",
+                "__guid": "a67b2d8a-7768-4ed4-8d28-57a47d8ee5e3",
                 "Name": "Header",
-                "Position": "2.584717,-0.0001526859,15.5475",
-                "Rotation": "0,0.000000000000003552714,1,-0.00000004371139",
-                "Scale": "0.4534729,0.4534729,0.4534729",
+                "Position": "2.585591,-0.0001530025,15.54732",
+                "Rotation": "0.00000008940697,-0.00000000000002309264,0.999996,-0.00000004371125",
+                "Scale": "0.4841867,0.4841867,0.4841867",
                 "Enabled": true,
                 "NetworkMode": 2,
                 "Components": [
                   {
                     "__type": "TextRenderer",
-                    "Id": "811dce50-c939-4d23-88a3-98985da3c11a",
+                    "__guid": "811dce50-c939-4d23-88a3-98985da3c11a",
                     "Color": "1,1,1,1",
                     "FontFamily": "Poppins",
                     "FontSize": 19.89,
@@ -627,22 +719,22 @@
                 ]
               },
               {
-                "Id": "5fe9c218-418b-44d8-86f9-806a4583a1b0",
+                "__guid": "5fe9c218-418b-44d8-86f9-806a4583a1b0",
                 "Name": "Block",
-                "Position": "2.479487,-0.00006140624,-4.889696",
-                "Rotation": "0,0.000000000000003552714,1,-0.00000004371139",
-                "Scale": "0.6556392,0.6556392,0.6556392",
+                "Position": "2.462318,-0.0000006479174,-4.101418",
+                "Rotation": "0.00000008940697,-0.00000000000004973799,0.999996,-0.00000004371034",
+                "Scale": "0.701603,0.701603,0.701603",
                 "Enabled": true,
                 "NetworkMode": 2,
                 "Components": [
                   {
                     "__type": "TextRenderer",
-                    "Id": "9cfc112d-cc25-491c-9f8f-d73d6b600840",
+                    "__guid": "9cfc112d-cc25-491c-9f8f-d73d6b600840",
                     "Color": "1,1,1,1",
                     "FontFamily": "Poppins",
                     "FontSize": 19.89,
                     "Scale": 0.16,
-                    "Text": "Thank you for playing UC!\nI often find it\u0027s difficult to keep \nmy plans realistic when starting\na new project, and I fear\nI might not have had time\nto make it fun.\nPlease find the fun for me, if you can!\n                                                                            -Saandy"
+                    "Text": "Thank you for playing UC!\nYour goal is to raise your\nship balance as high as possible\nwithout dying! If you all die,\n your balance will be set back to 100.\nUse the terminal and\nRoute to a moon to start.\nHave fun!\n                                                                            -Saandy"
                   }
                 ]
               }
@@ -651,7 +743,7 @@
         ]
       },
       {
-        "Id": "c98df671-27d0-4bd3-b2d6-235a857416da",
+        "__guid": "c98df671-27d0-4bd3-b2d6-235a857416da",
         "Name": "screen (1)",
         "Position": "48,-312,96",
         "Rotation": "-0.1260786,-0.03378267,0.2566049,0.9576625",
@@ -660,7 +752,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "057343b0-05f7-4d7f-9db3-a378baa2ea72",
+            "__guid": "057343b0-05f7-4d7f-9db3-a378baa2ea72",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/screen/screen.vmdl"
@@ -668,16 +760,16 @@
         ],
         "Children": [
           {
-            "Id": "3080b84f-da42-4414-a4d2-ec8fef12f5a3",
+            "__guid": "3080b84f-da42-4414-a4d2-ec8fef12f5a3",
             "Name": "WORLD PANEL BALANCE",
-            "Position": "0.001660455,2.946451,0.00009548664",
+            "Position": "0.002317178,3.234809,0.0001051426",
             "Rotation": "-0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
             "Enabled": true,
             "NetworkMode": 2,
             "Components": [
               {
                 "__type": "WorldPanel",
-                "Id": "2b436495-7eb8-469e-ac73-8273f4509362",
+                "__guid": "2b436495-7eb8-469e-ac73-8273f4509362",
                 "HorizontalAlign": "Center",
                 "LookAtCamera": false,
                 "PanelSize": "750,750",
@@ -686,14 +778,14 @@
               },
               {
                 "__type": "BalanceHud",
-                "Id": "0ea7ede2-ccf0-4555-a174-2d80b9bee575"
+                "__guid": "0ea7ede2-ccf0-4555-a174-2d80b9bee575"
               }
             ]
           }
         ]
       },
       {
-        "Id": "0c9da9f7-692f-4adf-9ef3-fbe85f4007dc",
+        "__guid": "0c9da9f7-692f-4adf-9ef3-fbe85f4007dc",
         "Name": "ship_table",
         "Position": "0,-311.4558,0.03017274",
         "Scale": "1.063558,1.063558,1.063558",
@@ -702,7 +794,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "3fe5cf3a-f4f7-4d7e-8392-c996bf003c96",
+            "__guid": "3fe5cf3a-f4f7-4d7e-8392-c996bf003c96",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/ship_table/ship_table.vmdl"
@@ -710,7 +802,7 @@
         ]
       },
       {
-        "Id": "2a2fa128-5c7f-468c-af64-aad09dda1ae0",
+        "__guid": "2a2fa128-5c7f-468c-af64-aad09dda1ae0",
         "Name": "buttons_onoff",
         "Position": "-71.9596,210.1391,63.99994",
         "Rotation": "-0.4999999,0.5,-0.5,-0.4999999",
@@ -719,7 +811,7 @@
         "Components": [
           {
             "__type": "Prop",
-            "Id": "17a7e320-044f-456d-a064-76d6bb525bf4",
+            "__guid": "17a7e320-044f-456d-a064-76d6bb525bf4",
             "Health": 0,
             "IsStatic": true,
             "Model": "models/buttons_onoff/buttons_onoff.vmdl"
@@ -727,7 +819,7 @@
         ],
         "Children": [
           {
-            "Id": "c4cc9fa2-0002-4273-a52e-32851bad92ee",
+            "__guid": "c4cc9fa2-0002-4273-a52e-32851bad92ee",
             "Name": "button_on",
             "Position": "7,0,4",
             "Enabled": true,
@@ -735,7 +827,7 @@
             "Components": [
               {
                 "__type": "BoxCollider",
-                "Id": "41dbb226-9eaa-4c45-9887-1dcff67560ff",
+                "__guid": "41dbb226-9eaa-4c45-9887-1dcff67560ff",
                 "Center": "0,0,0",
                 "IsTrigger": false,
                 "Scale": "2,2,2",
@@ -743,7 +835,7 @@
               },
               {
                 "__type": "InteractionProxy",
-                "Id": "749bb48d-b619-4dd5-a2d7-5cd64c91a0a4",
+                "__guid": "749bb48d-b619-4dd5-a2d7-5cd64c91a0a4",
                 "BlockInteractions": false,
                 "InteractionTime": 0.2,
                 "ToolTip": "Open Door"
@@ -751,7 +843,7 @@
             ]
           },
           {
-            "Id": "f6049128-dda9-4205-a691-33d554636011",
+            "__guid": "f6049128-dda9-4205-a691-33d554636011",
             "Name": "button_off",
             "Position": "-7,0,4",
             "Enabled": true,
@@ -759,7 +851,7 @@
             "Components": [
               {
                 "__type": "BoxCollider",
-                "Id": "b3392a19-48de-47b1-bba9-36f2ef093bf1",
+                "__guid": "b3392a19-48de-47b1-bba9-36f2ef093bf1",
                 "Center": "0,0,0",
                 "IsTrigger": false,
                 "Scale": "2,2,2",
@@ -767,7 +859,7 @@
               },
               {
                 "__type": "InteractionProxy",
-                "Id": "c1915250-cc29-455c-8520-573049f7e065",
+                "__guid": "c1915250-cc29-455c-8520-573049f7e065",
                 "BlockInteractions": false,
                 "InteractionTime": 0.2,
                 "ToolTip": "Close Door"
@@ -775,7 +867,7 @@
             ]
           },
           {
-            "Id": "d4cd80d9-a01b-4884-a30c-4dea18638d50",
+            "__guid": "d4cd80d9-a01b-4884-a30c-4dea18638d50",
             "Name": "Cable",
             "Position": "-42.54767,0.007403031,0.005015028",
             "Rotation": "-0.00002017617,-0.7071272,0.000000009933501,-0.7071066",
@@ -785,7 +877,7 @@
             "Components": [
               {
                 "__type": "ModelRenderer",
-                "Id": "3580a583-5ed2-4ccd-b20c-0eb67d239434",
+                "__guid": "3580a583-5ed2-4ccd-b20c-0eb67d239434",
                 "BodyGroups": 18446744073709551615,
                 "MaterialOverride": "materials/cable/cable.vmat",
                 "Model": "models/citizen_props/broom01/broom01gib02_lod01.vmdl",
@@ -797,7 +889,7 @@
         ]
       },
       {
-        "Id": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
+        "__guid": "6a9a1334-d220-4057-8bcb-54330cacfbb6",
         "Name": "ship_doors",
         "Position": "0,222,0",
         "Enabled": true,
@@ -805,18 +897,18 @@
         "Components": [
           {
             "__type": "ShipDoorComponent",
-            "Id": "bd33f97f-11ea-4257-978a-aacc3ff7dc10",
+            "__guid": "bd33f97f-11ea-4257-978a-aacc3ff7dc10",
             "ButtonOff": {
               "_type": "component",
               "component_id": "c1915250-cc29-455c-8520-573049f7e065",
-              "go": "00000000-0000-0000-0000-000000000000",
-              "component_type": null
+              "go": "f6049128-dda9-4205-a691-33d554636011",
+              "component_type": "InteractionProxy"
             },
             "ButtonOn": {
               "_type": "component",
               "component_id": "749bb48d-b619-4dd5-a2d7-5cd64c91a0a4",
-              "go": "00000000-0000-0000-0000-000000000000",
-              "component_type": null
+              "go": "c4cc9fa2-0002-4273-a52e-32851bad92ee",
+              "component_type": "InteractionProxy"
             },
             "CloseCurve": [
               {},
@@ -865,7 +957,7 @@
         ],
         "Children": [
           {
-            "Id": "aea5bd14-a3c0-4732-8806-4aeac4d972a3",
+            "__guid": "aea5bd14-a3c0-4732-8806-4aeac4d972a3",
             "Name": "ship-door_right",
             "Position": "-68,0,0",
             "Rotation": "0,0,-1,0.0000001947072",
@@ -874,7 +966,7 @@
             "Components": [
               {
                 "__type": "Prop",
-                "Id": "6825c9ac-e12e-4747-aff0-0db58bb5816f",
+                "__guid": "6825c9ac-e12e-4747-aff0-0db58bb5816f",
                 "Health": 0,
                 "IsStatic": true,
                 "Model": "models/ship_doors/ship-door_right.vmdl"
@@ -882,7 +974,7 @@
             ]
           },
           {
-            "Id": "e0abeb5d-4989-44e6-8a72-5e8b589cf11a",
+            "__guid": "e0abeb5d-4989-44e6-8a72-5e8b589cf11a",
             "Name": "ship-door_left",
             "Position": "68,0,0",
             "Enabled": true,
@@ -890,7 +982,7 @@
             "Components": [
               {
                 "__type": "Prop",
-                "Id": "8041a321-4e14-40c4-849c-5f0370057d8c",
+                "__guid": "8041a321-4e14-40c4-849c-5f0370057d8c",
                 "Health": 0,
                 "IsStatic": true,
                 "Model": "models/ship_doors/ship-door_left.vmdl"
@@ -900,7 +992,7 @@
         ]
       },
       {
-        "Id": "918ec1bd-9ffa-490d-9eaa-9bc01027df22",
+        "__guid": "918ec1bd-9ffa-490d-9eaa-9bc01027df22",
         "Name": "poster_01",
         "Position": "-124.6057,-101.1055,79.53167",
         "Rotation": "0.2795738,0.6494342,-0.2796149,0.6495298",
@@ -910,7 +1002,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "Id": "9e5c0e5c-7157-49a1-ba8e-489dcbff3264",
+            "__guid": "9e5c0e5c-7157-49a1-ba8e-489dcbff3264",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "bumpy_ride",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -920,7 +1012,7 @@
         ]
       },
       {
-        "Id": "ae19e850-c96c-460f-b668-09d5bbff95a8",
+        "__guid": "ae19e850-c96c-460f-b668-09d5bbff95a8",
         "Name": "poster_01 (2)",
         "Position": "-85.74063,160,79.51861",
         "Rotation": "0,0.7071068,0,0.7071068",
@@ -930,7 +1022,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "Id": "1a7b3770-481e-43ed-97ef-74c20991aa47",
+            "__guid": "1a7b3770-481e-43ed-97ef-74c20991aa47",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "default",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -940,7 +1032,7 @@
         ]
       },
       {
-        "Id": "aee1d933-4e56-46e4-be6f-5bf2a3d07520",
+        "__guid": "aee1d933-4e56-46e4-be6f-5bf2a3d07520",
         "Name": "poster_01 (3)",
         "Position": "85.77602,160,79.51858",
         "Rotation": "-0.7071068,0.0000001376788,0.7071068,0.0000001376788",
@@ -950,7 +1042,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "Id": "37f5d028-d1b9-4710-9b35-f19f61d74768",
+            "__guid": "37f5d028-d1b9-4710-9b35-f19f61d74768",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "default",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -960,7 +1052,7 @@
         ]
       },
       {
-        "Id": "22713831-938e-48c7-af62-27a3ed21b18f",
+        "__guid": "22713831-938e-48c7-af62-27a3ed21b18f",
         "Name": "poster_01 (1)",
         "Position": "152.8798,-151.2014,74.77022",
         "Rotation": "0.7071021,-0.002611348,-0.7071021,0.002611623",
@@ -970,7 +1062,7 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "Id": "5d3708c0-bc51-4b93-8d23-7335e81a128e",
+            "__guid": "5d3708c0-bc51-4b93-8d23-7335e81a128e",
             "BodyGroups": 18446744073709551615,
             "MaterialGroup": "fort",
             "Model": "models/poster_01/poster_01.vmdl",
@@ -980,14 +1072,14 @@
         ]
       },
       {
-        "Id": "6ace2c50-e982-4e43-92e7-6de2f4256d29",
+        "__guid": "6ace2c50-e982-4e43-92e7-6de2f4256d29",
         "Name": "thrusters",
         "Position": "0,0,37.72995",
         "Enabled": true,
         "NetworkMode": 2,
         "Children": [
           {
-            "Id": "54621fa4-a400-4b14-b883-9967126b38e8",
+            "__guid": "54621fa4-a400-4b14-b883-9967126b38e8",
             "Name": "thruster01",
             "Position": "112,128,-96",
             "Enabled": true,
@@ -995,7 +1087,7 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
-                "Id": "8dbb5b42-e1ba-402d-9997-d297f1c638fc",
+                "__guid": "8dbb5b42-e1ba-402d-9997-d297f1c638fc",
                 "DistanceAttenuation": false,
                 "DistanceAttenuationOverride": false,
                 "Force2d": false,
@@ -1017,7 +1109,7 @@
             ]
           },
           {
-            "Id": "1ec508fe-de05-4f12-a8a5-8ead2ce52d30",
+            "__guid": "1ec508fe-de05-4f12-a8a5-8ead2ce52d30",
             "Name": "thruster02",
             "Position": "160,-192,-96",
             "Enabled": true,
@@ -1025,7 +1117,7 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
-                "Id": "c79abb2d-6b50-4010-a54e-f4965f6f17c6",
+                "__guid": "c79abb2d-6b50-4010-a54e-f4965f6f17c6",
                 "DistanceAttenuation": false,
                 "DistanceAttenuationOverride": false,
                 "Force2d": false,
@@ -1047,7 +1139,7 @@
             ]
           },
           {
-            "Id": "abf889a1-b80d-49b0-804b-e8b69059fef2",
+            "__guid": "abf889a1-b80d-49b0-804b-e8b69059fef2",
             "Name": "thruster03",
             "Position": "-96,128,-96",
             "Enabled": true,
@@ -1055,7 +1147,7 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
-                "Id": "e79cba1c-8b0f-4e65-9c29-c524143b0b75",
+                "__guid": "e79cba1c-8b0f-4e65-9c29-c524143b0b75",
                 "DistanceAttenuation": false,
                 "DistanceAttenuationOverride": false,
                 "Force2d": false,
@@ -1077,7 +1169,7 @@
             ]
           },
           {
-            "Id": "83807d82-7622-4e7e-80a9-5195a089ce84",
+            "__guid": "83807d82-7622-4e7e-80a9-5195a089ce84",
             "Name": "thruster04",
             "Position": "-144,-192,-96",
             "Enabled": true,
@@ -1085,7 +1177,7 @@
             "Components": [
               {
                 "__type": "SoundPointComponent",
-                "Id": "30bec27e-98bc-44bb-b34c-d3fe64bcaafb",
+                "__guid": "30bec27e-98bc-44bb-b34c-d3fe64bcaafb",
                 "DistanceAttenuation": false,
                 "DistanceAttenuationOverride": false,
                 "Force2d": false,

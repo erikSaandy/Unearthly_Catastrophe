@@ -42,7 +42,7 @@ public sealed class MoonTimerComponent : Component
 		{
 			int minutes = ((int)SecondsRemaining / 60);
 			float seconds = SecondsRemaining % 60;
-			return $"0{ minutes } : { seconds.ToString("00") }";
+			return $"{ minutes.ToString("00") } : { seconds.ToString("00") }";
 		}
 	}
 

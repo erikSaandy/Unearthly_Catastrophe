@@ -21,6 +21,8 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 		if ( other.GameObject.Tags.Has( "player" ) )
 		{
 			Player player = other.GameObject.Root.Components.Get<Player>();
+			if(player.LifeState == LifeState.Dead) { return; }
+
 			Passengers.Add( player );
 			player.Heal( 200 );
 			Log.Info( "Added passenger " + other.GameObject.Name );
@@ -34,7 +36,7 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 
 		foreach ( Player passenger in Passengers )
 		{
-			if ( other.GameObject == passenger.GameObject )
+			if ( other.GameObject.Root == passenger.GameObject )
 			{
 				Passengers.Remove( passenger );
 				Log.Info( "Removed passenger " + other.GameObject.Name );

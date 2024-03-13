@@ -2,26 +2,41 @@
 
 Layer0
 {
-	shader "shaders/glass.shader"
+	shader "shaders/complex.shader"
 
 	//---- Rendering ----
 	F_DO_NOT_CAST_SHADOWS 1
 
+	//---- Ambient Occlusion ----
+	g_flAmbientOcclusionDirectDiffuse "0.000"
+	g_flAmbientOcclusionDirectSpecular "0.000"
+	TextureAmbientOcclusion "[1.000000 1.000000 1.000000 0.000000]"
+
+	//---- Color ----
+	g_flModelTintAmount "1.000"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	TextureColor "[0.113725 0.113725 0.129412 0.000000]"
+
+	//---- Fade ----
+	g_flFadeExponent "1.000"
+
 	//---- Fog ----
 	g_bFogEnabled "1"
 
-	//---- Glass ----
-	g_flBlurAmount "0.000"
-	g_flRefractionStrength "1.000"
+	//---- Metalness ----
+	g_flMetalness "0.000"
 
-	//---- Material ----
-	g_flTintColor "[1.000000 1.000000 1.000000 0.000000]"
-	TextureAmbientOcclusion "[1.000000 1.000000 1.000000 0.000000]"
-	TextureBlendMask "materials/default/default_blend.tga"
-	TextureColor "[0.458824 0.462745 0.494118 0.000000]"
-	TextureMetalness "[1.000000 1.000000 1.000000 0.000000]"
+	//---- Normal ----
 	TextureNormal "models/screen/material/m_screen_normal.png"
-	TextureRoughness "[0.363000 0.363000 0.363000 0.000000]"
-	TextureTintMask "materials/default/default.tga"
-	TextureTranslucency "[0.955000 0.955000 0.955000 0.000000]"
+
+	//---- Roughness ----
+	g_flRoughnessScaleFactor "1.123"
+	TextureRoughness "[0.203000 0.203000 0.203000 0.000000]"
+
+	//---- Texture Coordinates ----
+	g_nScaleTexCoordUByModelScaleAxis "0"
+	g_nScaleTexCoordVByModelScaleAxis "0"
+	g_vTexCoordOffset "[0.000 0.000]"
+	g_vTexCoordScale "[1.000 1.000]"
+	g_vTexCoordScrollSpeed "[0.000 0.000]"
 }
