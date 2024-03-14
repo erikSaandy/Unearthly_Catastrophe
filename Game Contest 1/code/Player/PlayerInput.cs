@@ -130,7 +130,10 @@
 
 		//Transform.LocalPosition = EyeOffset;
 
+		if(Owner.IsProxy) { return; }
+
 		Transform eyeTx = Owner.Animator.Target.GetAttachment( "eyes" ) ?? default;
+
 		Owner.Camera.Transform.Position = eyeTx.Position;
 		Owner.Camera.Transform.Rotation = Owner.EyeAngles.ToRotation();
 	}

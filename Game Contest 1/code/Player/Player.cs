@@ -69,7 +69,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 			HideHead( false );
 			HudObject.Destroy();
-			CameraController.Camera.Destroy();
+			CameraController?.Camera?.GameObject?.Destroy();
 			return; 
 		}
 
@@ -125,6 +125,8 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		Animator.WithLook( EyeAngles.Forward, 1, .8f, .5f );
 		//Animator.DuckLevel = 1f;
 		Animator.HoldType = CurrentHoldType;
+
+		if(IsProxy) { return; }
 
 	}
 

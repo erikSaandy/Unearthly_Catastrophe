@@ -21,6 +21,8 @@ public class PlayerSpectateInput : PlayerInput
 
 	public override void UpdateInput( )
 	{
+		if(Owner.IsProxy) { return; }
+
 		AnalogMove = 0;
 		WantsToRun = false;
 
@@ -81,6 +83,7 @@ public class PlayerSpectateInput : PlayerInput
 
 	public override void CameraInput()
 	{
+		if(Owner.IsProxy) { return; }
 
 		EyeAngles += Sandbox.Input.AnalogLook;
 		EyeAngles = EyeAngles.WithPitch( Math.Clamp( EyeAngles.pitch, Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch ) );

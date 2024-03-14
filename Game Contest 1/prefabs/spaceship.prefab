@@ -572,7 +572,7 @@
                 "__guid": "c0f92653-be94-4310-8dbb-a06e3a633b62",
                 "ActivatedAngle": 65,
                 "DeactivatedAngle": 1,
-                "IsLocked": false,
+                "IsLocked": true,
                 "PullSound": "sounds/lever_pull.sound",
                 "RotationalAxis": "0,0,1",
                 "Speed": 1,
@@ -605,7 +605,7 @@
           {
             "__guid": "fc226ab3-4bf6-45c6-a90d-439831b39dea",
             "Name": "WORLD PANEL BALANCE",
-            "Position": "0.0007127364,2.931331,0.0001760483",
+            "Position": "0.001063974,4.469852,0.0002193451",
             "Rotation": "0,0,0.707107,0.707107",
             "Scale": "0.839986,0.839986,0.839986",
             "Enabled": true,
@@ -648,7 +648,7 @@
           {
             "__guid": "5bc15ac9-b584-4a5f-b6c8-1020e8f9aa12",
             "Name": "WORLD PANEL BALANCE",
-            "Position": "0.001090777,3.103348,0.0002816319",
+            "Position": "0.001450791,3.60932,0.0003805161",
             "Rotation": "0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
             "Scale": "0.9416737,0.9416737,0.9416737",
             "Enabled": true,
@@ -762,7 +762,7 @@
           {
             "__guid": "3080b84f-da42-4414-a4d2-ec8fef12f5a3",
             "Name": "WORLD PANEL BALANCE",
-            "Position": "0.002317178,3.234809,0.0001051426",
+            "Position": "0.002636059,4.131481,0.0001180172",
             "Rotation": "-0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
             "Enabled": true,
             "NetworkMode": 2,
@@ -1205,6 +1205,8 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": [
     "saandy.fluorescent_ceiling_light01",
     "saandy.industrial_light02b"

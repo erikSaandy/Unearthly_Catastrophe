@@ -21,6 +21,7 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 		if ( other.GameObject.Tags.Has( "player" ) )
 		{
 			Player player = other.GameObject.Root.Components.Get<Player>();
+			if(Passengers.Contains(player)) { return; }
 			if(player.LifeState == LifeState.Dead) { return; }
 
 			Passengers.Add( player );

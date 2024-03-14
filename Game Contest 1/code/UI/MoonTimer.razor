@@ -7,7 +7,7 @@
 @if(Timer == null) { return; }
 
 <root class="container">
-	<div class="icon @(Visible ? "visible" : "")" />
+	<img class="icon @(Visible ? "visible" : "")" src="textures/icons/liftoff.vtex" />
 	<div class="timer @(Visible ? "visible" : "")">@Timer.FormattedTimeRemaining</div>
 </root>
 

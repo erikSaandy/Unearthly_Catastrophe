@@ -211,6 +211,11 @@ public class LethalGameManager : Component
 		//	LoadMoon( MoonDefinitions[0] );
 		//}
 
+		if(MoonTimerComponent.Instance.TimeLeft < 30f)
+		{
+
+		}
+
 		if ( Instance.GameObject.IsProxy ) { return; }
 
 	}
@@ -235,9 +240,16 @@ public class LethalGameManager : Component
 
 		// Land ship
 		Ship.Land( CurrentMoon.LandingPad );
+		InfoBox.SendInfo( $"Landing on {CurrentMoon.Definition.Name}. {CurrentMoon.Definition.Description}", InfoBox.EntryType.Info );
 
 		// Start timer
-		MoonTimerComponent.Instance.StartTimer( 720, delegate { LeaveCurrentMoon(); } );
+		MoonTimerComponent.Instance.StartTimer( 
+			//600,
+			80,
+			onFinish: LeaveCurrentMoon,
+			onWarning: delegate { InfoBox.SendInfo( $"Warning! The ship will be leaving in {MoonTimerComponent.WARNING_TIME} seconds. Don't get stranded.", InfoBox.EntryType.Warning ); } 
+		);
+
 	}
 
 
@@ -339,7 +351,11 @@ public class LethalGameManager : Component
 
 		KillAllStrandedPlayers();
 
-		await Task.DelayRealtimeSeconds( 3 );
+		await Task.DelayRealtimeSeconds( 1 );
+
+		RespawnAllDeadPlayers();
+
+		await Task.DelayRealtimeSeconds( 2 );
 
 		CurrentMoon.GameObject.Destroy();
 		CurrentMoonGuid = default;
@@ -348,6 +364,7 @@ public class LethalGameManager : Component
 
 		await Task.DelayRealtimeSeconds( 1 );
 
+		// Respawn again for safety. Someone might have been dumb and died since last respawn.
 		RespawnAllDeadPlayers();
 
 		LeftCurrentMoon();

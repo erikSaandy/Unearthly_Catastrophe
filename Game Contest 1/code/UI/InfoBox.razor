@@ -1,0 +1,132 @@
+﻿@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if(Queue.Count > 0) 
+	{
+		<div class="box @(Visible? "visible" : "")">
+			<div class="entry @(Visible? "visible" : "")">
+				<div class="message @(Visible? "visible" : "")">@Queue[0].message</div>
+				<img class="icon @(Visible ? "visible" : "")" src="@Queue[0].Icon" />
+			</div>
+		</div>
+	}
+</root>
+
+@code
+{
+	public enum EntryType
+	{
+		Info,
+		Warning
+	}
+
+	const float ENTRY_GAP_TIME = 2f;
+
+	public static InfoBox Instance { get; private set; }
+
+	public bool Visible { get; private set; } = false;
+
+	private List<Entry> Queue { get; set; } = new();
+
+	private Entry CurrentEntry => (Queue == null || Queue.Count == 0) ? null : Queue[0];
+
+	protected override void OnAwake()
+	{	
+		Instance = this;
+	}
+
+	protected override void OnUpdate()
+	{
+
+		if( Queue.Count == 0 ) { return; }
+
+		if (Queue[0].timeSinceShown > Queue[0].displayTime )
+		{
+			ShowNextEntry();
+		}
+
+	}
+
+	private async void ShowNextEntry( bool firstEntry = false )
+	{
+		Queue[0].timeSinceShown = -60;
+
+		if (Queue.Count == 0) { Visible = false; return; }
+
+		Visible = false;
+
+		await Task.DelayRealtimeSeconds(ENTRY_GAP_TIME);
+
+		if(!firstEntry && Queue.Count > 0) {
+			Queue.RemoveAt(0);
+		}
+
+		if(Queue.Count > 0)
+		{
+			Visible = true;
+			Queue[0].timeSinceShown = 0;
+		}
+
+	}
+
+	private void AddToQueueLocal(Entry entry)
+	{
+		Queue.Add(entry);
+
+		if (Queue.Count == 1)
+		{
+			ShowNextEntry(firstEntry: true);
+		}
+	}
+
+	public void SendInfoLocal(string message, EntryType type = EntryType.Info, float displayTime = 10)
+	{
+		if(IsProxy) { return; }
+
+		if (string.IsNullOrWhiteSpace(message))
+			return;
+
+		AddToQueueLocal(new(message, type, displayTime));
+
+	}
+
+	[Broadcast]
+	public static void SendInfo(string message, EntryType type = EntryType.Info, float displayTime = 10)
+	{
+		Log.Info(type);
+		Instance.SendInfoLocal(message, type, displayTime);
+	}
+
+	protected override int BuildHash()
+	{
+		return System.HashCode.Combine(
+			Visible,
+			CurrentEntry
+		);
+	}
+
+	private class Entry
+	{
+		public string message;
+		public EntryType type;
+		public float displayTime;
+
+		public RealTimeSince timeSinceShown;
+
+		public string Icon => type == EntryType.Info ? "textures/icons/info.vtex" : "textures/icons/warning.vtex";
+
+
+		public Entry(string message, EntryType type = EntryType.Info, float displayTime = 10)
+		{
+			this.message = message;
+			this.displayTime = displayTime;
+			this.type = type;
+
+			timeSinceShown = 0;
+		}
+	}
+
+}

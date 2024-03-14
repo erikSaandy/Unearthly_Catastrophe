@@ -1,5 +1,5 @@
 {
-  "Id": "013b260d-f514-4f35-93e0-30dfd90376ef",
+  "__guid": "013b260d-f514-4f35-93e0-30dfd90376ef",
   "GameObjects": [
     {
       "__guid": "f9522c0b-1fd0-4d9b-a34e-cc434b07d046",
@@ -23,6 +23,27 @@
         {
           "__type": "MoonTimerComponent",
           "__guid": "efec3eb2-6871-4d03-9102-029308265ebb"
+        }
+      ]
+    },
+    {
+      "__guid": "c40afb87-88f5-4aaa-921f-d2e95257d08b",
+      "Name": "InfoBox",
+      "Position": "546.1309,-2089.762,1835.134",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ScreenPanel",
+          "__guid": "232cc9a6-c0c5-4e8a-939b-e38bfb696364",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "InfoBox",
+          "__guid": "02db5bc1-c23b-4ce3-b214-cb55ef4cb365"
         }
       ]
     },
@@ -133,6 +154,8 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-13T22:48:22.4672927\u002B01:00",
+  "LastSaved": "2024-03-14T19:56:02.4320872\u002B01:00",
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

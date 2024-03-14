@@ -57,7 +57,8 @@ public sealed class TerminalComponent : Component
 	public static void SelectMoon(int i)
 	{
 		LethalGameManager.Instance.SelectedMoon = i;
-		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.MoonDefinitions[LethalGameManager.Instance.SelectedMoon].ResourceName}";
+		Log.Info( i );
+		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.MoonDefinitions[i].ResourceName}";
 		//LethalGameManager.Instance.Ship.Lever.IsLocked = false;
 	}
 

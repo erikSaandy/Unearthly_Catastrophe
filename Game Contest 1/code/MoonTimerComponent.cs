@@ -11,7 +11,12 @@ public sealed class MoonTimerComponent : Component
 	[Sync] public bool IsCounting { get; set; } = false;
 	[Sync] public float TargetTime { get; set; } = 0;
 
-	private RealTimeSince TimeSinceStarted { get; set; }
+	public RealTimeSince TimeSinceStarted { get; private set; }
+
+	public float TimeLeft => TargetTime - TimeSinceStarted;
+
+	public const float WARNING_TIME = 60;
+	private bool HasSentWarning { get; set; } = false;
 
 	/// <summary>
 	/// Is the timer visible on this client?
@@ -27,7 +32,7 @@ public sealed class MoonTimerComponent : Component
 	{
 		get
 		{
-			return IsCounting ? TimeSinceStarted : 0;
+			return TimeSinceStarted;
 		}
 		private set
 		{
@@ -47,24 +52,26 @@ public sealed class MoonTimerComponent : Component
 	}
 
 	private Action OnFinish { get; set; }
+	private Action OnWarning { get; set; }
 
 
-
-	public void StartTimer(float targetTime, Action onFinish )
+	public void StartTimer(float targetTime, Action onFinish, Action onWarning = null )
 	{
-
+		HasSentWarning = true;
 		this.OnFinish = onFinish;
-		Log.Info( "started timer for " + TargetTime + " seconds." );
+		this.OnWarning = onWarning;
 		StartTimer( targetTime );
+		Log.Info( "started timer for " + targetTime + " seconds." );
 	}
 
 	[Broadcast]
-	public void StartTimer( float targetTime )
+	private void StartTimer( float targetTime )
 	{
 
 		Log.Info( "start timer" );
 		IsCounting = true;
 		SecondsSinceStart = 0;
+		HasSentWarning = false;
 		this.TargetTime = targetTime;
 
 		if ( IsProxy ) { return; }
@@ -76,6 +83,7 @@ public sealed class MoonTimerComponent : Component
 	{
 
 		IsCounting = false;
+		OnWarning = null;
 
 		if ( IsProxy ) { return; }
 
@@ -102,6 +110,14 @@ public sealed class MoonTimerComponent : Component
 			OnFinish?.Invoke();
 			OnFinish = null;
 		}
+
+		if ( !HasSentWarning && TimeLeft < WARNING_TIME )
+		{
+			HasSentWarning = true;
+			OnWarning?.Invoke();
+		}
+
+		if (IsProxy) { return; }
 
 	}
 

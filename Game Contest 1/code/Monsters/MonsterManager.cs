@@ -21,7 +21,7 @@ public static class MonsterManager
 	public static void SpawnMonsters(List<Guid> potentialSpawners)
 	{
 
-		if( potentialSpawners.Count == 0) { Log.Warning( "Can't spawn monsters as dungeon contains no spawners." ); }
+		if( potentialSpawners == null || potentialSpawners.Count == 0) { Log.Warning( "Can't spawn monsters as dungeon contains no spawners." ); }
 
 		SpawnedMonsterData = new();
 

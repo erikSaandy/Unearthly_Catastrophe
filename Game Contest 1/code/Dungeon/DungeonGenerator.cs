@@ -55,8 +55,11 @@ public static class DungeonGenerator
 			PopulateWithScrap();
 
 			Log.Info( "[Spawning monsters...]" );
-			Log.Info( "monsterspawner count: " + MonsterSpawners.Count );
-			MonsterManager.SpawnMonsters( MonsterSpawners );
+			if ( MonsterSpawners != null )
+			{
+				Log.Info( "monsterspawner count: " + MonsterSpawners.Count );
+				MonsterManager.SpawnMonsters( MonsterSpawners );
+			}
 
 		}
 		catch(Exception e)

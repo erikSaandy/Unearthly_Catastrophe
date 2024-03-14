@@ -170,7 +170,7 @@ public class Zombie : Monster
 	private void ChangeTargetPosition()
 	{
 		TimeSinceUpdateTarget = 0;
-		Agent.MoveTo( Scene.NavMesh.GetRandomPoint( NestPosition, 700 ) ?? Transform.Position );
+		Agent.MoveTo( Scene.NavMesh.GetRandomPoint( NestPosition, 750 ) ?? Transform.Position );
 	}
 
 	private void StartPatroling ( Vector3 newNest )
