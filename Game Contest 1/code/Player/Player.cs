@@ -176,12 +176,13 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 			LifeState = LifeState.Dead;
 			Ragdoll.Ragdoll();
 			Inventory.DropAll();
-			OnKilled( Scene.Directory.FindByGuid( attackerId ) );
+			OnKilled( attackerId );
 			TimeSinceDeath = 0;
 		}
 	}
 
-	private void OnKilled( GameObject attacker )
+	[Broadcast]
+	private void OnKilled( Guid attackerId )
 	{
 		/*
 		if ( attacker.IsValid() )
@@ -197,17 +198,18 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		}
 		*/
 
+		LifeState = LifeState.Dead;
 		Tags.Add( "dead" );
+
+		PhysicsCollider.Enabled = false;
 
 		if ( IsProxy )
 			return;
 
-		PhysicsCollider.Enabled = false;
-
 		HideHead( false );
 		PlayerInput = new PlayerSpectateInput( this );
 
-		LethalGameManager.Instance?.OnPlayerDeath( GameObject.Id );
+		LethalGameManager.Instance?.QueueOnPlayerDeath();
 
 	}
 
@@ -222,6 +224,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 	public void Respawn()
 	{
 		Tags.Remove( "dead" );
+		PhysicsCollider.Enabled = true;
 
 		if ( IsProxy ) { return; }
 
@@ -233,7 +236,6 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		Health = MaxHealth;
 		PlayerInput = new PlayerInput( this );
 		HideHead( true );
-		PhysicsCollider.Enabled = true;
 
 	}
 

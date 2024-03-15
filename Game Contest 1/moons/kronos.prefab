@@ -1,32 +1,32 @@
 {
   "RootObject": {
-    "__guid": "d142654f-bce9-432a-82a7-d51b996f6ab9",
+    "__guid": "060b17e7-0541-4660-8758-2a20c34e1380",
     "Name": "kronos",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Moon",
-        "__guid": "e05ee513-c771-42d6-9d03-17a11b32dae2",
+        "__guid": "ab400ad1-8f2e-4037-8a15-6e7992a1b3cb",
         "Definition": "moons/kronos.moon",
         "LandingPad": {
           "_type": "component",
-          "component_id": "f1352b43-5f9c-4c53-b2e7-16f465f82880",
-          "go": "65b76119-7715-4b05-9e72-8926313d29f9",
+          "component_id": "ade7174d-c030-44f9-b111-f1f3ecc3ee3c",
+          "go": "debe68f2-a953-4d1b-976a-3583bc0af4c0",
           "component_type": "ShipLandingPadComponent"
         }
       }
     ],
     "Children": [
       {
-        "__guid": "2eeefd5c-4ca8-4fb5-a5f7-32a1dcced793",
+        "__guid": "dd07d8cd-6131-4ca6-9e8b-c20c1a58d97a",
         "Name": "Map Instance",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "MapInstance",
-            "__guid": "37de1b14-f194-4e0c-8ebe-c010ab293416",
+            "__guid": "ff329ea4-ffbc-4049-b319-e69e6b0b1fb1",
             "MapName": "maps/moon_krypton.vmap",
             "UseMapFromLaunch": false
           }
@@ -34,7 +34,7 @@
         "Children": []
       },
       {
-        "__guid": "53183795-42a9-4d21-87ee-c6841ad9486b",
+        "__guid": "e749b06a-0024-41cb-a127-5fa4d8e20efc",
         "Name": "door_entrance_01",
         "Position": "1023.999,768,0",
         "Rotation": "0,0,-0.7071069,-0.7071065",
@@ -43,20 +43,20 @@
         "__Prefab": "prefabs/door_entrance_01.prefab"
       },
       {
-        "__guid": "65b76119-7715-4b05-9e72-8926313d29f9",
+        "__guid": "debe68f2-a953-4d1b-976a-3583bc0af4c0",
         "Name": "Landing pad",
-        "Position": "538.3263,1.574829,64.0011",
+        "Position": "247.4065,-1433.798,64.00108",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "ShipLandingPadComponent",
-            "__guid": "f1352b43-5f9c-4c53-b2e7-16f465f82880"
+            "__guid": "ade7174d-c030-44f9-b111-f1f3ecc3ee3c"
           }
         ]
       },
       {
-        "__guid": "b9b6df8a-ffbf-40fa-bf77-9aa03a178453",
+        "__guid": "bd9e9b81-f3fe-4905-9058-d9533c1e58a2",
         "Name": "SoundScape",
         "Position": "714.5441,-938.7059,144.1532",
         "Enabled": true,
@@ -64,7 +64,7 @@
         "Components": [
           {
             "__type": "SoundscapeTrigger",
-            "__guid": "7fa244bb-1f66-422e-9ba3-7ea32c9ab50a",
+            "__guid": "a07bc94c-df8d-4e3d-b7d6-80bf240f9d4f",
             "BoxSize": "4000,6000,256",
             "Radius": 500,
             "Soundscape": "music/eerie_song_01.sndscape",
@@ -74,7 +74,7 @@
         ]
       },
       {
-        "__guid": "ed6f5c0f-0bbc-4dad-9d4f-e63047f72a73",
+        "__guid": "fc3f37a4-5f90-440f-90c9-22564dfe07ce",
         "Name": "MoonTimer Trigger",
         "Position": "252.2675,-191.9118,97.97519",
         "Enabled": true,
@@ -82,11 +82,11 @@
         "Components": [
           {
             "__type": "MoonTimerTriggerComponent",
-            "__guid": "340e7c75-51a6-4805-837c-c7e1b725ad9e"
+            "__guid": "53f1747f-6f44-489c-a537-331d8618bc97"
           },
           {
             "__type": "BoxCollider",
-            "__guid": "5361284d-8e42-4b60-9950-16aa3ddf32e4",
+            "__guid": "bf0ed8a5-4d0b-4f93-8b59-eb24ada3376a",
             "Center": "0,0,0",
             "IsTrigger": true,
             "Scale": "8000,12000,256",
@@ -95,7 +95,7 @@
         ]
       },
       {
-        "__guid": "4a510779-960f-4a58-ae40-1ee9ab48b988",
+        "__guid": "da7e2800-98db-4e48-8030-d284f4997592",
         "Name": "Sun",
         "Position": "-756.9304,-30.22823,448",
         "Rotation": "-0.01001749,0.3825523,0.02418435,0.9235629",
@@ -105,7 +105,7 @@
         "Components": [
           {
             "__type": "DirectionalLight",
-            "__guid": "3634a20d-8a59-4bb5-8793-761bfd492fe1",
+            "__guid": "a9ac8a59-85ca-4561-ba13-675eb62d2207",
             "FogMode": "Enabled",
             "FogStrength": 1,
             "LightColor": "2.74119,2.93961,3,1",
@@ -113,6 +113,14 @@
             "SkyColor": "0.0093,0.0093,0.0093,1"
           }
         ]
+      },
+      {
+        "__guid": "9f8d5a25-94cf-4479-8f50-d1427fee0ebc",
+        "Name": "landmine",
+        "Position": "452.0286,-551.1262,-0.0001220703",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/landmine.prefab"
       }
     ]
   },

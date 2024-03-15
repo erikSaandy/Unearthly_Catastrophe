@@ -12,11 +12,13 @@
       "HasAssets": false,
       "AssetsPath": null,
       "Resources": null,
-      "MenuResources": "*",
       "HasCode": false,
       "CodePath": null,
       "PackageReferences": [],
-      "EditorReferences": [],
+      "EditorReferences": [
+        "rustextended.terrain_blend_a#43398",
+        "facepunch.floor_concrete_ramp_a#18641"
+      ],
       "Metadata": {
         "SingleAssetSource": "maps/moon_krypton.vmap"
       }

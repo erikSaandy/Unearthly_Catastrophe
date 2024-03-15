@@ -1,6 +1,7 @@
 using Dungeon;
 using Sandbox.UI;
 using System;
+using System.Threading.Tasks;
 
 public class LethalGameManager : Component
 {
@@ -10,7 +11,6 @@ public class LethalGameManager : Component
 	public IEnumerable<Player> DeadPlayers => ConnectedPlayers.Where( x => x.LifeState == LifeState.Dead );
 
 	public static Player GetPlayer( int i ) { return Instance.ConnectedPlayers.ElementAt( i ); }
-
 
 	public static int GetNextPlayerIdAlive(int startId)
 	{
@@ -64,18 +64,32 @@ public class LethalGameManager : Component
 		}
 	}
 
+
+	private int OnPlayerDeathQueue { get; set; } = 0;
 	[Broadcast]
-	public void OnPlayerDeath( Guid playerId )
+	public void QueueOnPlayerDeath()
+	{
+		// only host.
+		if ( IsProxy ) { return; }
+
+		Log.Info( "QUEUED DEATH ROUTINE" );
+		OnPlayerDeathQueue++;
+	}
+
+	[Broadcast]
+	private void OnPlayerDeath()
 	{
 		// only host.
 		if(IsProxy) { return; }
 
-
+		Log.Info( ">> DEATH ROUTINE" );
+		Log.Info( Instance.AlivePlayers.Count() );
 
 		// All players are dead.
-		if( Instance.AlivePlayers.Count() <= 0 && Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
+		if ( Instance.AlivePlayers.Count() <= 0 && Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
 		{
 			Log.Info( "all palyers dead. ship now leaving." );
+			OnPlayerDeathQueue = 0;		
 
 			// Not on a moon.
 			if(CurrentMoonGuid == default)
@@ -186,7 +200,7 @@ public class LethalGameManager : Component
 	{
 		if ( Instance.GameObject.IsProxy ) { return; }
 
-		Instance?.OnPlayerDeath(playerId);
+		Instance?.QueueOnPlayerDeath();
 	}
 
 	protected override void OnStart()
@@ -194,7 +208,7 @@ public class LethalGameManager : Component
 
 		if (Instance.GameObject.IsProxy) { return; }
 
-		//TerminalComponent.SelectMoon( 0 );
+		TerminalComponent.SelectMoon( 0 );
 
 		//Log.Info( Instance == null );
 		 
@@ -211,12 +225,13 @@ public class LethalGameManager : Component
 		//	LoadMoon( MoonDefinitions[0] );
 		//}
 
-		if(MoonTimerComponent.Instance.TimeLeft < 30f)
-		{
-
-		}
-
 		if ( Instance.GameObject.IsProxy ) { return; }
+
+		if ( OnPlayerDeathQueue > 0 )
+		{
+			OnPlayerDeathQueue--;
+			OnPlayerDeath();
+		}
 
 	}
 
