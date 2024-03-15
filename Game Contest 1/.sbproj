@@ -224,61 +224,6 @@
       ],
       "DistinctAssemblyReferences": []
     },
-    "Collision": {
-      "Defaults": {
-        "solid": "Collide",
-        "trigger": "Trigger",
-        "ladder": "Ignore",
-        "water": "Trigger",
-        "spaceship": "Unset",
-        "item": "Collide"
-      },
-      "Pairs": [
-        {
-          "a": "solid",
-          "b": "solid",
-          "r": "Collide"
-        },
-        {
-          "a": "trigger",
-          "b": "playerclip",
-          "r": "Ignore"
-        },
-        {
-          "a": "trigger",
-          "b": "solid",
-          "r": "Trigger"
-        },
-        {
-          "a": "solid",
-          "b": "trigger",
-          "r": "Collide"
-        },
-        {
-          "a": "playerclip",
-          "b": "solid",
-          "r": "Collide"
-        },
-        {
-          "a": "spaceship",
-          "b": "spaceship",
-          "r": "Ignore"
-        },
-        {
-          "a": "trigger",
-          "b": "spaceship"
-        },
-        {
-          "a": "spaceship",
-          "b": "item",
-          "r": "Collide"
-        },
-        {
-          "a": "item",
-          "b": "item"
-        }
-      ]
-    },
     "MapStartupScene": null,
     "LaunchMode": "Normal"
   }

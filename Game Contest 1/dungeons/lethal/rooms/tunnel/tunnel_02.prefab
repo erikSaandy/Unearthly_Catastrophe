@@ -1,72 +1,81 @@
 {
   "RootObject": {
-    "Id": "f52b6bd3-f725-4e3d-a85f-3a7ac2a775cd",
+    "__guid": "e59e1df4-c235-4659-8bf2-6e0169b31f51",
     "Name": "tunnel_02",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
+        "__guid": "2e9de589-ef2f-49aa-aa98-798d592376e1",
         "Bounds": {
           "Mins": "-64,-64,0",
           "Maxs": "64,64,128"
         },
+        "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
-            "go": "c186c31b-552a-4ae5-874d-585184cd4d5f",
+            "component_id": "1deecc06-a156-4115-b7e4-c724667f4c86",
+            "go": "b025b5a1-923b-4a0c-8782-0e3b831b9243",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "go": "07419d96-33bb-4afa-a5ca-269074cc9cec",
+            "component_id": "b5265ff7-2726-4357-b5a9-931a0d17dd12",
+            "go": "7893dfde-e310-4623-bb42-d9125e68ede6",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "go": "f52b6bd3-f725-4e3d-a85f-3a7ac2a775cd",
+          "component_id": "d1981061-9777-401b-b370-5fa7af0a8e3f",
+          "go": "e59e1df4-c235-4659-8bf2-6e0169b31f51",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "d1981061-9777-401b-b370-5fa7af0a8e3f",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_02.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelCollider",
+        "__guid": "8fd75641-2a90-45bd-a797-e125ac214eb7",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_02.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       }
     ],
     "Children": [
       {
-        "Id": "c186c31b-552a-4ae5-874d-585184cd4d5f",
+        "__guid": "b025b5a1-923b-4a0c-8782-0e3b831b9243",
         "Name": "Door",
         "Position": "-0.00002242708,68,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "1deecc06-a156-4115-b7e4-c724667f4c86",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "07419d96-33bb-4afa-a5ca-269074cc9cec",
+        "__guid": "7893dfde-e310-4623-bb42-d9125e68ede6",
         "Name": "Door (3)",
         "Position": "0,-64,0",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "b5265ff7-2726-4357-b5a9-931a0d17dd12",
             "PortalType": "Corridor"
           }
         ]
@@ -76,5 +85,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

@@ -35,12 +35,12 @@
 
 		if ( Sandbox.Input.Pressed( "attack1" ) )
 		{
-			Owner.Inventory?.ActiveItem?.OnUsePrimary();
+			Owner.Inventory?.ActiveItem?.UsePrimary();
 		}
 
 		if ( Sandbox.Input.Pressed( "attack2" ) )
 		{
-			Owner.Inventory?.ActiveItem?.OnUseSecondary();
+			Owner.Inventory?.ActiveItem?.UseSecondary();
 		}
 
 		if ( Sandbox.Input.Pressed( "drop" ) )

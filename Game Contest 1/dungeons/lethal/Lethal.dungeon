@@ -47,6 +47,14 @@
         {
           "Weight": 10,
           "Prefab": "dungeons/lethal/rooms/loot_rooms/loot_room_01.prefab"
+        },
+        {
+          "Weight": 25,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_13.prefab"
+        },
+        {
+          "Weight": 10,
+          "Prefab": "dungeons/lethal/rooms/loot_rooms/loot_room_02.prefab"
         }
       ]
     },
@@ -112,6 +120,18 @@
         {
           "Weight": 10,
           "Prefab": "dungeons/lethal/rooms/loot_rooms/loot_room_01.prefab"
+        },
+        {
+          "Weight": 40,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_12.prefab"
+        },
+        {
+          "Weight": 30,
+          "Prefab": "dungeons/lethal/rooms/tunnel/tunnel_13.prefab"
+        },
+        {
+          "Weight": 10,
+          "Prefab": "dungeons/lethal/rooms/loot_rooms/loot_room_02.prefab"
         }
       ]
     }
@@ -134,5 +154,7 @@
   ],
   "CorridorCap": "dungeons/lethal/caps/cap_corridor.prefab",
   "DoorCap": "dungeons/lethal/caps/cap_door.prefab",
+  "ResourceVersion": 0,
+  "__version": 0,
   "__references": []
 }

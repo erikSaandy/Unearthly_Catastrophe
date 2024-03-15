@@ -12,7 +12,6 @@
       "HasAssets": false,
       "AssetsPath": null,
       "Resources": null,
-      "MenuResources": "*",
       "HasCode": false,
       "CodePath": null,
       "PackageReferences": [],
@@ -26,7 +25,10 @@
         "facepunch.trim_concrete_a#18735",
         "facepunch.floor_tile_02#48882",
         "facepunch.wall_brick_older_bottom_moss#18723",
-        "facepunch.wall_brick_older#18725"
+        "facepunch.wall_brick_older#18725",
+        "facepunch.stone_cladding_hs_01#33580",
+        "facepunch.metal_painted_black_a_hs#29194",
+        "facepunch.wood_plank_hs_01#33582"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/lethal_room_collection.vmap"

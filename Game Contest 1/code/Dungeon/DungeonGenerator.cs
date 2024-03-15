@@ -12,6 +12,7 @@ public static class DungeonGenerator
 	private static DungeonDefinition DungeonResource { get; set; }
 
 	public static List<RoomSetup> SpawnedRooms { get; private set; }
+	private static List<ModelRenderer> SpawnedCaps { get; set; }
 
 	private static List<Guid> MonsterSpawners { get; set; } = new();
 
@@ -25,7 +26,8 @@ public static class DungeonGenerator
 		{
 
 			MonsterSpawners = new();
-			SpawnedRooms = new List<RoomSetup>();
+			SpawnedRooms = new();
+			SpawnedCaps = new();
 
 			DungeonResource = def;
 			Biome biome = DungeonResource.RandomBiome;
@@ -349,6 +351,19 @@ public static class DungeonGenerator
 		{
 			GameObject cap = null;
 
+			// If portal happen to align, connect them.
+			for(int i = 0; i < SpawnedCaps.Count; i++ )
+			{
+				if(Vector3.DistanceBetween( SpawnedCaps[i].Transform.Position, ActivePortal.Transform.Position ) < 4f)
+				{
+					Log.Info($"FOUND MATCHING PORTAL {SpawnedCaps[i].GameObject.Parent.Name}" );
+					SpawnedCaps[i].GameObject.Destroy();
+					SpawnedCaps.RemoveAt( i );
+					SpawnDoor( ActivePortal );
+					return;
+				}
+			}	
+
 			if ( ActivePortal.PortalType == RoomPortal.RoomPortalType.Corridor )
 			{
 				cap = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( DungeonResource.CorridorCap ) ).Clone();
@@ -365,6 +380,9 @@ public static class DungeonGenerator
 			cap.Transform.Rotation = ActivePortal.Transform.Rotation;
 			cap.SetParent( GameObject );
 			cap.NetworkSpawn();
+
+			SpawnedCaps.Add( cap.Components.Get<ModelRenderer>() );
+
 		}
 
 		public void Destroy()

@@ -68,7 +68,6 @@ public sealed class MoonTimerComponent : Component
 	private void StartTimer( float targetTime )
 	{
 
-		Log.Info( "start timer" );
 		IsCounting = true;
 		SecondsSinceStart = 0;
 		HasSentWarning = false;

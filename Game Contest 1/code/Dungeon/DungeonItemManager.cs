@@ -22,7 +22,7 @@ public static class DungeonItemManager
 		new ItemPrefab("prefabs/scraps/scrap_soda_can.prefab" , 50),
 
 		new ItemPrefab("prefabs/items/key.prefab", 50),
-		new ItemPrefab("prefabs/items/landmine.prefab", 50),
+		new ItemPrefab("prefabs/items/landmine.prefab", 100),
 
 	};
 

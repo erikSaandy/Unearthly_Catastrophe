@@ -26,6 +26,8 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 	[Category( "Camera" )] [Property] public CameraController CameraController;
 	public CameraComponent Camera => CameraController?.Camera;
 
+	[Category( "Components" )][Property] public CapsuleCollider PhysicsCollider { get; private set; }
+
 	[Sync] public Angles EyeAngles { get; set; }
 
 	public EnergyBarComponent EnergyBar { get; private set; }
@@ -41,6 +43,9 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 	[Category( "Bones" )][Property] public GameObject HandRBone { get; set; }
 	[Category( "Bones" )][Property] public GameObject Spine1Bone { get; set; }
 	[Category( "Bones" )][Property] public GameObject FlashlightRBone { get; set; }
+
+	[Category( "Sounds" )][Property] public SoundEvent HurtSound { get; set; }
+
 	public Action OnJumped { get; set; }
 
 	[Category( "Hud" )][Property] public GameObject HudObject;
@@ -48,6 +53,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 	public GameObject OldGroundObject { get; private set; } = null;
 	public GameObject LastGroundObject { get; private set; } = null;
+	public RealTimeSince TimeSinceGrounded { get; set; } = 0;
 
 	protected override void OnStart()
 	{
@@ -128,6 +134,12 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 		if(IsProxy) { return; }
 
+		if(LifeState == LifeState.Alive && TimeSinceGrounded > 10f)
+		{
+			Kill();
+			Log.Info( $"{GameObject.Name} killed since they had been falling for a long time." );
+		}
+
 	}
 
 	[Broadcast]
@@ -147,13 +159,17 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( LifeState == LifeState.Dead )
 			return;
 
-		// Controller.Punch( impulseForce * 10000 );
-
 		if ( IsProxy )
 			return;
 
 		TimeSinceDamaged = 0f;
 		Health = MathF.Max( Health - damage, 0f );
+		Controller.Velocity *= 0.5f;
+
+		if ( HurtSound is not null )
+		{
+			Sound.Play( HurtSound, Transform.Position );
+		}
 
 		if ( Health <= 0f )
 		{
@@ -186,6 +202,8 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( IsProxy )
 			return;
 
+		PhysicsCollider.Enabled = false;
+
 		HideHead( false );
 		PlayerInput = new PlayerSpectateInput( this );
 
@@ -215,6 +233,7 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		Health = MaxHealth;
 		PlayerInput = new PlayerInput( this );
 		HideHead( true );
+		PhysicsCollider.Enabled = true;
 
 	}
 
@@ -299,6 +318,8 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 		if ( Controller.IsOnGround )
 		{
+			TimeSinceGrounded = 0;
+
 			Controller.Acceleration = 10;
 
 			if ( Input.Pressed( "Jump" ) )

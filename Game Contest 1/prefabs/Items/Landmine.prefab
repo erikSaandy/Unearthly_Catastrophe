@@ -1,33 +1,39 @@
 {
   "RootObject": {
-    "__guid": "2def67de-bd4a-4d67-a6db-8bf45580e714",
+    "__guid": "01ea72d4-c27c-4c56-ac3a-6653b9fd630b",
     "Name": "landmine",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
       {
         "__type": "LandMine",
-        "__guid": "7ce147f7-8764-4bd2-803b-b8a687eecfc8",
+        "__guid": "52e8ea1f-61e5-461e-b7d4-3b40714e6274",
         "BeepingSound": "sounds/mine_beeping_fast.sound",
         "BlastRadius": 108,
+        "Collider": {
+          "_type": "component",
+          "component_id": "672f5432-e2d8-4457-b164-1e3fb18f6554",
+          "go": "01ea72d4-c27c-4c56-ac3a-6653b9fd630b",
+          "component_type": "ModelCollider"
+        },
         "ExplosionParticle": {
           "_type": "component",
-          "component_id": "c37bd8af-03cb-41d5-8686-209bc366f83f",
-          "go": "1318d6bc-7e7d-49bc-9242-ace36bc26ca4",
+          "component_id": "017a50c3-c8d4-4cbc-8982-a1d74c8f2f07",
+          "go": "f91ae881-0d74-4158-b58d-e8484ca8910e",
           "component_type": "LegacyParticleSystem"
         },
         "ExplosionSound": "sounds/mine_explosion.sound",
         "Renderer": {
           "_type": "component",
-          "component_id": "1d48eaf5-3587-4669-9a51-529139c4beb7",
-          "go": "2def67de-bd4a-4d67-a6db-8bf45580e714",
+          "component_id": "1ab8f54f-f987-43a5-ac37-92ed183bbbc3",
+          "go": "01ea72d4-c27c-4c56-ac3a-6653b9fd630b",
           "component_type": "ModelRenderer"
         },
         "TriggeredSound": "sounds/button_pressed_01.sound"
       },
       {
         "__type": "ModelRenderer",
-        "__guid": "1d48eaf5-3587-4669-9a51-529139c4beb7",
+        "__guid": "1ab8f54f-f987-43a5-ac37-92ed183bbbc3",
         "BodyGroups": 18446744073709551615,
         "Model": "models/landmine/landmine.vmdl",
         "RenderType": "On",
@@ -35,7 +41,8 @@
       },
       {
         "__type": "ModelCollider",
-        "__guid": "5194d400-62fd-499d-b8c3-21dc3ab4a1f2",
+        "__guid": "672f5432-e2d8-4457-b164-1e3fb18f6554",
+        "__enabled": false,
         "IsTrigger": true,
         "Model": "models/landmine/landmine.vmdl",
         "Static": false
@@ -43,7 +50,7 @@
     ],
     "Children": [
       {
-        "__guid": "1318d6bc-7e7d-49bc-9242-ace36bc26ca4",
+        "__guid": "f91ae881-0d74-4158-b58d-e8484ca8910e",
         "Name": "Particle",
         "Tags": "particles",
         "Enabled": true,
@@ -51,7 +58,7 @@
         "Components": [
           {
             "__type": "LegacyParticleSystem",
-            "__guid": "c37bd8af-03cb-41d5-8686-209bc366f83f",
+            "__guid": "017a50c3-c8d4-4cbc-8982-a1d74c8f2f07",
             "__enabled": false,
             "ControlPoints": [],
             "Looped": false,
@@ -65,5 +72,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

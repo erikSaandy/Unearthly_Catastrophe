@@ -244,8 +244,7 @@ public class LethalGameManager : Component
 
 		// Start timer
 		MoonTimerComponent.Instance.StartTimer( 
-			//600,
-			80,
+			600,
 			onFinish: LeaveCurrentMoon,
 			onWarning: delegate { InfoBox.SendInfo( $"Warning! The ship will be leaving in {MoonTimerComponent.WARNING_TIME} seconds. Don't get stranded.", InfoBox.EntryType.Warning ); } 
 		);
@@ -285,12 +284,10 @@ public class LethalGameManager : Component
 
 		Log.Info( "Loading moon " + moon.MoonPrefab + "..." );
 
-		await Task.Delay( 250 );
 		StartLoadMoon();
+		await Task.Delay( 250 );
 
 		Balance -= moon.TravelCost;
-
-		await Task.Delay( 1000 );
 
 		GameObject moonObject = SceneUtility.GetPrefabScene( ResourceLibrary.Get<PrefabFile>( moon.MoonPrefab ) ).Clone( Vector3.Zero );
 		moonObject.BreakFromPrefab();
@@ -298,7 +295,11 @@ public class LethalGameManager : Component
 
 		CurrentMoonGuid = moonObject.Id;
 
+		await Task.Delay( 500 );
+
 		await DungeonGenerator.GenerateDungeon( ResourceLibrary.Get<DungeonDefinition>( moon.DungeonDefinitions[0] ) );
+
+		await Task.Delay( 500 );
 
 		Log.Info( "Generating navmesh.." );
 		await Instance.Scene.NavMesh.Generate( Scene.PhysicsWorld );

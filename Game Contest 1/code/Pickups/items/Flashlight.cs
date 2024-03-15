@@ -35,12 +35,12 @@ public sealed class Flashlight : Carriable
 		base.OnDrop();
 	}
 
-	public override void OnUsePrimary()
+	public override void UsePrimary()
 	{
 		ToggleOn( !IsOn );
 	}
 
-	public override void OnUseSecondary()
+	public override void UseSecondary()
 	{
 	}
 

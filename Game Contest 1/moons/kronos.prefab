@@ -1,32 +1,32 @@
 {
   "RootObject": {
-    "__guid": "31fae45d-f5fe-4699-945f-a928288f0f21",
+    "__guid": "d142654f-bce9-432a-82a7-d51b996f6ab9",
     "Name": "kronos",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Moon",
-        "__guid": "6c137046-47c6-4350-a06b-3b33e6a8a75c",
+        "__guid": "e05ee513-c771-42d6-9d03-17a11b32dae2",
         "Definition": "moons/kronos.moon",
         "LandingPad": {
           "_type": "component",
-          "component_id": "66595ffe-cfa6-4e3f-9cb9-2766d6255829",
-          "go": "e21a3ce9-0adb-42f8-9743-3c521fe4a685",
+          "component_id": "f1352b43-5f9c-4c53-b2e7-16f465f82880",
+          "go": "65b76119-7715-4b05-9e72-8926313d29f9",
           "component_type": "ShipLandingPadComponent"
         }
       }
     ],
     "Children": [
       {
-        "__guid": "6213f4d3-627f-45f6-8f71-a29658ef6e1e",
+        "__guid": "2eeefd5c-4ca8-4fb5-a5f7-32a1dcced793",
         "Name": "Map Instance",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "MapInstance",
-            "__guid": "7011303a-6c26-49aa-8bbc-29527631f7b8",
+            "__guid": "37de1b14-f194-4e0c-8ebe-c010ab293416",
             "MapName": "maps/moon_krypton.vmap",
             "UseMapFromLaunch": false
           }
@@ -34,7 +34,7 @@
         "Children": []
       },
       {
-        "__guid": "0c08c113-240e-4788-9fe7-9145f1a4e91a",
+        "__guid": "53183795-42a9-4d21-87ee-c6841ad9486b",
         "Name": "door_entrance_01",
         "Position": "1023.999,768,0",
         "Rotation": "0,0,-0.7071069,-0.7071065",
@@ -43,7 +43,7 @@
         "__Prefab": "prefabs/door_entrance_01.prefab"
       },
       {
-        "__guid": "e21a3ce9-0adb-42f8-9743-3c521fe4a685",
+        "__guid": "65b76119-7715-4b05-9e72-8926313d29f9",
         "Name": "Landing pad",
         "Position": "538.3263,1.574829,64.0011",
         "Enabled": true,
@@ -51,12 +51,12 @@
         "Components": [
           {
             "__type": "ShipLandingPadComponent",
-            "__guid": "66595ffe-cfa6-4e3f-9cb9-2766d6255829"
+            "__guid": "f1352b43-5f9c-4c53-b2e7-16f465f82880"
           }
         ]
       },
       {
-        "__guid": "f714609b-c49e-4608-abb4-13211c5a1d45",
+        "__guid": "b9b6df8a-ffbf-40fa-bf77-9aa03a178453",
         "Name": "SoundScape",
         "Position": "714.5441,-938.7059,144.1532",
         "Enabled": true,
@@ -64,7 +64,7 @@
         "Components": [
           {
             "__type": "SoundscapeTrigger",
-            "__guid": "9570f246-2621-44a9-8e5d-6dcf1e8f9f77",
+            "__guid": "7fa244bb-1f66-422e-9ba3-7ea32c9ab50a",
             "BoxSize": "4000,6000,256",
             "Radius": 500,
             "Soundscape": "music/eerie_song_01.sndscape",
@@ -74,7 +74,7 @@
         ]
       },
       {
-        "__guid": "610c4bc3-af54-43ce-9a4b-d404fcb051d4",
+        "__guid": "ed6f5c0f-0bbc-4dad-9d4f-e63047f72a73",
         "Name": "MoonTimer Trigger",
         "Position": "252.2675,-191.9118,97.97519",
         "Enabled": true,
@@ -82,15 +82,35 @@
         "Components": [
           {
             "__type": "MoonTimerTriggerComponent",
-            "__guid": "6301731a-98cb-4092-8569-07829f190ffc"
+            "__guid": "340e7c75-51a6-4805-837c-c7e1b725ad9e"
           },
           {
             "__type": "BoxCollider",
-            "__guid": "7787aa9a-82f3-4b3d-9cdc-f897684e5c14",
+            "__guid": "5361284d-8e42-4b60-9950-16aa3ddf32e4",
             "Center": "0,0,0",
             "IsTrigger": true,
             "Scale": "8000,12000,256",
             "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "4a510779-960f-4a58-ae40-1ee9ab48b988",
+        "Name": "Sun",
+        "Position": "-756.9304,-30.22823,448",
+        "Rotation": "-0.01001749,0.3825523,0.02418435,0.9235629",
+        "Tags": "light_directional,light,skybox",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "DirectionalLight",
+            "__guid": "3634a20d-8a59-4bb5-8793-761bfd492fe1",
+            "FogMode": "Enabled",
+            "FogStrength": 1,
+            "LightColor": "2.74119,2.93961,3,1",
+            "Shadows": true,
+            "SkyColor": "0.0093,0.0093,0.0093,1"
           }
         ]
       }

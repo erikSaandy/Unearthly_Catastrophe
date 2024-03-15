@@ -1,11 +1,15 @@
 {
   "UI": false,
   "Volume": "1.00,1.00,0",
-  "Pitch": "1.00,1.00,0",
-  "Decibels": 350,
-  "SelectionMode": "Random",
+  "Pitch": "0.85,1.05,1",
+  "Decibels": 60,
+  "SelectionMode": "RandomExclusive",
   "Sounds": [
-    "sounds/mine_explosion.vsnd"
+    "sounds/zombie_idle01.vsnd",
+    "sounds/zombie_idle02.vsnd",
+    "sounds/zombie_idle03.vsnd",
+    "sounds/zombie_idle04.vsnd",
+    "sounds/zombie_idle05.vsnd"
   ],
   "Occlusion": true,
   "Reflections": true,

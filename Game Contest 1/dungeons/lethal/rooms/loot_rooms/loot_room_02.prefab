@@ -1,539 +1,192 @@
 {
   "RootObject": {
     "__guid": "42458ee8-adf8-41da-83be-0436e59a4ebe",
-    "Name": "loot_room_01",
+    "Name": "loot_room_02",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
-        "__guid": "65215a82-d233-49c2-b9f6-6b8f46fab4e4",
+        "__guid": "ece76a62-d907-4305-a7a6-e45c78a92e18",
         "Bounds": {
-          "Mins": "-736,-448,-764",
-          "Maxs": "-64,832,672"
+          "Mins": "-256,-480,-538",
+          "Maxs": "228,60,165.9003"
         },
         "LootSpawner": {
           "_type": "component",
-          "component_id": "e3c2d21d-de82-4716-b1b5-e7ff92a85d0d",
+          "component_id": "e1cce118-3860-4fb1-a01d-66fdf380dc2d",
           "go": "42458ee8-adf8-41da-83be-0436e59a4ebe",
           "component_type": "LootSpawnerComponent"
         },
-        "MonsterSpawners": [
-          {
-            "_type": "component",
-            "component_id": "4e16da3e-0980-4a6b-a587-0e73a3d0b2ee",
-            "go": "b05a134b-0ab4-4fda-aea3-aaf9c234dd93",
-            "component_type": "MonsterSpawner"
-          }
-        ],
+        "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
-            "component_id": "3140ec51-1ac9-4b52-b847-0098e0dbceef",
+            "component_id": "4de8a2c5-a170-4fd9-a9fd-c93a6736b30f",
             "go": "cc266c0b-7dda-457c-b729-3156d175c8ad",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "component_id": "b6d5a926-feac-415e-bc3f-aca2b55d1ed6",
-            "go": "140ca628-cefa-46e2-8c2f-10233fa35433",
+            "component_id": "37f68a02-1d9d-46c7-b029-56a6a0ecc70c",
+            "go": "13bdc537-f6c4-46a0-85c4-eb53661de3a3",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "component_id": "3838c9c3-6edf-47f2-a272-447c16b7c12c",
-            "go": "f49c10c7-c836-4f9e-8b6a-ae16ff9d53b3",
+            "component_id": "c2cb8c1c-f945-4304-9501-97e08b9a695d",
+            "go": "e5a135c4-7eae-49a9-939c-be69fd03f78a",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "component_id": "14299e15-22ac-415d-96fd-32c99b38cef8",
-            "go": "d9f573bd-81d6-45f1-968e-39718745cd64",
+            "component_id": "92cafdae-7cb9-488b-aea8-773e9577db49",
+            "go": "8f1d6c3c-016a-47cc-a1ff-55e8ddf67f6a",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "component_id": "39d0b1f9-b2c3-440c-86e3-8b715df21cfe",
-            "go": "e49406a3-b1a7-43f5-bceb-e08162da96ee",
+            "component_id": "79410ffc-9fc1-4db0-a344-90be2888f224",
+            "go": "22b18cc5-7799-4558-a492-ae99c62c46a6",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "component_id": "a21e9ca9-693a-4fa0-a659-59e5806cc058",
-            "go": "4c449a54-5ec4-4d59-b2e9-d255585156b9",
+            "component_id": "8e489998-1533-441c-9987-ae04fb7287bb",
+            "go": "b5d65c41-59ca-419a-88a8-d49a696dc51c",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "component_id": "9dfbba99-36f2-4bed-b7e3-ca901146c985",
+          "component_id": "112dc36b-669a-4503-bb53-1adc69edaa51",
           "go": "42458ee8-adf8-41da-83be-0436e59a4ebe",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
-        "__guid": "9dfbba99-36f2-4bed-b7e3-ca901146c985",
+        "__guid": "112dc36b-669a-4503-bb53-1adc69edaa51",
         "BodyGroups": 18446744073709551615,
-        "Model": "dungeons/lethal/rooms/loot_rooms/loot_room_01.vmdl",
+        "Model": "dungeons/lethal/rooms/loot_rooms/loot_room_02.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelCollider",
-        "__guid": "4a850811-e767-4d90-aebf-b27df66f3b8d",
+        "__guid": "7487df2b-f534-4bde-827e-5c09f9a6da0f",
         "IsTrigger": false,
-        "Model": "dungeons/lethal/rooms/loot_rooms/loot_room_01.vmdl",
+        "Model": "dungeons/lethal/rooms/loot_rooms/loot_room_02.vmdl",
         "Static": true
       },
       {
         "__type": "LootSpawnerComponent",
-        "__guid": "e3c2d21d-de82-4716-b1b5-e7ff92a85d0d",
+        "__guid": "e1cce118-3860-4fb1-a01d-66fdf380dc2d",
         "MaxItemCount": 6,
-        "Offset": "-443.9,256,115.4999",
-        "Radius": 800
+        "Offset": "0,-200,-83.8999",
+        "Radius": 400
       }
     ],
     "Children": [
       {
         "__guid": "cc266c0b-7dda-457c-b729-3156d175c8ad",
         "Name": "Door",
-        "Position": "-255.9997,836.0001,0.00001349466",
+        "Position": "-160,60,40",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "3140ec51-1ac9-4b52-b847-0098e0dbceef",
+            "__guid": "4de8a2c5-a170-4fd9-a9fd-c93a6736b30f",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "__guid": "140ca628-cefa-46e2-8c2f-10233fa35433",
+        "__guid": "13bdc537-f6c4-46a0-85c4-eb53661de3a3",
+        "Name": "Door (1)",
+        "Position": "-160,60,-152",
+        "Rotation": "0,0,1,0.0000001649049",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "__guid": "37f68a02-1d9d-46c7-b029-56a6a0ecc70c",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "__guid": "e5a135c4-7eae-49a9-939c-be69fd03f78a",
         "Name": "Door (2)",
-        "Position": "-639.9997,836.0002,0.0000909205",
-        "Rotation": "0,0,1,0.0000001649049",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "RoomPortal",
-            "__guid": "b6d5a926-feac-415e-bc3f-aca2b55d1ed6",
-            "PortalType": "Door"
-          }
-        ]
-      },
-      {
-        "__guid": "4c449a54-5ec4-4d59-b2e9-d255585156b9",
-        "Name": "Door (5)",
-        "Position": "-740,-351.9996,96",
-        "Rotation": "0,0,0.7071069,-0.7071066",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "RoomPortal",
-            "__guid": "a21e9ca9-693a-4fa0-a659-59e5806cc058",
-            "PortalType": "Door"
-          }
-        ]
-      },
-      {
-        "__guid": "f49c10c7-c836-4f9e-8b6a-ae16ff9d53b3",
-        "Name": "Door (3)",
-        "Position": "-64,0.0000114441,0",
+        "Position": "228,-8.00004,-152",
         "Rotation": "0,0,0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "3838c9c3-6edf-47f2-a272-447c16b7c12c",
+            "__guid": "c2cb8c1c-f945-4304-9501-97e08b9a695d",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "__guid": "8f1d6c3c-016a-47cc-a1ff-55e8ddf67f6a",
+        "Name": "Door (3)",
+        "Position": "160,-480,-151.9999",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "__guid": "92cafdae-7cb9-488b-aea8-773e9577db49",
             "PortalType": "Corridor"
           }
         ]
       },
       {
-        "__guid": "d9f573bd-81d6-45f1-968e-39718745cd64",
+        "__guid": "22b18cc5-7799-4558-a492-ae99c62c46a6",
         "Name": "Door (4)",
-        "Position": "-767.9999,384.0001,0.00002389784",
+        "Position": "-160,-480,-151.9999",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "__guid": "79410ffc-9fc1-4db0-a344-90be2888f224",
+            "PortalType": "Corridor"
+          }
+        ]
+      },
+      {
+        "__guid": "b5d65c41-59ca-419a-88a8-d49a696dc51c",
+        "Name": "Door (5)",
+        "Position": "-255.9999,-256,-151.9996",
         "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "14299e15-22ac-415d-96fd-32c99b38cef8",
+            "__guid": "8e489998-1533-441c-9987-ae04fb7287bb",
             "PortalType": "Corridor"
-          }
-        ]
-      },
-      {
-        "__guid": "e49406a3-b1a7-43f5-bceb-e08162da96ee",
-        "Name": "Door (1)",
-        "Position": "-63.99993,320,0",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "RoomPortal",
-            "__guid": "39d0b1f9-b2c3-440c-86e3-8b715df21cfe",
-            "PortalType": "Corridor"
-          }
-        ]
-      },
-      {
-        "__guid": "0ea24c92-6d55-4170-a3bd-6dda24e92588",
-        "Name": "metal_staircase_step",
-        "Position": "-256,-108,0",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "9feee43b-8340-4c40-9241-9de6e5e4367e",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "83c73fb8-8c25-4c64-af99-9d488d00fbec",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "75a9b730-2588-48a7-9dbc-c3110927bad6",
-        "Name": "metal_staircase_step (8)",
-        "Position": "-639.9999,-59.99987,0.000002970787",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "5e24b565-041d-43e3-8ab9-e75e7a8238d2",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "3e31cbbc-cf80-4fcc-a039-3080d4fef2e5",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "f57dff5a-164a-43d0-8a0d-d735cfd5430c",
-        "Name": "metal_staircase_step (9)",
-        "Position": "-639.9996,-71.99988,8",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "0d970bd0-f549-4f25-a4cb-cad6eae1493f",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "85276e11-d694-4fe6-9369-dc03e356d9e3",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "f91f1d5d-f27f-4327-9ee6-9c74d5b7326c",
-        "Name": "metal_staircase_step (10)",
-        "Position": "-639.9994,-83.99988,16",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "6f67745a-0980-44ed-b02a-1188230fdd34",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "bb594708-da73-478b-8d2f-86e586590545",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "e6bdd2c7-8c7d-4708-bd3f-633a39a16b46",
-        "Name": "metal_staircase_step (11)",
-        "Position": "-639.9991,-95.99988,24",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "a00fadd6-11f8-4d0a-997e-0f527e358483",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "870dd87f-bb28-4093-9f4e-8e9c83387c2a",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "9ca3730f-bf77-4493-96a6-984ed0987fba",
-        "Name": "metal_staircase_step (12)",
-        "Position": "-639.9988,-107.9999,32",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "9f0b3bf9-7b8e-49ce-9dcf-c1ac26851eba",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "71aeb4bb-85f3-4828-a445-5ebaa4474398",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "f5c9a0d7-9475-4326-b955-9bcab474ae31",
-        "Name": "metal_staircase_step (13)",
-        "Position": "-639.9984,-119.9999,40",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "1661b568-f6ee-4ed2-ad6b-98dc7c0e6e9e",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "3df4daed-6ffb-4235-ae74-e728d48cd114",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "cc5e8b40-5a73-475c-86ca-9a3a68efa8b6",
-        "Name": "metal_staircase_step (14)",
-        "Position": "-639.9982,-131.9999,48",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "32002346-98ef-4c55-86db-180dae093a31",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "dfa7f208-0cf2-48ac-b10d-e99e215901f6",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "2bb4fc79-3ef2-4910-8924-2c05c80a90c4",
-        "Name": "metal_staircase_step (15)",
-        "Position": "-639.998,-143.9999,56",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "2d492e80-d20a-4129-9f3d-82dbb14adcbf",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "62ce5d8b-fdce-42bb-b3ec-8aa06b6d5b24",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "38aa59a5-1155-414e-85fa-514543f58b48",
-        "Name": "metal_staircase_step (16)",
-        "Position": "-639.9976,-155.9999,64",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "91ff2d65-47bd-4ee4-9d77-6e073246e11d",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "daa2b2ac-ac75-4ee4-b846-6ca4ca430c18",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "86f14e84-9ac8-48da-ac1e-28af6fde31a4",
-        "Name": "metal_staircase_step (17)",
-        "Position": "-639.9974,-167.9999,72",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "6caf37d5-27cd-4326-9f35-3707a18a09ca",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "d2b8b297-fd2f-4fa9-b46c-02aff5e91128",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "ce14bc43-0e79-41aa-83f4-9ac6134e4bf5",
-        "Name": "metal_staircase_step (18)",
-        "Position": "-639.9972,-179.9999,80",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "6795895b-b2a3-45ff-a3e0-9805355a2d27",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "e03b3409-7a4f-43c2-a689-8243d6b187c5",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
           }
         ]
       },
       {
         "__guid": "37115d63-b428-44dd-8dc1-86145d8ddc62",
-        "Name": "metal_staircase_step (19)",
-        "Position": "-639.9969,-191.9998,88",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "SkinnedModelRenderer",
-            "__guid": "7799fb14-c57b-4666-a158-181dee324808",
-            "BodyGroups": 18446744073709551615,
-            "CreateBoneObjects": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "RenderType": "On",
-            "Tint": "1,1,1,1"
-          },
-          {
-            "__type": "ModelCollider",
-            "__guid": "e1381061-f9c9-4ff4-8add-4a891f1bf76c",
-            "IsTrigger": false,
-            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "180985eb-0a82-49e2-8aab-832676a710ca",
         "Name": "metal_staircase_step (1)",
-        "Position": "-255.9998,-119.9999,8",
-        "Rotation": "0,0,0.7071067,0.7071068",
+        "Position": "160,-64,-32",
+        "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "f5adffc5-a7be-4c26-9fbf-96255b1d0c10",
+            "__guid": "7b5fd637-12d3-495a-85d5-e0792ceb443c",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
@@ -542,7 +195,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "8f9ab59a-ffe5-4de1-b02f-b21f57fb10d4",
+            "__guid": "ebb10009-ef2e-420b-a64e-833af2c70585",
             "IsTrigger": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
@@ -550,16 +203,16 @@
         ]
       },
       {
-        "__guid": "6a2c4051-4bfd-40cd-8832-9849668b8b64",
+        "__guid": "fd501a74-55bd-49c7-a0fb-b0b4fecb4f08",
         "Name": "metal_staircase_step (2)",
-        "Position": "-255.9997,-131.9999,16",
-        "Rotation": "0,0,0.7071067,0.7071068",
+        "Position": "160,-76,-40",
+        "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "abaa2368-7e50-4a20-9703-b68d5c570606",
+            "__guid": "40205b43-152f-4cb8-9943-c00ae0eebfe0",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
@@ -568,7 +221,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "532bcec6-f038-4a0f-829d-c9ad030123fc",
+            "__guid": "c2c432c2-7777-4e7c-8dce-c9526b0acbac",
             "IsTrigger": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
@@ -576,16 +229,16 @@
         ]
       },
       {
-        "__guid": "1a50c7c3-814b-495f-80a7-eae7279ca9d2",
+        "__guid": "d3229fc0-e4fc-4a08-9ef3-84c8dab6c54d",
         "Name": "metal_staircase_step (3)",
-        "Position": "-255.9996,-143.9999,24",
-        "Rotation": "0,0,0.7071067,0.7071068",
+        "Position": "160,-88,-48",
+        "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "a9430169-242e-4c5e-b4ed-120530d110d6",
+            "__guid": "513a525a-dccf-4702-86b9-b580c202c6af",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
@@ -594,7 +247,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "4d090938-27e3-42dd-b3e0-d604483d2a1d",
+            "__guid": "0c20db54-9254-4534-825a-a9ec890073d6",
             "IsTrigger": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
@@ -602,16 +255,16 @@
         ]
       },
       {
-        "__guid": "4adc6149-4243-4be6-a09f-89964675d84e",
+        "__guid": "bba4f6ec-02a0-4577-ae6d-8e5b0d5316ea",
         "Name": "metal_staircase_step (4)",
-        "Position": "-255.9995,-155.9999,32",
-        "Rotation": "0,0,0.7071067,0.7071068",
+        "Position": "160,-100,-56",
+        "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "bbbd9cd2-0ee7-4ada-ba8a-48be7f94d18e",
+            "__guid": "62e68d5b-f3dd-4dda-83bb-301ab0e01cd1",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
@@ -620,7 +273,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "977579bc-e9d4-4abb-8d6a-70b2af093b0d",
+            "__guid": "9581e9c3-85a2-4016-84a1-ba5d3b8b8859",
             "IsTrigger": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
@@ -628,16 +281,16 @@
         ]
       },
       {
-        "__guid": "419ce35c-6786-4fb1-b954-f9312ee49064",
+        "__guid": "41a70bbd-7152-48ef-83e5-bb203fa31819",
         "Name": "metal_staircase_step (5)",
-        "Position": "-255.9994,-167.9999,40",
-        "Rotation": "0,0,0.7071067,0.7071068",
+        "Position": "160,-112,-64",
+        "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "0cfca630-8117-4bf1-954c-0482b9c653fd",
+            "__guid": "344069be-ba5b-4673-a8d2-d2c3e92f7a53",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
@@ -646,7 +299,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "25b13ab6-0fb7-4d6d-a6ac-43c76d0d1634",
+            "__guid": "6b29a9ee-7eeb-464f-96f0-5f65ab49032f",
             "IsTrigger": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
@@ -654,16 +307,16 @@
         ]
       },
       {
-        "__guid": "9b42cfe6-6940-4dc2-8be7-b441a9412a11",
+        "__guid": "0b421dba-25e5-4cdc-bd58-8242cb50117a",
         "Name": "metal_staircase_step (6)",
-        "Position": "-255.9993,-179.9999,48",
-        "Rotation": "0,0,0.7071067,0.7071068",
+        "Position": "160,-124,-72",
+        "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "9718e4f4-8180-40b3-85f4-91a78d267e40",
+            "__guid": "0a490ee1-2538-4267-af65-b7bcc9cb053f",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
@@ -672,7 +325,7 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "9753a610-d017-43da-8b5e-c02410bd172e",
+            "__guid": "967c2f76-413e-4729-abff-6951e5dc4220",
             "IsTrigger": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
@@ -680,16 +333,16 @@
         ]
       },
       {
-        "__guid": "67b23b4c-6777-400e-92e7-f566bfcc7b66",
+        "__guid": "b440f669-9991-49a3-8d1f-9ae2e3133831",
         "Name": "metal_staircase_step (7)",
-        "Position": "-255.9992,-191.9999,56",
-        "Rotation": "0,0,0.7071067,0.7071068",
+        "Position": "160,-136,-80",
+        "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "fe99af6b-551d-4388-9d25-6752a2495b9a",
+            "__guid": "e80711f2-c220-4cbe-b53f-3409a3ee29b8",
             "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
@@ -698,7 +351,241 @@
           },
           {
             "__type": "ModelCollider",
-            "__guid": "6b02caa4-7657-4754-a41d-319f08f761ed",
+            "__guid": "38dbd914-868a-4da0-b985-ecdfd6716ca3",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "14fcdc2b-dbf9-4128-ae1f-95229455cf37",
+        "Name": "metal_staircase_step (8)",
+        "Position": "160,-148,-88",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "dd80fb1a-66c4-4bf4-a98f-6b9fc15a127b",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "a8854375-3e6f-44d1-bc68-66d8e39ade68",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "1c3c7737-78b3-49b2-b198-a16bb442805c",
+        "Name": "metal_staircase_step (9)",
+        "Position": "160,-160,-96",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "d46b3086-8e49-43cb-a4b4-1c40cffc8083",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "9ee63389-534f-4c6f-befd-374cc14313e4",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "672ff635-5187-4349-8ae1-76ef56ebdeea",
+        "Name": "metal_staircase_step (10)",
+        "Position": "160,-172,-104",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "607abad8-7ef2-44bd-9f81-f585e178c670",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "46afcefd-2373-45f2-bd5b-a0de624fb856",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "0f366a6d-452e-40f6-b2f0-281f7156e331",
+        "Name": "metal_staircase_step (11)",
+        "Position": "160,-184,-112",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "98616fe6-8c6f-4760-9ef4-7bf43014d4b4",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "1f2a77bf-2047-41cd-a81a-8329ad6d2229",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "819eb536-2722-47d7-b091-458aad44f073",
+        "Name": "metal_staircase_step (12)",
+        "Position": "160,-196,-120",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "9843c4d9-d0b4-4483-b392-eccfb9aa84d9",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "7bae1e16-c879-449d-8c97-1a0cca7374ed",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "ca1209dd-fd68-49d9-8ec8-b3c05d3aa1ff",
+        "Name": "metal_staircase_step (13)",
+        "Position": "160,-208,-128",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "6491db0e-88ba-428c-aecd-521724482e17",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "958c91cf-a6cb-452d-91e4-e40e431624cc",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "05f21d53-1f57-4633-ac8f-c84ae653b75f",
+        "Name": "metal_staircase_step (14)",
+        "Position": "160,-220,-136",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "94d91ed3-10ff-4e91-aca3-bd230caccb85",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "252aedab-8ba9-4e12-964c-1b81ef39086a",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "0227efa1-0b23-43d8-8178-603c208790c2",
+        "Name": "metal_staircase_step (15)",
+        "Position": "160,-232,-144",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "b4887d19-85fb-43c4-b278-3bf184bf6452",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "38e06ac7-5c3c-4672-8930-16a2f3b56125",
+            "IsTrigger": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "a21babd3-fe6b-4cb3-aa29-ac5d4460eb1d",
+        "Name": "metal_staircase_step (16)",
+        "Position": "160,-244,-152",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "SkinnedModelRenderer",
+            "__guid": "e5714e34-a995-4b52-80eb-22d434e172c0",
+            "BodyGroups": 18446744073709551615,
+            "CreateBoneObjects": false,
+            "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "7daf1c09-a1e5-43f4-9b17-e241ffc1dd31",
             "IsTrigger": false,
             "Model": "models/metal_staircase_step/metal_staircase_step.vmdl",
             "Static": false
@@ -708,36 +595,22 @@
       {
         "__guid": "80f02d92-4eb4-4e9c-81ac-c2cd05ecbebf",
         "Name": "Death Volume",
-        "Position": "-448,288,-501.259",
-        "Scale": "5.14688,21.54616,10.5162",
+        "Position": "0.03582764,-148.2155,-421.5428",
+        "Scale": "3.838993,8.145019,4.684174",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "DeathVolumeComponent",
-            "__guid": "9251c9ee-71f9-4153-a48c-931ba2371fdb"
+            "__guid": "372be5bd-997c-4a0b-818a-1835072a8523"
           },
           {
             "__type": "BoxCollider",
-            "__guid": "e35f4612-012d-42fe-9028-d927452441ee",
+            "__guid": "6ed6144b-2972-4985-a82c-507e9bab5ec6",
             "Center": "0,0,0",
             "IsTrigger": true,
             "Scale": "50,50,50",
             "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "b05a134b-0ab4-4fda-aea3-aaf9c234dd93",
-        "Name": "Monster Spawner",
-        "Position": "-192,160,0",
-        "Rotation": "0,0,1,0.0000001947072",
-        "Enabled": true,
-        "NetworkMode": 1,
-        "Components": [
-          {
-            "__type": "MonsterSpawner",
-            "__guid": "4e16da3e-0980-4a6b-a587-0e73a3d0b2ee"
           }
         ]
       }

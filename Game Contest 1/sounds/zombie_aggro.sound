@@ -2,10 +2,10 @@
   "UI": false,
   "Volume": "1.00,1.00,0",
   "Pitch": "1.00,1.00,0",
-  "Decibels": 350,
+  "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/mine_explosion.vsnd"
+    "sounds/zombie_aggro.vsnd"
   ],
   "Occlusion": true,
   "Reflections": true,

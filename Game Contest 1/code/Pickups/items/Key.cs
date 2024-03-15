@@ -8,8 +8,8 @@ public sealed class Key : Carriable
 
 	public int ShopPrice { get; set; } = 10;
 
-	public override void OnUsePrimary()	{ }
-	public override void OnUseSecondary() { }
+	public override void UsePrimary()	{ }
+	public override void UseSecondary() { }
 
 	[Property] public SoundEvent UnlockSound { get; private set; }
 

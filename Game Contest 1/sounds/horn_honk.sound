@@ -1,11 +1,11 @@
 {
   "UI": false,
-  "Volume": "1.00,1.00,0",
-  "Pitch": "1.00,1.00,0",
-  "Decibels": 350,
+  "Volume": "0.50,1.00,0",
+  "Pitch": "0.97,1.03,1",
+  "Decibels": 120,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/mine_explosion.vsnd"
+    "sounds/horn_honk.vsnd"
   ],
   "Occlusion": true,
   "Reflections": true,

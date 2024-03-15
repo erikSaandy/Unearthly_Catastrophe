@@ -29,7 +29,6 @@
     {
       "__guid": "c40afb87-88f5-4aaa-921f-d2e95257d08b",
       "Name": "InfoBox",
-      "Position": "546.1309,-2089.762,1835.134",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -91,26 +90,6 @@
       ]
     },
     {
-      "__guid": "b797f93f-4060-492d-b0f7-5f43891491bd",
-      "Name": "Sun",
-      "Position": "-756.9304,-30.22823,448",
-      "Rotation": "-0.01001749,0.3825523,0.02418435,0.9235629",
-      "Tags": "light_directional,light,skybox",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "DirectionalLight",
-          "__guid": "532b2b5a-2251-4a8c-abb3-552e698f3710",
-          "FogMode": "Enabled",
-          "FogStrength": 1,
-          "LightColor": "2.74119,2.93961,3,1",
-          "Shadows": true,
-          "SkyColor": "0.0093,0.0093,0.0093,1"
-        }
-      ]
-    },
-    {
       "__guid": "c79b62c6-097b-4698-82ec-fd63eee0c6dc",
       "Name": "Soda Can",
       "Position": "-17.96405,-3303.372,1537.553",
@@ -154,7 +133,7 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-14T19:56:02.4320872\u002B01:00",
+  "LastSaved": "2024-03-15T04:31:06.7030941\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

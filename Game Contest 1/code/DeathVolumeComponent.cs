@@ -37,15 +37,11 @@ public sealed class DeathVolumeComponent : Component, Component.ITriggerListener
 	{
 		base.DrawGizmos();
 
-
-
 		if( GameObject.Components.TryGet<BoxCollider>(out BoxCollider bc))
 		{
 			Gizmo.Draw.Color = Color.Red.WithAlpha( 0.4f );;
 			Gizmo.Draw.Model( "models/dev/box.vmdl_c", new Transform( bc.Center, Quaternion.Identity, bc.Scale / 50f ) );
-
 		}
-
 
 	}
 

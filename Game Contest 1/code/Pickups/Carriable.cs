@@ -210,8 +210,8 @@ public abstract class Carriable : Item, IInteractable
 		Owner.Animator.TriggerDeploy();
 	}
 
-	[Broadcast] public abstract void OnUsePrimary();
-	[Broadcast] public abstract void OnUseSecondary();
+	[Broadcast] public abstract void UsePrimary();
+	[Broadcast] public abstract void UseSecondary();
 
 	public virtual void WasUsedOn( Guid interactable )
 	{

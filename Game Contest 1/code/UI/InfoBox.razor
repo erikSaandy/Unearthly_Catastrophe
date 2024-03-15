@@ -96,7 +96,6 @@
 	[Broadcast]
 	public static void SendInfo(string message, EntryType type = EntryType.Info, float displayTime = 10)
 	{
-		Log.Info(type);
 		Instance.SendInfoLocal(message, type, displayTime);
 	}
 

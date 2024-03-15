@@ -1,13 +1,12 @@
 // HIGH PRIO
-zombie sounds ( idle growl, attack, aggro )
-Info box that pops up on screen when ship is about to leave, and when all players die to give info.
+kronos decorate
+better hit sound
 
 // WANTS
 ..turret
 
 POST-LAUNCH
 notes
-circular corridor room
 distance fog dark, only see close to you
 smaller scale rooms
 combine rooms into new loop room

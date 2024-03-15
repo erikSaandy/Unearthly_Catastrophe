@@ -27,9 +27,14 @@ public static class MonsterManager
 
 		List<string> prefabs = GetMonsterList();
 
+		int spawnCount = 0;
 		for (int i = 0; i < prefabs.Count; i++ )
 		{
-			Guid spawnerId = potentialSpawners[LethalGameManager.Random.Next( 0, potentialSpawners.Count )];
+			// No more spawners to chose from
+			if(potentialSpawners.Count == 0) { break; }
+
+			int spawnedIndex = LethalGameManager.Random.Next( 0, potentialSpawners.Count );
+			Guid spawnerId = potentialSpawners[spawnedIndex];
 			GameObject spawner = LethalGameManager.Instance.Scene.Directory.FindByGuid( spawnerId );
 
 
@@ -41,10 +46,14 @@ public static class MonsterManager
 			monsterObj.Transform.Position = spawner.Transform.Position;
 			monsterObj.Tags.Add( "monster" );
 			monsterObj.NetworkSpawn();
+			spawnCount++;
+
+			potentialSpawners.RemoveAt( spawnedIndex );
+
 		}
 
 
-		Log.Info( $"Spawned {prefabs.Count} monsters." );
+		Log.Info( $"Spawned {spawnCount} monsters." );
 
 	}
 

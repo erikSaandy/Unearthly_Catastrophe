@@ -9,6 +9,7 @@ public class LandMine : Item, Component.ITriggerListener
 {
 
 	[Property] public ModelRenderer Renderer { get; set; }
+	[Property] public ModelCollider Collider { get; set; }
 	[Property] public float BlastRadius { get; set; } = 96f;
 
 	[Sync] private int PassengerCount { get; set; } = 0;
@@ -19,7 +20,17 @@ public class LandMine : Item, Component.ITriggerListener
 	[Category( "Sounds" )][Property] public SoundEvent BeepingSound { get; set; }
 	[Category( "Sounds" )][Property] public SoundEvent TriggeredSound { get; set; }
 
-	public Texture Icon { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+	private RealTimeSince TimeSinceSpawned { get; set; } = 0;
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if ( !Collider.Enabled && TimeSinceSpawned > 10 )
+		{
+			Collider.Enabled = true;
+		}
+	}
 
 	public void OnTriggerEnter( Collider other )
 	{
@@ -32,6 +43,7 @@ public class LandMine : Item, Component.ITriggerListener
 
 		if ( killable != null )
 		{
+			Log.Info( other.GameObject.Name + " stepped on a mine." );
 			AddPassenger();
 		}
 
@@ -82,6 +94,8 @@ public class LandMine : Item, Component.ITriggerListener
 	{
 		Components.Get<ModelRenderer>().MaterialGroup = "default";
 
+		Log.Info( GameObject.Name + " exploded." );
+
 		if ( IsProxy ) { return; }
 
 		PlaySound( BeepingSound.ResourcePath );
@@ -95,16 +109,9 @@ public class LandMine : Item, Component.ITriggerListener
 		ExplosionParticle.Enabled = true;
 		PlaySound( ExplosionSound.ResourcePath );
 
-		List<Player> connections = LethalGameManager.Instance.ConnectedPlayers.ToList();
-		foreach ( Player player in connections )
-		{
-			float dst = Vector3.DistanceBetween( player.Transform.Position, Transform.Position );
-			if(dst < BlastRadius)
-			{
-				player.Components.Get<IKillable>().Kill();
-				
-			}
-		}
+		IEnumerable<GameObject> hits = Scene.FindInPhysics( new Sphere( Transform.Position, BlastRadius ) ).Where( x => (x.Components.Get<IKillable>() != null) );
+		Log.Info( hits.Count() );
+		foreach ( GameObject killable in hits ) { killable.Components.Get<IKillable>().Kill(); }
 
 		Renderer.Enabled = false;
 		Enabled = false;

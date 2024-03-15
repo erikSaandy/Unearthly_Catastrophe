@@ -1,14 +1,93 @@
 {
   "RootObject": {
-    "Id": "169a31cf-c046-4fcf-8778-175619a3745c",
+    "__guid": "6037f288-97df-458f-98ca-90b9ee82fc73",
     "Name": "scrap_horn",
     "Tags": "item",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "Scrap",
-        "HeldAngleOffset": "0,-55,-6.7",
+        "__guid": "6392026c-5f0c-4c0a-b19c-6da8c4c6c190",
+        "OnUsePrimary": {
+          "Version": 5,
+          "UserData": {
+            "Title": "On Use Primary",
+            "id": "13901468-2d0d-4b2d-a878-c076b3d4796f",
+            "ReferencedComponentTypes": []
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input",
+              "UserData": {
+                "Position": "-32,-0"
+              }
+            },
+            {
+              "Id": 1,
+              "Type": "sound.playat",
+              "UserData": {
+                "Position": "272,64"
+              }
+            },
+            {
+              "Id": 7,
+              "Type": "property.get",
+              "Properties": {
+                "_name": "Transform",
+                "_type": "Sandbox.Game/Sandbox.GameObject"
+              },
+              "UserData": {
+                "Position": "-208,160"
+              }
+            },
+            {
+              "Id": 8,
+              "Type": "property.get",
+              "Properties": {
+                "_name": "Position",
+                "_type": "Sandbox.Game/Sandbox.GameTransform"
+              },
+              "UserData": {
+                "Position": "-32,160"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 1,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 8,
+              "SrcName": "_result",
+              "DstId": 1,
+              "DstName": "position"
+            },
+            {
+              "Value": "sounds/horn_honk.sound",
+              "DstId": 1,
+              "DstName": "soundEvent"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_target",
+              "DstId": 7,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 7,
+              "SrcName": "_result",
+              "DstId": 8,
+              "DstName": "_target"
+            }
+          ]
+        },
+        "HeldAngleOffset": "0,-68,-6.7",
         "HoldType": "HoldItem",
         "Icon": "models/scrap_collection01/scrap_honker.vmdl.vtex",
         "MaxValue": 42,
@@ -18,19 +97,18 @@
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "edfb8928-c2da-4ff5-a830-c2be1aef2811",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "models/scrap_collection01/scrap_honker.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelCollider",
+        "__guid": "68068fda-758f-4c36-acf6-917c7b73200f",
         "IsTrigger": false,
         "Model": "models/scrap_collection01/scrap_honker.vmdl",
-        "Static": false,
-        "Surface": null
+        "Static": false
       }
     ],
     "Children": []
@@ -38,5 +116,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

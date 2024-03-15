@@ -26,7 +26,7 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 
 			Passengers.Add( player );
 			player.Heal( 200 );
-			Log.Info( "Added passenger " + other.GameObject.Name );
+			Log.Info( "Added passenger " + player.GameObject.Name );
 
 		}
 
@@ -40,7 +40,7 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 			if ( other.GameObject.Root == passenger.GameObject )
 			{
 				Passengers.Remove( passenger );
-				Log.Info( "Removed passenger " + other.GameObject.Name );
+				Log.Info( "Removed passenger " + passenger.GameObject.Name );
 				return;
 			}
 		}

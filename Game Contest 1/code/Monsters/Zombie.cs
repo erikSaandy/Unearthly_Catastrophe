@@ -3,6 +3,7 @@ using Saandy;
 using Sandbox;
 using Sandbox.Citizen;
 using System;
+using System.Numerics;
 using System.Security.Cryptography;
 
 public class Zombie : Monster
@@ -23,6 +24,8 @@ public class Zombie : Monster
 	[Category("Components")][Property] public NavMeshAgent Agent { get; private set; }
 	[Category( "Components" )][Property] public CitizenAnimationHelper Animator { get; private set; }
 	[Category( "Components" )][Property] public CharacterController Controller { get; private set; }
+	[Category( "Components" )][Property] public RagdollController Ragdoll { get; private set; }
+	[Category( "Components" )][Property] public CapsuleCollider PhysicsCollider { get; private set; }
 
 	[Property] public float WalkSpeed { get; set; } = 70;
 	[Property] public float RunSpeed { get; set; } = 120;
@@ -35,6 +38,10 @@ public class Zombie : Monster
 	public TimeSince TimeSinceTrace { get; private set; } = 30;
 	public TimeSince TimeSinceAggro { get; private set; } = 30;
 	public RealTimeSince TimeSinceAttack { get; set; } = 0;
+
+	public TimeSince TimeSinceGrowl { get; private set; } = 30;
+	[Category( "Sounds" )][Property] public SoundEvent IdleGrowlSound { get; private set; }
+	[Category( "Sounds" )][Property] public SoundEvent AggroSound { get; private set; }
 
 	private Player LastAggroedPlayer { get; set; } = null;
 
@@ -94,6 +101,8 @@ public class Zombie : Monster
 		base.OnFixedUpdate();
 
 		if ( IsProxy ) { return; }
+
+		if(LifeState == LifeState.Dead) { return; }
 
 		//if ( Input.Down("jump"))
 		//{
@@ -184,6 +193,11 @@ public class Zombie : Monster
 
 	private void AggroPlayer(Player player)
 	{
+		if(LastAggroedPlayer != player)
+		{
+			OnStartAggro();
+		}
+
 		Agent.MoveTo( player.Transform.Position );
 		MoveState = State.Aggro;
 		LastAggroedPlayer = player;
@@ -192,9 +206,28 @@ public class Zombie : Monster
 		NestPosition = player.Transform.Position;
 	}
 
+	[Broadcast]
+	private void OnStartAggro()
+	{
+		Sound.Play( AggroSound, Transform.Position );
+	}
+
+	[Broadcast]
+	private void OnGrowl()
+	{
+		Sound.Play( IdleGrowlSound, Transform.Position );
+	}
+
+
 	private Player FindPlayerToAggro(out float dstToPlayerSqr)
 	{
 		dstToPlayerSqr = 0;
+
+		if ( TimeSinceAggro < 6 && LastAggroedPlayer?.LifeState == LifeState.Alive )
+		{
+			dstToPlayerSqr = Vector3.DistanceBetweenSquared( LastAggroedPlayer.Transform.Position, Transform.Position );
+			return LastAggroedPlayer;
+		}
 
 		List<Player> players = LethalGameManager.Instance.AlivePlayers.ToList();
 
@@ -225,7 +258,7 @@ public class Zombie : Monster
 				}
 
 				// Can't aggro if looking the other way.
-				if ( dot < 0.5f )
+				if ( dot < 0.6f )
 				{
 					return null;
 				}
@@ -236,19 +269,13 @@ public class Zombie : Monster
 					return player;
 				}
 
-				// still aggro, and player is not far away enough.
-				if (TimeSinceAggro < 8 && player == LastAggroedPlayer)
-				{
-					return LastAggroedPlayer;
-				}
-
 				// Scene.Trace.Ray( Transform.Position, Transform.Position + (WantedMoveDirection * 64) ).IgnoreGameObjectHierarchy( GameObject ).UsePhysicsWorld().RunAll();
 				SceneTraceResult trace = Scene.Trace.Ray( Animator.EyeSource.Transform.Position, Animator.EyeSource.Transform.Position + (dir * LineOfSightSquared) )
 					.IgnoreGameObjectHierarchy( GameObject.Root )
 					//.UseHitboxes()
 					.UseRenderMeshes()
 					.WithoutTags( "item", "door", "monster" )
-					.Run();
+					.Run();		
 
 				// LOS to player
 				if ( trace.GameObject == player.GameObject )
@@ -264,6 +291,12 @@ public class Zombie : Monster
 
 	private void DoPatrol( ref float speed, ref float turnSpeed, ref float friction)
 	{
+		if( TimeSinceGrowl > 6)
+		{
+			OnGrowl();
+			TimeSinceGrowl = LethalGameManager.Random.Float( -1f, 1.5f );
+		}
+
 		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 		if ( playerToAggro != null )
 		{
@@ -312,7 +345,7 @@ public class Zombie : Monster
 
 		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 
-		if ( TimeSinceUpdateTarget > 0.5f )
+		if ( TimeSinceUpdateTarget > 0.1f )
 		{
 			if ( playerToAggro != null )
 			{
@@ -326,24 +359,29 @@ public class Zombie : Monster
 			}
 		}
 
-		//Log.Info( dstToPlayerSqr );
 		// Attack player
 		if ( playerToAggro != null && TimeSinceAttack > 2 && dstToPlayerSqr < AttackDistance )
 		{
 			TimeSinceAttack = 0;
-			Log.Info( $"Zombie attacked {GameObject.Name}" );
+			Log.Info( $"Zombie attacked {playerToAggro.GameObject.Name}" );
 			Animator?.TriggerDeploy();
 			Controller.Punch( Vector3.Up * 150 );
-			playerToAggro.Components.Get<IKillable>().TakeDamage( 0, GameObject.Id, Transform.Rotation.Up * 300 );
+			playerToAggro.Components.Get<IKillable>().TakeDamage( 40, GameObject.Id, Transform.Rotation.Up * 300 );
 		}
 
 		WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;
+
+		if(dstToPlayerSqr < AttackDistance)
+		{
+			speed = 0.1f;
+		}
 
 	}
 
 	public override void Kill()
 	{
 		if ( LifeState == LifeState.Dead ) { return; }
+
 		TakeDamage( Health + 100, GameObject.Id );
 	}
 
@@ -359,8 +397,11 @@ public class Zombie : Monster
 
 		if ( Health <= 0f )
 		{
+			Tags.Add( "dead" );
 			LifeState = LifeState.Dead;
-			//Ragdoll.Ragdoll();
+			Ragdoll.Ragdoll();
+			Agent.Enabled = false;
+			PhysicsCollider.Enabled = false;
 			//OnKilled( Scene.Directory.FindByGuid( attackerId ) );
 			TimeSinceDeath = 0;
 		}
