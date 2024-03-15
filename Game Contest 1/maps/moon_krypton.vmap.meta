@@ -17,7 +17,11 @@
       "PackageReferences": [],
       "EditorReferences": [
         "rustextended.terrain_blend_a#43398",
-        "facepunch.floor_concrete_ramp_a#18641"
+        "facepunch.floor_concrete_ramp_a#18641",
+        "facepunch.ceiling_plaster_blend_01#28978",
+        "facepunch.plaster_a#18740",
+        "facepunch.wall_brick_blend_old_moss#18732",
+        "facepunch.concrete_c_hs#28941"
       ],
       "Metadata": {
         "SingleAssetSource": "maps/moon_krypton.vmap"

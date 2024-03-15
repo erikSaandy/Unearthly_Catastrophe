@@ -72,7 +72,7 @@ public class LethalGameManager : Component
 		// only host.
 		if ( IsProxy ) { return; }
 
-		Log.Info( "QUEUED DEATH ROUTINE" );
+		//Log.Info( "QUEUED DEATH ROUTINE" );
 		OnPlayerDeathQueue++;
 	}
 
@@ -82,7 +82,7 @@ public class LethalGameManager : Component
 		// only host.
 		if(IsProxy) { return; }
 
-		Log.Info( ">> DEATH ROUTINE" );
+		//Log.Info( ">> DEATH ROUTINE" );
 		Log.Info( Instance.AlivePlayers.Count() );
 
 		// All players are dead.
@@ -208,7 +208,7 @@ public class LethalGameManager : Component
 
 		if (Instance.GameObject.IsProxy) { return; }
 
-		TerminalComponent.SelectMoon( 0 );
+		//TerminalComponent.SelectMoon( 0 );
 
 		//Log.Info( Instance == null );
 		 

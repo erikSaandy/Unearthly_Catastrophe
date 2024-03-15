@@ -110,7 +110,7 @@ public class LandMine : Item, Component.ITriggerListener
 		PlaySound( ExplosionSound.ResourcePath );
 
 		IEnumerable<GameObject> hits = Scene.FindInPhysics( new Sphere( Transform.Position, BlastRadius ) ).Where( x => (x.Components.Get<IKillable>() != null) );
-		Log.Info( hits.Count() );
+		//Log.Info( hits.Count() );
 		foreach ( GameObject killable in hits ) { killable.Components.Get<IKillable>().Kill(); }
 
 		Renderer.Enabled = false;

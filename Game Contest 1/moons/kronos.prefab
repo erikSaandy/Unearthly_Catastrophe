@@ -36,7 +36,7 @@
       {
         "__guid": "e749b06a-0024-41cb-a127-5fa4d8e20efc",
         "Name": "door_entrance_01",
-        "Position": "1023.999,768,0",
+        "Position": "1083.336,895.9977,128",
         "Rotation": "0,0,-0.7071069,-0.7071065",
         "Enabled": true,
         "NetworkMode": 2,
@@ -45,7 +45,7 @@
       {
         "__guid": "debe68f2-a953-4d1b-976a-3583bc0af4c0",
         "Name": "Landing pad",
-        "Position": "247.4065,-1433.798,64.00108",
+        "Position": "120,-1840,-192",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
@@ -58,14 +58,14 @@
       {
         "__guid": "bd9e9b81-f3fe-4905-9058-d9533c1e58a2",
         "Name": "SoundScape",
-        "Position": "714.5441,-938.7059,144.1532",
+        "Position": "157.0621,-1559.596,389.8975",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "SoundscapeTrigger",
             "__guid": "a07bc94c-df8d-4e3d-b7d6-80bf240f9d4f",
-            "BoxSize": "4000,6000,256",
+            "BoxSize": "4000,6000,700",
             "Radius": 500,
             "Soundscape": "music/eerie_song_01.sndscape",
             "StayActiveOnExit": false,
@@ -76,7 +76,8 @@
       {
         "__guid": "fc3f37a4-5f90-440f-90c9-22564dfe07ce",
         "Name": "MoonTimer Trigger",
-        "Position": "252.2675,-191.9118,97.97519",
+        "Position": "0,-1966.82,266.0645",
+        "Scale": "1.527045,1,3.223509",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
@@ -89,7 +90,7 @@
             "__guid": "bf0ed8a5-4d0b-4f93-8b59-eb24ada3376a",
             "Center": "0,0,0",
             "IsTrigger": true,
-            "Scale": "8000,12000,256",
+            "Scale": "8000,12000,400",
             "Static": false
           }
         ]
@@ -115,9 +116,33 @@
         ]
       },
       {
-        "__guid": "9f8d5a25-94cf-4479-8f50-d1427fee0ebc",
+        "__guid": "ebc97d33-6821-4a9c-9ee0-a96a5504720d",
         "Name": "landmine",
-        "Position": "452.0286,-551.1262,-0.0001220703",
+        "Position": "-192,-1168,-256",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/landmine.prefab"
+      },
+      {
+        "__guid": "a9c683cb-1ff4-4031-b4c9-2d312b3e31d4",
+        "Name": "landmine (3)",
+        "Position": "1008,1344,128",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/landmine.prefab"
+      },
+      {
+        "__guid": "10366847-b22c-4b7d-9741-2b57dc30886f",
+        "Name": "landmine (1)",
+        "Position": "240,-1088,-256",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "__Prefab": "prefabs/items/landmine.prefab"
+      },
+      {
+        "__guid": "55531a1f-f30f-4032-be30-beb459797b5a",
+        "Name": "landmine (2)",
+        "Position": "432,-1248,-256",
         "Enabled": true,
         "NetworkMode": 1,
         "__Prefab": "prefabs/items/landmine.prefab"
