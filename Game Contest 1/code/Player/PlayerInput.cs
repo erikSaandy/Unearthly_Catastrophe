@@ -140,8 +140,10 @@
 
 	public virtual void OnPreRender()
 	{
+		if(Owner.IsProxy) { return; }
+
 		var angles = Owner.EyeAngles.Normal;
-		angles += Sandbox.Input.AnalogLook * 0.5f;
+		angles += Sandbox.Input.AnalogLook * 0.6f;
 		angles.pitch = angles.pitch.Clamp( Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch );
 		Owner.EyeAngles = angles.WithRoll( 0 );
 

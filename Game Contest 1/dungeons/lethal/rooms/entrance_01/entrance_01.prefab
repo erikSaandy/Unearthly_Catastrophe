@@ -1,47 +1,54 @@
 {
   "RootObject": {
-    "Id": "b185e5d1-1087-4770-9fb7-c9659dcccb25",
+    "__guid": "b185e5d1-1087-4770-9fb7-c9659dcccb25",
     "Name": "entrance_01",
     "Enabled": true,
     "NetworkMode": 1,
     "Components": [
       {
         "__type": "RoomData",
+        "__guid": "7c0140ea-cdf2-4c71-b16f-e7674f922cb9",
         "Bounds": {
-          "Mins": "-128,-400,-456",
-          "Maxs": "128,128,216"
+          "Mins": "-132,-400,-450",
+          "Maxs": "132,132,214"
         },
         "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
+            "component_id": "b5d41341-9411-48f0-a168-b2a0f3155b7a",
             "go": "87027946-79c7-4934-8ecb-2feafbdc4e31",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "0b655a43-3067-4e2f-b7b2-ce285a5fde6d",
             "go": "d53a34e4-5a6d-4b28-8e74-8b99400f1854",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "e485c5b2-f12c-43a5-81df-b37879f87b45",
             "go": "fb7bb52d-7f1f-4514-85fe-5aabb360f0a7",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "70e34002-cf1a-4bea-9d1a-fe04d38d914f",
             "go": "dcb4b4bc-8352-4440-9527-a1d10b839b16",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
+          "component_id": "c9e8185e-5b7c-43c7-85ff-174a8621fc2f",
           "go": "b185e5d1-1087-4770-9fb7-c9659dcccb25",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "c9e8185e-5b7c-43c7-85ff-174a8621fc2f",
         "BodyGroups": 18446744073709551615,
         "Model": "dungeons/lethal/rooms/entrance_01/entrance_01.vmdl",
         "RenderType": "On",
@@ -49,6 +56,7 @@
       },
       {
         "__type": "ModelCollider",
+        "__guid": "ed6cc79d-2f7c-43a1-864d-e257c872e610",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/entrance_01/entrance_01.vmdl",
         "Static": true
@@ -56,7 +64,7 @@
     ],
     "Children": [
       {
-        "Id": "87027946-79c7-4934-8ecb-2feafbdc4e31",
+        "__guid": "87027946-79c7-4934-8ecb-2feafbdc4e31",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
@@ -65,12 +73,13 @@
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "b5d41341-9411-48f0-a168-b2a0f3155b7a",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "d53a34e4-5a6d-4b28-8e74-8b99400f1854",
+        "__guid": "d53a34e4-5a6d-4b28-8e74-8b99400f1854",
         "Name": "Door (1)",
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
@@ -79,12 +88,13 @@
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "0b655a43-3067-4e2f-b7b2-ce285a5fde6d",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "fb7bb52d-7f1f-4514-85fe-5aabb360f0a7",
+        "__guid": "fb7bb52d-7f1f-4514-85fe-5aabb360f0a7",
         "Name": "Door (2)",
         "Position": "-132,0,0",
         "Rotation": "0,-0,-0.7071068,0.7071068",
@@ -93,12 +103,13 @@
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "e485c5b2-f12c-43a5-81df-b37879f87b45",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "dcb4b4bc-8352-4440-9527-a1d10b839b16",
+        "__guid": "dcb4b4bc-8352-4440-9527-a1d10b839b16",
         "Name": "Door (3)",
         "Position": "0,-132,0",
         "Enabled": true,
@@ -106,6 +117,7 @@
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "70e34002-cf1a-4bea-9d1a-fe04d38d914f",
             "PortalType": "Entrance"
           }
         ]
@@ -115,5 +127,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

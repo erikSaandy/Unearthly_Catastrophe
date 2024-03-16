@@ -7,7 +7,7 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "Resources": "\n*.TTF\n*.scss\nProjectSettings/*\nTextures/Icons/liftoff.png\nTextures/Icons/warning.png\nTextures/Icons/info.png",
+  "Resources": "\n*.TTF\n*.scss\nTextures/Icons/liftoff.png\nTextures/Icons/warning.png\nTextures/Icons/info.png",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],

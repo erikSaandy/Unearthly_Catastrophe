@@ -5,7 +5,7 @@ using Sandbox.Citizen;
 using Sandbox.UI;
 using static Sandbox.Gizmo;
 
-public sealed class Player : Component, IKillable
+public sealed class Player : Component, IKillable, Component.INetworkListener
 {
 
 	[Sync, Property] public LifeState LifeState { get; private set; } = LifeState.Alive;
@@ -98,6 +98,7 @@ public sealed class Player : Component, IKillable
 		CurrentHud.Enabled = true;
 
 		HideHead( true );
+
 	}
 
 	protected override void OnEnabled()
@@ -252,7 +253,14 @@ public sealed class Player : Component, IKillable
 		EyeAngles = Transform.Rotation;
 
 	}
-	
+
+	public void OnDisconnected( Connection conn )
+	{
+		if ( LethalGameManager.Instance.IsProxy ) { return; }
+
+		LethalGameManager.Instance.QueueOnPlayerDeath();
+	}
+
 	//
 
 	public void OnStartLoadMoon()

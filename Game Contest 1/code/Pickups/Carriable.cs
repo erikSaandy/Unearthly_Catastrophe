@@ -2,7 +2,7 @@
 
 public abstract class Carriable : Item, IInteractable
 {
-	public bool IsInteractableBy( Player player ) { return true; }
+	public virtual bool IsInteractableBy( Player player ) { return true; }
 
 	public float InteractionTime { get; set; } = 0f;
 	public abstract string ToolTip { get; set; }

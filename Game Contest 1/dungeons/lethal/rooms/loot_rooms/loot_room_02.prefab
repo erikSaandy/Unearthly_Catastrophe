@@ -9,8 +9,8 @@
         "__type": "RoomData",
         "__guid": "ece76a62-d907-4305-a7a6-e45c78a92e18",
         "Bounds": {
-          "Mins": "-256,-480,-538",
-          "Maxs": "228,60,165.9003"
+          "Mins": "-256,-480,-544",
+          "Maxs": "228,60,172"
         },
         "LootSpawner": {
           "_type": "component",

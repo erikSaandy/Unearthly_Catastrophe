@@ -1,66 +1,75 @@
 {
   "RootObject": {
-    "Id": "a43243cc-4ab4-4c6c-8a6b-d769c9c50b65",
+    "__guid": "a43243cc-4ab4-4c6c-8a6b-d769c9c50b65",
     "Name": "stairwell_01",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
+        "__guid": "464e94b3-9d65-484f-9b7e-9b00d11222e0",
         "Bounds": {
-          "Mins": "-60,-127.9998,0",
-          "Maxs": "320,128,320"
+          "Mins": "-68,-132,-4",
+          "Maxs": "324,132,324"
         },
         "LootSpawner": {
           "_type": "component",
+          "component_id": "9b6bb59b-0dbb-416b-a312-d75b78be3eed",
           "go": "a43243cc-4ab4-4c6c-8a6b-d769c9c50b65",
           "component_type": "LootSpawnerComponent"
         },
+        "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
+            "component_id": "04b00f9a-e127-461b-a746-ef7b66c5c681",
             "go": "3791d8dc-12b9-4554-bffd-7c5df0dc9cba",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "6e310e6c-c96c-4939-a545-db094229aa7a",
             "go": "8184317e-cc14-4348-a353-77baf2133e3a",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "c68c881c-1e7e-49c7-83a2-0bdd9a06a9dc",
             "go": "be5f8abd-1154-4293-911c-6ecf5590c455",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "c7621f75-9e99-4eab-b54b-caba74bd7098",
             "go": "cbc91fa5-afeb-4e71-a8b4-bd098d5a2d61",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
+          "component_id": "073da376-bb61-485e-9db1-25e02e8713bc",
           "go": "a43243cc-4ab4-4c6c-8a6b-d769c9c50b65",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelCollider",
+        "__guid": "cf46a3ac-cb81-423b-b884-210180f12f8c",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/corridor/stairwell_01.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "073da376-bb61-485e-9db1-25e02e8713bc",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/corridor/stairwell_01.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "LootSpawnerComponent",
+        "__guid": "9b6bb59b-0dbb-416b-a312-d75b78be3eed",
         "MaxItemCount": 3,
         "Offset": "128,0,208",
         "Radius": 250
@@ -68,51 +77,59 @@
     ],
     "Children": [
       {
-        "Id": "3791d8dc-12b9-4554-bffd-7c5df0dc9cba",
+        "__guid": "3791d8dc-12b9-4554-bffd-7c5df0dc9cba",
         "Name": "Door",
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "04b00f9a-e127-461b-a746-ef7b66c5c681",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "8184317e-cc14-4348-a353-77baf2133e3a",
+        "__guid": "8184317e-cc14-4348-a353-77baf2133e3a",
         "Name": "Door (1)",
         "Position": "0,132,192",
         "Rotation": "0,0,1,0.0000001947072",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "6e310e6c-c96c-4939-a545-db094229aa7a",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "be5f8abd-1154-4293-911c-6ecf5590c455",
+        "__guid": "be5f8abd-1154-4293-911c-6ecf5590c455",
         "Name": "Door (2)",
         "Position": "-0.00004353491,-132,0",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "c68c881c-1e7e-49c7-83a2-0bdd9a06a9dc",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "cbc91fa5-afeb-4e71-a8b4-bd098d5a2d61",
+        "__guid": "cbc91fa5-afeb-4e71-a8b4-bd098d5a2d61",
         "Name": "Door (3)",
         "Position": "-0.00004353491,-132,192",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "c7621f75-9e99-4eab-b54b-caba74bd7098",
             "PortalType": "Door"
           }
         ]
@@ -122,5 +139,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

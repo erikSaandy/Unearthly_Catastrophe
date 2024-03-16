@@ -1,57 +1,63 @@
 {
   "RootObject": {
-    "Id": "5a3f6bbc-4c30-4c2b-bb18-d4d830b879dc",
+    "__guid": "5a3f6bbc-4c30-4c2b-bb18-d4d830b879dc",
     "Name": "tunnel_10",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
+        "__guid": "34a38302-13f8-43d4-b630-5886a47d535a",
         "Bounds": {
-          "Mins": "-144,-230,0",
-          "Maxs": "200,256,128"
+          "Mins": "-148,-234,-4",
+          "Maxs": "204,260,132"
         },
-        "LootSpawner": null,
+        "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
+            "component_id": "5851a0f4-f966-4334-8245-e58fef252a92",
             "go": "5a1d58e8-cc9d-46a5-a717-08b214e6f3fe",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "35f673d4-cb24-4979-8230-8576122b5558",
             "go": "1300819f-7b5b-44d8-ae23-9d28e34786ad",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "d6ba8cec-e131-4d9f-8845-f40b1c224269",
             "go": "008ec2ba-7afc-49e5-8e5f-47c459d7fb87",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
+          "component_id": "12514257-ac5f-4b66-92f3-90bcf4cf6313",
           "go": "5a3f6bbc-4c30-4c2b-bb18-d4d830b879dc",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "12514257-ac5f-4b66-92f3-90bcf4cf6313",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_10.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelCollider",
+        "__guid": "67f3c176-bc0c-41cb-b014-15dfc21f8614",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_10.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       },
       {
         "__type": "LootSpawnerComponent",
+        "__guid": "eb6cb4d0-843d-46c5-a893-f179e9e7d404",
         "MaxItemCount": 3,
         "Offset": "80,0,8",
         "Radius": 256
@@ -59,40 +65,46 @@
     ],
     "Children": [
       {
-        "Id": "5a1d58e8-cc9d-46a5-a717-08b214e6f3fe",
+        "__guid": "5a1d58e8-cc9d-46a5-a717-08b214e6f3fe",
         "Name": "Door",
         "Position": "64,260,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "5851a0f4-f966-4334-8245-e58fef252a92",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "1300819f-7b5b-44d8-ae23-9d28e34786ad",
+        "__guid": "1300819f-7b5b-44d8-ae23-9d28e34786ad",
         "Name": "Door (2)",
         "Position": "204.0001,-169.5,0",
         "Rotation": "0,0,-0.7071065,-0.7071071",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "35f673d4-cb24-4979-8230-8576122b5558",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "008ec2ba-7afc-49e5-8e5f-47c459d7fb87",
+        "__guid": "008ec2ba-7afc-49e5-8e5f-47c459d7fb87",
         "Name": "Door (3)",
         "Position": "-148,0.000005722035,0.000006498106",
         "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "d6ba8cec-e131-4d9f-8845-f40b1c224269",
             "PortalType": "Door"
           }
         ]
@@ -102,5 +114,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

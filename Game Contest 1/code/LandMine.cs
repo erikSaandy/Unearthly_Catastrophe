@@ -96,8 +96,6 @@ public class LandMine : Item, Component.ITriggerListener
 
 		Log.Info( GameObject.Name + " exploded." );
 
-		if ( IsProxy ) { return; }
-
 		PlaySound( BeepingSound.ResourcePath );
 		ExplodeAsync();
 	}

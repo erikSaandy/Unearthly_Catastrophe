@@ -1,61 +1,69 @@
 {
   "RootObject": {
-    "Id": "4e65dc44-c20c-4c6c-82e4-f9d6c5142f09",
+    "__guid": "4e65dc44-c20c-4c6c-82e4-f9d6c5142f09",
     "Name": "tunnel_06",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
+        "__guid": "520377ca-a0a4-4d71-af1d-dcae87263c82",
         "Bounds": {
-          "Mins": "-64,-128,0",
-          "Maxs": "128,128,128"
+          "Mins": "-68,-128,-4",
+          "Maxs": "128,128,132"
         },
         "LootSpawner": {
           "_type": "component",
+          "component_id": "dd487b1b-60c1-4d34-b1d4-d7c9b823f14a",
           "go": "4e65dc44-c20c-4c6c-82e4-f9d6c5142f09",
           "component_type": "LootSpawnerComponent"
         },
+        "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
+            "component_id": "82b28d5d-46eb-42d3-ac90-f5ef93a01301",
             "go": "ee66849b-d371-4d53-9d93-b4930c551cad",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "4579ba27-da07-4afa-8805-4a1ce39cf692",
             "go": "21ede2ef-0044-4458-a0e1-8b193dcd919b",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "1d64e003-7e84-4e72-a801-c2f325b1308b",
             "go": "bcbf8ec9-169a-4927-a378-e18279f081cb",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
+          "component_id": "da12a291-3c4b-46c0-ae7d-8a7ab9c97d13",
           "go": "4e65dc44-c20c-4c6c-82e4-f9d6c5142f09",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "da12a291-3c4b-46c0-ae7d-8a7ab9c97d13",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_06.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelCollider",
+        "__guid": "fb79c132-cb23-4162-8c70-19869efa70ea",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_06.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       },
       {
         "__type": "LootSpawnerComponent",
+        "__guid": "dd487b1b-60c1-4d34-b1d4-d7c9b823f14a",
         "MaxItemCount": 1,
         "Offset": "32,0,8",
         "Radius": 158
@@ -63,40 +71,46 @@
     ],
     "Children": [
       {
-        "Id": "ee66849b-d371-4d53-9d93-b4930c551cad",
+        "__guid": "ee66849b-d371-4d53-9d93-b4930c551cad",
         "Name": "Door",
         "Position": "0.00002110785,128,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "82b28d5d-46eb-42d3-ac90-f5ef93a01301",
             "PortalType": "Corridor"
           }
         ]
       },
       {
-        "Id": "21ede2ef-0044-4458-a0e1-8b193dcd919b",
+        "__guid": "21ede2ef-0044-4458-a0e1-8b193dcd919b",
         "Name": "Door (1)",
         "Position": "128,-0,0.000006498106",
         "Rotation": "0,0,0.7071067,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "4579ba27-da07-4afa-8805-4a1ce39cf692",
             "PortalType": "Corridor"
           }
         ]
       },
       {
-        "Id": "bcbf8ec9-169a-4927-a378-e18279f081cb",
+        "__guid": "bcbf8ec9-169a-4927-a378-e18279f081cb",
         "Name": "Door (2)",
         "Position": "-0.00006332347,-128,0",
         "Rotation": "0,0,0.0000003596121,-1",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "1d64e003-7e84-4e72-a801-c2f325b1308b",
             "PortalType": "Corridor"
           }
         ]
@@ -106,5 +120,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

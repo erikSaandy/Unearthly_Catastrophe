@@ -9,8 +9,8 @@
         "__type": "RoomData",
         "__guid": "2e9de589-ef2f-49aa-aa98-798d592376e1",
         "Bounds": {
-          "Mins": "-64,-64,0",
-          "Maxs": "64,64,128"
+          "Mins": "-68,-64,-4",
+          "Maxs": "68,68,132"
         },
         "MonsterSpawners": [],
         "Portals": [

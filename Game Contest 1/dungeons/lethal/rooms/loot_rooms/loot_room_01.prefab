@@ -2,6 +2,7 @@
   "RootObject": {
     "__guid": "42458ee8-adf8-41da-83be-0436e59a4ebe",
     "Name": "loot_room_01",
+    "Position": "0,0,-65.94751",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
@@ -9,8 +10,8 @@
         "__type": "RoomData",
         "__guid": "65215a82-d233-49c2-b9f6-6b8f46fab4e4",
         "Bounds": {
-          "Mins": "-736,-448,-764",
-          "Maxs": "-64,832,672"
+          "Mins": "-740,-452,-838",
+          "Maxs": "-64,836,676"
         },
         "LootSpawner": {
           "_type": "component",

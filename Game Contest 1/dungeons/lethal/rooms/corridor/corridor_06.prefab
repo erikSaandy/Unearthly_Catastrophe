@@ -1,61 +1,69 @@
 {
   "RootObject": {
-    "Id": "bfaa1503-fac2-4f80-ab47-23614b3390e7",
+    "__guid": "bfaa1503-fac2-4f80-ab47-23614b3390e7",
     "Name": "corridor_06",
     "Enabled": true,
+    "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
+        "__guid": "2f417ec8-0a45-4520-be0c-f6e0a73c91d8",
         "Bounds": {
-          "Mins": "-64,-64,0",
-          "Maxs": "64,64,128"
+          "Mins": "-68,-68,-4",
+          "Maxs": "68,68,132"
         },
         "LootSpawner": {
           "_type": "component",
+          "component_id": "87fd264d-56ea-4da2-a8d5-e0f8376604af",
           "go": "bfaa1503-fac2-4f80-ab47-23614b3390e7",
           "component_type": "LootSpawnerComponent"
         },
+        "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
+            "component_id": "2141455a-47ed-4f09-8eb8-343626a3988d",
             "go": "5ffed9b5-8672-40ea-869a-74eb1907a039",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "286cdee8-8b31-4c2d-9b56-8390a4daf804",
             "go": "95341881-eebb-4a93-8c20-75b60e5e90a9",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
+            "component_id": "a6a915f8-6f4f-4a1e-99ae-69878990d1bb",
             "go": "a7b045d5-b3ad-4ebf-8c97-5cbda14ad310",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
+          "component_id": "faae6074-be28-46a4-8b6f-2d83596dffc7",
           "go": "bfaa1503-fac2-4f80-ab47-23614b3390e7",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelCollider",
+        "__guid": "f2b8cd63-8802-4373-96d7-135553713a33",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/corridor/corridor_06.vmdl",
-        "Static": true,
-        "Surface": null
+        "Static": true
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "faae6074-be28-46a4-8b6f-2d83596dffc7",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "dungeons/lethal/rooms/corridor/corridor_06.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "LootSpawnerComponent",
+        "__guid": "87fd264d-56ea-4da2-a8d5-e0f8376604af",
         "MaxItemCount": 1,
         "Offset": "0,0,12.59999",
         "Radius": 96
@@ -63,39 +71,45 @@
     ],
     "Children": [
       {
-        "Id": "95341881-eebb-4a93-8c20-75b60e5e90a9",
+        "__guid": "95341881-eebb-4a93-8c20-75b60e5e90a9",
         "Name": "Door",
         "Position": "0,68,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "286cdee8-8b31-4c2d-9b56-8390a4daf804",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "5ffed9b5-8672-40ea-869a-74eb1907a039",
+        "__guid": "5ffed9b5-8672-40ea-869a-74eb1907a039",
         "Name": "Door (1)",
         "Position": "68,0.000006164182,0",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "2141455a-47ed-4f09-8eb8-343626a3988d",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "a7b045d5-b3ad-4ebf-8c97-5cbda14ad310",
+        "__guid": "a7b045d5-b3ad-4ebf-8c97-5cbda14ad310",
         "Name": "Door (2)",
         "Position": "-0.00004353491,-68,0",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "a6a915f8-6f4f-4a1e-99ae-69878990d1bb",
             "PortalType": "Door"
           }
         ]
@@ -105,5 +119,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

@@ -1,19 +1,21 @@
 {
   "RootObject": {
-    "Id": "9f86d4c4-2b0e-4424-a334-215142561625",
+    "__guid": "9f86d4c4-2b0e-4424-a334-215142561625",
     "Name": "tunnel_03",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
+        "__guid": "b950521c-6b01-4758-8c1b-49b5d6ec4627",
         "Bounds": {
-          "Mins": "-64,-128,0",
-          "Maxs": "64,0,128"
+          "Mins": "-68,-132,-4",
+          "Maxs": "68,4,132"
         },
         "MonsterSpawners": [
           {
             "_type": "component",
+            "component_id": "888bf8ab-3ebf-4975-918e-eb0a9a388dca",
             "go": "70183c4e-900d-44a9-947a-5856221f211d",
             "component_type": "MonsterSpawner"
           }
@@ -21,18 +23,21 @@
         "Portals": [
           {
             "_type": "component",
+            "component_id": "420caae2-2750-493c-a4ab-f4abd6424de1",
             "go": "ae7270ff-78dc-4904-b380-48aeeea34231",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
+          "component_id": "0fae3915-a2c8-4667-86d9-2443a33131a5",
           "go": "9f86d4c4-2b0e-4424-a334-215142561625",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
+        "__guid": "0fae3915-a2c8-4667-86d9-2443a33131a5",
         "BodyGroups": 18446744073709551615,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
         "RenderType": "On",
@@ -40,6 +45,7 @@
       },
       {
         "__type": "ModelCollider",
+        "__guid": "762a9a67-ed11-4572-b934-bec3cb6c4d6c",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
         "Static": true
@@ -47,7 +53,7 @@
     ],
     "Children": [
       {
-        "Id": "ae7270ff-78dc-4904-b380-48aeeea34231",
+        "__guid": "ae7270ff-78dc-4904-b380-48aeeea34231",
         "Name": "Door",
         "Position": "-0.00006464271,-132,0",
         "Enabled": true,
@@ -55,12 +61,13 @@
         "Components": [
           {
             "__type": "RoomPortal",
+            "__guid": "420caae2-2750-493c-a4ab-f4abd6424de1",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "Id": "70183c4e-900d-44a9-947a-5856221f211d",
+        "__guid": "70183c4e-900d-44a9-947a-5856221f211d",
         "Name": "Monster Spawner",
         "Position": "-0.00002492252,-64,-0.00001173201",
         "Rotation": "0,0,0.7071069,-0.7071066",
@@ -68,7 +75,8 @@
         "NetworkMode": 1,
         "Components": [
           {
-            "__type": "MonsterSpawner"
+            "__type": "MonsterSpawner",
+            "__guid": "888bf8ab-3ebf-4975-918e-eb0a9a388dca"
           }
         ]
       }
@@ -77,5 +85,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

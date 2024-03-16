@@ -3,7 +3,7 @@ using Sandbox.UI;
 using System;
 using System.Threading.Tasks;
 
-public class LethalGameManager : Component, Component.INetworkListener
+public class LethalGameManager : Component
 {
 	public static LethalGameManager Instance { get; set; } = null;
 	public IEnumerable<Player> ConnectedPlayers => Scene.Components.GetAll<Player>(find: FindMode.EverythingInChildren);
@@ -198,20 +198,6 @@ public class LethalGameManager : Component, Component.INetworkListener
 			player.Kill();
 		}
 
-	}
-
-	[Broadcast]
-	public static void OnPlayerDisconnected(Guid playerId)
-	{
-		if ( Instance.GameObject.IsProxy ) { return; }
-
-		Instance?.QueueOnPlayerDeath();
-	}
-
-	public void OnDisconnected( Connection conn )
-	{
-		if ( IsProxy ) { return; }
-		Instance?.QueueOnPlayerDeath();
 	}
 
 	protected override void OnStart()

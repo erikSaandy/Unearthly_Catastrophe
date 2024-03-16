@@ -87,12 +87,22 @@ public class PlayerSpectateInput : PlayerInput
 
 	public override void CameraInput()
 	{
-		if(Owner.IsProxy) { return; }
+	}
+
+	public override void OnPreRender()
+	{
+		if ( Owner.IsProxy ) { return; }
+
+		var angles = EyeAngles.Normal;
+		angles += Sandbox.Input.AnalogLook;
+		angles.pitch = angles.pitch.Clamp( Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch );
+		EyeAngles = angles.WithRoll( 0 );
+		Camera.Transform.Rotation = EyeAngles.ToRotation();;
 
 		GameObject follow = null;
 		float followDistance = 100;
 
-		if(SpectatedPlayer == null)
+		if ( SpectatedPlayer == null )
 		{
 			follow = LethalGameManager.Instance.Ship.GameObject;
 			followDistance = 750;
@@ -102,7 +112,7 @@ public class PlayerSpectateInput : PlayerInput
 			follow = SpectatedPlayer.HeadBone;
 		}
 
-		if( follow != null)
+		if ( follow != null )
 		{
 			SceneTraceResult trace = Owner.Scene.Trace.Ray( follow.Transform.Position, (follow.Transform.Position - EyeAngles.Forward * followDistance) )
 				.IgnoreGameObjectHierarchy( follow )
@@ -112,14 +122,7 @@ public class PlayerSpectateInput : PlayerInput
 
 			Camera.Transform.Position = trace.EndPosition;
 		}
-	}
 
-	public override void OnPreRender()
-	{
-		EyeAngles += Sandbox.Input.AnalogLook;
-		EyeAngles = EyeAngles.WithPitch( Math.Clamp( EyeAngles.pitch, Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch ) );
-
-		Camera.Transform.Rotation = EyeAngles.ToRotation();
 	}
 
 	public override void InventoryInput()
