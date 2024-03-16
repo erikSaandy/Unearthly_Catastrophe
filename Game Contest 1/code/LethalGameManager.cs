@@ -3,7 +3,7 @@ using Sandbox.UI;
 using System;
 using System.Threading.Tasks;
 
-public class LethalGameManager : Component
+public class LethalGameManager : Component, Component.INetworkListener
 {
 	public static LethalGameManager Instance { get; set; } = null;
 	public IEnumerable<Player> ConnectedPlayers => Scene.Components.GetAll<Player>(find: FindMode.EverythingInChildren);
@@ -46,7 +46,6 @@ public class LethalGameManager : Component
 		if ( IsProxy ) { return; }
 
 		List<Player> deadPlayers = Instance.DeadPlayers.ToList();
-		Log.Info( deadPlayers.Count );
 
 		foreach ( Player player in deadPlayers )
 		{
@@ -206,6 +205,12 @@ public class LethalGameManager : Component
 	{
 		if ( Instance.GameObject.IsProxy ) { return; }
 
+		Instance?.QueueOnPlayerDeath();
+	}
+
+	public void OnDisconnected( Connection conn )
+	{
+		if ( IsProxy ) { return; }
 		Instance?.QueueOnPlayerDeath();
 	}
 

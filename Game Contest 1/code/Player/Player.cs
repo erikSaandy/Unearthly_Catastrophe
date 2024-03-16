@@ -91,7 +91,6 @@ public sealed class Player : Component, IKillable
 
 		LethalGameManager.OnPlayerConnected( GameObject.Id );
 
-		Log.Info( GameObject.Name + "start" );
 		LethalGameManager.OnStartLoadMoon += OnStartLoadMoon;
 		LethalGameManager.OnLoadedMoon += OnLoadedMoon;
 
@@ -110,16 +109,22 @@ public sealed class Player : Component, IKillable
 	public void HideHead(bool hide = true)
 	{
 		// yeah I know lmao
-		List<GameObject> hairObjects = GameObject.Children.FindAll( x => x.Name.Contains( "hair" ) || x.Name.Contains( "eyebrows" ) || x.Name.Contains( "stubble" ) || x.Name.Contains("eyelashes") );
+		List<GameObject> clothing = GameObject.Children.FindAll( x => x.Name.Contains( "Clothing" ) );
 
-		foreach ( GameObject hair in hairObjects )
+
+		foreach ( GameObject cloth in clothing )
 		{
-			hair.Enabled = !hide;
+			cloth.Enabled = !hide;
 		}
 
 		if ( hide )
 		{
-			//Renderer.RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
+			// only hide head. clothing container disables body groups, but since
+			// client can't see their own clothing, re-enable them.
+			Renderer.SetBodyGroup( "legs", 0 );
+			Renderer.SetBodyGroup( "chest", 0 );
+			Renderer.SetBodyGroup( "hands", 0 );
+
 			Renderer.SetBodyGroup( "head", 1 );
 		}
 		else
@@ -272,7 +277,6 @@ public sealed class Player : Component, IKillable
 		if ( GameObject.IsProxy ) { return; }
 
 		LifeState = LifeState.Dead;
-		LethalGameManager.OnPlayerDisconnected( GameObject.Id );
 
 		CurrentHud?.Destroy();
 
@@ -301,6 +305,7 @@ public sealed class Player : Component, IKillable
 
 		if ( TimeSinceGrounded > 10f )
 		{
+			TimeSinceGrounded = 0;
 			Kill();
 			Log.Info( $"{GameObject.Name} killed since they had been falling for a long time." );
 		}

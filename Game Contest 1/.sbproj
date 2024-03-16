@@ -1,5 +1,5 @@
 {
-  "Title": "Unearthly Catastrophe",
+  "Title": "Unearthly Technicians",
   "Type": "game",
   "Org": "saandy",
   "Ident": "unearthly_catastrophe",
@@ -7,7 +7,7 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "Resources": "",
+  "Resources": "\n*.TTF\n*.scss\nProjectSettings/*\nTextures/Icons/liftoff.png\nTextures/Icons/warning.png\nTextures/Icons/info.png",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],
