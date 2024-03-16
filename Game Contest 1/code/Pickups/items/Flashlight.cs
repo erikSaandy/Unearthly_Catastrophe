@@ -66,6 +66,19 @@ public sealed class Flashlight : Carriable
 
 	}
 
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if(Owner == null ) { return; }
+
+		if(Owner.Inventory.ActiveItem != this)
+		{
+			Transform.Rotation = Rotation.Identity * (Owner.EyeAngles.WithPitch( Owner.EyeAngles.pitch * 0.5f ));
+		}
+
+	}
+
 	/// <summary>
 	/// Toggle flashlight on or off.
 	/// </summary>

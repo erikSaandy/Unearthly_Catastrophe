@@ -7,8 +7,8 @@
 	public bool WantsToRun { get; protected set; } = false;
 
 	public bool HasInput => AnalogMove.Length > 0f;
-	public bool IsMoving => Owner.Controller.Velocity.WithY( 0 ).Length > 5f;
-	public bool IsRunning => WantsToRun && HasInput && IsMoving;
+	public bool IsMoving => Owner.Controller.Velocity.WithY( 0 ).Length > 0.01f;
+	public bool IsRunning => WantsToRun && HasInput && IsMoving && !Owner.EnergyBar.IsExhausted;
 
 
 	private IInteractable InteractedWith = null;
@@ -19,14 +19,15 @@
 	{
 		this.Owner = owner;
 
-		owner.Voice.Mode = Voice.ActivateMode.PushToTalk;
+		if (owner.IsProxy) { return; }
 
-		//owner?.Camera?.GameObject?.SetParent( owner.GameObject );
 	}
 
 	public virtual void UpdateInput( )
 	{
 		if( Owner.IsProxy ) { return; }
+
+		BuildWishVelocity();
 
 		AnalogMove = Sandbox.Input.AnalogMove.Normal;
 		WantsToRun = Sandbox.Input.Down( "Run" );
@@ -49,21 +50,28 @@
 		}
 
 		if ( Sandbox.Input.Pressed( "mute" ) )
-		{
+		{	
 			//Toggle microphone
 			ToggleMicrophone();
 		}
 
-
 	}
 
-	public virtual void FixedUpdateInput()
+	protected virtual void BuildWishVelocity()
 	{
+		var rotation = Owner.EyeAngles.ToRotation();
 
-		if ( Owner.IsProxy ) { return; }
+		Owner.WishVelocity = rotation * Input.AnalogMove;
+		Owner.WishVelocity = Owner.WishVelocity.WithZ( 0f );
 
+		if ( !Owner.WishVelocity.IsNearZeroLength )
+			Owner.WishVelocity = Owner.WishVelocity.Normal;
+
+		if ( IsRunning )
+			Owner.WishVelocity *= Owner.RunSpeed;
+		else
+			Owner.WishVelocity *= Owner.WalkSpeed;
 	}
-
 	private void DoInteractionTrace()
 	{
 		if ( Owner.IsProxy ) { return; }
@@ -118,6 +126,8 @@
 
 	public virtual void OnJump( )
 	{
+		if ( Owner.IsProxy ) { return; }
+
 		Owner.Controller.Punch( Vector3.Up * Owner.JumpStrength );
 		Owner.Animator.TriggerJump();
 		Owner.OnJumped?.Invoke();
@@ -125,21 +135,25 @@
 
 	public virtual void CameraInput()
 	{
-		Owner.EyeAngles += Sandbox.Input.AnalogLook;
-		Owner.EyeAngles = Owner.EyeAngles.WithPitch( Math.Clamp( Owner.EyeAngles.pitch, Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch ) );
-
-		//Transform.LocalPosition = EyeOffset;
-
 		if(Owner.IsProxy) { return; }
+	}
 
-		Transform eyeTx = Owner.Animator.Target.GetAttachment( "eyes" ) ?? default;
+	public virtual void OnPreRender()
+	{
+		var angles = Owner.EyeAngles.Normal;
+		angles += Sandbox.Input.AnalogLook * 0.5f;
+		angles.pitch = angles.pitch.Clamp( Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch );
+		Owner.EyeAngles = angles.WithRoll( 0 );
 
-		Owner.Camera.Transform.Position = eyeTx.Position;
+		Transform eyeTx = Owner.Animator.Target.GetAttachment( "forward_reference" ) ?? default;
+		Owner.Camera.Transform.Position = eyeTx.Position + eyeTx.Rotation.Up * 6;
 		Owner.Camera.Transform.Rotation = Owner.EyeAngles.ToRotation();
 	}
 
 	public virtual void InventoryInput()
 	{
+		if ( Owner.IsProxy ) { return; }
+
 		// Inventory scroll
 		if ( Sandbox.Input.MouseWheel.y != 0 )
 		{
@@ -154,6 +168,8 @@
 
 	protected void ToggleMicrophone()
 	{
+		if ( Owner.IsProxy ) { return; }
+
 		Owner.Voice.Mode = Owner.Voice.Mode == Voice.ActivateMode.PushToTalk ? Voice.ActivateMode.AlwaysOn : Voice.ActivateMode.PushToTalk;
 	}
 

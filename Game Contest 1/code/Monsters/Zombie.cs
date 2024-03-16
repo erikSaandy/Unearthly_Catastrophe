@@ -291,7 +291,7 @@ public class Zombie : Monster
 
 	private void DoPatrol( ref float speed, ref float turnSpeed, ref float friction)
 	{
-		if( TimeSinceGrowl > 6)
+		if( TimeSinceGrowl > 10)
 		{
 			OnGrowl();
 			TimeSinceGrowl = LethalGameManager.Random.Float( -1f, 1.5f );

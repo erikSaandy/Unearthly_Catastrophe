@@ -12,8 +12,11 @@ public class PlayerFreezeInput : PlayerInput
 
 	public override void UpdateInput()
 	{
+		Owner.WishVelocity = 0;
 		AnalogMove = 0;
 		WantsToRun = false;
+
+		if ( Owner.IsProxy ) { return; }
 
 		Owner.Controller.Velocity = 0;
 
@@ -30,5 +33,6 @@ public class PlayerFreezeInput : PlayerInput
 
 	public override void InventoryInput() { }
 
+	public override void OnPreRender() { }
 
 }

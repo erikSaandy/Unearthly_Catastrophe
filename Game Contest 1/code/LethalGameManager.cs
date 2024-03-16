@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 public class LethalGameManager : Component
 {
 	public static LethalGameManager Instance { get; set; } = null;
-	public IEnumerable<Player> ConnectedPlayers => Scene.Components.GetAll<Player>(find: FindMode.EnabledInSelfAndChildren).OrderBy(x => x.GetHashCode());
-	public IEnumerable<Player> AlivePlayers => ConnectedPlayers.Where( x => x.LifeState == LifeState.Alive );
-	public IEnumerable<Player> DeadPlayers => ConnectedPlayers.Where( x => x.LifeState == LifeState.Dead );
+	public IEnumerable<Player> ConnectedPlayers => Scene.Components.GetAll<Player>(find: FindMode.EverythingInChildren);
+	public IEnumerable<Player> AlivePlayers => ConnectedPlayers?.Where( x => x.LifeState == LifeState.Alive );
+	public IEnumerable<Player> DeadPlayers => ConnectedPlayers?.Where( x => x.LifeState == LifeState.Dead );
 
-	public static Player GetPlayer( int i ) { return Instance.ConnectedPlayers.ElementAt( i ); }
+	public static Player GetPlayer( int i ) { 
+		IEnumerable<Player> connections = Instance?.ConnectedPlayers; 
+		if(i < 0) { i = connections.Count() - 1; }
+		return connections.ElementAt( i % connections.Count() ); 
+	}
 
 	public static int GetNextPlayerIdAlive(int startId)
 	{
@@ -42,9 +46,11 @@ public class LethalGameManager : Component
 		if ( IsProxy ) { return; }
 
 		List<Player> deadPlayers = Instance.DeadPlayers.ToList();
+		Log.Info( deadPlayers.Count );
 
 		foreach ( Player player in deadPlayers )
 		{
+
 			Log.Info( "Respawning " + player.Network.OwnerConnection.DisplayName + "..." );
 			player.Respawn();
 		}
@@ -56,8 +62,10 @@ public class LethalGameManager : Component
 
 		foreach ( Player player in alivePlayers )
 		{
+			if ( player == null ) { continue; }
+
 			// alive player not on ship?
-			if( !Instance.Ship.Transporter.Passengers.Contains( player ) || Vector3.DistanceBetween(player.Transform.Position, Instance.Ship.Transform.Position) > 500 )
+			if ( !Instance.Ship.Transporter.Passengers.Contains( player ) || Vector3.DistanceBetween(player.Transform.Position, Instance.Ship.Transform.Position) > 500 )
 			{
 				player.Kill();
 			}
@@ -82,14 +90,10 @@ public class LethalGameManager : Component
 		// only host.
 		if(IsProxy) { return; }
 
-		//Log.Info( ">> DEATH ROUTINE" );
-		Log.Info( Instance.AlivePlayers.Count() );
+		//Log.Info( Instance.AlivePlayers.Count() );
 
-		// All players are dead.
-		if ( Instance.AlivePlayers.Count() <= 0 && Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
+		if ( Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
 		{
-			Log.Info( "all palyers dead. ship now leaving." );
-			OnPlayerDeathQueue = 0;		
 
 			// Not on a moon.
 			if(CurrentMoonGuid == default)
@@ -97,18 +101,20 @@ public class LethalGameManager : Component
 				RespawnAllDeadPlayersAsync(3);
 			}
 
-			// On a moon.
-			else
+			// On a moon, and all players are dead
+			else if( Instance.AlivePlayers.Count() <= 0 )
 			{
+				OnPlayerDeathQueue = 0;
+				Log.Info( "all players dead." );
 				LeaveCurrentMoonAsync(3);
-				OnNoobsLostGame();
+				OnLostGame();
 			}
 		}
 
 	}
 
 	[Broadcast] //[Authority] 
-	private void OnNoobsLostGame()
+	private void OnLostGame()
 	{
 		if ( IsProxy ) { return; }
 
@@ -284,7 +290,7 @@ public class LethalGameManager : Component
 
 		if ( Instance.GameObject.IsProxy ) { return; }
 
-		RespawnAllDeadPlayers();
+		//RespawnAllDeadPlayers();
 
 		Instance.LoadMoonAsync( moon );
 
@@ -361,7 +367,7 @@ public class LethalGameManager : Component
 
 		await Task.Delay( 250 );
 
-		await Ship.FlyIntoSpaceLol();
+		await Ship.FlyIntoSpace();
 
 		Ship.Doors.Lock();
 

@@ -1,25 +1,28 @@
 {
   "RootObject": {
-    "Id": "5ae3afa1-c0ec-4478-86f4-ca7faa4ca8cb",
+    "__guid": "5ae3afa1-c0ec-4478-86f4-ca7faa4ca8cb",
     "Name": "flashlight",
     "Tags": "item",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "ModelRenderer",
+        "__guid": "b5aa18fd-f5d6-410c-8b66-9008d976e424",
         "BodyGroups": 18446744073709551615,
         "Model": "models/flashlight/flashlight.vmdl",
-        "RenderType": "On",
+        "RenderType": "Off",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "Flashlight",
+        "__guid": "ca885043-6a79-4915-8d93-abe02ad37883",
         "HeldAngleOffset": "7,0,225",
         "HoldType": "HoldItem",
         "Icon": "models/flashlight/flashlight.vmdl.vtex",
         "LightSource": {
           "_type": "component",
+          "component_id": "605141c0-5426-4b8f-a8a3-464e2d3ab79d",
           "go": "47c4f7df-871a-4720-a406-8b469829c36f",
           "component_type": "SpotLight"
         },
@@ -30,6 +33,7 @@
       },
       {
         "__type": "ModelCollider",
+        "__guid": "d9db65ac-55af-4a04-b4a9-4f79d2d0c0ae",
         "IsTrigger": false,
         "Model": "models/flashlight/flashlight.vmdl",
         "Static": false
@@ -37,18 +41,20 @@
     ],
     "Children": [
       {
-        "Id": "47c4f7df-871a-4720-a406-8b469829c36f",
+        "__guid": "47c4f7df-871a-4720-a406-8b469829c36f",
         "Name": "Spot Light",
-        "Position": "11.45286,0,0",
+        "Position": "13.91204,0,0",
         "Tags": "light_spot,light",
         "Enabled": true,
+        "NetworkMode": 2,
         "Components": [
           {
             "__type": "SpotLight",
+            "__guid": "605141c0-5426-4b8f-a8a3-464e2d3ab79d",
             "__enabled": false,
             "Attenuation": 7,
-            "ConeInner": 42,
-            "ConeOuter": 35,
+            "ConeInner": 45,
+            "ConeOuter": 55,
             "Cookie": "materials/effects/lightcookie.vtex",
             "FogMode": "Enabled",
             "FogStrength": 1,
@@ -63,5 +69,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

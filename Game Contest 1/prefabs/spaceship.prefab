@@ -572,7 +572,7 @@
                 "__guid": "c0f92653-be94-4310-8dbb-a06e3a633b62",
                 "ActivatedAngle": 65,
                 "DeactivatedAngle": 1,
-                "IsLocked": true,
+                "IsLocked": false,
                 "PullSound": "sounds/lever_pull.sound",
                 "RotationalAxis": "0,0,1",
                 "Speed": 1,
@@ -734,7 +734,7 @@
                     "FontFamily": "Poppins",
                     "FontSize": 19.89,
                     "Scale": 0.16,
-                    "Text": "Thank you for playing UC!\nYour goal is to raise your\nship balance as high as possible\nwithout dying! If you all die,\n your balance will be set back to 100.\nUse the terminal and\nRoute to a moon to start.\nHave fun!\n                                                                            -Saandy"
+                    "Text": "Thank you for playing UT!\nThe goal is to raise your\nship balance as high as possible\nwithout dying! If everyone dies,\n your balance will be set back to 100.\nUse the terminal and\nRoute to a moon to start.\nHave fun!\n                                                                            -Saandy"
                   }
                 ]
               }

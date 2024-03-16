@@ -1,6 +1,6 @@
 using Sandbox;
 
-public sealed class PassengerTransporter : Component, Component.ITriggerListener
+public sealed class PassengerTransporter : Component, Component.ITriggerListener, Component.INetworkListener
 {
 	[Property] public List<Player> Passengers { get; private set; } = new();
 
@@ -45,6 +45,18 @@ public sealed class PassengerTransporter : Component, Component.ITriggerListener
 			}
 		}
 
+	}
+
+	void OnDisconnected( Connection conn )
+	{
+		Log.Info( "hey" );
+
+		Player player = Passengers.First( x => x.Network.OwnerConnection == conn );
+		if(player != null)
+		{
+			Passengers.Remove( player );
+			Log.Info( "Removed passenger " + player.GameObject.Name );
+		}
 	}
 
 

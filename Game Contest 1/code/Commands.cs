@@ -16,6 +16,7 @@ public static class Commands
 
 		foreach ( Player player in LethalGameManager.Instance.AlivePlayers )
 		{
+			if(player == null) { continue; }
 
 			if ( player.Network.OwnerConnection.DisplayName.ToLower() == name.ToLower() )
 			{
@@ -33,6 +34,7 @@ public static class Commands
 		{
 
 			if ( player.IsProxy ) { continue; }
+			if ( player == null ) { continue; }
 
 			player.Components.Get<IKillable>().Kill();
 			break;
@@ -45,7 +47,7 @@ public static class Commands
 	{
 		foreach ( Player player in LethalGameManager.Instance.AlivePlayers )
 		{
-			player.Kill();
+			player?.Kill();
 		}
 
 	}

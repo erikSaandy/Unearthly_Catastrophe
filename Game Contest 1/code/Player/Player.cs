@@ -5,16 +5,18 @@ using Sandbox.Citizen;
 using Sandbox.UI;
 using static Sandbox.Gizmo;
 
-public sealed class Player : Component, Component.INetworkListener, IKillable
+public sealed class Player : Component, IKillable
 {
 
-	[Sync] public LifeState LifeState { get; private set; } = LifeState.Alive;
+	[Sync, Property] public LifeState LifeState { get; private set; } = LifeState.Alive;
 	[Sync, Property] public float MaxHealth { get; private set; } = 100f;
 	[Sync, Property] public float Health { get; private set; } = 100f;
 	private RealTimeSince TimeSinceDamaged { get; set; }
 	public RealTimeSince TimeSinceDeath { get; private set; }
 
 	public CharacterController Controller { get; set; }
+	public Vector3 WishVelocity { get; set; }
+
 	public SkinnedModelRenderer Renderer { get; private set; }
 	public CitizenAnimationHelper Animator { get; set; }
 	public Voice Voice { get; set; }
@@ -59,14 +61,16 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 	{
 		base.OnStart();
 
-		GameObject.BreakFromPrefab();
+		if(GameObject.IsPrefabInstance)
+		{
+			//GameObject.BreakFromPrefab();
+		}
 
 		Animator = Components.Get<CitizenAnimationHelper>();
 		Controller = Components.Get<CharacterController>();
 		Inventory = Components.Get<InventoryComponent>();
 		EnergyBar = Components.Get<EnergyBarComponent>();
 		Ragdoll = Components.Get<RagdollController>( true );
-		Voice = Components.Get<Voice>();
 		Renderer = Components.Get<SkinnedModelRenderer>();
 
 		PlayerInput = new PlayerInput( this );
@@ -74,13 +78,20 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		if ( GameObject.IsProxy ) {
 
 			HideHead( false );
-			HudObject.Destroy();
-			CameraController?.Camera?.GameObject?.Destroy();
+			HudObject.Enabled = false;
+			if(Camera != null)
+			{
+				CameraController.Camera.GameObject.Enabled = false;
+			}
 			return; 
 		}
 
+		Voice = Components.Get<Voice>();
+		Voice.Mode = Voice.ActivateMode.PushToTalk;
+
 		LethalGameManager.OnPlayerConnected( GameObject.Id );
 
+		Log.Info( GameObject.Name + "start" );
 		LethalGameManager.OnStartLoadMoon += OnStartLoadMoon;
 		LethalGameManager.OnLoadedMoon += OnLoadedMoon;
 
@@ -114,30 +125,6 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		else
 		{
 			Renderer.SetBodyGroup( "head", 0 );
-		}
-
-	}
-
-	protected override void OnUpdate()
-	{
-		PlayerInput?.UpdateInput();
-		PlayerInput?.CameraInput();
-
-		if ( Ragdoll.IsRagdolled || LifeState == LifeState.Dead )
-			return;
-
-		Animator.IsGrounded = Controller.IsOnGround;
-		Animator.WithVelocity( Controller.Velocity );
-		Animator.WithLook( EyeAngles.Forward, 1, .8f, .5f );
-		//Animator.DuckLevel = 1f;
-		Animator.HoldType = CurrentHoldType;
-
-		if(IsProxy) { return; }
-
-		if(LifeState == LifeState.Alive && TimeSinceGrounded > 10f)
-		{
-			Kill();
-			Log.Info( $"{GameObject.Name} killed since they had been falling for a long time." );
 		}
 
 	}
@@ -202,12 +189,12 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 		Tags.Add( "dead" );
 
 		PhysicsCollider.Enabled = false;
+		PlayerInput = new PlayerSpectateInput( this );
 
 		if ( IsProxy )
 			return;
 
 		HideHead( false );
-		PlayerInput = new PlayerSpectateInput( this );
 
 		LethalGameManager.Instance?.QueueOnPlayerDeath();
 
@@ -228,14 +215,14 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 		if ( IsProxy ) { return; }
 
+		PlayerInput = new PlayerInput( this );
+		LifeState = LifeState.Alive;
 		Controller.Velocity = 0;
-		Controller.Acceleration = 0;
 		Ragdoll.Unragdoll(); 
 		MoveToSpawnPoint();
-		LifeState = LifeState.Alive;
 		Health = MaxHealth;
-		PlayerInput = new PlayerInput( this );
 		HideHead( true );
+		TimeSinceGrounded = 0;
 
 	}
 
@@ -294,50 +281,80 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 
 	}
 
+	protected override void OnUpdate()
+	{
+
+		PlayerInput?.CameraInput();
+
+		if ( Ragdoll.IsRagdolled || LifeState == LifeState.Dead )
+			return;
+
+		Animator.IsGrounded = Controller.IsOnGround;
+		Animator.WithVelocity( Controller.Velocity );
+		Animator.WithWishVelocity( WishVelocity );
+		Animator.WithLook( EyeAngles.Forward, 1, .8f, .5f );
+		Animator.HoldType = CurrentHoldType;
+		Animator.FootShuffle = 0f;
+		//Animator.DuckLevel = 1f;
+
+		if ( IsProxy ) { return; }
+
+		if ( TimeSinceGrounded > 10f )
+		{
+			Kill();
+			Log.Info( $"{GameObject.Name} killed since they had been falling for a long time." );
+		}
+
+	}
+
 	protected override void OnFixedUpdate()
 	{
 		base.OnFixedUpdate();
 
-		if ( Controller == null ) { return; }
-		if ( Animator == null ) { return; }
+		PlayerInput?.UpdateInput();
 
-		if ( GameObject.IsProxy ) { return; }
+		if ( Ragdoll.IsRagdolled || LifeState == LifeState.Dead )
+			return;
 
-		float wantedSpeed = WalkSpeed;
+		//if ( Controller == null ) { return; }
+		//if ( Animator == null ) { return; }
 
-		if ( PlayerInput != null && PlayerInput.WantsToRun )
-		{
-			if ( !EnergyBar.IsExhausted )
-			{
-				wantedSpeed = RunSpeed;
-			}
-		}
-
-		Vector3 wantedMove = 0;
-		wantedMove = (PlayerInput == null) ? 0 : PlayerInput.AnalogMove * wantedSpeed * Transform.Rotation;
-
-		Controller.Accelerate( wantedMove );
+		//Vector3 wantedMove = 0;
+		//wantedMove = (PlayerInput == null) ? 0 : PlayerInput.AnalogMove * wantedSpeed * Transform.Rotation;
 
 		if ( Controller.IsOnGround )
 		{
 			TimeSinceGrounded = 0;
-
+			Controller.Accelerate( WishVelocity );
+			Controller.ApplyFriction( 4.0f );
 			Controller.Acceleration = 10;
 
 			if ( Input.Pressed( "Jump" ) )
 			{
 				PlayerInput?.OnJump();
 			}
-			else
-			{
-				Controller.ApplyFriction( 5f );
-			}
 		}
 		else
 		{
-			Controller.Acceleration = 5;
 			Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+			Controller.Accelerate( WishVelocity.ClampLength( 50 ) );
+			Controller.ApplyFriction( 0.1f );
+			Controller.Acceleration = 5;
 		}
+
+		if ( !IsProxy )
+		{
+			Controller.Move();
+		}
+
+		if ( Controller.IsOnGround )
+		{
+			Controller.Velocity = Controller.Velocity.WithZ( 0 );
+			//LastUngroundedTime = 0f;
+		}
+
+		if ( IsProxy ) { return; }
+
 
 		if ( Controller.GroundObject != OldGroundObject )
 		{
@@ -345,17 +362,18 @@ public sealed class Player : Component, Component.INetworkListener, IKillable
 			OldGroundObject = Controller.GroundObject;
 		}
 
-		PlayerInput?.FixedUpdateInput();
-
-		if(Input.EscapePressed)
-		{
-			Game.Overlay.ShowBinds();
-		}
-
-		Controller.Move();
+		//if(Input.EscapePressed)
+		//{
+		//	Game.Overlay.ShowBinds();
+		//}
 
 		Transform.Rotation = Rotation.FromYaw( EyeAngles.ToRotation().Yaw() );
 
+	}
+
+	protected override void OnPreRender()
+	{
+		PlayerInput?.OnPreRender();
 	}
 
 

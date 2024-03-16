@@ -17,6 +17,7 @@ public class PlayerTerminalInput : PlayerInput
 
 	public override void UpdateInput()
 	{
+		Owner.WishVelocity = 0;
 		AnalogMove = 0;
 		WantsToRun = false;
 
@@ -26,14 +27,18 @@ public class PlayerTerminalInput : PlayerInput
 
 	public override void CameraInput()
 	{
-		Owner.Camera.Transform.Rotation = Terminal.CameraAngles;
-		Owner.Camera.Transform.Position = Terminal.ScreenCollider.Transform.Position + Terminal.ScreenCollider.Transform.Rotation.Up * Terminal.ScreenDistance;
 
 	}
 
 	public override void InventoryInput()
 	{
 		base.InventoryInput();
+	}
+
+	public override void OnPreRender()
+	{
+		Owner.Camera.Transform.Rotation = Terminal.CameraAngles;
+		Owner.Camera.Transform.Position = Terminal.ScreenCollider.Transform.Position + Terminal.ScreenCollider.Transform.Rotation.Up * Terminal.ScreenDistance;
 	}
 
 }

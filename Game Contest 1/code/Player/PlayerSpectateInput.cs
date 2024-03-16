@@ -14,6 +14,8 @@ public class PlayerSpectateInput : PlayerInput
 	public PlayerSpectateInput(Player owner ) : base( owner ) {
 		this.Owner = owner;
 
+		if ( Owner.IsProxy ) { return; }
+
 		owner.Voice.Volume = 0;
 
 		CycleNextAlivePlayer();
@@ -27,7 +29,7 @@ public class PlayerSpectateInput : PlayerInput
 		WantsToRun = false;
 
 		// Just died, spectate corpse.
-		if(Owner.TimeSinceDeath < 1 )
+		if(Owner.TimeSinceDeath < 2 )
 		{
 			SpectatedPlayer = Owner;
 			return;
@@ -66,6 +68,8 @@ public class PlayerSpectateInput : PlayerInput
 
 	private void CycleNextAlivePlayer()
 	{
+		if ( Owner.IsProxy ) { return; }
+
 		SpectatedPlayer = null;
 		SpectatedPlayerId++;
 		SpectatedPlayerId = LethalGameManager.GetNextPlayerIdAlive( SpectatedPlayerId );
@@ -85,11 +89,6 @@ public class PlayerSpectateInput : PlayerInput
 	{
 		if(Owner.IsProxy) { return; }
 
-		EyeAngles += Sandbox.Input.AnalogLook;
-		EyeAngles = EyeAngles.WithPitch( Math.Clamp( EyeAngles.pitch, Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch ) );
-
-		Camera.Transform.Rotation = EyeAngles.ToRotation();
-
 		GameObject follow = null;
 		float followDistance = 100;
 
@@ -107,12 +106,20 @@ public class PlayerSpectateInput : PlayerInput
 		{
 			SceneTraceResult trace = Owner.Scene.Trace.Ray( follow.Transform.Position, (follow.Transform.Position - EyeAngles.Forward * followDistance) )
 				.IgnoreGameObjectHierarchy( follow )
-				.WithoutTags( "owned" )
+				.WithoutTags( "owned", "player" )
 				.Size( 8f )
 				.Run();
 
 			Camera.Transform.Position = trace.EndPosition;
 		}
+	}
+
+	public override void OnPreRender()
+	{
+		EyeAngles += Sandbox.Input.AnalogLook;
+		EyeAngles = EyeAngles.WithPitch( Math.Clamp( EyeAngles.pitch, Owner.CameraController.MinPitch, Owner.CameraController.MaxPitch ) );
+
+		Camera.Transform.Rotation = EyeAngles.ToRotation();
 	}
 
 	public override void InventoryInput()

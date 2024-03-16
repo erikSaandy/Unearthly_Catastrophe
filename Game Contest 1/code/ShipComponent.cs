@@ -137,9 +137,13 @@ public sealed class ShipComponent : Component
 		foreach ( Player player in Transporter?.Passengers )
 		{
 
+			// Idfk
 			if(player.IsProxy) { continue; }
+			if ( !player.IsValid() ) { continue; }
+			if (player.LifeState == LifeState.Dead) { continue; }
+			if(player.Controller == null) { continue; }
 
-			Log.Info( player.GameObject.Name + " move on ship" );
+			//Log.Info( player.GameObject.Name + " move on ship" );
 
 			//Vector3 tVel = player.Controller.Velocity;
 			player.Controller?.MoveTo( player.Transform.Position + (velocity * Time.Delta), true );
@@ -282,7 +286,7 @@ public sealed class ShipComponent : Component
 	}
 	*/
 
-	public async Task FlyIntoSpaceLol()
+	public async Task FlyIntoSpace()
 	{
 		CurrentMovementState = MovementState.Leaving;
 		Lever.Deactivate( invokeAction: false );

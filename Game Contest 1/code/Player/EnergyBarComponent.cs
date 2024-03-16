@@ -48,7 +48,7 @@ public sealed class EnergyBarComponent : Component
 				IsExhausted = false;
 			}
 		}
-		else if( !Owner.Controller.IsOnGround)
+		else if( Owner?.Controller != null && !Owner.Controller.IsOnGround)
 		{
 
 		}
