@@ -21,6 +21,17 @@
 						use_global_default = false
 						global_default_material = ""
 					},
+					{
+						_class = "MaterialGroup"
+						name = "arrows"
+						remaps = 
+						[
+							{
+								from = "models/buttons_onoff/material/buttons_onoff.vmat"
+								to = "models/buttons_onoff/material/buttons_leftright.vmat"
+							},
+						]
+					},
 				]
 			},
 			{

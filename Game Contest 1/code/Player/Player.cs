@@ -60,7 +60,7 @@ public sealed class Player : Component, IKillable, IHasMapIcon
 	# region MAP_ICON
 
 	public Color IconColor => Color.Green;
-	public float IconRotation => EyeAngles.yaw;
+	public float IconRotation => Transform.Rotation.Angles().yaw;
 	public void RenderMapIcon() { MiniMapComponent.AddIcon( this ); }
 
 	#endregion
@@ -295,7 +295,6 @@ public sealed class Player : Component, IKillable, IHasMapIcon
 
 	protected override void OnUpdate()
 	{
-		RenderMapIcon();
 		PlayerInput?.CameraInput();
 
 		if ( Ragdoll.IsRagdolled || LifeState == LifeState.Dead )
@@ -323,6 +322,8 @@ public sealed class Player : Component, IKillable, IHasMapIcon
 	protected override void OnFixedUpdate()
 	{
 		base.OnFixedUpdate();
+
+		RenderMapIcon();
 
 		PlayerInput?.UpdateInput();
 

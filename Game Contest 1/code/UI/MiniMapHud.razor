@@ -61,8 +61,9 @@
 			//Icons[i].Style.SetBackgroundImage("textures/icons/warning.png" );
 			Icons[i].AddClass("Visible");
 
+			//-MiniMapComponent.Yaw
 			var pt = new PanelTransform();
-			pt.AddRotation(0, 0, -iconsIn[i].IconRotation);
+			pt.AddRotation(0, 0, -iconsIn[i].IconRotation + MiniMapComponent.Yaw);
 			Icons[i].Style.Transform = pt;
 		}
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Monster : Component, IKillable
+public class Monster : Component, IKillable, IHasMapIcon
 {
 	[Sync] public LifeState LifeState { get; protected set; } = LifeState.Alive;
 
@@ -12,6 +12,21 @@ public class Monster : Component, IKillable
 
 	public float MaxHealth => 100;
 	[Sync] public float Health { get; protected set; }
+
+	#region Map_Icon
+
+	public Color IconColor => Color.Red;
+	public float IconRotation => Transform.Rotation.Angles().yaw;
+	public void RenderMapIcon() { MiniMapComponent.AddIcon( this ); }
+
+	#endregion
+
+	protected override void OnFixedUpdate()
+	{
+		base.OnUpdate();
+
+		RenderMapIcon();
+	}
 
 	public virtual void Kill()
 	{

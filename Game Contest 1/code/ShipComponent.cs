@@ -61,6 +61,7 @@ public sealed class ShipComponent : Component
 	{
 		base.OnDestroy();
 
+		if( LethalGameManager.Instance == null) { return; }
 		Lever.OnActivate -= LethalGameManager.Instance.LoadSelectedMoon;
 		Lever.OnDeactivate -= LethalGameManager.Instance.LeaveCurrentMoon;
 

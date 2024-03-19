@@ -28,7 +28,7 @@ public sealed class Scrap : Carriable, ISellable, IHasMapIcon
 		base.OnStart();
 	}
 
-	protected override void OnUpdate()
+	protected override void OnFixedUpdate()
 	{
 		base.OnUpdate();
 

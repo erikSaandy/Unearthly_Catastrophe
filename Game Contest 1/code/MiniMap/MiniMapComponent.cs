@@ -12,6 +12,11 @@ public sealed class MiniMapComponent : Component
 
 	private static List<IHasMapIcon> Icons { get; set; } = new();
 
+	[Property] public InteractionProxy NextButton { get; set; }
+	[Property] public InteractionProxy PrevButton { get; set; }
+
+	public static float Yaw => Camera.GameObject.Transform.Rotation.Angles().yaw;
+
 	public static string SelectedPlayerName => GetSelectedPlayerName();
 	private static string GetSelectedPlayerName()
 	{
@@ -19,21 +24,6 @@ public sealed class MiniMapComponent : Component
 	}
 
 	public static Texture Texture;
-
-	[Broadcast]
-	public static void SelectPlayer( Guid playerGuid )
-	{
-		GameObject playerObj = LethalGameManager.Instance.Scene.Directory.FindByGuid( playerGuid );
-
-		if ( playerObj != null) {
-			Player player = null;
-			if(playerObj.Components.TryGet( out player ))
-			{
-				SelectedPlayer = player;
-				SelectedPlayerId = SelectedPlayer.GameObject.Id;
-			}
-		}
-	}
 
 	public static void AddIcon( IHasMapIcon icon )
 	{
@@ -56,6 +46,22 @@ public sealed class MiniMapComponent : Component
 		return pos;
 	}
 
+	[Broadcast]
+	public static void SelectPlayer( Guid playerGuid )
+	{
+		GameObject playerObj = LethalGameManager.Instance.Scene.Directory.FindByGuid( playerGuid );
+
+		if ( playerObj != null )
+		{
+			Player player = null;
+			if ( playerObj.Components.TryGet( out player ) )
+			{
+				SelectedPlayer = player;
+				SelectedPlayerId = SelectedPlayer.GameObject.Id;
+			}
+		}
+	}
+
 	public static void SelectNextPlayer(bool reverse = false)
 	{
 		IEnumerable<Player> connections = LethalGameManager.Instance.ConnectedPlayers;
@@ -66,6 +72,8 @@ public sealed class MiniMapComponent : Component
 		SelectPlayer( connections.ElementAt( next ).GameObject.Id );
 	}
 
+	public static void SelectPreviousPlayer() { SelectNextPlayer( reverse: true ); }
+
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -73,8 +81,12 @@ public sealed class MiniMapComponent : Component
 
 		SelectPlayer( LethalGameManager.Instance.ConnectedPlayers.First().GameObject.Id );
 
+		NextButton.OnInteracted += delegate { SelectNextPlayer(); };
+		PrevButton.OnInteracted += delegate { SelectPreviousPlayer(); };
+
 		Camera = Components.Get<CameraComponent>( );
 
+		Texture = null;
 		Texture = Texture.CreateRenderTarget()
 			.WithSize( 512, 512 )
 			.WithMips( 1 )
@@ -84,15 +96,23 @@ public sealed class MiniMapComponent : Component
 
 	}
 
-	protected override void OnUpdate()
+	protected override void OnDestroy()
 	{
-		base.OnUpdate();
+		base.OnDestroy();
 
-		if(Input.Pressed("drop"))
-		{
-			SelectNextPlayer();
-		}
+		Texture.Dispose();
+
 	}
+
+	protected override void OnFixedUpdate()
+	{
+		base.OnFixedUpdate();
+
+		MiniMapHud.UpdateIcons( Icons );
+		Icons.Clear();
+	}
+
+
 
 	protected override void OnPreRender()
 	{
@@ -103,9 +123,10 @@ public sealed class MiniMapComponent : Component
 		Transform.Position = (SelectedPlayer.Transform.Position + Vector3.Up * 128);
 		Transform.Position = Transform.Position.WithZ( Transform.Position.z - Transform.Position.z % 48 );
 
+		//float yaw = SelectedPlayer == null ? Yaw : SelectedPlayer.Transform.Rotation.Angles().yaw;
+		//Camera.Transform.Rotation = Camera.Transform.Rotation.Angles().WithYaw( yaw );
+
 		Camera.RenderToTexture( Texture );
-		MiniMapHud.UpdateIcons( Icons );
-		Icons.Clear();
 
 	}
 

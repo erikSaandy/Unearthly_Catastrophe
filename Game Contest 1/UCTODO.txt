@@ -1,5 +1,4 @@
 // HIGH PRIO
-kronos decorate
 better hit sound
 
 // WANTS
@@ -11,3 +10,4 @@ distance fog dark, only see close to you
 smaller scale rooms
 combine rooms into new loop room
 flashlight battery
+different room portals is dumb, only use corridor and add doors with walls at portals

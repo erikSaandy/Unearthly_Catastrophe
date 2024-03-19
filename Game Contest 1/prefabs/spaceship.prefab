@@ -17,7 +17,7 @@
         },
         "Lever": {
           "_type": "component",
-          "component_id": "c0f92653-be94-4310-8dbb-a06e3a633b62",
+          "component_id": "61a43506-a534-46c9-bcdc-542d81de810f",
           "go": "dfc6cefc-b6c5-4f24-b430-ed28d03e3e23",
           "component_type": "LeverComponent"
         },
@@ -83,6 +83,48 @@
       }
     ],
     "Children": [
+      {
+        "__guid": "75eff5ec-b20d-43fd-8afa-db48f249d881",
+        "Name": "MiniMap Renderer",
+        "Rotation": "-0.2705981,0.6532815,0.2705981,0.6532815",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "MiniMapComponent",
+            "__guid": "536514fc-8075-4570-b756-f9858a46d4fd",
+            "NextButton": {
+              "_type": "component",
+              "component_id": "d96e9d44-18c0-4c20-875f-f6b6cea1ab00",
+              "go": "c58da006-a0a9-4743-9762-7bf6945f9cd5",
+              "component_type": "InteractionProxy"
+            },
+            "PrevButton": {
+              "_type": "component",
+              "component_id": "fb0c249b-ae5d-440f-abd8-5a0b09e42ba8",
+              "go": "468a4cb5-4cc2-42eb-a71f-ff491ec8a92d",
+              "component_type": "InteractionProxy"
+            }
+          },
+          {
+            "__type": "CameraComponent",
+            "__guid": "d5ff6b66-b7f1-471e-87cf-acf1b7c2c2b1",
+            "BackgroundColor": "0.58824,0.58824,0.58824,0",
+            "ClearFlags": "All",
+            "FieldOfView": 60,
+            "IsMainCamera": false,
+            "Orthographic": true,
+            "OrthographicHeight": 1200,
+            "Priority": 1,
+            "RenderExcludeTags": "player,monster,skybox,trigger,item",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 256,
+            "ZNear": 10
+          }
+        ]
+      },
       {
         "__guid": "24a0ca03-b77c-4f9b-867c-4b86d70caf2f",
         "Name": "Passenger Transporter",
@@ -530,7 +572,7 @@
       {
         "__guid": "aff7ed8c-c0c5-49e9-975a-ce962ee7be11",
         "Name": "ship_lever_body",
-        "Position": "-100.5956,-80.42385,56",
+        "Position": "-96.62169,-76.45027,60.71115",
         "Rotation": "-0.6532815,-0.270598,-0.2705981,-0.6532816",
         "Enabled": true,
         "NetworkMode": 1,
@@ -569,8 +611,8 @@
               },
               {
                 "__type": "LeverComponent",
-                "__guid": "c0f92653-be94-4310-8dbb-a06e3a633b62",
-                "ActivatedAngle": 65,
+                "__guid": "61a43506-a534-46c9-bcdc-542d81de810f",
+                "ActivatedAngle": 80,
                 "DeactivatedAngle": 1,
                 "IsLocked": false,
                 "PullSound": "sounds/lever_pull.sound",
@@ -587,8 +629,8 @@
       {
         "__guid": "a1747b99-599f-42d9-87d0-ec39b4f16cfb",
         "Name": "screen",
-        "Position": "0.00005761746,-320,96",
-        "Rotation": "-0.1305262,0,0,0.9914449",
+        "Position": "4,-334.9422,82.01037",
+        "Rotation": "-0.08513208,0,0,0.9963697",
         "Scale": "1.25,1.25,1.25",
         "Enabled": true,
         "NetworkMode": 2,
@@ -631,8 +673,9 @@
       {
         "__guid": "2e7b1e47-5ce7-4152-b101-844012806ba1",
         "Name": "screen (2)",
-        "Position": "-48,-312,96",
-        "Rotation": "-0.1260786,0.03378267,-0.2566049,0.9576625",
+        "Position": "-48.08606,-331.7564,76.23592",
+        "Rotation": "-0.0741896,0.009767233,-0.1301602,0.9886654",
+        "Scale": "1.267417,1.267417,1.267417",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
@@ -646,26 +689,26 @@
         ],
         "Children": [
           {
-            "__guid": "5bc15ac9-b584-4a5f-b6c8-1020e8f9aa12",
-            "Name": "WORLD PANEL BALANCE",
-            "Position": "0.001450791,3.60932,0.0003805161",
-            "Rotation": "0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
-            "Scale": "0.9416737,0.9416737,0.9416737",
+            "__guid": "41a02dbf-d988-4c09-ba56-6bffe9cb57ee",
+            "Name": "MiniMap Hud (1)",
+            "Position": "0.0007212266,2.686091,0.0001949668",
+            "Rotation": "0.00000001117587,-0.000000007450581,0.7071068,0.7071068",
+            "Scale": "0.6,0.6,0.6",
             "Enabled": true,
             "NetworkMode": 2,
             "Components": [
               {
                 "__type": "WorldPanel",
-                "__guid": "f06019d9-ce2d-420a-bc24-952769eb61aa",
+                "__guid": "09ac781a-3b45-4210-9f77-061d26c97af0",
                 "HorizontalAlign": "Center",
                 "LookAtCamera": false,
-                "PanelSize": "750,750",
+                "PanelSize": "1024,1024",
                 "RenderScale": 1,
                 "VerticalAlign": "Center"
               },
               {
-                "__type": "BalanceHud",
-                "__guid": "59b8300e-ed77-46c6-8538-533f67917a44"
+                "__type": "MiniMapHud",
+                "__guid": "d3dafecd-3eb1-42fb-83af-bb02907f09ed"
               }
             ]
           }
@@ -745,8 +788,8 @@
       {
         "__guid": "c98df671-27d0-4bd3-b2d6-235a857416da",
         "Name": "screen (1)",
-        "Position": "48,-312,96",
-        "Rotation": "-0.1260786,-0.03378267,0.2566049,0.9576625",
+        "Position": "50.62559,-327.685,82.8222",
+        "Rotation": "-0.05669164,-0.01519048,0.2583729,0.9642611",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
@@ -779,6 +822,49 @@
               {
                 "__type": "BalanceHud",
                 "__guid": "0ea7ede2-ccf0-4555-a174-2d80b9bee575"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "9aecc4f0-439e-4dc7-9a11-6805a0a73788",
+        "Name": "screen (4)",
+        "Position": "0.00007549786,201.343,136",
+        "Rotation": "-0.00000006118898,-0.258819,0.9659258,0.0000001851802",
+        "Scale": "0.7969817,0.7969817,0.7969817",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "Prop",
+            "__guid": "dbf5bded-640e-4d9f-bbba-70006f24812b",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/screen/screen.vmdl"
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "8f12589f-07d9-4328-a9bb-bb0ac42028d4",
+            "Name": "WORLD PANEL BALANCE",
+            "Position": "0.002636059,4.131481,0.0001180172",
+            "Rotation": "-0.00000000372529,-0.000000007450581,0.7071068,0.7071068",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "WorldPanel",
+                "__guid": "d6275ea8-6cb0-490d-9756-733ec693753c",
+                "HorizontalAlign": "Center",
+                "LookAtCamera": false,
+                "PanelSize": "750,750",
+                "RenderScale": 1,
+                "VerticalAlign": "Center"
+              },
+              {
+                "__type": "BalanceHud",
+                "__guid": "10aba74f-fe3e-440f-80e7-ce9acf287f2e"
               }
             ]
           }
@@ -838,6 +924,84 @@
                 "__guid": "749bb48d-b619-4dd5-a2d7-5cd64c91a0a4",
                 "BlockInteractions": false,
                 "InteractionTime": 0.2,
+                "OnInteracted": {
+                  "Version": 5,
+                  "UserData": {
+                    "Title": "On Interacted",
+                    "id": "d54ed89b-c94a-4a93-a4a3-8437d65de0d5",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 1,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "128,128"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "sound.playat",
+                      "UserData": {
+                        "Position": "464,128"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Transform",
+                        "_type": "Sandbox.Game/Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "-48,240"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Position",
+                        "_type": "Sandbox.Game/Sandbox.GameTransform"
+                      },
+                      "UserData": {
+                        "Position": "160,240"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 2,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "position"
+                    },
+                    {
+                      "Value": "sounds/button_pressed_02.sound",
+                      "DstId": 2,
+                      "DstName": "soundEvent"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_target",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    }
+                  ]
+                },
                 "ToolTip": "Open Door"
               }
             ]
@@ -862,6 +1026,84 @@
                 "__guid": "c1915250-cc29-455c-8520-573049f7e065",
                 "BlockInteractions": false,
                 "InteractionTime": 0.2,
+                "OnInteracted": {
+                  "Version": 5,
+                  "UserData": {
+                    "Title": "On Interacted",
+                    "id": "17406351-e57d-4723-96a1-62247d46c854",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 1,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "112,48"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "sound.playat",
+                      "UserData": {
+                        "Position": "448,48"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Transform",
+                        "_type": "Sandbox.Game/Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "-64,160"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Position",
+                        "_type": "Sandbox.Game/Sandbox.GameTransform"
+                      },
+                      "UserData": {
+                        "Position": "144,160"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 2,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "position"
+                    },
+                    {
+                      "Value": "sounds/button_pressed_02.sound",
+                      "DstId": 2,
+                      "DstName": "soundEvent"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_target",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    }
+                  ]
+                },
                 "ToolTip": "Close Door"
               }
             ]
@@ -878,6 +1120,258 @@
               {
                 "__type": "ModelRenderer",
                 "__guid": "3580a583-5ed2-4ccd-b20c-0eb67d239434",
+                "BodyGroups": 18446744073709551615,
+                "MaterialOverride": "materials/cable/cable.vmat",
+                "Model": "models/citizen_props/broom01/broom01gib02_lod01.vmdl",
+                "RenderType": "On",
+                "Tint": "1,1,1,1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "f32eae87-4cc5-4f17-85aa-098fafdeaa0e",
+        "Name": "buttons_minimap",
+        "Position": "-79.19593,-328.0975,64.00009",
+        "Rotation": "-0.6532815,-0.2705981,-0.6532815,0.2705981",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "6b8bf75a-35e5-48bd-943c-dcdae16f18f0",
+            "BodyGroups": 18446744073709551615,
+            "MaterialGroup": "arrows",
+            "Model": "models/buttons_onoff/buttons_onoff.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "c423f0c0-c7be-4568-9e69-4d062f533c0b",
+            "IsTrigger": false,
+            "Model": "models/buttons_onoff/buttons_onoff.vmdl",
+            "Static": false
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "c58da006-a0a9-4743-9762-7bf6945f9cd5",
+            "Name": "button_next",
+            "Position": "7.000031,-0.00002574921,7.999896",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "BoxCollider",
+                "__guid": "69606a8e-42a1-48bf-a325-b2f6af94b8d0",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "2,2,2",
+                "Static": false
+              },
+              {
+                "__type": "InteractionProxy",
+                "__guid": "d96e9d44-18c0-4c20-875f-f6b6cea1ab00",
+                "BlockInteractions": false,
+                "InteractionTime": 0,
+                "OnInteracted": {
+                  "Version": 5,
+                  "UserData": {
+                    "Title": "On Interacted",
+                    "id": "9650f0c7-46d9-4c11-9df6-b59f591494f9",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 0,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "-48,-16"
+                      }
+                    },
+                    {
+                      "Id": 1,
+                      "Type": "sound.playat",
+                      "UserData": {
+                        "Position": "288,-16"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Transform",
+                        "_type": "Sandbox.Game/Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "-224,96"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Position",
+                        "_type": "Sandbox.Game/Sandbox.GameTransform"
+                      },
+                      "UserData": {
+                        "Position": "-16,96"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_signal",
+                      "DstId": 1,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 1,
+                      "DstName": "position"
+                    },
+                    {
+                      "Value": "sounds/button_pressed_02.sound",
+                      "DstId": 1,
+                      "DstName": "soundEvent"
+                    },
+                    {
+                      "SrcId": 0,
+                      "SrcName": "_target",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    }
+                  ]
+                },
+                "ToolTip": "Next"
+              }
+            ]
+          },
+          {
+            "__guid": "468a4cb5-4cc2-42eb-a71f-ff491ec8a92d",
+            "Name": "button_prev",
+            "Position": "-6.999957,-0.00001502037,7.999905",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "BoxCollider",
+                "__guid": "82017f6a-732b-47c3-a6bf-56cee1b278e8",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "2,2,2",
+                "Static": false
+              },
+              {
+                "__type": "InteractionProxy",
+                "__guid": "fb0c249b-ae5d-440f-abd8-5a0b09e42ba8",
+                "BlockInteractions": false,
+                "InteractionTime": 0,
+                "OnInteracted": {
+                  "Version": 5,
+                  "UserData": {
+                    "Title": "On Interacted",
+                    "id": "897ad771-1684-440e-8072-f0d2410b9e2a",
+                    "ReferencedComponentTypes": []
+                  },
+                  "Variables": [],
+                  "Nodes": [
+                    {
+                      "Id": 1,
+                      "Type": "input",
+                      "UserData": {
+                        "Position": "64,32"
+                      }
+                    },
+                    {
+                      "Id": 2,
+                      "Type": "sound.playat",
+                      "UserData": {
+                        "Position": "400,32"
+                      }
+                    },
+                    {
+                      "Id": 3,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Transform",
+                        "_type": "Sandbox.Game/Sandbox.GameObject"
+                      },
+                      "UserData": {
+                        "Position": "-112,144"
+                      }
+                    },
+                    {
+                      "Id": 4,
+                      "Type": "property.get",
+                      "Properties": {
+                        "_name": "Position",
+                        "_type": "Sandbox.Game/Sandbox.GameTransform"
+                      },
+                      "UserData": {
+                        "Position": "96,144"
+                      }
+                    }
+                  ],
+                  "Links": [
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_signal",
+                      "DstId": 2,
+                      "DstName": "_signal"
+                    },
+                    {
+                      "SrcId": 4,
+                      "SrcName": "_result",
+                      "DstId": 2,
+                      "DstName": "position"
+                    },
+                    {
+                      "Value": "sounds/button_pressed_02.sound",
+                      "DstId": 2,
+                      "DstName": "soundEvent"
+                    },
+                    {
+                      "SrcId": 1,
+                      "SrcName": "_target",
+                      "DstId": 3,
+                      "DstName": "_target"
+                    },
+                    {
+                      "SrcId": 3,
+                      "SrcName": "_result",
+                      "DstId": 4,
+                      "DstName": "_target"
+                    }
+                  ]
+                },
+                "ToolTip": "Previous"
+              }
+            ]
+          },
+          {
+            "__guid": "6c10c958-87ca-4307-82fe-1cf1ce3c403d",
+            "Name": "Cable",
+            "Position": "-42.54767,0.007403031,0.005015028",
+            "Rotation": "-0.00002017617,-0.7071272,0.000000009933501,-0.7071066",
+            "Scale": "0.6669122,0.3656722,1.280289",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "ModelRenderer",
+                "__guid": "3925a883-e5f0-4453-99e0-11365e89c076",
                 "BodyGroups": 18446744073709551615,
                 "MaterialOverride": "materials/cable/cable.vmat",
                 "Model": "models/citizen_props/broom01/broom01gib02_lod01.vmdl",
@@ -1195,50 +1689,6 @@
                 "SoundOverride": true,
                 "StopOnNew": false,
                 "Volume": 1
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "__guid": "04302078-c74a-4012-b298-d4e1ab8e169e",
-        "Name": "GPS Screen",
-        "Position": "139.6664,-191.9999,80",
-        "Rotation": "0,0,0.7071067,0.7071068",
-        "Scale": "1.581388,1.581388,1.581388",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "Prop",
-            "__guid": "cb8f2931-1e18-4afa-b3c2-e19676180e0f",
-            "Health": 0,
-            "IsStatic": true,
-            "Model": "models/screen/screen.vmdl"
-          }
-        ],
-        "Children": [
-          {
-            "__guid": "f589ba23-a7d5-4f8b-a58e-bdd44f247d0e",
-            "Name": "MiniMap Hud",
-            "Position": "-0.0000004325407,2.418943,0",
-            "Rotation": "0,0,0.7071067,0.7071067",
-            "Scale": "0.63,0.63,0.63",
-            "Enabled": true,
-            "NetworkMode": 2,
-            "Components": [
-              {
-                "__type": "WorldPanel",
-                "__guid": "ec6ad94f-c4be-4ca1-9530-b91b2a52fd51",
-                "HorizontalAlign": "Center",
-                "LookAtCamera": false,
-                "PanelSize": "1024,1024",
-                "RenderScale": 1,
-                "VerticalAlign": "Center"
-              },
-              {
-                "__type": "MiniMapHud",
-                "__guid": "b5621e8d-e956-4dff-9bbb-6be2a0031d40"
               }
             ]
           }

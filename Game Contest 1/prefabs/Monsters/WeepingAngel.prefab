@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+    "__guid": "858fdeb1-7973-47f2-8eb4-1f8baaccbc0d",
     "Name": "weepingangel",
     "Tags": "monster",
     "Enabled": true,
@@ -8,28 +8,28 @@
     "Components": [
       {
         "__type": "WeepingAngel",
-        "__guid": "7129a04b-2838-4d17-b06f-0d641636b848",
+        "__guid": "7f90e58a-ad52-40ad-b7e4-841f0f11afe4",
         "Agent": {
           "_type": "component",
-          "component_id": "3e0ea20b-0ca4-413c-830c-d39e2e4f6c93",
-          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_id": "3fa7d35f-99ba-4c0b-9c51-bdadab5399f4",
+          "go": "858fdeb1-7973-47f2-8eb4-1f8baaccbc0d",
           "component_type": "NavMeshAgent"
         },
         "Collider": {
           "_type": "component",
-          "component_id": "4a5e5191-9e4b-4744-ba6b-ab8186b4acd8",
-          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_id": "8be9f13c-9e4c-4ecb-996a-22a81f7d2c00",
+          "go": "858fdeb1-7973-47f2-8eb4-1f8baaccbc0d",
           "component_type": "ModelCollider"
         },
         "Controller": {
           "_type": "component",
-          "component_id": "979b265a-7bc2-4bcd-9def-a1813794c33e",
-          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_id": "276ebaef-a2b5-4d44-b1fa-a80163f71c75",
+          "go": "858fdeb1-7973-47f2-8eb4-1f8baaccbc0d",
           "component_type": "CharacterController"
         },
         "EyeSource": {
           "_type": "gameobject",
-          "go": "657208ce-8880-4554-a444-1169ba3c2289"
+          "go": "233d2365-cbc2-42a9-8703-7a306e612f26"
         },
         "ModelStates": [
           "models/weeping_angel/weeping_angel_idle.vmdl",
@@ -42,54 +42,54 @@
         ],
         "Renderer": {
           "_type": "component",
-          "component_id": "d31242c9-8c13-4449-9f54-48ae9fdd29a9",
-          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_id": "108d04ad-9a49-4fed-89d5-8815da8d780a",
+          "go": "858fdeb1-7973-47f2-8eb4-1f8baaccbc0d",
           "component_type": "ModelRenderer"
         },
-        "RunSpeed": 120,
+        "RunSpeed": 500,
         "State": "Spawning"
       },
       {
         "__type": "ModelRenderer",
-        "__guid": "d31242c9-8c13-4449-9f54-48ae9fdd29a9",
+        "__guid": "108d04ad-9a49-4fed-89d5-8815da8d780a",
         "BodyGroups": 18446744073709551615,
         "Model": "models/weeping_angel/weeping_angel_idle.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
-        "__type": "ModelCollider",
-        "__guid": "4a5e5191-9e4b-4744-ba6b-ab8186b4acd8",
-        "IsTrigger": false,
-        "Model": "models/weeping_angel/weeping_angel_idle.vmdl",
-        "Static": false
+        "__type": "NavMeshAgent",
+        "__guid": "3fa7d35f-99ba-4c0b-9c51-bdadab5399f4",
+        "Acceleration": 5000,
+        "Height": 64,
+        "MaxSpeed": 500,
+        "Radius": 24,
+        "Separation": 0.25,
+        "UpdatePosition": false,
+        "UpdateRotation": false
       },
       {
         "__type": "CharacterController",
-        "__guid": "fc705231-4ef2-4644-932b-7686c734f48a",
+        "__guid": "276ebaef-a2b5-4d44-b1fa-a80163f71c75",
         "Acceleration": 10,
         "Bounciness": 0.3,
         "GroundAngle": 45,
         "Height": 64,
         "IgnoreLayers": "",
-        "Radius": 12,
+        "Radius": 24,
         "StepHeight": 18
       },
       {
-        "__type": "NavMeshAgent",
-        "__guid": "12039405-c9ca-4bf8-b3bf-eba847100cb6",
-        "Acceleration": 50,
-        "Height": 64,
-        "MaxSpeed": 120,
-        "Radius": 12,
-        "Separation": 0.25,
-        "UpdatePosition": true,
-        "UpdateRotation": false
+        "__type": "ModelCollider",
+        "__guid": "8be9f13c-9e4c-4ecb-996a-22a81f7d2c00",
+        "IsTrigger": false,
+        "Model": "models/weeping_angel/weeping_angel_idle.vmdl",
+        "Static": false
       }
     ],
     "Children": [
       {
-        "__guid": "657208ce-8880-4554-a444-1169ba3c2289",
+        "__guid": "233d2365-cbc2-42a9-8703-7a306e612f26",
         "Name": "eye source",
         "Position": "0,0,85.32725",
         "Rotation": "-0,0,1,-0.00000004371139",

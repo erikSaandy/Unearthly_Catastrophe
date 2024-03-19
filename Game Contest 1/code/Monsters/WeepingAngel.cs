@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Numerics;
 using System.Security.Cryptography;
+using static Zombie;
 
 public class WeepingAngel : Monster
 {
@@ -25,12 +26,11 @@ public class WeepingAngel : Monster
 	private float AttackDistance { get; set; } = 4000;
 
 
-	[RequireComponent][Category( "Components" )][Property] public ModelRenderer Renderer { get; private set; }
-	[RequireComponent][Category( "Components" )][Property] public NavMeshAgent Agent { get; private set; }
-	[RequireComponent][Category( "Components" )][Property] public CharacterController Controller { get; private set; }
-	[RequireComponent][Category( "Components" )][Property] public ModelCollider Collider { get; private set; }
+	[Category( "Components" )][Property] public ModelRenderer Renderer { get; private set; }
+	[Category( "Components" )][Property] public NavMeshAgent Agent { get; private set; }
+	[Category( "Components" )][Property] public CharacterController Controller { get; private set; }
+	[Category( "Components" )][Property] public ModelCollider Collider { get; private set; }
 
-	int modelState = 0;
 	[Property] public List<Model> ModelStates { get; set; }
 
 	[Property] public float RunSpeed { get; set; } = 240;
@@ -40,14 +40,17 @@ public class WeepingAngel : Monster
 	private TimeSince TimeSinceUpdate { get; set; } = 0;
 	private TimeSince TimeSinceDoorOpenUpdate { get; set; } = 0;
 	private TimeSince TimeSinceAttack { get; set; } = 0;
+	private TimeSince TimeSinceMove { get; set; } = 0;
 
-	const float IDLE_TIME = 15;
-	const float WAKEUP_TIME = 15;
+	const float IDLE_TIME = 5;
+	const float WAKEUP_TIME = 5;
 
 	[Sync] public Vector3 WantedMoveDirection { get; set; }
 	[Sync] public Angles EyeAngles { get; set; }
 	[Property] public GameObject EyeSource { get; set; }
 	private Player FocusedPlayer { get; set; } = null;
+
+	[Sync] public Vector3 TargetPosition { get; set; }
 
 
 	private TimeSince TimeSinceSeenUpdate { get; set; } = 0;
@@ -74,6 +77,8 @@ public class WeepingAngel : Monster
 	protected override void OnStart()
 	{
 		base.OnStart();
+
+		GameObject.BreakFromPrefab();
 
 		TimeSinceStateChange = 0;
 
@@ -173,9 +178,9 @@ public class WeepingAngel : Monster
 		float dot = Vector3.Dot( Transform.Rotation.Left, (Transform.Position - FocusedPlayer.Transform.Position).Normal );
 		float sign = MathF.Sign( dot );
 
-		modelState = sign == -1 ? 1 : 2;
+		int state = sign == -1 ? 1 : 2;
 
-		Renderer.Model = ModelStates[modelState];
+		Renderer.Model = ModelStates[state];
 
 		EyeAngles = Transform.Rotation.RotateAroundAxis( Vector3.Down, 20 * sign );
 
@@ -365,19 +370,6 @@ public class WeepingAngel : Monster
 			case BehaviourState.Aggro: DoAggro( ref speed, ref turnSpeed, ref friction ); break;
 		}
 
-
-		if ( Controller.IsOnGround )
-		{
-			Controller.ApplyFriction( friction );
-		}
-
-		//float angle = Vector3.VectorAngle( WantedMoveDirection ).yaw;
-		//EyeAngles = Rotation.Lerp( EyeAngles, new Angles( 0, angle, 0 ), Time.Delta * turnSpeed );
-		Transform.Rotation = EyeAngles;
-		//Controller.Accelerate( EyeAngles.Forward * speed );
-		//Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
-		//Controller.Move();
-
 	}
 
 	private void DoSpawning()
@@ -444,7 +436,57 @@ public class WeepingAngel : Monster
 
 	private void DoHunting( ref float speed, ref float turnSpeed, ref float friction )
 	{
+		return;
+		UpdateIsSeen();
+		Log.Info( IsSeen );
 
+		if ( !IsSeen )
+		{
+
+			if ( TimeSinceUpdate > 4 )
+			{
+				Log.Info( "meep" );
+				TimeSinceUpdate = 0;
+				TargetPosition = Scene.NavMesh.GetRandomPoint( Transform.Position, 500 ) ?? Transform.Position;
+
+				Agent.MoveTo( TargetPosition );
+			}
+
+			WantedMoveDirection = (Agent.GetLookAhead( 1 ) - Transform.Position).Normal;
+
+			Controller.ApplyFriction( 100 );
+
+			//float angle = Vector3.VectorAngle( WantedMoveDirection ).yaw;
+			//EyeAngles = Rotation.Lerp( EyeAngles, new Angles( 0, angle, 0 ), Time.Delta * turnSpeed );
+			//Controller.Accelerate( EyeAngles.Forward * speed );
+			//Controller.Velocity += Scene.PhysicsWorld.Gravity * Time.Delta;
+
+			if(TimeSinceMove > 0.25f)
+			{
+				TimeSinceMove = 0;
+				Controller.Accelerate( EyeAngles.Forward * speed );
+				Controller.MoveTo ( Transform.Position + WantedMoveDirection * 14, true );
+
+				EyeAngles = Vector3.VectorAngle( WantedMoveDirection ).WithPitch( 0 ).WithRoll( 0 );
+				Transform.Rotation = EyeAngles;
+
+				if(!IsProxy) { UpdateAggroModel(); }
+
+			}
+
+		}
+
+	}
+
+	private void UpdateAggroModel()
+	{
+		UpdateAggroModelLocal( LethalGameManager.Random.Int( 3, 6 ) );
+	}
+
+	[Broadcast]
+	private void UpdateAggroModelLocal(int state)
+	{
+		Renderer.Model = ModelStates[state];
 	}
 
 
