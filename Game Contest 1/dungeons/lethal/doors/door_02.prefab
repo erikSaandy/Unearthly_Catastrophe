@@ -1,12 +1,12 @@
 {
   "RootObject": {
-    "Id": "87ce5b04-fe98-4947-9195-918619a5ac18",
+    "__guid": "78af3637-0c28-42bd-a4ff-d2affd90234e",
     "Name": "door_02",
     "Enabled": true,
     "NetworkMode": 1,
     "Children": [
       {
-        "Id": "129a249c-6948-47b6-a42b-320c9813e256",
+        "__guid": "c0de1d94-abaf-4426-9b34-d425eaf9357c",
         "Name": "door_frame_01",
         "Tags": "door",
         "Enabled": true,
@@ -14,12 +14,14 @@
         "Components": [
           {
             "__type": "ModelPhysics",
+            "__guid": "9b284efe-0438-4ecf-a7e8-5f275d18ca81",
             "Locking": {},
             "Model": "models/doors_01/door_frame_01.vmdl",
             "RigidbodyFlags": 0
           },
           {
             "__type": "ModelRenderer",
+            "__guid": "712f4625-5378-413d-83fa-89bb31c60973",
             "BodyGroups": 18446744073709551615,
             "Model": "models/doors_01/door_frame_01.vmdl",
             "RenderType": "On",
@@ -28,7 +30,7 @@
         ],
         "Children": [
           {
-            "Id": "eb766ec3-ac4a-46fd-85ad-e0e699ac7e28",
+            "__guid": "3598b02b-c7d9-48b0-a4ac-9b4fc9a1f521",
             "Name": "doors_01",
             "Position": "28,4,0",
             "Enabled": true,
@@ -36,23 +38,26 @@
             "Components": [
               {
                 "__type": "DoorComponent",
+                "__guid": "01020ccf-7a25-47e8-9c1f-016f27af5223",
                 "CloseSound": "sounds/door_close.sound",
                 "IsLocked": false,
                 "LockedSound": "sounds/door_locked.sound",
                 "OpenAngle": -135,
                 "OpenSound": "sounds/door_open.sound",
                 "RotationalAxis": "0,1,0",
-                "Speed": 1
+                "Speed": 1,
+                "UnlockSound": "sounds/door_unlock.sound"
               },
               {
                 "__type": "Prop",
+                "__guid": "5a4024ac-d7bd-4dbb-a9e9-0c340a6bc05b",
                 "Health": 0,
                 "IsStatic": true,
-                "Model": "models/doors_01/doors_01.vmdl",
-                "ShowCreatedComponents": false
+                "Model": "models/doors_01/doors_01.vmdl"
               },
               {
                 "__type": "ModelPhysics",
+                "__guid": "aed00c3a-ecba-4518-96e6-fe8dbc0e482b",
                 "__enabled": false,
                 "Locking": {},
                 "Model": "models/doors_01/doors_01.vmdl",
@@ -61,7 +66,7 @@
             ],
             "Children": [
               {
-                "Id": "fdf8d518-2864-42ff-b794-a317b646a7e5",
+                "__guid": "bd866457-7394-46ba-a314-8024ea1161f0",
                 "Name": "door_handle_01",
                 "Position": "-43.99998,-2.437618,39.99998",
                 "Rotation": "-0.0000001376788,-0.7071067,-0.7071068,0.0000001376788",
@@ -70,6 +75,7 @@
                 "Components": [
                   {
                     "__type": "ModelRenderer",
+                    "__guid": "cb29f141-03e7-4740-89b5-a44bc2e807dd",
                     "BodyGroups": 18446744073709551615,
                     "Model": "models/doors_01/door_handle_01.vmdl",
                     "RenderType": "On",
@@ -77,6 +83,7 @@
                   },
                   {
                     "__type": "ModelPhysics",
+                    "__guid": "84f0390d-7153-48e2-8be8-d2bf1dcc74f4",
                     "Locking": {},
                     "Model": "models/doors_01/door_handle_01.vmdl",
                     "RigidbodyFlags": 0
@@ -84,7 +91,7 @@
                 ]
               },
               {
-                "Id": "8124888b-e7f8-4843-ac9e-31dbf072745c",
+                "__guid": "d4de53d3-247f-4e92-9afd-106b9f7a35c5",
                 "Name": "door_handle_01",
                 "Position": "-43.99998,-6.225243,40",
                 "Rotation": "0.0000002753576,0.7071068,-0.7071068,0.0000002753576",
@@ -93,6 +100,7 @@
                 "Components": [
                   {
                     "__type": "ModelRenderer",
+                    "__guid": "ba1d6647-4e35-4de9-8e6d-cac2b33e9714",
                     "BodyGroups": 18446744073709551615,
                     "Model": "models/doors_01/door_handle_01.vmdl",
                     "RenderType": "On",
@@ -100,6 +108,7 @@
                   },
                   {
                     "__type": "ModelPhysics",
+                    "__guid": "d029e1cf-78b6-4986-bb2a-976e3bb574ff",
                     "Locking": {},
                     "Model": "models/doors_01/door_handle_01.vmdl",
                     "RigidbodyFlags": 0
@@ -115,5 +124,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

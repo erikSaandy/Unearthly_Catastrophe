@@ -260,7 +260,7 @@ public class Zombie : Monster
 				// Can't aggro if looking the other way.
 				if ( dot < 0.6f )
 				{
-					return null;
+					continue;
 				}
 
 				// Player is withing aggro range
@@ -291,10 +291,13 @@ public class Zombie : Monster
 
 	private void DoPatrol( ref float speed, ref float turnSpeed, ref float friction)
 	{
-		if( TimeSinceGrowl > 10)
+
+		PhysicsCollider.Enabled = false;
+
+		if ( TimeSinceGrowl > 8)
 		{
 			OnGrowl();
-			TimeSinceGrowl = LethalGameManager.Random.Float( -1f, 1.5f );
+			TimeSinceGrowl = LethalGameManager.Random.Float( -0.5f, 2.5f );
 		}
 
 		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
@@ -317,6 +320,9 @@ public class Zombie : Monster
 
 	private void DoIdle(ref float speed, ref float turnSpeed, ref float friction )
 	{
+
+		PhysicsCollider.Enabled = false;
+
 		speed = 0;
 		Controller.Velocity.Set( 0, 0, Controller.Velocity.z );
 
@@ -342,6 +348,8 @@ public class Zombie : Monster
 		speed = RunSpeed;
 		friction = 6;
 		turnSpeed = 15;
+
+		PhysicsCollider.Enabled = true;
 
 		Player playerToAggro = FindPlayerToAggro( out float dstToPlayerSqr );
 

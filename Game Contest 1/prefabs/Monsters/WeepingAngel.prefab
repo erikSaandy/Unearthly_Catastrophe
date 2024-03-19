@@ -1,0 +1,107 @@
+{
+  "RootObject": {
+    "__guid": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+    "Name": "weepingangel",
+    "Tags": "monster",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "WeepingAngel",
+        "__guid": "7129a04b-2838-4d17-b06f-0d641636b848",
+        "Agent": {
+          "_type": "component",
+          "component_id": "3e0ea20b-0ca4-413c-830c-d39e2e4f6c93",
+          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_type": "NavMeshAgent"
+        },
+        "Collider": {
+          "_type": "component",
+          "component_id": "4a5e5191-9e4b-4744-ba6b-ab8186b4acd8",
+          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_type": "ModelCollider"
+        },
+        "Controller": {
+          "_type": "component",
+          "component_id": "979b265a-7bc2-4bcd-9def-a1813794c33e",
+          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_type": "CharacterController"
+        },
+        "EyeSource": {
+          "_type": "gameobject",
+          "go": "657208ce-8880-4554-a444-1169ba3c2289"
+        },
+        "ModelStates": [
+          "models/weeping_angel/weeping_angel_idle.vmdl",
+          "models/weeping_angel/weeping_angel_curious_left.vmdl",
+          "models/weeping_angel/weeping_angel_curious_right.vmdl",
+          "models/weeping_angel/weeping_angel_aggro01.vmdl",
+          "models/weeping_angel/weeping_angel_aggro02.vmdl",
+          "models/weeping_angel/weeping_angel_aggro03.vmdl",
+          "models/weeping_angel/weeping_angel_aggro04.vmdl"
+        ],
+        "Renderer": {
+          "_type": "component",
+          "component_id": "d31242c9-8c13-4449-9f54-48ae9fdd29a9",
+          "go": "fe20d8a3-c65b-45bb-852e-483f45909aa8",
+          "component_type": "ModelRenderer"
+        },
+        "RunSpeed": 120,
+        "State": "Spawning"
+      },
+      {
+        "__type": "ModelRenderer",
+        "__guid": "d31242c9-8c13-4449-9f54-48ae9fdd29a9",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/weeping_angel/weeping_angel_idle.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "__guid": "4a5e5191-9e4b-4744-ba6b-ab8186b4acd8",
+        "IsTrigger": false,
+        "Model": "models/weeping_angel/weeping_angel_idle.vmdl",
+        "Static": false
+      },
+      {
+        "__type": "CharacterController",
+        "__guid": "fc705231-4ef2-4644-932b-7686c734f48a",
+        "Acceleration": 10,
+        "Bounciness": 0.3,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "",
+        "Radius": 12,
+        "StepHeight": 18
+      },
+      {
+        "__type": "NavMeshAgent",
+        "__guid": "12039405-c9ca-4bf8-b3bf-eba847100cb6",
+        "Acceleration": 50,
+        "Height": 64,
+        "MaxSpeed": 120,
+        "Radius": 12,
+        "Separation": 0.25,
+        "UpdatePosition": true,
+        "UpdateRotation": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "657208ce-8880-4554-a444-1169ba3c2289",
+        "Name": "eye source",
+        "Position": "0,0,85.32725",
+        "Rotation": "-0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "NetworkMode": 2
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

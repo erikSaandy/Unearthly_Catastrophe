@@ -5,7 +5,7 @@ using Sandbox.Citizen;
 using Sandbox.UI;
 using static Sandbox.Gizmo;
 
-public sealed class Player : Component, IKillable, Component.INetworkListener
+public sealed class Player : Component, IKillable, IHasMapIcon
 {
 
 	[Sync, Property] public LifeState LifeState { get; private set; } = LifeState.Alive;
@@ -56,6 +56,14 @@ public sealed class Player : Component, IKillable, Component.INetworkListener
 	public GameObject OldGroundObject { get; private set; } = null;
 	public GameObject LastGroundObject { get; private set; } = null;
 	public RealTimeSince TimeSinceGrounded { get; set; } = 0;
+
+	# region MAP_ICON
+
+	public Color IconColor => Color.Green;
+	public float IconRotation => EyeAngles.yaw;
+	public void RenderMapIcon() { MiniMapComponent.AddIcon( this ); }
+
+	#endregion
 
 	protected override void OnStart()
 	{
@@ -254,19 +262,11 @@ public sealed class Player : Component, IKillable, Component.INetworkListener
 
 	}
 
-	public void OnDisconnected( Connection conn )
-	{
-		if ( LethalGameManager.Instance.IsProxy ) { return; }
-
-		LethalGameManager.Instance.QueueOnPlayerDeath();
-	}
-
 	//
 
 	public void OnStartLoadMoon()
 	{
 		if ( IsProxy ) { return; }
-
 		PlayerInput = new PlayerFreezeInput( this );
 	}
 
@@ -295,7 +295,7 @@ public sealed class Player : Component, IKillable, Component.INetworkListener
 
 	protected override void OnUpdate()
 	{
-
+		RenderMapIcon();
 		PlayerInput?.CameraInput();
 
 		if ( Ragdoll.IsRagdolled || LifeState == LifeState.Dead )

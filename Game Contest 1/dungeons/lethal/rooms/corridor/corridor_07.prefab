@@ -1,0 +1,129 @@
+{
+  "RootObject": {
+    "__guid": "d6344da4-2cf8-4e84-988b-a236b57b856b",
+    "Name": "corridor_07",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "RoomData",
+        "__guid": "ce70f89a-d428-4834-882e-6349e151d71d",
+        "Bounds": {
+          "Mins": "-260,-132,-260",
+          "Maxs": "260,132,260"
+        },
+        "Renderer": {
+          "_type": "component",
+          "component_id": "1524fc25-5acf-43e9-9c07-2702fa770e17",
+          "go": "d6344da4-2cf8-4e84-988b-a236b57b856b",
+          "component_type": "ModelRenderer"
+        }
+      },
+      {
+        "__type": "ModelCollider",
+        "__guid": "542f95a9-5637-40c5-b85c-f25469b3b2cf",
+        "IsTrigger": false,
+        "Model": "dungeons/lethal/rooms/corridor/corridor_07.vmdl",
+        "Static": true
+      },
+      {
+        "__type": "ModelRenderer",
+        "__guid": "1524fc25-5acf-43e9-9c07-2702fa770e17",
+        "BodyGroups": 18446744073709551615,
+        "Model": "dungeons/lethal/rooms/corridor/corridor_07.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "9348b9c7-60ea-4ad1-a7f4-3a320211d3d4",
+        "Name": "Door (3)",
+        "Position": "-192,132,128",
+        "Rotation": "0,0,-1,0.0000002245095",
+        "Enabled": true,
+        "NetworkMode": 0,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "__guid": "9c90a332-2538-40be-80f6-2578b37ecb3b",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "__guid": "9f2a8a6a-3eb2-49be-ac5a-467e1588ce16",
+        "Name": "Door (4)",
+        "Position": "191.9999,132.0002,128",
+        "Rotation": "0,0,-1,0.0000002245095",
+        "Enabled": true,
+        "NetworkMode": 0,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "__guid": "4f9dc615-9342-4db1-a779-95046509f5c4",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "__guid": "8ab7288f-2bd5-47bf-a328-9c4b3f9c6e83",
+        "Name": "Door (5)",
+        "Position": "-192,-132,128",
+        "Rotation": "0,0,0.0000003596121,-1",
+        "Enabled": true,
+        "NetworkMode": 0,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "__guid": "5d7c7908-2296-4cf5-b09d-9fdac3be3b9d",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "__guid": "dd4f5553-4284-401c-914a-2df4483e86ea",
+        "Name": "Door (6)",
+        "Position": "191.9999,-132.0003,128",
+        "Rotation": "0,0,0.0000003596121,-1",
+        "Enabled": true,
+        "NetworkMode": 0,
+        "Components": [
+          {
+            "__type": "RoomPortal",
+            "__guid": "e5eefac5-d541-4a81-95eb-461fcc1456b7",
+            "PortalType": "Door"
+          }
+        ]
+      },
+      {
+        "__guid": "9581c1fa-e6bd-4b83-8e93-67274521e801",
+        "Name": "Death Volume",
+        "Position": "0.03582764,0,-172.2628",
+        "Scale": "10.271,5.205863,3.391002",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "DeathVolumeComponent",
+            "__guid": "66f0018b-c8f0-4a52-adea-343816f4e7a4"
+          },
+          {
+            "__type": "BoxCollider",
+            "__guid": "f4c1ad3b-2d14-44d2-900d-137dc719b5bb",
+            "Center": "0,0,0",
+            "IsTrigger": true,
+            "Scale": "50,50,50",
+            "Static": false
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

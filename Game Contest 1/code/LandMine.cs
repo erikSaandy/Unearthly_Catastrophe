@@ -32,12 +32,21 @@ public class LandMine : Item, Component.ITriggerListener
 		}
 	}
 
+	protected override void DrawGizmos()
+	{
+		base.DrawGizmos();
+
+		Gizmo.Draw.Color = Color.Red;
+		Gizmo.Draw.LineSphere( Vector3.Zero, BlastRadius );
+
+	}
+
 	public void OnTriggerEnter( Collider other )
 	{
+
 		if ( IsProxy ) { return; }
-
+	
 		if ( GameObject.Root.IsAncestor( other.GameObject ) ) { return; }
-
 
 		other.GameObject.Root.Components.TryGet<IKillable>( out IKillable killable );
 
@@ -45,6 +54,7 @@ public class LandMine : Item, Component.ITriggerListener
 		{
 			Log.Info( other.GameObject.Name + " stepped on a mine." );
 			AddPassenger();
+			Log.Info( PassengerCount );
 		}
 
 
@@ -53,6 +63,7 @@ public class LandMine : Item, Component.ITriggerListener
 	public void OnTriggerExit( Collider other )
 	{
 		if ( IsProxy ) { return; }
+		Log.Info( PassengerCount );
 
 		other.GameObject.Root.Components.TryGet<IKillable>( out IKillable killable );
 

@@ -1,48 +1,48 @@
 {
   "RootObject": {
-    "__guid": "61d3291a-3f5b-4ffd-beb4-dcd1f2ae88dc",
+    "__guid": "942eb068-9e31-4c86-900b-0ba459264f4b",
     "Name": "tunnel_05",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
-        "__guid": "7b78483b-4533-457f-9cee-63129b5fc7ee",
+        "__guid": "4fa91fd0-dc66-474e-a99f-7a6332971b97",
         "Bounds": {
           "Mins": "-68,-68,-4",
           "Maxs": "128,128,132"
         },
         "LootSpawner": {
           "_type": "component",
-          "component_id": "c21d7cd8-1337-4fdf-9a86-8c8a088483fc",
-          "go": "61d3291a-3f5b-4ffd-beb4-dcd1f2ae88dc",
+          "component_id": "29c0ac64-70fe-4d39-8cee-9bcfa003c5db",
+          "go": "942eb068-9e31-4c86-900b-0ba459264f4b",
           "component_type": "LootSpawnerComponent"
         },
         "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
-            "component_id": "eecaf4c1-1711-4cfb-8d75-fe63722bf9ba",
-            "go": "f55e0b43-9c74-4176-bd85-7149a33870c9",
+            "component_id": "32aeccc7-49cb-4e27-8053-98576c589742",
+            "go": "69fef411-1838-45a0-8890-d0789f77368e",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "component_id": "10487c8f-0c36-41f2-ae02-77431fbbb1c0",
-            "go": "232b48f3-cd5a-4f85-935d-7d4272ae7f9c",
+            "component_id": "0efef557-351a-4e1a-9955-22ee3157a689",
+            "go": "3ce3a9b5-901c-46f3-af5b-e3327b65ff2c",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "component_id": "ba867e06-3804-4476-bc82-8fda7053ffdf",
-          "go": "61d3291a-3f5b-4ffd-beb4-dcd1f2ae88dc",
+          "component_id": "e5e4d909-b9c4-4cb9-8cb0-7b8d82708e1c",
+          "go": "942eb068-9e31-4c86-900b-0ba459264f4b",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
-        "__guid": "ba867e06-3804-4476-bc82-8fda7053ffdf",
+        "__guid": "e5e4d909-b9c4-4cb9-8cb0-7b8d82708e1c",
         "BodyGroups": 18446744073709551615,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_05.vmdl",
         "RenderType": "On",
@@ -50,14 +50,14 @@
       },
       {
         "__type": "ModelCollider",
-        "__guid": "420d4dc1-7dff-4e27-bea4-d85017b35c98",
+        "__guid": "fc09275e-ebad-4e25-9d4f-b60b01e2180c",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_05.vmdl",
         "Static": true
       },
       {
         "__type": "LootSpawnerComponent",
-        "__guid": "c21d7cd8-1337-4fdf-9a86-8c8a088483fc",
+        "__guid": "29c0ac64-70fe-4d39-8cee-9bcfa003c5db",
         "MaxItemCount": 1,
         "Offset": "32,32,8",
         "Radius": 124
@@ -65,31 +65,31 @@
     ],
     "Children": [
       {
-        "__guid": "f55e0b43-9c74-4176-bd85-7149a33870c9",
+        "__guid": "69fef411-1838-45a0-8890-d0789f77368e",
         "Name": "Door",
         "Position": "0.00002110785,128,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "eecaf4c1-1711-4cfb-8d75-fe63722bf9ba",
+            "__guid": "32aeccc7-49cb-4e27-8053-98576c589742",
             "PortalType": "Corridor"
           }
         ]
       },
       {
-        "__guid": "232b48f3-cd5a-4f85-935d-7d4272ae7f9c",
+        "__guid": "3ce3a9b5-901c-46f3-af5b-e3327b65ff2c",
         "Name": "Door (1)",
         "Position": "128,-0,0.000006498106",
         "Rotation": "0,0,0.7071067,0.7071068",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "10487c8f-0c36-41f2-ae02-77431fbbb1c0",
+            "__guid": "0efef557-351a-4e1a-9955-22ee3157a689",
             "PortalType": "Corridor"
           }
         ]

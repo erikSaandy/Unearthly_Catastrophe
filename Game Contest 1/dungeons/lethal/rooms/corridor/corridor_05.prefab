@@ -1,55 +1,55 @@
 {
   "RootObject": {
-    "__guid": "45e2c1c0-bec7-4dcc-a752-d768fafaa676",
+    "__guid": "e478f43a-f478-4864-958f-11d35792c787",
     "Name": "corridor_05",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
-        "__guid": "a43842af-5911-4b73-b49d-158b0f543422",
+        "__guid": "6930cc34-5415-4259-b1ca-8b56df8b8215",
         "Bounds": {
           "Mins": "-68,-68,-4",
           "Maxs": "68,68,132"
         },
         "LootSpawner": {
           "_type": "component",
-          "component_id": "1f56e50d-a2f9-4e2e-849c-6c101b84ce70",
-          "go": "45e2c1c0-bec7-4dcc-a752-d768fafaa676",
+          "component_id": "edf60959-6115-4e1c-851f-15ad9f8e9933",
+          "go": "e478f43a-f478-4864-958f-11d35792c787",
           "component_type": "LootSpawnerComponent"
         },
         "MonsterSpawners": [],
         "Portals": [
           {
             "_type": "component",
-            "component_id": "30782d36-3d6e-4004-a84b-02c968979bb4",
-            "go": "d3dac1d8-c42e-4798-b326-7d6b60b37a4c",
+            "component_id": "3295f9d4-0e70-4a2e-afc0-863a80727807",
+            "go": "64cbb8d3-5099-40c6-ace7-5cd8ae7018a5",
             "component_type": "RoomPortal"
           },
           {
             "_type": "component",
-            "component_id": "c0442abc-781e-404b-9f0e-a61d17ec6dd7",
-            "go": "6c8548a6-101a-4051-afa8-ca5a7f80088b",
+            "component_id": "9ec5ea03-bc78-4555-bd7a-b0937de5a663",
+            "go": "c1720581-8f03-45b7-944f-e92894ed1a17",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "component_id": "2e29cb47-9f2c-4578-888a-a1a00b0c677b",
-          "go": "45e2c1c0-bec7-4dcc-a752-d768fafaa676",
+          "component_id": "c904174b-e9fb-45fa-89bc-887c1905535c",
+          "go": "e478f43a-f478-4864-958f-11d35792c787",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelCollider",
-        "__guid": "9063cb53-0942-4934-afd1-204ae6e3a18d",
+        "__guid": "6c3e5d22-3719-4b02-93e7-a0e421b6bf4c",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/corridor/corridor_05.vmdl",
         "Static": true
       },
       {
         "__type": "ModelRenderer",
-        "__guid": "2e29cb47-9f2c-4578-888a-a1a00b0c677b",
+        "__guid": "c904174b-e9fb-45fa-89bc-887c1905535c",
         "BodyGroups": 18446744073709551615,
         "Model": "dungeons/lethal/rooms/corridor/corridor_05.vmdl",
         "RenderType": "On",
@@ -57,7 +57,7 @@
       },
       {
         "__type": "LootSpawnerComponent",
-        "__guid": "1f56e50d-a2f9-4e2e-849c-6c101b84ce70",
+        "__guid": "edf60959-6115-4e1c-851f-15ad9f8e9933",
         "MaxItemCount": 1,
         "Offset": "0,0,8",
         "Radius": 106
@@ -65,31 +65,31 @@
     ],
     "Children": [
       {
-        "__guid": "d3dac1d8-c42e-4798-b326-7d6b60b37a4c",
+        "__guid": "64cbb8d3-5099-40c6-ace7-5cd8ae7018a5",
         "Name": "Door (1)",
         "Position": "68,0.000006164182,0",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "30782d36-3d6e-4004-a84b-02c968979bb4",
+            "__guid": "3295f9d4-0e70-4a2e-afc0-863a80727807",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "__guid": "6c8548a6-101a-4051-afa8-ca5a7f80088b",
+        "__guid": "c1720581-8f03-45b7-944f-e92894ed1a17",
         "Name": "Door",
         "Position": "0,68,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "c0442abc-781e-404b-9f0e-a61d17ec6dd7",
+            "__guid": "9ec5ea03-bc78-4555-bd7a-b0937de5a663",
             "PortalType": "Door"
           }
         ]

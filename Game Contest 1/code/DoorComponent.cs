@@ -12,6 +12,7 @@ public class DoorComponent : Component, IInteractable
 	[Category("Sound")][Property] public SoundEvent OpenSound { get; set; }
 	[Category( "Sound" )][Property] public SoundEvent CloseSound { get; set; }
 	[Category( "Sound" )][Property] public SoundEvent LockedSound { get; set; }
+	[Category( "Sound" )][Property] public SoundEvent UnlockSound { get; set; }
 
 	public virtual string GetToolTip( Player player ) { 
 
@@ -84,6 +85,13 @@ public class DoorComponent : Component, IInteractable
 		Tags.Remove( "open_door" );
 
 		LerpAngles( 0 );
+	}
+
+	[Broadcast]
+	public void Unlock()
+	{
+		IsLocked = false;
+		Sound.Play( UnlockSound, Transform.Position );
 	}
 
 	private void LerpAngles( float targetAngle )

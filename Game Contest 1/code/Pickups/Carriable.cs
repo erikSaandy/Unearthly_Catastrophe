@@ -133,7 +133,7 @@ public abstract class Carriable : Item, IInteractable
 
 		SceneTraceResult trace = Scene.Trace.Sphere( (Renderer.Bounds.Size.z * 0.4f), Transform.Position, Transform.Position + Vector3.Down * 512 )
 		.UseHitboxes()
-		.WithoutTags("item", "player")
+		.WithoutTags("item", "player", "zombie")
 		.UsePhysicsWorld()
 		.Run();
 

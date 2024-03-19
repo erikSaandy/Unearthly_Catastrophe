@@ -6,10 +6,11 @@
 <root>
 	@if(Queue.Count > 0) 
 	{
-		<div class="box @(Visible? "visible" : "")">
+
+		<div class="box @(Visible? "visible" : "") @(Queue[0].IsBalance? "balance" : "")">
 			<div class="entry @(Visible? "visible" : "")">
 				<div class="message @(Visible? "visible" : "")">@Queue[0].message</div>
-				<img class="icon @(Visible ? "visible" : "")" src="@Queue[0].Icon" />
+				<img class="icon @(Visible ? "visible" : "") @(Queue[0].IsBalance? "balance" : "")" src="@Queue[0].Icon" />
 			</div>
 		</div>
 	}
@@ -20,10 +21,11 @@
 	public enum EntryType
 	{
 		Info,
-		Warning
+		Warning,
+		Balance
 	}
 
-	const float ENTRY_GAP_TIME = 2f;
+	const float ENTRY_GAP_TIME = .3f;
 
 	public static InfoBox Instance { get; private set; }
 
@@ -115,8 +117,21 @@
 
 		public RealTimeSince timeSinceShown;
 
-		public string Icon => type == EntryType.Info ? "textures/icons/info.vtex" : "textures/icons/warning.vtex";
+		public string Icon => GetIcon();
+		public bool IsBalance => type == EntryType.Balance;
 
+		private string GetIcon()
+		{
+			switch(type)
+			{
+				case EntryType.Warning:
+					return "textures/icons/warning.vtex";
+				case EntryType.Balance:
+					return "textures/icons/balance.vtex";
+				default:
+					return "textures/icons/info.vtex";
+			}
+		}
 
 		public Entry(string message, EntryType type = EntryType.Info, float displayTime = 10)
 		{

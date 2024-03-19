@@ -1,13 +1,13 @@
 {
   "RootObject": {
-    "__guid": "9f86d4c4-2b0e-4424-a334-215142561625",
+    "__guid": "1702b808-0cf7-4bdc-9d2d-becc4bb38566",
     "Name": "tunnel_03",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "RoomData",
-        "__guid": "b950521c-6b01-4758-8c1b-49b5d6ec4627",
+        "__guid": "9e4a5d70-c67e-4b92-a032-87b120997873",
         "Bounds": {
           "Mins": "-68,-132,-4",
           "Maxs": "68,4,132"
@@ -15,29 +15,29 @@
         "MonsterSpawners": [
           {
             "_type": "component",
-            "component_id": "888bf8ab-3ebf-4975-918e-eb0a9a388dca",
-            "go": "70183c4e-900d-44a9-947a-5856221f211d",
+            "component_id": "7290be74-1a7c-42ce-b541-5deefa3eb081",
+            "go": "17fe48d9-8e39-434c-8be4-c4807eb98317",
             "component_type": "MonsterSpawner"
           }
         ],
         "Portals": [
           {
             "_type": "component",
-            "component_id": "420caae2-2750-493c-a4ab-f4abd6424de1",
-            "go": "ae7270ff-78dc-4904-b380-48aeeea34231",
+            "component_id": "0d76a7c0-f5ec-494a-9ff2-1fb4247be6db",
+            "go": "d2ed1137-183c-42b9-9977-69710cfa6419",
             "component_type": "RoomPortal"
           }
         ],
         "Renderer": {
           "_type": "component",
-          "component_id": "0fae3915-a2c8-4667-86d9-2443a33131a5",
-          "go": "9f86d4c4-2b0e-4424-a334-215142561625",
+          "component_id": "17cc06d4-25b2-42e7-bbfd-4639aed0516e",
+          "go": "1702b808-0cf7-4bdc-9d2d-becc4bb38566",
           "component_type": "ModelRenderer"
         }
       },
       {
         "__type": "ModelRenderer",
-        "__guid": "0fae3915-a2c8-4667-86d9-2443a33131a5",
+        "__guid": "17cc06d4-25b2-42e7-bbfd-4639aed0516e",
         "BodyGroups": 18446744073709551615,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
         "RenderType": "On",
@@ -45,7 +45,7 @@
       },
       {
         "__type": "ModelCollider",
-        "__guid": "762a9a67-ed11-4572-b934-bec3cb6c4d6c",
+        "__guid": "f8448749-4bc7-4e42-b869-082b648dbc61",
         "IsTrigger": false,
         "Model": "dungeons/lethal/rooms/tunnel/tunnel_03.vmdl",
         "Static": true
@@ -53,30 +53,30 @@
     ],
     "Children": [
       {
-        "__guid": "ae7270ff-78dc-4904-b380-48aeeea34231",
+        "__guid": "d2ed1137-183c-42b9-9977-69710cfa6419",
         "Name": "Door",
         "Position": "-0.00006464271,-132,0",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
-            "__guid": "420caae2-2750-493c-a4ab-f4abd6424de1",
+            "__guid": "0d76a7c0-f5ec-494a-9ff2-1fb4247be6db",
             "PortalType": "Door"
           }
         ]
       },
       {
-        "__guid": "70183c4e-900d-44a9-947a-5856221f211d",
+        "__guid": "17fe48d9-8e39-434c-8be4-c4807eb98317",
         "Name": "Monster Spawner",
         "Position": "-0.00002492252,-64,-0.00001173201",
         "Rotation": "0,0,0.7071069,-0.7071066",
         "Enabled": true,
-        "NetworkMode": 1,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "MonsterSpawner",
-            "__guid": "888bf8ab-3ebf-4975-918e-eb0a9a388dca"
+            "__guid": "7290be74-1a7c-42ce-b541-5deefa3eb081"
           }
         ]
       }

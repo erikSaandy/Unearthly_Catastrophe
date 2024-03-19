@@ -9,7 +9,10 @@
       "Components": [
         {
           "__type": "LethalGameManager",
-          "__guid": "68273751-051a-4110-a7db-d86bf9598648"
+          "__guid": "68273751-051a-4110-a7db-d86bf9598648",
+          "MoonDefinitions": [
+            "moons/kronos.moon"
+          ]
         }
       ]
     },
@@ -47,6 +50,36 @@
       ]
     },
     {
+      "__guid": "be9744b5-4f95-4ce4-8efe-7e8a5c0b0417",
+      "Name": "MiniMap Renderer",
+      "Rotation": "0,0.7071068,0,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MiniMapComponent",
+          "__guid": "8cf769e7-779f-4703-a461-e8f59a2fd0f3"
+        },
+        {
+          "__type": "CameraComponent",
+          "__guid": "01646742-4863-4294-ae06-f8005b87e8f6",
+          "BackgroundColor": "0.58824,0.58824,0.58824,0",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": false,
+          "Orthographic": true,
+          "OrthographicHeight": 1200,
+          "Priority": 1,
+          "RenderExcludeTags": "player,monster,skybox,trigger,item",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 256,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
       "__guid": "a54a2201-4b3b-4cf9-82d0-a758293cee65",
       "Name": "Network Helper",
       "Position": "0,0,171.1578",
@@ -54,8 +87,8 @@
       "NetworkMode": 2,
       "Components": [
         {
-          "__type": "NetworkHelper",
-          "__guid": "9fa6baae-cadb-4a20-beae-61a4d0fe946c",
+          "__type": "MyNetworkHelper",
+          "__guid": "7d43634f-8d65-4516-bfe7-13f80e12d215",
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "prefabs/player.prefab"
@@ -92,22 +125,12 @@
     {
       "__guid": "c79b62c6-097b-4698-82ec-fd63eee0c6dc",
       "Name": "Soda Can",
-      "Position": "-17.96405,-3303.372,1537.553",
+      "Position": "-25.37733,-3302.675,1537.094",
       "Rotation": "0,0,0.7071067,0.7071068",
       "Tags": "item",
       "Enabled": true,
       "NetworkMode": 1,
       "__Prefab": "prefabs/scraps/scrap_soda_can.prefab"
-    },
-    {
-      "__guid": "f5ff6f9d-9b31-4391-86ec-0ceeae11f0fe",
-      "Name": "scrap_cube",
-      "Position": "1.260742,-3299.559,1537.859",
-      "Rotation": "0,0,0.2556595,0.9667668",
-      "Tags": "item",
-      "Enabled": true,
-      "NetworkMode": 1,
-      "__Prefab": "prefabs/scraps/scrap_cube.prefab"
     }
   ],
   "SceneProperties": {
@@ -133,7 +156,7 @@
   },
   "Title": "spaceship",
   "Description": "",
-  "LastSaved": "2024-03-16T18:48:41.8852993\u002B01:00",
+  "LastSaved": "2024-03-19T01:31:40.2969365\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

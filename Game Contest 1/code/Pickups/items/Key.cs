@@ -11,8 +11,6 @@ public sealed class Key : Carriable
 	public override void UsePrimary()	{ }
 	public override void UseSecondary() { }
 
-	[Property] public SoundEvent UnlockSound { get; private set; }
-
 	[Broadcast]
 	public override void WasUsedOn( Guid interactableObject )
 	{
@@ -25,10 +23,9 @@ public sealed class Key : Carriable
 		{
 			if ( door.IsLocked )
 			{
-				OnUnlock();
-				door.IsLocked = false;
+				door.Unlock();
 				Owner?.Inventory.Drop( this );
-				GameObject.Destroy();
+				OnUnlock();
 			}
 		}
 	}
@@ -36,7 +33,8 @@ public sealed class Key : Carriable
 	[Broadcast]
 	private void OnUnlock()
 	{
-		Sound.Play( UnlockSound, Transform.Position );
+		GameObject.Destroy();
+
 	}
 
 }

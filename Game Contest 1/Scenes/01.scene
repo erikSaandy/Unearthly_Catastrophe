@@ -1,57 +1,53 @@
 {
-  "Id": "a9244d95-87e1-439e-b1fc-e9eed8060b38",
+  "__guid": "a9244d95-87e1-439e-b1fc-e9eed8060b38",
   "GameObjects": [
     {
-      "Id": "8a21b5e3-859e-4888-9f68-7157ef4da4e3",
+      "__guid": "8a21b5e3-859e-4888-9f68-7157ef4da4e3",
       "Name": "Object",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
-          "__type": "ShipComponent"
+          "__type": "ShipComponent",
+          "__guid": "5b4e6dee-5369-4628-9568-e33633634f47",
+          "Thrusters": [],
+          "ThrusterVolume": 0.4
         }
       ],
       "Children": [
         {
-          "Id": "703b2287-04ff-4c13-a3cd-72dc4b54808d",
+          "__guid": "703b2287-04ff-4c13-a3cd-72dc4b54808d",
           "Name": "spaceship",
-          "Networked": true,
           "Enabled": true,
+          "NetworkMode": 1,
           "__Prefab": "prefabs/spaceship.prefab"
         },
         {
-          "Id": "a596558e-008f-48ed-afdc-fa196ce798e3",
+          "__guid": "a596558e-008f-48ed-afdc-fa196ce798e3",
           "Name": "key",
           "Enabled": true,
+          "NetworkMode": 2,
           "__Prefab": "prefabs/items/key.prefab"
         }
       ]
     },
     {
-      "Id": "0ac8ba4c-8d93-4770-93fb-7aef8534aedd",
+      "__guid": "0ac8ba4c-8d93-4770-93fb-7aef8534aedd",
       "Name": "Sun",
       "Position": "-3.289985,490.8986,158.2825",
       "Rotation": "0.4330126,0.2500001,-0.7499999,0.4330128",
       "Tags": "light_directional,light",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "DirectionalLight",
+          "__guid": "9c08b4dc-7e42-46d5-9855-eea6cdc0655a",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.91373,0.98039,1,1",
           "Shadows": true,
           "SkyColor": "0.05882,0.07451,0.08235,1"
-        }
-      ]
-    },
-    {
-      "Id": "91ee195a-0fc5-483a-902e-5296c90894a4",
-      "Name": "asscrack",
-      "Position": "-1247.865,-43.91985,621.7286",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "ShipComponent"
         }
       ]
     }
@@ -79,6 +75,8 @@
   },
   "Title": "01",
   "Description": "",
-  "LastSaved": "2024-02-29T13:26:02.0370845\u002B01:00",
+  "LastSaved": "2024-03-16T21:41:09.6701193\u002B01:00",
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

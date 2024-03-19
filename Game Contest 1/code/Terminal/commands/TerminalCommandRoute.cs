@@ -12,11 +12,11 @@ public class TerminalCommandRoute : TerminalCommand
 
 		if(parts == null) { return; }
 
-		for ( int i = 0; i < LethalGameManager.MoonDefinitions.Length; i++ )
+		for ( int i = 0; i < LethalGameManager.Instance.MoonDefinitions.Count; i++ )
 		{
-			if( LethalGameManager.MoonDefinitions[i].ResourceName.ToLower() == parts[0].ToLower() )
+			if( LethalGameManager.Instance.MoonDefinitions[i].ResourceName.ToLower() == parts[0].ToLower() )
 			{
-				string moon = LethalGameManager.MoonDefinitions[i].ResourceName;
+				string moon = LethalGameManager.Instance.MoonDefinitions[i].ResourceName;
 
 				Action action = new Action( () => {
 						Terminal.Exit();

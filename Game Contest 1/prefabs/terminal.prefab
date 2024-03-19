@@ -1,42 +1,47 @@
 {
   "RootObject": {
-    "Id": "a4dead37-6c28-4992-ad9c-4e5c7dd507db",
+    "__guid": "a4dead37-6c28-4992-ad9c-4e5c7dd507db",
     "Name": "terminal",
-    "Networked": true,
     "Enabled": true,
+    "NetworkMode": 1,
     "Components": [
       {
         "__type": "ModelRenderer",
+        "__guid": "e290a044-dd97-4468-9170-a530072ae6d6",
         "BodyGroups": 18446744073709551615,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "models/terminal/terminal.vmdl",
         "RenderType": "On",
         "Tint": "1,1,1,1"
       },
       {
         "__type": "ModelPhysics",
+        "__guid": "73704c8d-1a0a-4e75-a45c-c38f56b2dfb5",
         "Locking": {},
         "Model": "models/terminal/terminal.vmdl",
-        "Renderer": null,
         "RigidbodyFlags": 0
       },
       {
         "__type": "TerminalComponent",
+        "__guid": "79b96325-2f3d-48ea-bbd3-23d0a0b37c16",
         "CameraAngles": "0,45,0",
         "CameraPosition": "-12,-24.00002,67.29986",
         "KeyboardCollider": {
-          "_type": "gameobject",
-          "go": "3587ee36-69d9-4f39-8599-fd30254eab3d"
+          "_type": "component",
+          "component_id": "70b8960b-d68b-4299-834c-c357ec314159",
+          "go": "3587ee36-69d9-4f39-8599-fd30254eab3d",
+          "component_type": "InteractionProxy"
         },
         "Panel": {
           "_type": "component",
+          "component_id": "90a35309-0904-463d-9dcf-6f50a227e43b",
           "go": "6c6c7579-b671-4513-949f-93405aba75bf",
           "component_type": "WorldPanel"
         },
         "ScreenCollider": {
-          "_type": "gameobject",
-          "go": "a8850efe-616e-45e6-906e-3453828eb2d4"
+          "_type": "component",
+          "component_id": "5ed652b0-5506-421a-abd7-027d4bd7db38",
+          "go": "a8850efe-616e-45e6-906e-3453828eb2d4",
+          "component_type": "InteractionProxy"
         },
         "ScreenDistance": 16,
         "TypingEnterSound": "sounds/keyboard_typing_enter.sound",
@@ -45,14 +50,15 @@
     ],
     "Children": [
       {
-        "Id": "6c6c7579-b671-4513-949f-93405aba75bf",
+        "__guid": "6c6c7579-b671-4513-949f-93405aba75bf",
         "Name": "World Panel",
         "Position": "0.5840354,8.3,66.97971",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "WorldPanel",
+            "__guid": "90a35309-0904-463d-9dcf-6f50a227e43b",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
             "PanelSize": "440,440",
@@ -60,29 +66,31 @@
             "VerticalAlign": "Center"
           },
           {
-            "__type": "TerminalHud"
+            "__type": "TerminalHud",
+            "__guid": "b34adb57-b567-4fd9-a4fd-f0657de4a4c0"
           }
         ]
       },
       {
-        "Id": "3587ee36-69d9-4f39-8599-fd30254eab3d",
+        "__guid": "3587ee36-69d9-4f39-8599-fd30254eab3d",
         "Name": "Keyboard",
         "Position": "28.79753,12.73223,44.07281",
         "Rotation": "0,0.3215908,0,0.9468789",
         "Scale": "0.1654353,0.5088326,0.09102613",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "BoxCollider",
+            "__guid": "7026db9e-e9b4-4885-9b29-b555b4a46204",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
-            "Static": false,
-            "Surface": null
+            "Static": false
           },
           {
             "__type": "InteractionProxy",
+            "__guid": "70b8960b-d68b-4299-834c-c357ec314159",
             "BlockInteractions": false,
             "InteractionTime": 0,
             "ToolTip": "Open Terminal"
@@ -90,24 +98,25 @@
         ]
       },
       {
-        "Id": "a8850efe-616e-45e6-906e-3453828eb2d4",
+        "__guid": "a8850efe-616e-45e6-906e-3453828eb2d4",
         "Name": "Screen",
         "Position": "10.1882,8.002461,72.17348",
         "Rotation": "0.00000005960464,0.7933536,-0.00000001490116,0.6087615",
         "Scale": "0.5034022,0.5384045,0.09102613",
-        "Networked": true,
         "Enabled": true,
+        "NetworkMode": 1,
         "Components": [
           {
             "__type": "BoxCollider",
+            "__guid": "b47e1001-04f8-4ece-bc7d-cf57cdcb282a",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
-            "Static": false,
-            "Surface": null
+            "Static": false
           },
           {
             "__type": "InteractionProxy",
+            "__guid": "5ed652b0-5506-421a-abd7-027d4bd7db38",
             "BlockInteractions": false,
             "InteractionTime": 0,
             "ToolTip": "Open Terminal"
@@ -119,5 +128,7 @@
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }

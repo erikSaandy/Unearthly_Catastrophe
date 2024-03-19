@@ -12,11 +12,16 @@
       "HasAssets": false,
       "AssetsPath": null,
       "Resources": null,
-      "MenuResources": "*",
       "HasCode": false,
       "CodePath": null,
       "PackageReferences": [],
-      "EditorReferences": [],
+      "EditorReferences": [
+        "facepunch.floor_tile_02#48882",
+        "tridge.plaster_black#31730",
+        "facepunch.wall_brick_older#18725",
+        "facepunch.wood_plank_hs_01#33582",
+        "facepunch.plaster_hs_01#33578"
+      ],
       "Metadata": {
         "SingleAssetSource": "dungeons/lethal/rooms/corridor/corridor_07.vmap"
       }

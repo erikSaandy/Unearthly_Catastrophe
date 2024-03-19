@@ -2,7 +2,7 @@ namespace Saandy;
 
 public class InteractionProxy : Component, IInteractable
 {
-
+	public Collider Collider { get; private set; }
 	[Property] public bool BlockInteractions { get; set; } = false;
 	public bool IsInteractableBy( Player player ) { return !BlockInteractions; }
 	public Action<Player> OnInteracted { get; set; }
@@ -12,6 +12,21 @@ public class InteractionProxy : Component, IInteractable
 	[Property] public string ToolTip { get; set; }
 
 	public string GetToolTip(Player player) { return $"{IInteractable.GetInteractionKey()} - " + ToolTip; }
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		if(Components.TryGet<Collider>( out Collider col ))
+		{
+			Collider = col;
+		}
+		else
+		{
+			Log.Error( "InteractionProxy does not have an attached collider." );
+		}
+
+	}
 
 	public void OnInteract( Guid playerId )
 	{

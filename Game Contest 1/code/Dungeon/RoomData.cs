@@ -6,11 +6,8 @@ namespace Dungeon;
 
 public sealed class RoomData : Component
 {
-	[Property] public List<RoomPortal> Portals { get; private set; }
+	//[Property] public List<RoomPortal> Portals { get; private set; }
 	[Category("Components")][Property] public ModelRenderer Renderer { get; set; }
-	[Category( "Components" )][Property] public LootSpawnerComponent LootSpawner { get; set; }
-
-	[Property] public List<MonsterSpawner> MonsterSpawners { get; private set; }
 
 	[Property] public BBox Bounds { get; set; }
 

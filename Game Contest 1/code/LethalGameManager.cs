@@ -3,10 +3,10 @@ using Sandbox.UI;
 using System;
 using System.Threading.Tasks;
 
-public class LethalGameManager : Component
+public class LethalGameManager : Component, Component.INetworkListener
 {
 	public static LethalGameManager Instance { get; set; } = null;
-	public IEnumerable<Player> ConnectedPlayers => Scene.Components.GetAll<Player>(find: FindMode.EverythingInChildren);
+	public IEnumerable<Player> ConnectedPlayers => Scene.Components.GetAll<Player>( find: FindMode.EverythingInChildren );
 	public IEnumerable<Player> AlivePlayers => ConnectedPlayers?.Where( x => x.LifeState == LifeState.Alive );
 	public IEnumerable<Player> DeadPlayers => ConnectedPlayers?.Where( x => x.LifeState == LifeState.Dead );
 
@@ -78,8 +78,6 @@ public class LethalGameManager : Component
 	{
 		// only host.
 		if ( IsProxy ) { return; }
-
-		//Log.Info( "QUEUED DEATH ROUTINE" );
 		OnPlayerDeathQueue++;
 	}
 
@@ -89,13 +87,14 @@ public class LethalGameManager : Component
 		// only host.
 		if(IsProxy) { return; }
 
-		//Log.Info( Instance.AlivePlayers.Count() );
-
+		// If leaving moon, players will be respawned soon. Don't do anything.
 		if ( Ship.CurrentMovementState != ShipComponent.MovementState.Leaving)
 		{
 
+			Log.Info( "checking for alive players..." );
+
 			// Not on a moon.
-			if(CurrentMoonGuid == default)
+			if (CurrentMoonGuid == default)
 			{
 				RespawnAllDeadPlayersAsync(3);
 			}
@@ -127,7 +126,7 @@ public class LethalGameManager : Component
 
 	}
  
-	public static MoonDefinition[] MoonDefinitions { get; private set; }
+	[Property] public List<MoonDefinition> MoonDefinitions { get; set; }
 
 	[Sync] public int SelectedMoon { get; set; } = -1;
 	[Sync] public Guid CurrentMoonGuid { get; set; } = default;
@@ -144,13 +143,18 @@ public class LethalGameManager : Component
 	[Sync] public int Balance { get; set; }
 
 	[Broadcast]
-	public void AddBalance(int value)
+	public void AddBalance(int value, string scrapName = "")
 	{
 		if(IsProxy) { return; }
 
 		Balance += value;
 		Sandbox.Services.Stats.SetValue( "balance", Balance );
 		Log.Info( $"added ${value} to ship balance." );
+
+		if(scrapName != string.Empty)
+		{
+			InfoBox.SendInfo( $"Added {scrapName} [ ${value} ]", InfoBox.EntryType.Balance, 2f );
+		}
 	}
 
 	public static Random Random { get; private set; }
@@ -165,11 +169,6 @@ public class LethalGameManager : Component
 		IsLoading = false;
 
 		base.OnAwake();
-
-		MoonDefinitions = new[]
-		{
-			ResourceLibrary.Get<MoonDefinition>( "moons/kronos.moon" )
-		};
 
 		Instance = this;
 
@@ -200,12 +199,25 @@ public class LethalGameManager : Component
 
 	}
 
+	public void OnDisconnected( Connection channel )
+	{
+		if ( Instance.IsProxy ) { return; }
+
+		Instance.QueueOnPlayerDeath();
+
+	}
+
+	public void OnBecameHost( Connection previousHost )
+	{
+		Instance.Network.TakeOwnership();
+	}
+
 	protected override void OnStart()
 	{
 
 		if (Instance.GameObject.IsProxy) { return; }
 
-		//TerminalComponent.SelectMoon( 0 );
+		TerminalComponent.SelectMoon( 0 );
 
 		//Log.Info( Instance == null );
 		 
@@ -292,7 +304,7 @@ public class LethalGameManager : Component
 
 		if ( Instance.GameObject.IsProxy ) { return; }
 
-		MoonDefinition moon = LethalGameManager.MoonDefinitions[moonId];
+		MoonDefinition moon = LethalGameManager.Instance.MoonDefinitions[moonId];
 
 		Log.Info( "Loading moon " + moon.MoonPrefab + "..." );
 
@@ -348,6 +360,7 @@ public class LethalGameManager : Component
 		if ( CurrentMoon == null ) { Log.Error( "Can't leave moon as we are not currently on a moon." ); return; }
 
 		MoonTimerComponent.Instance.StopTimer();
+		InfoBox.SendInfo( $"Ship is now leaving. Have a nice trip!", InfoBox.EntryType.Info );
 
 		//Ship.Lever.IsLocked = true;
 		StartLeaveCurrentMoon();

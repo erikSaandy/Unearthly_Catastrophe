@@ -7,7 +7,7 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "Resources": "\n*.TTF\n*.scss\nTextures/Icons/liftoff.png\nTextures/Icons/warning.png\nTextures/Icons/info.png",
+  "Resources": "fonts/VT323Regular.ttf",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],
@@ -216,7 +216,6 @@
       "NoWarn": "1701;1702;1591;",
       "WarningsAsErrors": "",
       "Whitelist": true,
-      "ReleaseMode": "Release",
       "AssemblyReferences": [],
       "IgnoreFolders": [
         "editor",

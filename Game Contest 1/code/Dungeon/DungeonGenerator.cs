@@ -85,7 +85,7 @@ public static class DungeonGenerator
 		{
 
 			if ( currentRoom == SpawnedRooms[0] ) { 
-				Log.Info( "[entrance has " + currentRoom.Data.Portals.Count + " portals left.]" );
+				Log.Info( "[entrance has " + currentRoom.Portals.Count + " portals left.]" );
 				//Log.Info( iteration );
 			}
 			
@@ -101,14 +101,12 @@ public static class DungeonGenerator
 				nextRoom.GameObject.Name = nextRoom.GameObject.Name + " (" + SpawnedRooms.Count.ToString() + ")";
 				nextRoom.MoveToNextPortal();
 
-				if(nextRoom.Data.MonsterSpawners != null)
+				// Get monster spawners
+				List<MonsterSpawner> roomMonsterSpawners = nextRoom.GameObject.Components.GetAll<MonsterSpawner>( FindMode.InDescendants ).ToList();
+				for ( int i = 0; i < roomMonsterSpawners.Count; i++ )
 				{
-					for(int i = 0; i < nextRoom.Data.MonsterSpawners.Count; i++ )
-					{
-						if ( nextRoom.Data.MonsterSpawners[i] == null) { return; }
-						MonsterSpawners.Add( nextRoom.Data.MonsterSpawners[i].GameObject.Id );
-					}
-
+					if ( roomMonsterSpawners[i] == null ) { return; }
+					MonsterSpawners.Add( roomMonsterSpawners[i].GameObject.Id );
 				}
 
 				SearchRooms( ref nextRoom, ref currentBiome, ref finished, --iteration, ++biomeDepth );
@@ -192,15 +190,15 @@ public static class DungeonGenerator
 
 		foreach(RoomSetup room in SpawnedRooms)
 		{
-			if(room.Data.LootSpawner != null)
-			{
-				//Log.Info( "found loot spawner" );
+			LootSpawnerComponent lootSpawner = room.GameObject.Components.GetInChildrenOrSelf<LootSpawnerComponent>();
 
-				int spawnCount = LethalGameManager.Random.Next( 0, room.Data.LootSpawner.MaxItemCount + 2 );
+			if( lootSpawner != null )
+			{
+				int spawnCount = LethalGameManager.Random.Next( 0, lootSpawner.MaxItemCount + 2 );
 
 				for(int i = 0; i < spawnCount; i++ )
 				{
-					if( room.Data.LootSpawner.TrySpawnItem( DungeonItemManager.RandomScrap ) )
+					if( lootSpawner.TrySpawnItem( DungeonItemManager.RandomScrap ) )
 					{
 						totalScrapCount++;
 					}
@@ -219,8 +217,10 @@ public static class DungeonGenerator
 		public GameObject GameObject;
 		public RoomData Data = null;
 		public int ActivePortalId = -1;
-		public RoomPortal ActivePortal => Data.Portals[ActivePortalId];
-		public bool HasUnexploredPortals => Data?.Portals == null ? false : Data?.Portals?.Count > 0;
+
+		public List<RoomPortal> Portals = new List<RoomPortal>();
+		public RoomPortal ActivePortal => Portals[ActivePortalId];
+		public bool HasUnexploredPortals => Portals == null ? false : Portals.Count > 0;
 
 		public RoomSetup(Room room)
 		{
@@ -233,6 +233,7 @@ public static class DungeonGenerator
 
 			Data = GameObject.Components.Get<RoomData>();
 
+			Portals = GameObject.Components.GetAll<RoomPortal>( FindMode.InDescendants ).ToList();
 
 			// Get new portal (doesn't delete in this case.)
 			MoveToNextPortal();
@@ -264,11 +265,11 @@ public static class DungeonGenerator
 		{
 			if(ActivePortal.PortalType == otherType) { return true; }
 
-			int count = Data.Portals.Count - 1;
+			int count = Portals.Count - 1;
 
 			while(count > 0)
 			{
-				ActivePortalId = (ActivePortalId + 1) % Data.Portals.Count;
+				ActivePortalId = (ActivePortalId + 1) % Portals.Count;
 				if(ActivePortal.PortalType == otherType) { return true; }
 
 				count--;
@@ -288,19 +289,19 @@ public static class DungeonGenerator
 			if ( ActivePortalId != -1  && deletePrevious ) {
 				int id = ActivePortalId;
 				ActivePortal.GameObject.Destroy();
-				Data.Portals.RemoveAt( id );
+				Portals.RemoveAt( id );
 			}
 			// Get new portal from remaining pool
-			ActivePortalId = LethalGameManager.Random.Next( 0, Data.Portals.Count );
+			ActivePortalId = LethalGameManager.Random.Next( 0, Portals.Count );
 		}
 
 		public void SpawnEntranceDoor()
 		{
-			for(int i = 0; i < Data.Portals.Count; i++ )
+			for(int i = 0; i < Portals.Count; i++ )
 			{
-				if ( Data.Portals[i].PortalType == RoomPortal.RoomPortalType.Entrance )
+				if ( Portals[i].PortalType == RoomPortal.RoomPortalType.Entrance )
 				{
-					SpawnDoor( Data.Portals[i] );
+					SpawnDoor( Portals[i] );
 					ActivePortalId = i;
 					MoveToNextPortal();
 					break;

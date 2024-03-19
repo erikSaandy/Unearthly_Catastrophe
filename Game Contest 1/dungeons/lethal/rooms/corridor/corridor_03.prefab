@@ -83,7 +83,7 @@
         "Position": "132,0,0",
         "Rotation": "0,0,0.7071068,0.7071068",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -98,7 +98,7 @@
         "Position": "0,132,0",
         "Rotation": "0,0,1,0.0000001649049",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -113,7 +113,7 @@
         "Position": "-132,0,0",
         "Rotation": "0,0,-0.7071067,0.7071068",
         "Enabled": true,
-        "NetworkMode": 2,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "RoomPortal",
@@ -127,7 +127,7 @@
         "Name": "Monster Spawner",
         "Rotation": "0,0,0.7071067,0.7071068",
         "Enabled": true,
-        "NetworkMode": 1,
+        "NetworkMode": 0,
         "Components": [
           {
             "__type": "MonsterSpawner",

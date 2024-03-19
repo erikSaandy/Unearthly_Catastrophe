@@ -36,8 +36,8 @@ public sealed class TerminalComponent : Component
 	[Property] public Sandbox.WorldPanel Panel { get; set; }
 	public TerminalHud Hud { get; private set; }
 
-	[Property] public GameObject KeyboardCollider { get; set; }
-	[Property] public GameObject ScreenCollider { get; set; }
+	[Property] public InteractionProxy KeyboardCollider { get; set; }
+	[Property] public InteractionProxy ScreenCollider { get; set; }
 
 	public string PageInfo => "[PAGE " + (PageNumber + 1) + "/" + PageCount + "]";
 
@@ -56,8 +56,9 @@ public sealed class TerminalComponent : Component
 	[Broadcast]
 	public static void SelectMoon(int i)
 	{
+		Log.Info( $"Selected moon {LethalGameManager.Instance.MoonDefinitions[i].Name}" );
 		LethalGameManager.Instance.SelectedMoon = i;
-		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.MoonDefinitions[i].ResourceName}";
+		LethalGameManager.Instance.Ship.Lever.ToolTipDeactivated = $"Land on {LethalGameManager.Instance.MoonDefinitions[i].Name}";
 		//LethalGameManager.Instance.Ship.Lever.IsLocked = false;
 	}
 
@@ -80,8 +81,8 @@ public sealed class TerminalComponent : Component
 
 		Hud = Panel.Components.Get<TerminalHud>();
 		Hud.Owner = this;
-		KeyboardCollider.Components.Get<InteractionProxy>().OnInteracted += OnInteract;
-		ScreenCollider.Components.Get<InteractionProxy>().OnInteracted += OnInteract;
+		KeyboardCollider.OnInteracted += OnInteract;
+		ScreenCollider.OnInteracted += OnInteract;
 
 		Hud.TextEntry.OnKeyPressed += OnKeyPressed;
 
@@ -102,11 +103,11 @@ public sealed class TerminalComponent : Component
 		Log.Info( player + " interacted with terminal." );
 		player.PlayerInput = new PlayerTerminalInput( player, this );
 		Hud.Focus( true );
-
 	}
 
 	protected override void OnUpdate()
 	{
+
 		if(GameObject.IsProxy ) { return; }
 
 		// Not using terminal...

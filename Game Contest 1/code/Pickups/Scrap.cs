@@ -1,4 +1,4 @@
-public sealed class Scrap : Carriable, ISellable
+public sealed class Scrap : Carriable, ISellable, IHasMapIcon
 {
 	[Property][Range(0, 300)] public int MinValue { get; set; }
 	[Property][Range( 0, 300 )] public int MaxValue { get; set; }
@@ -11,6 +11,11 @@ public sealed class Scrap : Carriable, ISellable
 	[Property] public Action OnUsePrimary;
 	[Property] public Action OnUseSecondary;
 
+	public Color IconColor => Color.Blue;
+	public float IconRotation => Transform.Rotation.Angles().yaw;
+
+	public void RenderMapIcon() { MiniMapComponent.AddIcon( this ); }
+
 	public override string GetToolTip( Player player ) { return $"{IInteractable.GetInteractionKey()} - Pickup {Name} [${StartValue}]"; }
 
 	protected override void OnStart()
@@ -21,6 +26,13 @@ public sealed class Scrap : Carriable, ISellable
 		}
 
 		base.OnStart();
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		RenderMapIcon();
 	}
 
 	public override void OnDrop()
@@ -39,18 +51,19 @@ public sealed class Scrap : Carriable, ISellable
 		// Added scrap to ship
 		if(result.GameObject.Root == LethalGameManager.Instance.Ship.GameObject)
 		{
-			LethalGameManager.Instance.AddBalance( Value );
+			LethalGameManager.Instance.AddBalance( Value, Name );
 			Value = 0;
 		}
 
 	}
 
-
+	[Broadcast]
 	public override void UsePrimary()
 	{
 		OnUsePrimary?.Invoke();
 	}
 
+	[Broadcast]
 	public override void UseSecondary()
 	{
 		OnUseSecondary?.Invoke();

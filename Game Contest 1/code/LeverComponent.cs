@@ -7,7 +7,7 @@ public class LeverComponent : Component, IInteractable
 	public bool IsInteractableBy( Player player ) { return !IsLocked; }
 	public float InteractionTime { get; set; } = 1.3f;
 	[Category("ToolTips")][Property] public string ToolTip { get; set; } = "";
-	[Category( "ToolTips" )][Property] public string ToolTipDeactivated { get; set; } = "";
+	[Category( "ToolTips" )][Property][Sync] public string ToolTipDeactivated { get; set; } = "";
 
 	[Property][Category( "Sound" )] public SoundEvent PullSound { get; set; }
 

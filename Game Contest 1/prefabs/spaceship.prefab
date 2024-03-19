@@ -1054,8 +1054,8 @@
       {
         "__guid": "22713831-938e-48c7-af62-27a3ed21b18f",
         "Name": "poster_01 (1)",
-        "Position": "152.8798,-151.2014,74.77022",
-        "Rotation": "0.7071021,-0.002611348,-0.7071021,0.002611623",
+        "Position": "126.4716,-103.2507,80.76479",
+        "Rotation": "0.6522777,0.2681837,-0.6542765,0.2730091",
         "Scale": "13,13,13",
         "Enabled": true,
         "NetworkMode": 2,
@@ -1195,6 +1195,50 @@
                 "SoundOverride": true,
                 "StopOnNew": false,
                 "Volume": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "04302078-c74a-4012-b298-d4e1ab8e169e",
+        "Name": "GPS Screen",
+        "Position": "139.6664,-191.9999,80",
+        "Rotation": "0,0,0.7071067,0.7071068",
+        "Scale": "1.581388,1.581388,1.581388",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "Prop",
+            "__guid": "cb8f2931-1e18-4afa-b3c2-e19676180e0f",
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/screen/screen.vmdl"
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "f589ba23-a7d5-4f8b-a58e-bdd44f247d0e",
+            "Name": "MiniMap Hud",
+            "Position": "-0.0000004325407,2.418943,0",
+            "Rotation": "0,0,0.7071067,0.7071067",
+            "Scale": "0.63,0.63,0.63",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "WorldPanel",
+                "__guid": "ec6ad94f-c4be-4ca1-9530-b91b2a52fd51",
+                "HorizontalAlign": "Center",
+                "LookAtCamera": false,
+                "PanelSize": "1024,1024",
+                "RenderScale": 1,
+                "VerticalAlign": "Center"
+              },
+              {
+                "__type": "MiniMapHud",
+                "__guid": "b5621e8d-e956-4dff-9bbb-6be2a0031d40"
               }
             ]
           }

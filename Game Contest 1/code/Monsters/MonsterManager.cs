@@ -11,7 +11,8 @@ public static class MonsterManager
 
 	public static List<MonsterData> MonsterInstances { get; private set; } = new()
 	{
-		new MonsterData("Zombie", "prefabs/monsters/zombie.prefab", strength: 2, spawnCountLimit: 4 ),
+		new MonsterData("Zombie", "prefabs/monsters/zombie.prefab", strength: 2, spawnCountLimit: 6 ),
+		new MonsterData("Weeping Angel", "prefabs/monsters/weepingangel.prefab", strength: 3, spawnCountLimit: 3)
 	};
 
 	private static List<MonsterData> SpawnedMonsterData { get; set; } = new();
@@ -20,7 +21,6 @@ public static class MonsterManager
 
 	public static void SpawnMonsters(List<Guid> potentialSpawners)
 	{
-
 		if( potentialSpawners == null || potentialSpawners.Count == 0) { Log.Warning( "Can't spawn monsters as dungeon contains no spawners." ); }
 
 		SpawnedMonsterData = new();
@@ -119,7 +119,7 @@ public static class MonsterManager
 
 	}
 
-	public static MonsterData RandomMonster => LethalGameManager.Random.FromList( MonsterInstances );
+	public static MonsterData RandomMonster => LethalGameManager.Random.FromList( MonsterInstances ); 
 
 	public class MonsterData
 	{
